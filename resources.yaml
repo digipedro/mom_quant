@@ -1,0 +1,574 @@
+---
+    resources:
+        stamina:
+            display_name: Stamina
+        empty_pc:
+            display_name: Empty Power Cell
+        full_pc:
+            display_name: Full Power Cell
+        power:
+            display_name: Power
+        ice:
+            display_name: Ice
+        soil:
+            display_name: Soil
+        regolith:
+            display_name: Regolith
+        waste:
+            display_name: Waste
+        food:
+            display_name: Food
+        water:
+            display_name: Water
+        sprout_seed:
+            display_name: Sprout Seed
+        lettuce_seed:
+            display_name: Lettuce Seed
+        carrot_seed:
+            display_name: Carrot Seed
+        sweet_potato_seed:
+            display_name: Sweet Potato Seed
+        soy_seed:
+            display_name: Soy Seed
+        coffee_bean_green:
+            display_name: Green Coffee Bean
+        coffee_bean_roasted:
+            display_name: Roasted Coffee Bean
+        carbon_dioxide:
+            display_name: Carbon Dioxide
+        smelt_iron:
+            display_name: Iron Ore
+        aluminum_plate:
+            display_name: Aluminum Plate
+        smelt_aluminum:
+            display_name: Aluminum Ore
+        smelt_titanium:
+            display_name: Titanium Ore
+        titanium_plate:
+            display_name: Titanium Plate
+        smelt_steel:
+            display_name: Steel
+        machined_parts:
+            display_name: Machined Parts
+        structural_parts:
+            display_name: Structural Parts
+        rover_chassis:
+            display_name: Rover Chassis
+        smelt_copper:
+            display_name: Copper Ore
+        barite:
+            display_name: Barite
+        rover_wheels:
+            display_name: Rover Wheels
+        electronic_bits:
+            display_name: Electronic Bits
+        coffee_cherry:
+            display_name: Coffee Cherry
+        fermented_sorghum:
+            display_name: Fermented Sorghum
+        sorghum:
+            display_name: Sorghum
+        sorghum_seed:
+            display_name: Sorghum Seeds
+        bamboo_seed:
+            display_name: Bamboo Seeds
+        bamboo:
+            display_name: Bamboo
+        hydrogen:
+            display_name: Hydrogen
+        methane:
+            display_name: Methane
+        oxygen:
+            display_name: Oxygen
+        pvc_raw:
+            display_name: PVC
+        pla:
+            display_name: PLA
+        perchlorate:
+            display_name: Potassium Perchlorate
+        halite:
+            dispaly_name: Halite
+        pvc_pipe:
+            display_name: PVC Pipe
+        coffee_ground:
+            display_name: Ground Coffee
+        coffee_brewed:
+            display_name: Brewed Coffee
+        dusk:
+            display_name: Dusk
+        metal_bits:
+            display_name: Metal Bits
+        coffee_seed:
+            display_name: Coffee Seed
+        broken_rover:
+            display_name: Broken Rover
+        titanum_plate:
+            display_name: Titanum Plate
+        vibes:
+            display_name: Vibes
+        electronics_parts:
+            display_name: Electronics Parts
+        paper:
+            display_name: Paper
+        water_rich_clay:
+            display_name: Water Rich Clay
+    recipies:
+        # greenhouse
+        plant_sprouts:
+            display_name: Plant Sprouts
+            building: greenhouse
+            input:
+                stamina: 1
+                water: 2
+                power: 1
+                sprout_seed: 1
+                soil: 1
+            output:
+                food: [10, 14, 12]
+        plant_lettuce:
+            display_name: Plant Lettuce
+            building: greenhouse
+            input:
+                stamina: 2
+                water: 4
+                power: 2
+                lettuce_seed: 1
+                soil: 2
+            output:
+                food: [20, 50, 35]
+        plant_carrots:
+            display_name: Plant Carrots
+            building: greenhouse
+            input:
+                stamina: 3
+                water: 5
+                power: 12
+                carrot_seed: 1
+                soil: 4
+            output:
+                food: [50, 70, 60]
+        plant_sweet_potato:
+            display_name: Plant Sweet Potato
+            building: greenhouse
+            input:
+                stamina: 4
+                water: 25
+                power: 20
+                sweet_potato_seed: 1
+                soil: 5
+            output:
+                food: [90, 150, 120]
+        plant_soy:
+            display_name: Plant Soy
+            building: greenhouse
+            input:
+                stamina: 5
+                water: 30
+                power: 30
+                soy_seed: 1
+                soil: 7
+            output:
+                food: [140, 230, 185]
+        plant_coffee:
+            display_name: Plant Coffee
+            building: greenhouse
+            input:
+                stamina: 2
+                water: 8
+                power: 10
+                coffee_seed: 1
+                soil: 4
+            output:
+                coffee_cherry: [28, 42, 35]
+        plant_bamboo:
+            display_name: Plant Bamboo
+            building: greenhouse
+            input:
+                stamina: 2
+                water: 10
+                power: 15
+                bamboo_seed: 1
+                soil: 1
+            output:
+                bamboo: [16, 28, 22]
+        plant_sorghum:
+            display_name: Plant Sorghum
+            building: greenhouse
+            input:
+                stamina: 2
+                water: 15
+                power: 10
+                sorghum_seed: 5
+                soil: 3
+            output:
+                sorghum: [20, 34, 27]
+        #cad
+        capture_co2:
+            display_name: Capture Carbon Dioxide
+            building: cad
+            input:
+                stamina: 1
+                power: 60
+            output:
+                carbon_dioxide: [2, 15, 3.6]
+        make_soil:
+            display_name: Make Soil
+            building: cad
+            input:
+                stamina: 1
+                waste: 2
+                power: 10
+                regolith: 15
+            output:
+                soil: 4
+        roast_coffee_beans:
+            display_name: Roast Coffee Beans
+            building: cad
+            input:
+                stamina: 1
+                coffee_bean_green: 20
+                power: 10
+            output:
+                coffee_bean_roasted: [16, 20, 18]
+        transport_co2:
+            display_name: Transport Co2
+            building: cad
+            input:
+                carbon_dioxide: 50
+                power: 20
+                stamina: 2
+            output:
+                dusk: [30, 100, 51]
+        #smelter
+        smelt_iron:
+            display_name: Smelt Iron
+            building: smelter
+            input:
+                regolith: 500
+                power: 40
+                stamina: 2
+            output:
+                smelt_iron: [2, 15, 3.6]
+        smelt_copper:
+            display_name: Smelt Copper
+            building: smelter
+            input:
+                regolith: 1500
+                power: 40
+                stamina: 3
+            output:
+                smelt_copper: [2, 15, 3.6]
+                barite: 0.33
+        smelt_aluminum:
+            display_name: Smelt Aluminum
+            building: smelter
+            input:
+                regolith: 1000
+                power: 40
+                stamina: 5
+            output:
+                smelt_aluminum: [2, 15, 3.6]
+        smelt_titanium:
+            display_name: Smelt Titanium
+            building: smelter
+            input:
+                regolith: 2500
+                power: 40
+                stamina: 4
+            output:
+                smelt_titanium: [2, 15, 3.6]
+        smelt_steel:
+            display_name: Smelt Steel
+            building: smelter
+            input:
+                carbon_dioxide: 10
+                smelt_iron: 15
+                power: 40
+                stamina: 3
+            output:
+                smelt_steel: [2, 15, 3.6]
+                barite: 0.33
+        #machine_shop
+        make_aluminum_plate:
+            display_name: Make Aluminum Plate
+            building: machine_shop
+            input:
+                smelt_aluminum: 5
+                power: 40
+                stamina: 3
+            output:
+                aluminum_plate: [2, 10, 3.33]
+        make_titanium_plate:
+            display_name: Make Titanium Plate
+            building: machine_shop
+            input:
+                smelt_titanium: 5
+                power: 40
+                stamina: 3
+            output:
+                titanium_plate: [2, 10, 3.33]
+        make_machined_parts:
+            display_name: Make Machined Parts
+            building: machine_shop
+            input:
+                smelt_steel: 5
+                aluminum_plate: 5
+                power: 30
+                stamina: 5
+            output:
+                machined_parts: [1, 4, 1.66]
+        weld_rover_chassis:
+            display_name: Weld Rover Chassis
+            building: machine_shop
+            input:
+                structural_parts: 4
+                machined_parts: 5
+                power: 120
+                stamina: 8
+            output:
+                rover_chassis: [1, 2, 1.1]
+        make_rover_wheels:
+            display_name: Make Rover Wheels
+            building: machine_shop
+            input:
+                aluminum_plate: 2
+                titanium_plate: 2
+                power: 40
+                stamina: 4
+            output:
+                rover_wheels: 1.1
+        salvage_rover:
+            display_name: Salvage Rover
+            building: machine_shop
+            input:
+                broken_rover: 1
+                titanum_plate: 2
+                power: 20
+                stamina: 3
+            output:
+                machined_parts: [0, 5, 2.5]
+                electronic_bits: [0, 8, 4]
+                rover_wheels: [0, 8, 4]
+                rover_chassis: 1
+        #3d print shop
+        make_electronics_parts:
+            display_name: Make Electonics Parts
+            building: 3d_print_shop
+            input:
+                smelt_copper: 10
+                pvc_raw: 2
+                regolith: 500
+                power: 40
+                stamina: 5
+            output:
+                electronics_parts: [1, 4, 1.665]
+        make_paper:
+            display_name: Make Paper
+            building: 3d_print_shop
+            input:
+                pla: 4
+                bamboo: 8
+                power: 10
+                stamina: 2
+            output:
+                paper: 4.5
+        make_structural_parts:
+            display_name: Make Structural Parts
+            building: 3d_print_shop
+            input:
+                smelt_steel: 10
+                titanium_plate: 3
+                aluminum_plate: 5
+                power: 40
+            output:
+                structural_parts: [1, 4, 1.665]
+        mmke_pvc_pipe:
+            display_name: Make PVC Pipe
+            building: 3d_print_shop
+            input:
+                pvc_raw: 5
+                power: 20
+                stamina: 3
+            output:
+                pvc_pipe: [2, 15, 3.555]
+        #water filter
+        filter_water:
+            display_name: Filter Water
+            building: water_filter
+            input:
+                power: 10
+                stamina: 1
+                ice: 40
+            output:
+                water: 16
+                regolith: 4
+        ferment_coffee_beans:
+            display_name: Ferment Coffee Beans
+            building: water_filter
+            input:
+                stamina: 1
+                coffee_cherry: 26
+                power: 10
+            output:
+                coffee_bean_green: [20, 26, 23]
+        ferment_sorghum:
+            display_name: Ferment Sorghum
+            building: water_filter
+            input:
+                stamina: 2
+                sorghum: 12
+                power: 10
+            output:
+                fermented_sorghum: [18, 36, 27]
+        #Sabatier Reactor
+        produce_methane:
+            display_name: Produce Methane
+            building: sab_reactor
+            input:
+                carbon_dioxide: 1
+                hydrogen: 4
+                power: 10
+                stamina: 2
+            output:
+                methane: 1
+                water: 2
+        split_water:
+            display_name: Split Water
+            building: sab_reactor
+            input:
+                water: 1
+                power: 10
+                stamina: 1
+            output:
+                hydrogen: 2
+                oxygen: 1
+        #chem lab
+        make_pvc:
+            display_name: Make PVC
+            building: chem_lab
+            input:
+                methane: 5
+                hydrogen: 5
+                water: 5
+                power: 20
+                stamina: 3
+            output:
+                pvc_raw: [2, 15, 4]
+        make_pla:
+            display_name: Make PLA
+            building: chem_lab
+            input:
+                fermented_sorghum: 20
+                carbon_dioxide: 5
+                power: 20
+                stamina: 1
+            output:
+                pla: [5, 10, 7.5]
+        make_perchlorate:
+            display_name: Make Perchlorate
+            building: chem_lab
+            input:
+                halite: 4
+                water: 5
+                power: 20
+                stamina: 2
+            output:
+                perchlorate: [1, 3, 2]
+        make_empty_pc:
+            display_name: Make Power Cells
+            building: chem_lab
+            input:
+                halite: 4
+                water: 5
+                smelt_iron: 1
+                pvc_pipe: 1
+                stamina: 2
+            output:
+                empty_pc: [2, 5, 2.2]
+        #grind n' brew
+        grind_coffee:
+            display_name: Grind Coffee Beans
+            building: grindnbrew
+            input:
+                stamina: 2
+                coffee_bean_roasted: 14
+                power: 20
+            output:
+                coffee_ground: [8, 12, 10]
+        brew_coffee:
+            display_name: Brew Coffee
+            building: grindnbrew
+            input:
+                stamina: 3
+                coffee_ground: 4
+                water: 12
+                power: 40
+            output:
+                coffee_brewed: [2, 4, 3]
+        #solar_panel
+        charge_power_cell:
+            display_name: Charge Power Cell
+            building: solar_panel
+            input:
+                empty_pc: 1
+                stamina: 1
+            output:
+                full_pc: 1
+        charge_power_cell3:
+            display_name: Charge Power Cell III
+            building: solar_panel
+            input:
+                empty_pc: 3
+                stamina: 2
+            output:
+                full_pc: 3
+        #other
+        scavange:
+            display_name: Scavange (estimate)
+            input:
+                stamina: 1
+            output:
+                ice: 5
+                regolith: 6
+                metal_bits: 0.1
+                electronic_bits: 0.1
+        novice_scavangin:
+            display_name: Novice Scavenge (estimate)
+            input:
+                stamina: 1
+                dusk: 1
+            output:
+                ice: 3.5
+                regolith: 8.21
+                metal_bits: 0.58
+                electronic_bits: 0.29
+                water_rich_clay: 0.04
+                vibes: 0.25
+                barite: 0.21
+        do_job:
+            display_name: Do Job
+            input:
+                stamina: 1
+            output:
+                dusk: 1                
+    buildings:
+        solar_panel:
+            display_name: Solar Panel
+        water_filter:
+            display_name: Water Filter
+        greenhouse:
+            display_name: Greenhouse
+        cad:
+            dispaly_name: C.A.D.
+        smelter:
+            display_name: Smelter
+        machine_shop:
+            display_name: Machine Shop
+        sab_reactor:
+            display_name: Sabatier Reactor
+        chem_lab:
+            display_name: Chem Lab
+        grindnbrew:
+            display_name: Grind & Brew
+        3d_print_shop:
+            display_name: 3D Print Shop
