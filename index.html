@@ -357,7 +357,7 @@
                                 last_update = time;
                             for (const [key, value] of Object.entries(this.market[i].attributes)) {
                                 if (typeof value === 'object')
-                                    this.market[i].attributes[key] = value[Object.keys(value)[0]];
+                                    this.market[i].attributes[key] = Number(value[Object.keys(value)[0]]);
                             }
                         }
                         this.market_timestamp = last_update;
