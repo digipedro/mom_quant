@@ -6,6 +6,7 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <title>Million on Mars Land Rush ROI Calculator</title>
+  <link rel="shortcut icon" href="favicon.ico">
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
@@ -84,9 +85,28 @@
         </v-col>
         <v-col class="d-flex" cols="6" sm="3">
           <v-select :items="stamina_source" label="Stamina Source" v-on:change="changeSelect" v-model="selected_stamina_source"></v-select>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon v-bind="attrs" v-on="on" small>
+                mdi-help-circle-outline
+              </v-icon>
+            </template>
+            <span v-html="stamina_help_text"></span>
+          </v-tooltip>
         </v-col>
       </v-row>
-      <v-row :class="{red:market_time_warning}" class="text-right" align-right>
+      <v-row dense>
+        <v-col cols="24" sm="12">
+            <v-chip-group column>
+              <v-chip v-for="bldg in bldg_items" :key="bldg.id" :class="{black:bldg.disabled}" @click="filter(bldg.id)" >
+                <img v-bind:src="bldg.img" :style="bldg.disabled ? 'opacity: 0.5' : ''" height="24" style="margin-right: 6px; vertical-align:middle"/>
+                <span :style="bldg.disabled ? 'color: #aaa' : ''">{{ bldg.name }}</span>
+              </v-chip>
+              <v-chip @click="toggleAllBldgs">Toggle All</v-chip>
+            </v-chip-group>
+        </v-col>
+      </v-row>
+      <v-row :class="{red:market_time_warning}" class="text-right" dense>
         <v-col class="text-right" cols="24" sm="12">
           Market data {{ market_timetext }}
         </v-col>
@@ -95,9 +115,9 @@
          
          
     
-    <v-data-table :headers="headers" :items="resources" :items-per-page="-1" class="elevation-1" :custom-sort="customSort" dark>
+    <v-data-table :headers="headers" :items="filteredResources" :items-per-page="-1" class="elevation-1" :custom-sort="tableSort" dark>
       <template v-slot:item.name="{ item }">
-        <img v-bind:src="item.icon" height="24" style="margin-right: 6px; vertical-align:middle"/>{{ item.name }}
+        <img v-bind:src="item.icon" v-bind:title="item.icon_title" height="24" style="margin-right: 6px; vertical-align:middle"/>{{ item.name }}
       </template>
       <template v-slot:item.cost="props">
           <v-edit-dialog
@@ -146,12 +166,33 @@
 
 
   <script>
+      function localnum(num) {
+          return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+      }
+      
       
 	  var vv = new Vue({
 	    el: '#app',
 		mounted:function() {
             this.loadYAML();
             this.loadMarket();
+            
+            // load user settings            
+            for (i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                let value = localStorage.getItem(key);
+                if (key == 'selected_buy_price' && this.buy_price.includes(value))
+                    this.selected_buy_price = value;
+                if (key == 'selected_sell_price' && this.sell_price.includes(value))
+                    this.selected_sell_price = value;
+                if (key == 'selected_power_source' && this.power_source.includes(value))
+                    this.selected_power_source = value;
+                if (key == 'selected_stamina_source' && this.stamina_source.includes(value))
+                    this.selected_stamina_source = value;
+                if (key == 'bldg_hide')
+                    this.bldg_hide = JSON.parse(value);
+            }
+            
             setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
 		},
 	    vuetify: new Vuetify({
@@ -168,11 +209,15 @@
             selected_sell_price: 'Lower',
             power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III'],
             selected_power_source: 'Charge Power Cell',
-            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Drink Coffee', 'Job'],
+            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Drink Coffee', 'Job', 'Daily Ration'],
+            stamina_help_text: '',
             selected_stamina_source: 'Eat Meal',
             market_timestamp: 0,
             market_timetext: 'Loading...',
             market_time_warning: false,
+            user_settings: {},
+            bldg_items: [],
+            bldg_hide: [],
             
             headers: [
               { text: 'Name', align: 'start', value: 'name' },
@@ -184,9 +229,16 @@
             resources: [],
 	    },
         filters: {
-            localnum: function (value) {
-                return value.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 })
-            }
+        },
+        computed: {
+            filteredResources() {
+                let filteredTable = []
+                for (i = 0; i < this.resources.length; i ++) {
+                    if (this.resources[i].show)
+                        filteredTable.push(this.resources[i])
+                }
+                return filteredTable;
+            },
         },
 	    methods: {
             save () {
@@ -195,7 +247,29 @@
             cancel () { },
             open () { },
             close () { },
-            customSort(items, index, isDesc) {
+            toggleAllBldgs() {
+                let mode = this.bldg_items[0].disabled;
+                for (const [key, value] of Object.entries(this.bldg_items)) {
+                    this.bldg_items[key].disabled = !mode
+                }
+                this.buildTable()
+            },
+            filter(id) {
+                for (const [key, value] of Object.entries(this.bldg_items)) {
+                    if (id == value.id)
+                        this.bldg_items[key].disabled = !this.bldg_items[key].disabled
+                }
+                this.saveUserSettings()
+                this.buildTable()
+            },
+            checkForFilter(id) {
+                for (const [key, value] of Object.entries(this.bldg_items)) {
+                    if (id == value.id)
+                        return this.bldg_items[key].disabled;
+                }
+                return false;
+            },
+            tableSort(items, index, isDesc) {
                 items.sort((a, b) => {
                   if (isDesc[0]) {
                     return parseFloat(a[index]) < parseFloat(b[index]) ? -1 : 1;
@@ -205,7 +279,20 @@
                 });
                 return items;
             },
+            saveUserSettings() {
+                localStorage.setItem('selected_buy_price', this.selected_buy_price);
+                localStorage.setItem('selected_sell_price', this.selected_sell_price);
+                localStorage.setItem('selected_power_source', this.selected_power_source);
+                localStorage.setItem('selected_stamina_source', this.selected_stamina_source);
+                this.bldg_hide = []
+                for (const [key, value] of Object.entries(this.bldg_items)) {
+                    if (this.bldg_items[key].disabled)
+                        this.bldg_hide.push(value.id)
+                }
+                localStorage.setItem('bldg_hide', JSON.stringify(this.bldg_hide));
+            },
             changeSelect(id) {
+                this.saveUserSettings();
                 this.buildTable();
             },
             updateTimer() {
@@ -237,6 +324,23 @@
                 }
                 return sale;
             },
+            getStaminaCost(method) {
+                let food = this.getPrice('food', this.selected_buy_price);
+                let water = this.getPrice('water', this.selected_buy_price);
+                let waste = this.getPrice('waste', this.selected_sell_price);
+                if (method == 'Eat Snack')
+                    return (30 * food + 10 * water - 2 * waste) / 16;
+                if (method == 'Eat Feast')
+                    return (90 * food + 30 * water - 6 * waste) / 32;
+                if (method == 'Drink Coffee')
+                    return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
+                if (method == 'Job')
+                    return 1.04;
+                if (method == 'Daily Ration')
+                    return 0;
+                // 'Eat Meal'
+                return (60 * food + 20 * water - 4 * waste) / 24;
+            },
             getPrice(id, type = 'Split') {
                 // In future handle price type selection
                                 
@@ -249,19 +353,7 @@
                     return (1/20);
                 }
                 if (id == 'stamina') {
-                    let food = this.getPrice('food', this.selected_buy_price);
-                    let water = this.getPrice('water', this.selected_buy_price);
-                    let waste = this.getPrice('waste', this.selected_sell_price);
-                    if (this.selected_stamina_source == 'Eat Snack')
-                        return (30 * food + 10 * water - 2 * waste) / 16;
-                    if (this.selected_stamina_source == 'Eat Feast')
-                        return (90 * food + 30 * water - 6 * waste) / 32;
-                    if (this.selected_stamina_source == 'Drink Coffee')
-                        return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
-                    if (this.selected_stamina_source == 'Job')
-                        return 1.04;
-                    // 'Eat Meal'
-                    return (60 * food + 20 * water - 4 * waste) / 24;
+                    return this.getStaminaCost(this.selected_stamina_source);
                 }
                 if (id == 'dusk') {
                     return 1
@@ -285,35 +377,40 @@
             resource_name(id) {
                 return this.odata.resources[id].display_name
             },
+            building_name(id) {
+                return (id === undefined) ? '' : this.odata.buildings[id].display_name
+            },
             buildTable(first_time = false) {
-                for (const [key, value] of Object.entries(this.odata.recipies)) {
+                for (const [key, value] of Object.entries(this.odata.recipies)) {                    
                     let cost = 0;
                     let cost_breakdown = [];
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].input)) {
                         let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
                         cost += unit_cost;
-                        cost_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2, cost: unit_cost.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 })});
+                        cost_breakdown.push( {resource: this.resource_name(key2) + ' x ' + value2, cost: localnum(unit_cost)} );
                     }
                     
                     let sale = this.getSaleValue(key);
                     let gain = (sale[2] * 0.95 - cost);
                     let roi = (gain / cost * 100);
                     
-                    gain = gain.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+                    gain = localnum(gain);
                     if (sale[0] != sale[1]) {
-                        gain += ' (' + (sale[0] * 0.95 - cost).toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 })
-                              + ' ~ ' + (sale[1] * 0.95 - cost).toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + ')'
+                        gain += ' (' + localnum(sale[0] * 0.95 - cost)
+                              + ' ~ ' + localnum(sale[1] * 0.95 - cost) + ')'
                     }
                     
                     let entry = {
                         id: key,
                         name: value.display_name,
-                        cost: cost.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 }),
-                        sale: sale[2].toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 }),
+                        cost: localnum(cost),
+                        sale: localnum(sale[2]),
                         gain: gain,
-                        roi: roi.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                        roi: localnum(roi),
                         cost_breakdown: cost_breakdown,
-                        icon: 'images/' + value.building + '.webp'
+                        icon: 'images/' + value.building + '.webp',
+                        icon_title: this.building_name(value.building),
+                        show: !('building' in value && this.checkForFilter(value.building))
                     }
                 
                     if (first_time) {
@@ -324,6 +421,12 @@
                                 this.$set(this.resources, i, entry);
                     }
                 }
+                this.stamina_help_text = 'Eat Snack - ' + localnum(this.getStaminaCost('Eat Snack')) + '<br>'
+                                        +'Eat Meal - ' + localnum(this.getStaminaCost('Eat Meal')) + ' avg<br>'
+                                        +'Eat Feast - ' + localnum(this.getStaminaCost('Eat Feast')) + ' avg<br>'
+                                        +'Drink Coffee - ' + localnum(this.getStaminaCost('Drink Coffee')) + ' avg<br>'
+                                        +'Job - 1.04<br>'
+                                        +'Daily Ration - 0.00<br>'
             },
             async loadYAML() {
                 await fetch('resources.yaml', {
@@ -337,28 +440,41 @@
                     .then(blob => blob.text())
                     .then(yamlAsString => {
                         this.odata = jsyaml.load(yamlAsString);
+                        for (const [key, value] of Object.entries(this.odata.buildings)) {
+                            this.bldg_items.push({
+                                id: key,
+                                name: value.display_name,
+                                img: 'images/' + key + '.webp',
+                                disabled: this.bldg_hide.includes(key)
+                            });
+                        }
+                        this.bldg_select = this.bldg_items;
                         this.sources_loaded++;
                     })
                     .catch(err => console.log('yaml error:', err))                    
                 if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
             },
             async loadMarket() {
-                 //await fetch("/market.json")
+                 // await fetch("/market.json")
                  await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/wholemarket")
                     .then(res => res.json())
                     .then(out => {
                         this.market = out.data;
                         
-                        // get time of latest update, remove mongoDB types fields
                         let last_update = 0;
                         for (let i = 0; i < this.market.length; i++) {
+                            // get time of latest update
                             let time = new Date(this.market[i].attributes.updatedAt);
                             if (time > last_update)
                                 last_update = time;
+                            // remove mongoDB Number type fields
                             for (const [key, value] of Object.entries(this.market[i].attributes)) {
                                 if (typeof value === 'object')
                                     this.market[i].attributes[key] = Number(value[Object.keys(value)[0]]);
                             }
+                            // set 0 day average price to last price
+                            if (this.market[i].attributes.averageDaySoldPrice == 0)
+                                this.market[i].attributes.averageDaySoldPrice = this.market[i].attributes.lastSoldPrice;
                         }
                         this.market_timestamp = last_update;
                         this.updateTimer()

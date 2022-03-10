@@ -112,6 +112,10 @@
             display_name: Paper
         water_rich_clay:
             display_name: Water Rich Clay
+        rover_explore:
+            display_name: Exploring Rover
+        rover_haul:
+            display_name: Hauling Rover
     recipies:
         # greenhouse
         plant_sprouts:
@@ -522,14 +526,129 @@
                 stamina: 2
             output:
                 full_pc: 3
+        #mining rig
+        mine_regolith_1:
+            display_name: Mine Regolith I
+            building: minig_rig
+            input:
+                power: 20
+                stamina: 2
+            output:
+                regolith: [100, 200, 128.3]
+                barite: [5, 10, 5.3]
+                halite: [0, 5, 0.3]
+        mine_regolith_2:
+            display_name: Mine Regolith II
+            building: minig_rig
+            input:
+                power: 40
+                stamina: 3
+                barite: 3
+            output:
+                regolith: [200, 400, 256.05]
+                barite: [0, 20, 6.375]
+                halite: [0, 5, 0.3]
+        mine_regolith_3:
+            display_name: Mine Regolith III
+            building: minig_rig
+            input:
+                power: 60
+                stamina: 5
+                barite: 10
+            output:
+                regolith: [400, 700, 513.75]
+                barite: [0, 100, 6.875]
+                halite: [0, 5, 0.3]
+        mine_ice_1:
+            display_name: Mine Ice I
+            building: minig_rig
+            input:
+                power: 20
+                stamina: 2
+            output:
+                ice: [25, 125, 53.3]
+                barite: [0, 10, 0.55]
+        mine_ice_2:
+            display_name: Mine Ice II
+            building: minig_rig
+            input:
+                power: 40
+                stamina: 2
+            output:
+                ice: [100, 300, 156.05]
+                barite: [0, 10, 0.55]
+                halite: [0, 10, 0.75]
+        mine_ice_3:
+            display_name: Mine Ice II
+            building: minig_rig
+            input:
+                power: 40
+                stamina: 2
+            output:
+                ice: [250, 400, 281.875]
+        #roverworks
+        assemble_haulting_rover:
+            display_name: Assemble Hauling Rover
+            building: rover_works
+            input:
+                machined_parts: 5
+                electronics_parts: 2
+                rover_chassis: 1
+                rover_wheels: 8
+                stamina: 8
+            output:
+                rover_haul: 1
+        assemble_exploring_rover:
+            display_name: Assemble Exploring Rover
+            building: rover_works
+            input:
+                machined_parts: 3
+                electronics_parts: 8
+                rover_chassis: 1
+                rover_wheels: 4
+                stamina: 8
+            output:
+                rover_explore: 1
+        #polar workshop
+        rodriguez_well:
+            display_name: Rodriguez Well
+            building: polar_workshop
+            input:
+                power: 10
+                stamina: 1
+            output:
+                water: [8, 12, 10]
+        ice_drilling:
+            display_name: Ice Drilling
+            building: polar_workshop
+            input:
+                power: 10
+                stamina: 1
+            output:
+                ice: [12, 36, 24]
+        stem_sets:
+            display_name: STEM sets for Earthlings
+            building: polar_workshop
+            input:
+                ice: 1000
+                regolith: 1000
+                aluminum_plate: 4
+                power: 50
+                stamina: 4
+            output:
+                dusk: [100, 2000, 320]
+        #bazaar
+        #tea shop
+        #pirate radio
         #other
         scavange:
             display_name: Scavange (estimate)
             input:
                 stamina: 1
             output:
-                ice: 5
-                regolith: 6
+                ice: 4
+                regolith: 4
+                empty_pc: 0.02
                 metal_bits: 0.1
                 electronic_bits: 0.1
         novice_scavangin:
@@ -538,13 +657,16 @@
                 stamina: 1
                 dusk: 1
             output:
-                ice: 3.5
-                regolith: 8.21
+                ice: 3.37
+                regolith: 6.96
                 metal_bits: 0.58
-                electronic_bits: 0.29
-                water_rich_clay: 0.04
-                vibes: 0.25
-                barite: 0.21
+                electronic_bits: 0.43
+                water_rich_clay: 0.02
+                vibes: 0.13
+                barite: 0.24
+                dusk: 0.48
+                halite: 0.35
+                empty_pc: 0.02
         do_job:
             display_name: Do Job
             input:
@@ -559,7 +681,7 @@
         greenhouse:
             display_name: Greenhouse
         cad:
-            dispaly_name: C.A.D.
+            display_name: C.A.D.
         smelter:
             display_name: Smelter
         machine_shop:
@@ -572,3 +694,15 @@
             display_name: Grind & Brew
         3d_print_shop:
             display_name: 3D Print Shop
+        minig_rig:
+            display_name: Mining Rig
+        rover_works:
+            display_name: RoverWorks
+        #bazaar:
+        #    display_name: Bazaar
+        #tea_shop:
+        #    display_name: Tea Shop
+        #pirate_radio:
+        #    display_name: Pirate Radio
+        polar_workshop:
+            display_name: Polar Workshop
