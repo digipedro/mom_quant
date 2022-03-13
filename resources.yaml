@@ -579,7 +579,7 @@
                 barite: [0, 10, 0.55]
                 halite: [0, 10, 0.75]
         mine_ice_3:
-            display_name: Mine Ice II
+            display_name: Mine Ice III
             building: minig_rig
             input:
                 power: 40
