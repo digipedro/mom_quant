@@ -21,6 +21,21 @@
     <v-app>
       <v-main>
     
+    <div style="float: left">
+      <v-menu offset-y>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn dark v-bind="attrs" v-on="on">
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item v-for="(item, index) in menuitems" :key="index" @click="menuClick(index)">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </div>
+    
      <p class="text-center">
     This tool calculates the Dusk gain of various <a href="https://www.milliononmars.com/">Million on Mars</a> tasks. This is EXPERIMENTAL, do your own calculations before making major decisions!
 </p>
@@ -227,6 +242,10 @@
               { text: 'ROI (After Fees)', value: 'roi' },
             ],
             resources: [],
+            menuitems: [
+              { title: 'ROI Calculator', href: '/index.html'},
+              { title: 'Price History', href: '/summary.html'},
+            ]
 	    },
         filters: {
         },
@@ -253,6 +272,9 @@
                     this.bldg_items[key].disabled = !mode
                 }
                 this.buildTable()
+            },
+            menuClick(index){
+               window.location.href = this.menuitems[index].href;
             },
             filter(id) {
                 for (const [key, value] of Object.entries(this.bldg_items)) {

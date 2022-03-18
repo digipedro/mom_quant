@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>Million on Mars Land Rush ROI Calculator</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js-yaml.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <div id="app">
+    <v-app>
+      <v-main>
+    
+    <div style="float: left">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn dark v-bind="attrs" v-on="on">
+              <v-icon>mdi-menu</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="(item, index) in menuitems" :key="index" @click="menuClick(index)">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </div>
+    
+     <p class="text-center">
+    This tool shows price fluctuation of various <a href="https://www.milliononmars.com/">Million on Mars</a> resources. Data sampled every 15 mins, short spikes or dips may be missed!
+</p>
+    
+    <v-container>
+      <v-row :class="{red:market_time_warning}" class="text-right" dense>
+        <v-col class="text-right" cols="24" sm="12">
+          Market data {{ market_timetext }}
+        </v-col>
+      </v-row>
+    </v-container>
+         
+         
+    <center><v-card width="700px" class="justify-center"> 
+    <v-data-table :headers="headers" :items="dtable" :search="search" :items-per-page="-1" class="elevation-1" dark>
+        <template v-slot:top>
+          <v-text-field v-model="search" label="Search" class="mx-4" ></v-text-field>
+        </template>
+        <template v-slot:item.hours="{ item }">
+            <div v-if="item.hours.high == item.hours.low">
+                {{ item.hours.high }}
+            </div>
+            <div v-else>
+                <v-icon small color="green darken-2">mdi-arrow-up</v-icon>{{ item.hours.high }}<br/>
+                <v-icon small color="red darken-2">mdi-arrow-down</v-icon>{{ item.hours.low }}
+            </div>
+        </template>
+        <template v-slot:item.day="{ item }">
+            <div v-if="item.day.high == item.day.low">
+                {{ item.day.high }}
+            </div>
+            <div v-else>
+                <v-icon small color="green darken-2">mdi-arrow-up</v-icon>{{ item.day.high }}<br/>
+                <v-icon small color="red darken-2">mdi-arrow-down</v-icon>{{ item.day.low }}
+            </div>
+        </template>
+        <template v-slot:item.week="{ item }">
+            <div v-if="item.week.high == item.week.low">
+                {{ item.week.high }}
+            </div>
+            <div v-else>
+                <v-icon small color="green darken-2">mdi-arrow-up</v-icon>{{ item.week.high }}<br/>
+                <v-icon small color="red darken-2">mdi-arrow-down</v-icon>{{ item.week.low }}
+            </div>
+        </template>
+    </v-data-table>
+    </v-card></center>
+
+<p></p>
+
+  <p><img src="images/AbacusMonkey.png" width="64" style="float: left; margin-left: 1em; margin-right: 1em"> Created by digipedro. Images are Copyright Million on Mars Inc.<br/>Donations of WAX can be sent to <b>iamdigipedro</b><br/>Donations of BANANO can be sent to
+	<a href="https://creeper.banano.cc/explorer/account/ban_3d6pzryts53tzk1u87yobfcrcwuiq11hhpj7oo8mapnodpkroc7dkqq8z8hc/history">
+	ban_3d6pzryts53tzk1u87yobfcrcwuiq11hhpj7oo8mapnodpkroc7dkqq8z8hc
+	</a>
+
+      </v-main>
+    </v-app>
+  </div>
+
+
+
+  <script>
+      function localnum(num) {
+          return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+      }
+      
+      
+	  var vv = new Vue({
+	    el: '#app',
+		mounted:function() {
+            this.loadYAML();
+            this.loadSummary();
+    
+            setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
+		},
+	    vuetify: new Vuetify({
+            theme: { dark: true },
+        }),
+	    data: {
+            summary: {},
+            dtable: [],
+            odata: {},
+            search: '',
+            sources_loaded: 0,
+            sources_to_load: 2,
+            market_timestamp: 0,
+            market_timetext: 'Loading...',
+            market_time_warning: false,
+            headers: [
+              { text: 'Name', value: 'name'},
+              { text: 'Past 3 hrs', value: 'hours', },
+              { text: 'Past 24 hrs', value: 'day',},
+              { text: 'Past 7 Days', value: 'week',},
+            ],
+            menuitems: [
+              { title: 'ROI Calculator', href: '/index.html'},
+              { title: 'Price History', href: '/summary.html'},
+            ]
+	    },
+        filters: {
+        },
+        computed: {
+        },
+	    methods: {
+            updateTimer() {
+                if (this.market_timestamp == 0)
+                    return;
+                let tdiff = ((new Date()).getTime() - this.market_timestamp) / 1000;
+                if (tdiff < 60)
+                    this.market_timetext = "updated < 1 min ago";
+                else if (tdiff < 3600)
+                    this.market_timetext = "updated " + Math.round(tdiff / 60) + " mins ago";
+                else if (tdiff < 5400)
+                    this.market_timetext = "updated 1 hour ago";
+                else
+                    this.market_timetext = "updated " + Math.round(tdiff / 3600) + " hours ago"
+                this.market_time_warning = (tdiff > 5400);
+            },
+            menuClick(index){
+               window.location.href = this.menuitems[index].href;
+            },
+            capitalize(str) {
+                const arr = str.split(" ");
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+                }
+                return arr.join(" ");
+            },
+            resource_name(id) {
+                if (this.odata.resources[id])
+                    return this.odata.resources[id].display_name
+                else
+                    return this.capitalize(id.replaceAll('_', ' '));
+            },
+            buildTable() {
+                this.dtable = [];
+                for (const [main_key, main_value] of  Object.entries(this.summary)) {
+                    let item = {
+                        id: main_key,
+                        name: this.resource_name(main_key),
+                        hours: {high: main_value.shortHigh, low: main_value.shortLow},
+                        day: {high: main_value.dayHigh, low: main_value.dayLow},
+                        week: {high: main_value.weekHigh, low: main_value.weekLow},
+                    }
+                    this.dtable.push(item);
+                }
+            },
+            async loadYAML() {
+                await fetch('resources.yaml', {
+                    mode: 'cors',
+                    method: 'GET',
+                    headers: {
+                        'Access-Control-Allow-Origin':'*',
+                        'Content-Type': 'multipart/form-data'
+                    }})
+                    .then(res => res.blob())
+                    .then(blob => blob.text())
+                    .then(yamlAsString => {
+                        this.odata = jsyaml.load(yamlAsString);
+                        this.sources_loaded++;
+                    })
+                    .catch(err => console.log('yaml error:', err))                    
+                if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
+            },
+            async loadSummary() {
+                // await fetch("/summary.json")
+                await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/marketsummary")
+                    .then(res => res.json())
+                    .then(out => {
+                        this.summary = out.data;
+                        
+                        for (const [main_key, main_value] of  Object.entries(this.summary)) {
+                            // remove mongoDB Number type fields
+                            for (const [key, value] of Object.entries(main_value)) {
+                                if (typeof value === 'object' && value !== null) {
+                                    this.summary[main_key][key] = Number(value[Object.keys(value)[0]]);
+                                }
+                            }
+                        }
+                        this.market_timestamp = out.timestamp.$numberDouble;
+                        this.updateTimer()
+                        this.sources_loaded++;
+                     })
+                    .catch(err => {
+                        console.log('summary error:', err);
+                        this.market_timetext = 'failed to load.';
+                        this.market_time_warning = true;
+                    })
+                if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
+            },
+
+	      },
+	  });
+	  
+
+  </script>
+</body>
+</html>
