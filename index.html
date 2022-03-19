@@ -88,9 +88,9 @@
             </template>
             <span>
                   <b>Cost of Power used in calculations</b><br>
-                  <b>Market Price</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_market * 20 }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
-                  <b>Charge Power Cell</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge1 * 20 }}</span> per cell) - Stamina cost of charging a Power cell<br>
-                  <b>Charge Power Cell III</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge3 * 20 }}</span> per cell) - Stamina cost of charging a Power cells 3-for-2<br>
+                  <b>Market Price</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
+                  <b>Charge Power Cell</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
+                  <b>Charge Power Cell III</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge3 }}</span> per cell) - Stamina cost of charging a Power cells 3-for-2<br>
                   Prices included 10% chance of cell breaking
             </span>
         </v-col>
@@ -451,9 +451,9 @@
                                         +'Drink Coffee - ' + localnum(this.getStaminaCost('Drink Coffee')) + ' avg<br>'
                                         +'Job - 1.04<br>'
                                         +'Daily Ration - 0.00<br>'
-                this.power_market = localnum(this.getPowerCost('Market Price'));
-                this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell'));
-                this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III'));
+                this.power_market = localnum(this.getPowerCost('Market Price') * 20);
+                this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
+                this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);
             },
             async loadYAML() {
                 await fetch('resources.yaml', {
