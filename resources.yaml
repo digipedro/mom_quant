@@ -4,6 +4,8 @@
             display_name: Stamina
         empty_pc:
             display_name: Empty Power Cell
+        broken_pc:
+            display_name: Broken Power Cell
         full_pc:
             display_name: Full Power Cell
         power:
@@ -234,8 +236,8 @@
                 power: 10
             output:
                 coffee_bean_roasted: [16, 20, 18]
-        transport_co2:
-            display_name: Transport Co2
+        co2_transport:
+            display_name: CO2 Transport
             building: cad
             input:
                 carbon_dioxide: 50
@@ -478,8 +480,8 @@
                 stamina: 2
             output:
                 perchlorate: [1, 3, 2]
-        make_empty_pc:
-            display_name: Make Power Cells
+        craft_empty_pc:
+            display_name: Craft Empty Power Cell
             building: chem_lab
             input:
                 halite: 4
