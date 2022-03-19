@@ -498,7 +498,7 @@
             output:
                 empty_pc: [1, 2, 1.5]
         repair_broken_cell:
-            display_name: Repair Borken Power Cell
+            display_name: Repair Broken Power Cell
             building: chem_lab
             input:
                 broken_pc: 10
@@ -507,7 +507,7 @@
             output:
                 empty_pc: [1, 5, 1.5]
         repair_broken_cell2:
-            display_name: Repair Borken Power Cell II
+            display_name: Repair Broken Power Cell II
             building: chem_lab
             input:
                 broken_pc: 10
@@ -516,7 +516,7 @@
             output:
                 empty_pc: [2, 5, 2.5]
         repair_broken_cell3:
-            display_name: Repair Borken Power Cell III
+            display_name: Repair Broken Power Cell III
             building: chem_lab
             input:
                 broken_pc: 10

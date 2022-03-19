@@ -127,21 +127,17 @@
          
     
     <v-data-table :headers="headers" :items="filteredResources" :items-per-page="-1" class="elevation-1" :custom-sort="tableSort" dark>
+    
       <template v-slot:item.name="{ item }">
         <img v-bind:src="item.icon" v-bind:title="item.icon_title" height="24" style="margin-right: 6px; vertical-align:middle"/>{{ item.name }}
       </template>
+      
       <template v-slot:item.cost="props">
-          <v-edit-dialog
-            :return-value.sync="props.item.cost"
-            @save="save"
-            @cancel="cancel"
-            @open="open"
-            @close="close"
-            color="red"
-          >
+          <v-edit-dialog>
             {{ props.item.cost }}
             <template v-slot:input>
-              <v-list dense color="grey darken-3" rounded>
+            <v-card style="border: 1px solid white">
+              <v-list dense color="grey darken-3" rounded >
                 <v-list-item-title><b>{{props.item.name}}</b> : <span style="color: #c17e1f; font-weight: bold">{{ props.item.cost }}</span></v-list-item-title>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.cost_breakdown">
@@ -149,13 +145,33 @@
                     {{ line.resource }} :  {{ line.cost }}
                     </v-list-item-content>
                 </template>
-          </v-card>
+            </v-card>
             </template>
           </v-edit-dialog>
       </template>
+      
+      <template v-slot:item.sale="props">
+          <v-edit-dialog>
+            {{ props.item.sale }}
+            <template v-slot:input>
+            <v-card style="border: 1px solid white">
+              <v-list dense color="grey darken-3" rounded>
+                <v-list-item-title><b>{{props.item.name}}</b> : <span style="color: #c17e1f; font-weight: bold">{{ props.item.sale }}</span></v-list-item-title>
+                <v-divider></v-divider>
+                <template v-for="(line, index) in props.item.sale_breakdown">
+                    <v-list-item-content>
+                    {{ line.resource }} :  {{ line.value }}
+                    </v-list-item-content>
+                </template>
+            </v-card>
+            </template>
+          </v-edit-dialog>
+      </template>
+      
       <template v-slot:item.gain="{ item }">
           <div v-html="item.gain"></div> 
       </template>
+      
       <template v-slot:item.roi="{ item }">
         <v-chip :color="getColor(item.roi)">
           {{ item.roi }}%
@@ -259,12 +275,6 @@
             },
         },
 	    methods: {
-            save () {
-                // re-calc
-            },
-            cancel () { },
-            open () { },
-            close () { },
             toggleAllBldgs() {
                 let mode = this.bldg_items[0].disabled;
                 for (const [key, value] of Object.entries(this.bldg_items)) {
@@ -329,21 +339,6 @@
                 else
                     this.market_timetext = "updated " + Math.round(tdiff / 3600) + " hours ago"
                 this.market_time_warning = (tdiff > 5400);
-            },
-            getSaleValue(id) {
-                let sale = [0, 0, 0]
-                for (const [key, value] of Object.entries(this.odata.recipies[id].output)) {
-                    if (Array.isArray(value)) {
-                        sale[0] += this.getPrice(key, this.selected_sell_price) * value[0];
-                        sale[1] += this.getPrice(key, this.selected_sell_price) * value[1];
-                        sale[2] += this.getPrice(key, this.selected_sell_price) * value[2];
-                    } else {
-                        sale[0] += this.getPrice(key, this.selected_sell_price) * value;
-                        sale[1] += this.getPrice(key, this.selected_sell_price) * value;
-                        sale[2] += this.getPrice(key, this.selected_sell_price) * value;
-                    }
-                }
-                return sale;
             },
             getStaminaCost(method) {
                 let food = this.getPrice('food', this.selected_buy_price);
@@ -416,7 +411,21 @@
                         cost_breakdown.push( {resource: this.resource_name(key2) + ' x ' + value2, cost: localnum(unit_cost)} );
                     }
                     
-                    let sale = this.getSaleValue(key);
+                    let sale_breakdown = [];
+                    let sale = [0, 0, 0]
+                    for (const [key2, value2] of Object.entries(this.odata.recipies[key].output)) {
+                        if (Array.isArray(value2)) {
+                            sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
+                            sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
+                            sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
+                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2[2], value: localnum(sale[2])})
+                        } else {
+                            sale[0] += this.getPrice(key2, this.selected_sell_price) * value2;
+                            sale[1] += this.getPrice(key2, this.selected_sell_price) * value2;
+                            sale[2] += this.getPrice(key2, this.selected_sell_price) * value2;
+                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2, value: localnum(sale[2])})
+                        }
+                    }
                     let gain = (sale[2] * 0.95 - cost);
                     let roi = (gain / cost * 100);
                     
@@ -434,6 +443,7 @@
                         gain: gain,
                         roi: localnum(roi),
                         cost_breakdown: cost_breakdown,
+                        sale_breakdown: sale_breakdown,
                         icon: 'images/' + value.building + '.webp',
                         icon_title: this.building_name(value.building),
                         show: !('building' in value && this.checkForFilter(value.building))
