@@ -44,7 +44,7 @@
       <v-row>
         <v-col class="d-flex" cols="6" sm="3">
           <v-select :items="buy_price" label="Buy Price" v-on:change="changeSelect" v-model="selected_buy_price"></v-select>
-          <v-tooltip bottom>
+          <v-tooltip color="#333" bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-icon v-bind="attrs" v-on="on" small>
                 mdi-help-circle-outline
@@ -62,7 +62,7 @@
         </v-col>
         <v-col class="d-flex" cols="6" sm="3">
           <v-select :items="sell_price" label="Sell Price" v-on:change="changeSelect" v-model="selected_sell_price"></v-select>
-          <v-tooltip bottom>
+          <v-tooltip color="#333" bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-icon dark v-bind="attrs" v-on="on" small>
                 mdi-help-circle-outline
@@ -96,7 +96,7 @@
         </v-col>
         <v-col class="d-flex" cols="6" sm="3">
           <v-select :items="stamina_source" label="Stamina Source" v-on:change="changeSelect" v-model="selected_stamina_source"></v-select>
-          <v-tooltip bottom>
+          <v-tooltip color="#333" bottom>
             <template v-slot:activator="{ on, attrs }">
               <v-icon v-bind="attrs" v-on="on" small>
                 mdi-help-circle-outline
@@ -355,6 +355,8 @@
                     return (90 * food + 30 * water - 6 * waste) / 32;
                 if (method == 'Drink Coffee')
                     return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
+                if (method == 'Slava Ukraini')
+                    return Math.max(this.getPrice('coffee_brewed', this.selected_buy_price) / 10 - 2, 0);
                 if (method == 'Job')
                     return 1.04;
                 if (method == 'Daily Ration')
@@ -445,12 +447,13 @@
                                 this.$set(this.resources, i, entry);
                     }
                 }
-                this.stamina_help_text = 'Eat Snack - ' + localnum(this.getStaminaCost('Eat Snack')) + '<br>'
-                                        +'Eat Meal - ' + localnum(this.getStaminaCost('Eat Meal')) + ' avg<br>'
-                                        +'Eat Feast - ' + localnum(this.getStaminaCost('Eat Feast')) + ' avg<br>'
-                                        +'Drink Coffee - ' + localnum(this.getStaminaCost('Drink Coffee')) + ' avg<br>'
-                                        +'Job - 1.04<br>'
-                                        +'Daily Ration - 0.00<br>'
+                this.stamina_help_text = '<b>Eat Snack</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
+                                        +'<b>Eat Meal</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
+                                        +'<b>Eat Feast</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
+                                        +'<b>Drink Coffee</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Drink Coffee')) + '</span> avg<br>'
+                                        +'<b>Slava Ukraini</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Slava Ukraini')) + '</span> avg<br>'
+                                        +'<b>Job</b> - <span style="color: #c17e1f; font-weight: bold">1.040</span><br>'
+                                        +'<b>Daily Ration</b> - <span style="color: #c17e1f; font-weight: bold"> 0.000</span><br>'
                 this.power_market = localnum(this.getPowerCost('Market Price') * 20);
                 this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
                 this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);

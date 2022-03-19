@@ -118,6 +118,12 @@
             display_name: Exploring Rover
         rover_haul:
             display_name: Hauling Rover
+        mushroom_tea:
+            display_name: Mushroom Tea
+        mushroom_cake:
+            display_name: Mushroom Cake
+        baijiu:
+            diaplay_name: Baijiu
     recipies:
         # greenhouse
         plant_sprouts:
@@ -490,7 +496,34 @@
                 pvc_pipe: 1
                 stamina: 2
             output:
-                empty_pc: [2, 5, 2.2]
+                empty_pc: [1, 2, 1.5]
+        repair_broken_cell:
+            display_name: Repair Borken Power Cell
+            building: chem_lab
+            input:
+                broken_pc: 10
+                power: 20
+                stamina: 1
+            output:
+                empty_pc: [1, 5, 1.5]
+        repair_broken_cell2:
+            display_name: Repair Borken Power Cell II
+            building: chem_lab
+            input:
+                broken_pc: 10
+                power: 20
+                stamina: 1
+            output:
+                empty_pc: [2, 5, 2.5]
+        repair_broken_cell3:
+            display_name: Repair Borken Power Cell III
+            building: chem_lab
+            input:
+                broken_pc: 10
+                power: 20
+                stamina: 1
+            output:
+                empty_pc: [3, 7, 3.5]
         #grind n' brew
         grind_coffee:
             display_name: Grind Coffee Beans
@@ -641,6 +674,58 @@
                 dusk: [100, 2000, 320]
         #bazaar
         #tea shop
+        baijiu:
+            display_name: Baijiu
+            building: tea_shop
+            input:
+                fermented_sorghum: 3
+                bamboo: 2
+                water: 3
+                stamina: 3
+            output:
+                baijiu: [2, 3, 2.5]
+        baijiu_by_the_case:
+            display_name: Baijiu By the Case
+            building: tea_shop
+            input:
+                baijiu: 24
+                power: 20
+                stamina: 4
+            output:
+                dusk: [32, 888, 91.92]
+        aqua_ares:
+            display_name: AQUA ARES
+            building: tea_shop
+            input:
+                water: 100
+                paper: 12
+                pla: 12
+                power: 20
+                stamina: 3
+            output:
+                dusk: [40, 120, 59]
+        bamboo_by_skal:
+            display_name: Bamboo by Skal
+            building: tea_shop
+            input:
+                paper: 2
+                bamboo: 100
+                pla: 4
+                power: 50
+                stamina: 4
+            output:
+                dusk: [24, 64, 41.4]
+        ceramics_by_yingge:
+            display_name: Ceramics By Yingge
+            building: tea_shop
+            input:
+                regolith: 2000
+                water: 100
+                pla: 10
+                power: 20
+                stamina: 3
+            output:
+                dusk: [0, 5000, 124.74]
         #pirate radio
         #other
         scavange:
@@ -700,10 +785,10 @@
             display_name: Mining Rig
         rover_works:
             display_name: RoverWorks
+        tea_shop:
+            display_name: Tea Shop
         #bazaar:
         #    display_name: Bazaar
-        #tea_shop:
-        #    display_name: Tea Shop
         #pirate_radio:
         #    display_name: Pirate Radio
         polar_workshop:
