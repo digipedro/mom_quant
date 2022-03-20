@@ -11,6 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="js-yaml.min.js"></script>
+  <script src="trading-vue.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
@@ -37,8 +38,14 @@
       </div>
     
      <p class="text-center">
-    This tool shows price fluctuation of various <a href="https://www.milliononmars.com/">Million on Mars</a> resources. Data sampled every 15 mins, short spikes or dips may be missed!
+    This tool shows price fluctuation of various <a href="https://www.milliononmars.com/">Million on Mars</a> resources. Data sampled every 15 mins, short spikes or dips may be missed.
 </p>
+
+<center>
+    <v-card width="700px">
+
+    
+</center>
     
     <v-container>
       <v-row :class="{red:market_time_warning}" class="text-right" dense>
@@ -49,10 +56,24 @@
     </v-container>
          
          
-    <center><v-card width="700px" class="justify-center"> 
+    <center><v-card width="880px" class="justify-center">
+        <v-expansion-panels popout :readonly="lock_chart" v-model="show_chart">
+              <v-expansion-panel>
+                <v-expansion-panel-header>Chart</v-expansion-panel-header>
+                <v-expansion-panel-content>
+                  <trading :data="chart_data" :title-txt="chart_title"></trading>
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+    </v-card>
+    <v-card width="750px" class="justify-center">
     <v-data-table :headers="headers" :items="dtable" :search="search" :items-per-page="-1" class="elevation-1" dark>
         <template v-slot:top>
           <v-text-field v-model="search" label="Search" class="mx-4" ></v-text-field>
+        </template>
+        <template v-slot:item.name="{ item }">
+            <v-btn icon color="#5ee"><v-icon @click="showChart(item.id)">mdi-chart-line</v-icon></v-btn>
+            <a @click="showChart(item.id)"><span style="text-decoration: none; color: #fff;">{{ item.name }}</span></a>
         </template>
         <template v-slot:item.hours="{ item }">
             <div v-if="item.hours.high == item.hours.low">
@@ -98,18 +119,22 @@
 
 
   <script>
+      
       function localnum(num) {
           return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
       }
       
-      
+            
 	  var vv = new Vue({
 	    el: '#app',
 		mounted:function() {
             this.loadYAML();
             this.loadSummary();
+            this.loadMarket();
     
             setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
+            
+            this.loadChart('full_pc');            
 		},
 	    vuetify: new Vuetify({
             theme: { dark: true },
@@ -118,9 +143,10 @@
             summary: {},
             dtable: [],
             odata: {},
+            market: {},
             search: '',
             sources_loaded: 0,
-            sources_to_load: 2,
+            sources_to_load: 3,
             market_timestamp: 0,
             market_timetext: 'Loading...',
             market_time_warning: false,
@@ -129,12 +155,22 @@
               { text: 'Past 3 hrs', value: 'hours', },
               { text: 'Past 24 hrs', value: 'day',},
               { text: 'Past 7 Days', value: 'week',},
+              { text: 'Daily Volume', value: 'volume'},
             ],
             menuitems: [
               { title: 'ROI Calculator', href: 'index.html'},
               { title: 'Price History', href: 'summary.html'},
-            ]
+            ],
+            chart_title: 'Loading...',
+            chart_data: {
+              ohlcv: []
+            },
+            show_chart: 0,
+            lock_chart: false,
 	    },
+        components: {
+          trading: TradingVueJs.TradingVue
+        },
         filters: {
         },
         computed: {
@@ -153,6 +189,11 @@
                 else
                     this.market_timetext = "updated " + Math.round(tdiff / 3600) + " hours ago"
                 this.market_time_warning = (tdiff > 5400);
+            },
+            showChart(id) {
+                this.loadChart(id);
+                this.show_chart = 0;
+                this.lock_chart = false;
             },
             menuClick(index){
                window.location.href = this.menuitems[index].href;
@@ -179,6 +220,7 @@
                         hours: {high: main_value.shortHigh, low: main_value.shortLow},
                         day: {high: main_value.dayHigh, low: main_value.dayLow},
                         week: {high: main_value.weekHigh, low: main_value.weekLow},
+                        volume: this.market[main_key].lastDayVolume,
                     }
                     this.dtable.push(item);
                 }
@@ -200,6 +242,54 @@
                     .catch(err => console.log('yaml error:', err))                    
                 if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
             },
+            async loadChart(id) {
+                //await fetch("7day.json")
+                await fetch('https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/get7day?id='+id)
+                .then(res => res.json())
+                .then(out => {
+                    let data = []
+                    // search backwards through data making intervals for candles
+                    
+                    // Get time of last sale rounded up to neast hour, then start 7 days earlier
+                    let end_time = new Date(out[out.length-1].lastSoldAt);
+                    end_time.setMinutes(end_time.getMinutes() + 30);
+                    end_time.setMinutes(0, 0, 0);
+                    let start_time = end_time - 604800000;
+                    
+                    // Create candles for every hour
+                    // 604800000 = 1 week, 3600000 = 1 hr, 1080000 = 3hr
+                    let i = 0;
+                    for (let h = start_time; h < end_time; h = h + 10800000) {
+                        let next_hour = h + 10800000;
+                        if (i > 0 && new Date(out[i].lastSoldAt) > next_hour)
+                            i--;
+                        let ohlcv = [
+                            h,                 //0 - time
+                            out[i].lastSoldPrice, //1 - open
+                            out[i].lastSoldPrice, //2 - high
+                            out[i].lastSoldPrice, //3 - low
+                            out[i].lastSoldPrice, //4 - close
+                            0,                 //5 - volume
+                        ]
+                        while (i < (out.length - 1) && new Date(out[i].lastSoldAt) < next_hour) {
+                            if (out[i].lastSoldPrice > ohlcv[2])
+                                ohlcv[2] = out[i].lastSoldPrice;
+                            if (out[i].lastSoldPrice < ohlcv[3])
+                                ohlcv[3] = out[i].lastSoldPrice;
+                            ohlcv[4] = out[i].lastSoldPrice;
+                            // ohlcv[5]++
+                            i++
+                        }
+                        if (typeof ohlcv[1] !== 'undefined')
+                            data.push(ohlcv)
+                    }
+                    this.chart_title = this.resource_name(id);
+                    this.chart_data.ohlcv = data;
+                 })
+                .catch(err => {
+                    console.log('chart error:', err);
+                })
+            },
             async loadSummary() {
                 // await fetch("/summary.json")
                 await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/marketsummary")
@@ -208,7 +298,7 @@
                         this.summary = out.data;
                         
                         for (const [main_key, main_value] of  Object.entries(this.summary)) {
-                            // remove mongoDB Number type fields
+                            // remove EJSON Number type fields
                             for (const [key, value] of Object.entries(main_value)) {
                                 if (typeof value === 'object' && value !== null) {
                                     this.summary[main_key][key] = Number(value[Object.keys(value)[0]]);
@@ -221,6 +311,34 @@
                      })
                     .catch(err => {
                         console.log('summary error:', err);
+                        this.market_timetext = 'failed to load.';
+                        this.market_time_warning = true;
+                    })
+                if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
+            },
+            async loadMarket() {
+                 // await fetch("/market.json")
+                 await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/wholemarket")
+                    .then(res => res.json())
+                    .then(out => {
+                        this.market = {};
+                        
+                        for (let i = 0; i < out.data.length; i++) {
+                            let id = out.data[i].id
+                            this.market[id] = out.data[i].attributes;
+                            // remove EJSON Number type fields
+                            for (const [key, value] of Object.entries(this.market[id])) {
+                                if (typeof value === 'object')
+                                    this.market[id][key] = Number(value[Object.keys(value)[0]]);
+                            }
+                            // set 0 day average price to last price
+                            if (this.market[id].averageDaySoldPrice == 0)
+                                this.market[id].averageDaySoldPrice = this.market[id].lastSoldPrice;
+                        }
+                        this.sources_loaded++;
+                     })
+                    .catch(err => {
+                        console.log('market error:', err);
                         this.market_timetext = 'failed to load.';
                         this.market_time_warning = true;
                     })

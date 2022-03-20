@@ -123,7 +123,9 @@
         mushroom_cake:
             display_name: Mushroom Cake
         baijiu:
-            diaplay_name: Baijiu
+            display_name: Baijiu
+        mushroom_spores:
+            display_name: Mushroom Spores
     recipies:
         # greenhouse
         plant_sprouts:
@@ -459,11 +461,11 @@
             display_name: Make PVC
             building: chem_lab
             input:
-                methane: 5
-                hydrogen: 5
-                water: 5
-                power: 20
-                stamina: 3
+                methane: 10
+                hydrogen: 10
+                water: 10
+                power: 40
+                stamina: 1
             output:
                 pvc_raw: [2, 15, 4]
         make_pla:
