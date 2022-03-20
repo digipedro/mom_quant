@@ -126,6 +126,8 @@
             display_name: Baijiu
         mushroom_spores:
             display_name: Mushroom Spores
+        mushrooms:
+            display_name: Mushrooms
     recipies:
         # greenhouse
         plant_sprouts:
@@ -385,7 +387,7 @@
                 power: 10
                 stamina: 2
             output:
-                paper: 4.5
+                paper: [3, 6, 4.5]
         make_structural_parts:
             display_name: Make Structural Parts
             building: 3d_print_shop
@@ -394,10 +396,21 @@
                 titanium_plate: 3
                 aluminum_plate: 5
                 power: 40
+                stamina: 4
             output:
                 structural_parts: [1, 4, 1.665]
-        mmke_pvc_pipe:
-            display_name: Make PVC Pipe
+        make_mushroom_cake:
+            display_name: Make Mushroom Cake
+            building: 3d_print_shop
+            input:
+                mushrooms: 20
+                food: 10
+                power: 30
+                stamina: 6
+            output:
+                mushroom_cake: [0, 5, 2.1]
+        extrude_pvc_pipe:
+            display_name: Extrude PVC Pipe
             building: 3d_print_shop
             input:
                 pvc_raw: 5
