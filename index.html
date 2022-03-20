@@ -351,7 +351,7 @@
                 if (method == 'Drink Coffee')
                     return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
                 if (method == 'Slava Ukraini')
-                    return Math.max(this.getPrice('coffee_brewed', this.selected_buy_price) / 10 - 2, 0);
+                    return (this.getPrice('coffee_brewed', this.selected_buy_price) - 2) / 10;
                 if (method == 'Job')
                     return 1.04;
                 if (method == 'Daily Ration')
