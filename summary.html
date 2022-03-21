@@ -261,7 +261,7 @@
                     let i = 0;
                     for (let h = start_time; h < end_time; h = h + 10800000) {
                         let next_hour = h + 10800000;
-                        if (i > 0 && new Date(out[i].lastSoldAt) > next_hour)
+                        while (i > 0 && new Date(out[i].lastSoldAt) > h)
                             i--;
                         let ohlcv = [
                             h,                 //0 - time
