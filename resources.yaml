@@ -474,11 +474,11 @@
             display_name: Make PVC
             building: chem_lab
             input:
-                methane: 10
-                hydrogen: 10
-                water: 10
-                power: 40
-                stamina: 1
+                methane: 5
+                hydrogen: 5
+                water: 5
+                power: 20
+                stamina: 3
             output:
                 pvc_raw: [2, 15, 4]
         make_pla:

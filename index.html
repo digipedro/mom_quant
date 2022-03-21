@@ -91,7 +91,7 @@
                   <b>Market Price</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
                   <b>Charge Power Cell</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
                   <b>Charge Power Cell III</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge3 }}</span> per cell) - Stamina cost of charging a Power cells 3-for-2<br>
-                  Prices included 10% chance of cell breaking
+                  Prices included 2% chance of cell breaking
             </span>
         </v-col>
         <v-col class="d-flex" cols="6" sm="3">
@@ -231,9 +231,9 @@
             sources_loaded: 0,
             sources_to_load: 2,
             buy_price: ['Last Sold', '24H Avg', 'Split', 'Lower', 'Higher'],
-            selected_buy_price: 'Higher',
+            selected_buy_price: 'Last Sold',
             sell_price: ['Last Sold', '24H Avg', 'Split', 'Lower', 'Higher'],
-            selected_sell_price: 'Lower',
+            selected_sell_price: 'Last Sold',
             power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III'],
             selected_power_source: 'Charge Power Cell',
             stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Drink Coffee', 'Job', 'Daily Ration'],
@@ -361,9 +361,9 @@
             },
             getPowerCost(source) {
                 if (source == 'Market Price')
-                    return ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('empty_pc', this.selected_sell_price)) / 20) * 0.9
-                          + ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) / 20) * 0.1;
-                let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.1;
+                    return ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('empty_pc', this.selected_sell_price)) / 20) * 0.98
+                          + ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) / 20) * 0.02;
+                let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.02;
                 if (source == 'Charge Power Cell III')
                     return (this.getStaminaCost(this.selected_stamina_source) * 2 + broken_tax * 3) / 60
                 // 'Charge Power Cell'
@@ -418,12 +418,13 @@
                             sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
                             sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
                             sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2[2], value: localnum(sale[2])})
+                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2[2], value: localnum(this.getPrice(key2, this.selected_sell_price) * value2[2])})
                         } else {
-                            sale[0] += this.getPrice(key2, this.selected_sell_price) * value2;
-                            sale[1] += this.getPrice(key2, this.selected_sell_price) * value2;
-                            sale[2] += this.getPrice(key2, this.selected_sell_price) * value2;
-                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2, value: localnum(sale[2])})
+                            let avg_price = this.getPrice(key2, this.selected_sell_price) * value2;
+                            sale[0] += avg_price;
+                            sale[1] += avg_price;
+                            sale[2] += avg_price;
+                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2, value: avg_price})
                         }
                     }
                     let gain = (sale[2] * 0.95 - cost);
