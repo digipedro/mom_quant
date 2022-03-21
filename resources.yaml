@@ -413,7 +413,7 @@
             display_name: Extrude PVC Pipe
             building: 3d_print_shop
             input:
-                pvc_raw: 5
+                pvc_raw: 3
                 power: 20
                 stamina: 3
             output:
