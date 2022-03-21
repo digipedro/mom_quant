@@ -686,7 +686,7 @@
                 power: 50
                 stamina: 4
             output:
-                dusk: [100, 2000, 320]
+                dusk: [100, 2000, 178.5]
         #bazaar
         #tea shop
         baijiu:
