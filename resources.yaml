@@ -511,7 +511,7 @@
                 pvc_pipe: 1
                 stamina: 2
             output:
-                empty_pc: [1, 2, 1.5]
+                empty_pc: [2, 5, 2.2]
         repair_broken_cell:
             display_name: Repair Broken Power Cell
             building: chem_lab
@@ -520,7 +520,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [1, 5, 1.5]
+                empty_pc: [1, 4, 1.5]
         repair_broken_cell2:
             display_name: Repair Broken Power Cell II
             building: chem_lab
@@ -529,7 +529,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [2, 5, 2.5]
+                empty_pc: [2, 4, 2.2]
         repair_broken_cell3:
             display_name: Repair Broken Power Cell III
             building: chem_lab
@@ -538,7 +538,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [3, 7, 3.5]
+                empty_pc: [3, 6, 3.5]
         #grind n' brew
         grind_coffee:
             display_name: Grind Coffee Beans
