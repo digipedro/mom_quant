@@ -892,7 +892,7 @@
             output:
                 dusk: [18, 125, 80.5]
         mars_madness:
-            display_name: Mar Madness
+            display_name: Mars Madness
             building: library
             input:
                 shard_research: 5
