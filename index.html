@@ -14,6 +14,13 @@
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
+  <style>
+      .dusk {
+          color: #c17e1f;
+          font-weight: bold
+      }
+  </style>
+
 </head>
 <body>
 
@@ -88,9 +95,9 @@
             </template>
             <span>
                   <b>Cost of Power used in calculations</b><br>
-                  <b>Market Price</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
-                  <b>Charge Power Cell</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
-                  <b>Charge Power Cell III</b> (<span style="color: #c17e1f; font-weight: bold">{{ power_charge3 }}</span> per cell) - Stamina cost of charging a Power cells 3-for-2<br>
+                  <b>Market Price</b> (<span class="dusk">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
+                  <b>Charge Power Cell</b> (<span class="dusk">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
+                  <b>Charge Power Cell III</b> (<span class="dusk">{{ power_charge3 }}</span> per cell) - Stamina cost of charging a Power cells 3-for-2<br>
                   Prices included 2% chance of cell breaking
             </span>
         </v-col>
@@ -138,7 +145,7 @@
             <template v-slot:input>
             <v-card style="border: 1px solid white">
               <v-list dense color="grey darken-3" rounded >
-                <v-list-item-title><b>{{props.item.name}}</b> : <span style="color: #c17e1f; font-weight: bold">{{ props.item.cost }}</span></v-list-item-title>
+                <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.cost }}</span></v-list-item-title>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.cost_breakdown">
                     <v-list-item-content>
@@ -156,7 +163,7 @@
             <template v-slot:input>
             <v-card style="border: 1px solid white">
               <v-list dense color="grey darken-3" rounded>
-                <v-list-item-title><b>{{props.item.name}}</b> : <span style="color: #c17e1f; font-weight: bold">{{ props.item.sale }}</span></v-list-item-title>
+                <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.sale }}</span></v-list-item-title>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.sale_breakdown">
                     <v-list-item-content>
@@ -236,7 +243,7 @@
             selected_sell_price: 'Last Sold',
             power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III'],
             selected_power_source: 'Charge Power Cell',
-            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Drink Coffee', 'Job', 'Daily Ration'],
+            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Drink Coffee', 'Slava Ukraini', 'Drink Mushroom Tea', 'Job', 'Daily Ration'],
             stamina_help_text: '',
             selected_stamina_source: 'Eat Meal',
             market_timestamp: 0,
@@ -248,7 +255,14 @@
             user_settings: {},
             bldg_items: [],
             bldg_hide: [],
-            
+            cheapest_shard: {
+                C: null,
+                U: null,
+                R: null,
+                E: null,
+                M: null,
+                L: null,
+            },
             headers: [
               { text: 'Name', align: 'start', value: 'name' },
               { text: 'Build Cost', value: 'cost' },
@@ -302,11 +316,19 @@
             },
             tableSort(items, index, isDesc) {
                 items.sort((a, b) => {
-                  if (isDesc[0]) {
-                    return parseFloat(a[index]) < parseFloat(b[index]) ? -1 : 1;
-                  } else {
-                    return parseFloat(a[index]) > parseFloat(b[index]) ? -1 : 1;
-                  }
+                    if (isDesc[0]) {
+                        if (typeof a[index] == 'undefined' || a[index].includes('NaN'))
+                          return -1;
+                        if (typeof b[index] == 'undefined' || b[index].includes('NaN'))
+                          return 1;
+                        return parseFloat(a[index]) < parseFloat(b[index]) ? -1 : 1;
+                    } else {
+                        if (typeof a[index] == 'undefined' || a[index].includes('NaN'))
+                            return 1;
+                        if (typeof b[index] == 'undefined' || b[index].includes('NaN'))
+                            return -1;
+                        return parseFloat(a[index]) > parseFloat(b[index]) ? -1 : 1;
+                    }
                 });
                 return items;
             },
@@ -352,6 +374,8 @@
                     return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
                 if (method == 'Slava Ukraini')
                     return (this.getPrice('coffee_brewed', this.selected_buy_price) - 2) / 10;
+                if (method == 'Drink Mushroom Tea')
+                    return (this.getPrice('mushroom_tea', this.selected_buy_price) - 7) / 15;
                 if (method == 'Job')
                     return 1.04;
                 if (method == 'Daily Ration')
@@ -369,18 +393,49 @@
                 // 'Charge Power Cell'
                 return (this.getStaminaCost(this.selected_stamina_source) + broken_tax) / 20
             },
+            getCheapestShards(rarity) {
+                if (this.cheapest_shard[rarity] == null) {
+                    // build object once
+                    let shard_name = { ...this.cheapest_shard };
+                    for (let i = 0; i < this.market.length; i++) {
+                        if (this.market[i].id.startsWith('shard_') && this.market[i].id.charAt(this.market[i].id.length - 2) == '_') {
+                            let r = this.market[i].id.slice(-1);
+                            let price = this.getPrice(this.market[i].id, this.selected_buy_price);
+                            if (this.cheapest_shard[r] == null || price < this.cheapest_shard[r]) {
+                                this.cheapest_shard[r] = price;
+                                shard_name[r] = this.market[i].id
+                            }
+                        }
+                    }
+                    console.log('Cheapest Shards:', JSON.stringify(shard_name));
+                }
+                return this.cheapest_shard[rarity];
+            },
             getPrice(id, type = 'Split') {                                
-                if (id == 'power') {
-                    return this.getPowerCost(this.selected_power_source)
-                }
-                if (id == 'stamina') {
+                if (id == 'power')
+                    return this.getPowerCost(this.selected_power_source);
+                if (id == 'stamina')
                     return this.getStaminaCost(this.selected_stamina_source);
+                if (id == 'dusk')
+                    return 1;
+                if (id.startsWith('bazaar_coin_')) {
+                    let rarity = id.slice(-1);
+                    if (rarity == 'C' || rarity == 'U' || rarity == 'R')
+                        return this.getCheapestShards(rarity) * 4;
+                    if (rarity == 'E')
+                        return this.getCheapestShards(rarity) * 5;
+                    if (rarity == 'L')
+                        return this.getCheapestShards(rarity) * 7;
+                    if (rarity == 'M')
+                        return this.getCheapestShards(rarity) * 10;
                 }
-                if (id == 'dusk') {
-                    return 1
-                }
+
+                    
                 for (let i = 0; i < this.market.length; i++) {
                     if (this.market[i].id == id) {
+                        // temp hack to see research paper price
+                        if (id == 'shard_research' && typeof this.market[i].attributes.lastSoldPrice == 'undefined')
+                            return 14;
                         if (type == 'Last Sold')
                             return this.market[i].attributes.lastSoldPrice
                         if (type == '24H Avg')
@@ -458,13 +513,14 @@
                                 this.$set(this.resources, i, entry);
                     }
                 }
-                this.stamina_help_text = '<b>Eat Snack</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
-                                        +'<b>Eat Meal</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
-                                        +'<b>Eat Feast</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
-                                        +'<b>Drink Coffee</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Drink Coffee')) + '</span> avg<br>'
-                                        +'<b>Slava Ukraini</b> - <span style="color: #c17e1f; font-weight: bold">' + localnum(this.getStaminaCost('Slava Ukraini')) + '</span> avg<br>'
-                                        +'<b>Job</b> - <span style="color: #c17e1f; font-weight: bold">1.040</span><br>'
-                                        +'<b>Daily Ration</b> - <span style="color: #c17e1f; font-weight: bold"> 0.000</span><br>'
+                this.stamina_help_text = '<b>Eat Snack</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
+                                        +'<b>Eat Meal</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
+                                        +'<b>Eat Feast</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
+                                        +'<b>Drink Coffee</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Coffee')) + '</span> avg<br>'
+                                        +'<b>Slava Ukraini</b> - <span class="dusk">' + localnum(this.getStaminaCost('Slava Ukraini')) + '</span> avg<br>'
+                                        +'<b>Drink Mushroom Tea</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Mushroom Tea')) + '</span> avg<br>'
+                                        +'<b>Job</b> - <span class="dusk">1.040</span><br>'
+                                        +'<b>Daily Ration</b> - <span class="dusk"> 0.000</span><br>'
                 this.power_market = localnum(this.getPowerCost('Market Price') * 20);
                 this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
                 this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);

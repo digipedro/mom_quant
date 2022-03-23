@@ -128,6 +128,34 @@
             display_name: Mushroom Spores
         mushrooms:
             display_name: Mushrooms
+        research_lifescience_a:
+            display_name: Apprentice Life Science Research
+        research_lifescience_n:
+            display_name: Novice Life Science Research
+        research_chemistry_a:
+            display_name: Apprentice Chemistry Research
+        research_chemistry_n:
+            display_name: Novice Chemistry Research
+        shard_research:
+            display_name: Research Paper
+        shard_greenhouse_C:
+            display_name: Greenhouse Shard (C)
+        shard_greenhouse_U:
+            display_name: Greenhouse Shard (U)
+        shard_greenhouse_R:
+            display_name: Greenhouse Shard (R)
+        shard_greenhouse_E:
+            display_name: Greenhouse Shard (E)
+        shard_greenhouse_L:
+            display_name: Greenhouse Shard (L)
+        shard_greenhouse_M:
+            display_name: Greenhouse Shard (M)
+        bazaar_coin_C:
+            display_name: Bazaar Coin (C)
+        bazaar_coin_U:
+            display_name: Bazaar Coin (U)
+        bazaar_coin_R:
+            display_name: Bazaar Coin (R)
     recipies:
         # greenhouse
         plant_sprouts:
@@ -520,7 +548,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [1, 4, 1.5]
+                empty_pc: [2, 4, 2.4]
         repair_broken_cell2:
             display_name: Repair Broken Power Cell II
             building: chem_lab
@@ -529,7 +557,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [2, 4, 2.2]
+                empty_pc: [2, 4, 2.7]
         repair_broken_cell3:
             display_name: Repair Broken Power Cell III
             building: chem_lab
@@ -538,7 +566,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [3, 6, 3.5]
+                empty_pc: [3, 6, 3.7]
         #grind n' brew
         grind_coffee:
             display_name: Grind Coffee Beans
@@ -699,6 +727,16 @@
                 stamina: 3
             output:
                 baijiu: [2, 3, 2.5]
+        mushroom_tea:
+            display_name: Mushroom Tea
+            building: tea_shop
+            input:
+                mushrooms: 10
+                water: 10
+                power: 20
+                stamina: 4
+            output:
+                mushroom_tea: [1, 4, 1.4]
         baijiu_by_the_case:
             display_name: Baijiu By the Case
             building: tea_shop
@@ -742,6 +780,166 @@
             output:
                 dusk: [0, 5000, 124.74]
         #pirate radio
+        #library
+        freshmen_research_paper:
+            display_name: Freshmen Research Paper
+            building: library
+            input:
+                stamina: 4
+                power: 10
+                paper: 3
+                bazaar_coin_C: 1
+            output:
+                shard_research: 2
+        senior_research_paper:
+            display_name: Senior Research Paper
+            building: library
+            input:
+                stamina: 8
+                power: 20
+                paper: 6
+                bazaar_coin_U: 1
+            output:
+                shard_research: 5
+        graduate_research_paper:
+            display_name: Graduate Research Paper
+            building: library
+            input:
+                stamina: 16
+                power: 30
+                paper: 15
+                bazaar_coin_R: 1
+            output:
+                shard_research: 12      
+        areology_210:
+            display_name: Areology 210
+            building: library
+            input:
+                stamina: 5
+                power: 20
+                shard_research: 1
+                regolith: 25
+            output:
+                dusk: [6, 90, 48]
+        areology_310:
+            display_name: Areology 310
+            building: library
+            input:
+                stamina: 5
+                power: 40
+                shard_research: 3
+                regolith: 100
+            output:
+                dusk: [18, 125, 80.5]
+        areology_410:
+            display_name: Areology 410
+            building: library
+            input:
+                stamina: 5
+                power: 60
+                shard_research: 5
+                regolith: 250
+            output:
+                dusk: [30, 250, 140]
+        exobiology_499:
+            display_name: Exobiology 499
+            building: library
+            input:
+                shard_research: 1
+                ice: 20
+                power: 20
+                stamina: 5
+            output:
+                dusk: [6, 90, 48]
+        exobiology_505:
+            display_name: Exobiology 505
+            building: library
+            input:
+                shard_research: 3
+                ice: 80
+                power: 40
+                stamina: 5
+            output:
+                dusk: [18, 125, 80.5]
+        exobiology_555:
+            display_name: Exobiology 555
+            building: library
+            input:
+                shard_research: 5
+                ice: 200
+                power: 60
+                stamina: 5
+            output:
+                dusk: [30, 250, 140]
+        human_factors:
+            display_name: Human Factors
+            building: library
+            input:
+                shard_research: 1
+                food: 10
+                power: 20
+                stamina: 5
+            output:
+                dusk: [6, 90, 48]
+        dem_bones:
+            display_name: Dem Bones
+            building: library
+            input:
+                shard_research: 3
+                food: 30
+                power: 40
+                stamina: 5
+            output:
+                dusk: [18, 125, 80.5]
+        mars_madness:
+            display_name: Mar Madness
+            building: library
+            input:
+                shard_research: 5
+                food: 60
+                power: 60
+                stamina: 5
+            output:
+                dusk: [30, 250, 140]
+        basic_seed_study:
+            display_name: Basic Seed Study
+            building: library
+            input:
+                research_lifescience_n: 1
+                shard_greenhouse_C: 1
+                shard_greenhouse_U: 1
+                stamina: 3
+            output:
+                sprout_seed: [3, 7, 5]
+                lettuce_seed: [1, 3, 2]
+                sorghum_seed: [12, 18, 15]
+                sweet_potato_seed: [1, 3, 2]
+        advanced_seed_study:
+            display_name: Advanced Seed Study
+            building: library
+            input:
+                research_lifescience_n: 2
+                shard_greenhouse_R: 1
+                shard_greenhouse_E: 1
+                stamina: 6
+            output:
+                sweet_potato_seed: [1, 3, 2]
+                bamboo_seed: [6, 18, 12]
+                carrot_seed: [2, 6, 4]
+                soy_seed: [1, 2, 1.5]
+        expert_seed_study:
+            display_name: Expert Seed Study
+            building: library
+            input:
+                research_lifescience_a: 1
+                shard_greenhouse_L: 1
+                shard_greenhouse_M: 1
+                stamina: 9
+            output:
+                carrot_seed: [3, 7, 5]
+                coffee_seed: [2, 3, 2.5]
+                soy_seed: [2, 4, 3]
+                mushroom_spores: [4, 8, 6]
         #other
         scavange:
             display_name: Scavange (estimate)
@@ -808,3 +1006,5 @@
         #    display_name: Pirate Radio
         polar_workshop:
             display_name: Polar Workshop
+        library:
+            display_name: Library
