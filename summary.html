@@ -134,7 +134,15 @@
     
             setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
             
-            this.loadChart('full_pc');            
+            let queries = window.location.search.replace(/^\?/, '').split('&'), split;
+            let chart_to_load = 'full_pc'
+			for( let i = 0; i < queries.length; i++ ) {
+				split = queries[i].split('=');
+				if (split[0] === 'chart')
+                    chart_to_load = split[1]
+            }
+            
+            this.loadChart(chart_to_load);
 		},
 	    vuetify: new Vuetify({
             theme: { dark: true },
@@ -247,8 +255,13 @@
                 await fetch('https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/get7day?id='+id)
                 .then(res => res.json())
                 .then(out => {
-                    let data = []
-                    // search backwards through data making intervals for candles
+                    let data = [];
+                    if (out.length < 1) {
+                        this.chart_title = 'No data.'
+                        return;
+                    }
+                        
+                    // crawl through data making intervals for candles
                     
                     // Get time of last sale rounded up to neast hour, then start 7 days earlier
                     let end_time = new Date(out[out.length-1].lastSoldAt);
