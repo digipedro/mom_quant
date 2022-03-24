@@ -388,8 +388,8 @@
             },
             getPowerCost(source) {
                 if (source == 'Market Price')
-                    return ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('empty_pc', this.selected_sell_price)) / 20) * 0.98
-                          + ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) / 20) * 0.02;
+                    return ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('empty_pc', this.selected_sell_price) * 0.95 ) / 20) * 0.98
+                          + ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price) * 0.95) / 20) * 0.02;
                 let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.02;
                 if (source == 'Charge Power Cell III')
                     return (this.getStaminaCost(this.selected_stamina_source) * 2 + broken_tax * 3) / 60
@@ -436,9 +436,6 @@
                     
                 for (let i = 0; i < this.market.length; i++) {
                     if (this.market[i].id == id) {
-                        // temp hack to see research paper price
-                        if (id == 'shard_research' && typeof this.market[i].attributes.lastSoldPrice == 'undefined')
-                            return 14;
                         if (type == 'Last Sold')
                             return this.market[i].attributes.lastSoldPrice
                         if (type == '24H Avg')

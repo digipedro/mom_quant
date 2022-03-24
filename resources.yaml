@@ -246,6 +246,17 @@
                 soil: 3
             output:
                 sorghum: [20, 34, 27]
+        grow_mushrooms:
+            display_name: Grow Mushrooms
+            building: greenhouse
+            input:
+                stamina: 5
+                water: 30
+                mushroom_spores: 1
+                soil: 2
+                sorghum: 25
+            output:
+                mushrooms: [6, 15, 10.5]
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide
@@ -380,7 +391,7 @@
                 power: 40
                 stamina: 4
             output:
-                rover_wheels: 1.1
+                rover_wheels: [1, 2, 1.1]
         salvage_rover:
             display_name: Salvage Rover
             building: machine_shop
@@ -820,7 +831,7 @@
                 shard_research: 1
                 regolith: 25
             output:
-                dusk: [6, 90, 48]
+                dusk: [6, 90, 24]
         areology_310:
             display_name: Areology 310
             building: library
@@ -830,7 +841,7 @@
                 shard_research: 3
                 regolith: 100
             output:
-                dusk: [18, 125, 80.5]
+                dusk: [18, 125, 40]
         areology_410:
             display_name: Areology 410
             building: library
@@ -840,7 +851,7 @@
                 shard_research: 5
                 regolith: 250
             output:
-                dusk: [30, 250, 140]
+                dusk: [30, 250, 70]
         exobiology_499:
             display_name: Exobiology 499
             building: library
@@ -850,7 +861,7 @@
                 power: 20
                 stamina: 5
             output:
-                dusk: [6, 90, 48]
+                dusk: [6, 90, 24]
         exobiology_505:
             display_name: Exobiology 505
             building: library
@@ -860,7 +871,7 @@
                 power: 40
                 stamina: 5
             output:
-                dusk: [18, 125, 80.5]
+                dusk: [18, 125, 40]
         exobiology_555:
             display_name: Exobiology 555
             building: library
@@ -870,7 +881,7 @@
                 power: 60
                 stamina: 5
             output:
-                dusk: [30, 250, 140]
+                dusk: [30, 250, 70]
         human_factors:
             display_name: Human Factors
             building: library
@@ -880,7 +891,7 @@
                 power: 20
                 stamina: 5
             output:
-                dusk: [6, 90, 48]
+                dusk: [6, 90, 24]
         dem_bones:
             display_name: Dem Bones
             building: library
@@ -890,7 +901,7 @@
                 power: 40
                 stamina: 5
             output:
-                dusk: [18, 125, 80.5]
+                dusk: [18, 125, 40]
         mars_madness:
             display_name: Mars Madness
             building: library
@@ -900,7 +911,7 @@
                 power: 60
                 stamina: 5
             output:
-                dusk: [30, 250, 140]
+                dusk: [30, 250, 70]
         basic_seed_study:
             display_name: Basic Seed Study
             building: library
