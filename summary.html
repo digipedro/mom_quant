@@ -67,7 +67,7 @@
             </v-expansion-panels>
     </v-card>
     <v-card width="750px" class="justify-center">
-    <v-data-table :headers="headers" :items="dtable" :search="search" :items-per-page="-1" class="elevation-1" dark>
+    <v-data-table :headers="headers" :items="dtable" :search="search" :items-per-page="-1" class="elevation-1" :custom-sort="tableSort" dark>
         <template v-slot:top>
           <v-text-field v-model="search" label="Search" class="mx-4" ></v-text-field>
         </template>
@@ -232,6 +232,30 @@
                     }
                     this.dtable.push(item);
                 }
+            },
+            tableSort(items, index, isDesc) {
+                if (index[0] === "hours" || index[0] === "day" || index[0] === "week" ) {
+                    items.sort((a, b) => {
+                        // calculate spread
+                        let a_diff = Math.abs(a[index].high - a[index].low);
+                        let b_diff = Math.abs(b[index].high - b[index].low);
+                        if (isDesc[0]) {
+                            return a_diff < b_diff ? -1 : 1;
+                        } else {
+                            return a_diff < b_diff ? 1 : -1;
+                        }
+                    });
+                } else {
+                    items.sort((a, b) => {
+                        if (isDesc[0]) {
+                            return a[index] < b[index] ? -1 : 1;
+                        } else {
+                            return a[index] < b[index] ? 1 : -1;
+                        }
+                    });
+                }
+
+                return items;
             },
             async loadYAML() {
                 await fetch('resources.yaml', {

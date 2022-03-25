@@ -830,6 +830,7 @@
                 power: 20
                 shard_research: 1
                 regolith: 25
+            output_speculative: true
             output:
                 dusk: [6, 90, 12]
         areology_310:
@@ -840,6 +841,7 @@
                 power: 40
                 shard_research: 3
                 regolith: 100
+            output_speculative: true
             output:
                 dusk: [18, 125, 36]
         areology_410:
@@ -850,6 +852,7 @@
                 power: 60
                 shard_research: 5
                 regolith: 250
+            output_speculative: true
             output:
                 dusk: [30, 250, 60]
         exobiology_499:
@@ -860,6 +863,7 @@
                 ice: 20
                 power: 20
                 stamina: 5
+            output_speculative: true
             output:
                 dusk: [6, 90, 12]
         exobiology_505:
@@ -870,6 +874,7 @@
                 ice: 80
                 power: 40
                 stamina: 5
+            output_speculative: true
             output:
                 dusk: [18, 125, 36]
         exobiology_555:
@@ -880,6 +885,7 @@
                 ice: 200
                 power: 60
                 stamina: 5
+            output_speculative: true
             output:
                 dusk: [30, 250, 60]
         human_factors:
@@ -890,6 +896,7 @@
                 food: 10
                 power: 20
                 stamina: 5
+            output_speculative: true
             output:
                 dusk: [6, 90, 12]
         dem_bones:
@@ -900,6 +907,7 @@
                 food: 30
                 power: 40
                 stamina: 5
+            output_speculative: true
             output:
                 dusk: [18, 125, 36]
         mars_madness:
@@ -910,6 +918,7 @@
                 food: 60
                 power: 60
                 stamina: 5
+            output_speculative: true
             output:
                 dusk: [30, 250, 60]
         basic_seed_study:
@@ -956,17 +965,19 @@
             display_name: Scavange (estimate)
             input:
                 stamina: 1
+            output_speculative: true
             output:
                 ice: 4
                 regolith: 4
                 empty_pc: 0.02
                 metal_bits: 0.1
                 electronic_bits: 0.1
-        novice_scavangin:
+        novice_scavaning:
             display_name: Novice Scavenge (estimate)
             input:
                 stamina: 1
                 dusk: 1
+            output_speculative: true
             output:
                 ice: 3.37
                 regolith: 6.96

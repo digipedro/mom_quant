@@ -100,7 +100,7 @@
                   <b>Cost of Power used in calculations</b><br>
                   <b>Market Price</b> (<span class="dusk">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
                   <b>Charge Power Cell</b> (<span class="dusk">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
-                  <b>Charge Power Cell III</b> (<span class="dusk">{{ power_charge3 }}</span> per cell) - Stamina cost of charging a Power cells 3-for-2<br>
+                  <b>Charge Power Cell III</b> (<span class="dusk">{{ power_charge3 }}</span> per cell) - Stamina cost of charging Power cells 3-for-2<br>
                   Prices included 2% chance of cell breaking
             </span>
         </v-col>
@@ -146,13 +146,13 @@
           <v-edit-dialog>
             {{ props.item.cost }}
             <template v-slot:input>
-            <v-card style="border: 1px solid white">
-              <v-list dense color="grey darken-3" rounded >
+            <v-card style="border: 1px solid white;">
+              <v-list dense color="grey darken-3" rounded>
                 <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.cost }}</span></v-list-item-title>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.cost_breakdown">
                     <v-list-item-content>
-                    {{ line.resource }} :  {{ line.cost }}
+                    {{ line.resource }} : {{ line.cost }} <small v-if="line.unitcost">({{ line.unitcost }} each)</small>
                     </v-list-item-content>
                 </template>
             </v-card>
@@ -168,9 +168,10 @@
               <v-list dense color="grey darken-3" rounded>
                 <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.sale }}</span></v-list-item-title>
                 <v-divider></v-divider>
+                <small v-if="props.item.output_speculative" style="color: #f99">Speculative Estimate</small>
                 <template v-for="(line, index) in props.item.sale_breakdown">
                     <v-list-item-content>
-                    {{ line.resource }} :  {{ line.value }}
+                    {{ line.resource }} :  {{ line.value }} <small v-if="line.unitcost">({{ line.unitcost }} each)</small>
                     </v-list-item-content>
                 </template>
             </v-card>
@@ -204,6 +205,8 @@
 
   <script>
       function localnum(num) {
+          if (isNaN(num))
+              return "---";
           return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
       }
       
@@ -463,24 +466,32 @@
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].input)) {
                         let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
                         cost += unit_cost;
-                        cost_breakdown.push( {resource: this.resource_name(key2) + ' x ' + value2, cost: localnum(unit_cost)} );
+                        cost_breakdown.push( {resource: this.resource_name(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
                     }
                     
                     let sale_breakdown = [];
                     let sale = [0, 0, 0]
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].output)) {
+                        let item = {}
                         if (Array.isArray(value2)) {
                             sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
                             sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
                             sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2[2], value: localnum(this.getPrice(key2, this.selected_sell_price) * value2[2])})
+                            item.resource = this.resource_name(key2) + ' x ' + value2[2];
+                            item.value = localnum(this.getPrice(key2, this.selected_sell_price) * value2[2]);
+                            if (value2[2] > 1 && key2 != 'dusk')
+                                item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
                         } else {
                             let avg_price = this.getPrice(key2, this.selected_sell_price) * value2;
                             sale[0] += avg_price;
                             sale[1] += avg_price;
                             sale[2] += avg_price;
-                            sale_breakdown.push({resource: this.resource_name(key2) + ' x ' + value2, value: avg_price})
+                            item.resource = this.resource_name(key2) + ' x ' + value2;
+                            item.value = localnum(avg_price);
+                            if (value2 > 1 && key2 != 'dusk')
+                                item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
                         }
+                        sale_breakdown.push(item);
                     }
                     let gain = (sale[2] * 0.95 - cost);
                     let roi = (gain / cost * 100);
@@ -500,6 +511,7 @@
                         roi: localnum(roi),
                         cost_breakdown: cost_breakdown,
                         sale_breakdown: sale_breakdown,
+                        output_speculative: this.odata.recipies[key].output_speculative,
                         icon: 'images/' + value.building + '.webp',
                         icon_title: this.building_name(value.building),
                         show: !('building' in value && this.checkForFilter(value.building))
