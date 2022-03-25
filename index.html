@@ -323,15 +323,15 @@
             tableSort(items, index, isDesc) {
                 items.sort((a, b) => {
                     if (isDesc[0]) {
-                        if (typeof a[index] == 'undefined' || a[index].includes('NaN'))
+                        if (typeof a[index] == 'undefined' || a[index].includes('---'))
                           return -1;
-                        if (typeof b[index] == 'undefined' || b[index].includes('NaN'))
+                        if (typeof b[index] == 'undefined' || b[index].includes('---'))
                           return 1;
                         return parseFloat(a[index]) < parseFloat(b[index]) ? -1 : 1;
                     } else {
-                        if (typeof a[index] == 'undefined' || a[index].includes('NaN'))
+                        if (typeof a[index] == 'undefined' || a[index].includes('---'))
                             return 1;
-                        if (typeof b[index] == 'undefined' || b[index].includes('NaN'))
+                        if (typeof b[index] == 'undefined' || b[index].includes('---'))
                             return -1;
                         return parseFloat(a[index]) > parseFloat(b[index]) ? -1 : 1;
                     }
