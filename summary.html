@@ -331,7 +331,7 @@
             },
             async loadMarket() {
                  // await fetch("/market.json")
-                 await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/wholemarket")
+                 await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/wholemarket2")
                     .then(res => res.json())
                     .then(out => {
                         this.market = {};
@@ -339,11 +339,6 @@
                         for (let i = 0; i < out.data.length; i++) {
                             let id = out.data[i].id
                             this.market[id] = out.data[i].attributes;
-                            // remove EJSON Number type fields
-                            for (const [key, value] of Object.entries(this.market[id])) {
-                                if (typeof value === 'object')
-                                    this.market[id][key] = Number(value[Object.keys(value)[0]]);
-                            }
                             // set 0 day average price to last price
                             if (this.market[id].averageDaySoldPrice == 0)
                                 this.market[id].averageDaySoldPrice = this.market[id].lastSoldPrice;
