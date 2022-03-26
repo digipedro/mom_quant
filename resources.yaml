@@ -674,7 +674,7 @@
                 power: 40
                 stamina: 4
             output:
-                ice: [250, 400, 281.875]
+                ice: [250, 450, 300]
         #roverworks
         assemble_haulting_rover:
             display_name: Assemble Hauling Rover
