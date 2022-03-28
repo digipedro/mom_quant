@@ -453,8 +453,18 @@
                 }
                 return 0;
             },
-            resource_name(id) {
-                return this.odata.resources[id].display_name
+            capitalize(str) {
+                const arr = str.split(" ");
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+                }
+                return arr.join(" ");
+            },
+            resourceName(id) {
+                if (this.odata.resources[id])
+                    return this.odata.resources[id].display_name
+                else
+                    return this.capitalize(id.replaceAll('_', ' '));
             },
             building_name(id) {
                 return (id === undefined) ? '' : this.odata.buildings[id].display_name
@@ -466,7 +476,7 @@
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].input)) {
                         let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
                         cost += unit_cost;
-                        cost_breakdown.push( {resource: this.resource_name(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
+                        cost_breakdown.push( {resource: this.resourceName(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
                     }
                     
                     let sale_breakdown = [];
@@ -477,7 +487,7 @@
                             sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
                             sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
                             sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                            item.resource = this.resource_name(key2) + ' x ' + value2[2];
+                            item.resource = this.resourceName(key2) + ' x ' + value2[2];
                             item.value = localnum(this.getPrice(key2, this.selected_sell_price) * value2[2]);
                             if (value2[2] > 1 && key2 != 'dusk')
                                 item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
@@ -486,7 +496,7 @@
                             sale[0] += avg_price;
                             sale[1] += avg_price;
                             sale[2] += avg_price;
-                            item.resource = this.resource_name(key2) + ' x ' + value2;
+                            item.resource = this.resourceName(key2) + ' x ' + value2;
                             item.value = localnum(avg_price);
                             if (value2 > 1 && key2 != 'dusk')
                                 item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));

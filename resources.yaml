@@ -1,7 +1,5 @@
 ---
     resources:
-        stamina:
-            display_name: Stamina
         empty_pc:
             display_name: Empty Power Cell
         broken_pc:
@@ -10,124 +8,44 @@
             display_name: Full Power Cell
         power:
             display_name: Power
-        ice:
-            display_name: Ice
-        soil:
-            display_name: Soil
-        regolith:
-            display_name: Regolith
-        waste:
-            display_name: Waste
-        food:
-            display_name: Food
-        water:
-            display_name: Water
-        sprout_seed:
-            display_name: Sprout Seed
-        lettuce_seed:
-            display_name: Lettuce Seed
-        carrot_seed:
-            display_name: Carrot Seed
-        sweet_potato_seed:
-            display_name: Sweet Potato Seed
-        soy_seed:
-            display_name: Soy Seed
         coffee_bean_green:
             display_name: Green Coffee Bean
         coffee_bean_roasted:
             display_name: Roasted Coffee Bean
         carbon_dioxide:
             display_name: Carbon Dioxide
+        coffee_cherry:
+            display_name: Coffee Cherry
         smelt_iron:
             display_name: Iron Ore
-        aluminum_plate:
-            display_name: Aluminum Plate
         smelt_aluminum:
             display_name: Aluminum Ore
         smelt_titanium:
             display_name: Titanium Ore
-        titanium_plate:
-            display_name: Titanium Plate
         smelt_steel:
             display_name: Steel
-        machined_parts:
-            display_name: Machined Parts
-        structural_parts:
-            display_name: Structural Parts
-        rover_chassis:
-            display_name: Rover Chassis
         smelt_copper:
             display_name: Copper Ore
-        barite:
-            display_name: Barite
-        rover_wheels:
-            display_name: Rover Wheels
-        electronic_bits:
-            display_name: Electronic Bits
-        coffee_cherry:
-            display_name: Coffee Cherry
-        fermented_sorghum:
-            display_name: Fermented Sorghum
-        sorghum:
-            display_name: Sorghum
         sorghum_seed:
             display_name: Sorghum Seeds
         bamboo_seed:
             display_name: Bamboo Seeds
-        bamboo:
-            display_name: Bamboo
-        hydrogen:
-            display_name: Hydrogen
-        methane:
-            display_name: Methane
-        oxygen:
-            display_name: Oxygen
         pvc_raw:
             display_name: PVC
         pla:
             display_name: PLA
         perchlorate:
             display_name: Potassium Perchlorate
-        halite:
-            display_name: Halite
         pvc_pipe:
             display_name: PVC Pipe
         coffee_ground:
             display_name: Ground Coffee
         coffee_brewed:
             display_name: Brewed Coffee
-        dusk:
-            display_name: Dusk
-        metal_bits:
-            display_name: Metal Bits
-        coffee_seed:
-            display_name: Coffee Seed
-        broken_rover:
-            display_name: Broken Rover
-        titanum_plate:
-            display_name: Titanum Plate
-        vibes:
-            display_name: Vibes
-        electronics_parts:
-            display_name: Electronics Parts
-        paper:
-            display_name: Paper
-        water_rich_clay:
-            display_name: Water Rich Clay
         rover_explore:
             display_name: Exploring Rover
         rover_haul:
             display_name: Hauling Rover
-        mushroom_tea:
-            display_name: Mushroom Tea
-        mushroom_cake:
-            display_name: Mushroom Cake
-        baijiu:
-            display_name: Baijiu
-        mushroom_spores:
-            display_name: Mushroom Spores
-        mushrooms:
-            display_name: Mushrooms
         research_lifescience_a:
             display_name: Apprentice Life Science Research
         research_lifescience_n:
@@ -224,6 +142,7 @@
                 soil: 4
             output:
                 coffee_cherry: [28, 42, 35]
+                coffee_seed: [0, 1, 0.1]
         plant_bamboo:
             display_name: Plant Bamboo
             building: greenhouse
@@ -984,7 +903,7 @@
                 research_chemistry_n: 1
         #other
         scavange:
-            display_name: Scavange (estimate)
+            display_name: Scavange (free power)
             input:
                 stamina: 1
             output_speculative: true
@@ -996,23 +915,61 @@
                 sprout_seed: 0.033
                 water_rich_clay: 0.033
                 halite: 0.3
+        scavange_powered:
+            display_name: Scavange (pay power)
+            input:
+                stamina: 1
+                power: 1
+            output_speculative: true
+            output:
+                ice: 3.66
+                regolith: 3.07
+                metal_bits: 0.27
+                carrot_seed: 0.1
+                sprout_seed: 0.033
+                water_rich_clay: 0.033
+                halite: 0.3
         novice_scavaning:
-            display_name: Novice Scavenge (estimate)
+            display_name: Novice Scavenge (free power)
             input:
                 stamina: 1
                 dusk: 1
             output_speculative: true
             output:
-                ice: 3.37
-                regolith: 6.96
-                metal_bits: 0.58
-                electronic_bits: 0.43
-                water_rich_clay: 0.02
-                vibes: 0.13
-                barite: 0.24
-                dusk: 0.48
-                halite: 0.35
-                empty_pc: 0.02
+                ice: 5.42
+                regolith: 5.89
+                metal_bits: 0.27
+                electronic_bits: 0.25
+                water_rich_clay: 0.05
+                vibes: 0.11
+                barite: 0.22
+                dusk: 0.26
+                halite: 0.22
+                empty_pc: 0.03
+                rover_wires: 0.03
+                metis: 0.11
+                smelt_copper: 0.03
+        novice_scavaning_powered:
+            display_name: Novice Scavenge (pay power)
+            input:
+                stamina: 1
+                dusk: 1
+                power: 1
+            output_speculative: true
+            output:
+                ice: 5.42
+                regolith: 5.89
+                metal_bits: 0.27
+                electronic_bits: 0.25
+                water_rich_clay: 0.05
+                vibes: 0.11
+                barite: 0.22
+                dusk: 0.26
+                halite: 0.22
+                empty_pc: 0.03
+                rover_wires: 0.03
+                metis: 0.11
+                smelt_copper: 0.03
         do_job:
             display_name: Do Job
             input:

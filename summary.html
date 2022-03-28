@@ -143,6 +143,7 @@
             }
             
             this.loadChart(chart_to_load);
+            //this.loadPowerChart();
 		},
 	    vuetify: new Vuetify({
             theme: { dark: true },
@@ -213,7 +214,7 @@
                 }
                 return arr.join(" ");
             },
-            resource_name(id) {
+            resourceName(id) {
                 if (this.odata.resources[id])
                     return this.odata.resources[id].display_name
                 else
@@ -224,7 +225,7 @@
                 for (const [main_key, main_value] of  Object.entries(this.summary)) {
                     let item = {
                         id: main_key,
-                        name: this.resource_name(main_key),
+                        name: this.resourceName(main_key),
                         hours: {high: main_value.shortHigh, low: main_value.shortLow},
                         day: {high: main_value.dayHigh, low: main_value.dayLow},
                         week: {high: main_value.weekHigh, low: main_value.weekLow},
@@ -274,6 +275,63 @@
                     .catch(err => console.log('yaml error:', err))                    
                 if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
             },
+            async loadPowerChart() {
+                // exerimental chart of market power price
+                let res = await fetch('https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/get7day?id=full_pc');
+                let full = await res.json();
+                res = await fetch('https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/get7day?id=empty_pc');
+                let empty = await res.json();
+               
+                let data = [];
+                // crawl through data making intervals for candles
+                
+                // Get time of last sale rounded up to neast hour, then start 7 days earlier
+                let end_time = new Date(full[full.length-1].lastSoldAt);
+                end_time.setMinutes(end_time.getMinutes() + 30);
+                end_time.setMinutes(0, 0, 0);
+                let start_time = end_time - 604800000;
+                
+                function getPowerPrice(x) {
+                    let y = 0;
+                    while (y < (empty.length - 1) && new Date(empty[y].lastSoldAt) <= full[x].lastSoldAt) {
+                        y++
+                    }
+                    if (y > 0)
+                        y--
+                    return full[x].lastSoldPrice - (empty[y].lastSoldPrice * 0.95);
+                }
+                
+                // Create candles for every 3 hours
+                // 604800000 = 1 week, 3600000 = 1 hr, 1080000 = 3hr
+                let x = 0;
+                for (let h = start_time; h < end_time; h = h + 10800000) {
+                    let next_hour = h + 10800000;
+                    while (x > 0 && new Date(full[x].lastSoldAt) > h)
+                        x--;
+                    let price = getPowerPrice(x);
+                    let ohlcv = [
+                        h,                 //0 - time
+                        price, //1 - open
+                        price, //2 - high
+                        price, //3 - low
+                        price, //4 - close
+                        0,                 //5 - volume
+                    ]
+                    while (x < (full.length - 1) && new Date(full[x].lastSoldAt) < next_hour) {
+                        if (full[x].lastSoldPrice > ohlcv[2])
+                            ohlcv[2] = getPowerPrice(x);
+                        if (full[x].lastSoldPrice < ohlcv[3])
+                            ohlcv[3] = getPowerPrice(x);
+                        ohlcv[4] = getPowerPrice(x);
+                        // ohlcv[5]++
+                        x++
+                    }
+                    if (typeof ohlcv[1] !== 'undefined')
+                        data.push(ohlcv)
+                }
+                this.chart_title = 'Power Market';
+                this.chart_data.ohlcv = data;
+            },
             async loadChart(id) {
                 //await fetch("7day.json")
                 await fetch('https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/get7day?id='+id)
@@ -293,7 +351,7 @@
                     end_time.setMinutes(0, 0, 0);
                     let start_time = end_time - 604800000;
                     
-                    // Create candles for every hour
+                    // Create candles for every 3 hours
                     // 604800000 = 1 week, 3600000 = 1 hr, 1080000 = 3hr
                     let i = 0;
                     for (let h = start_time; h < end_time; h = h + 10800000) {
@@ -320,7 +378,7 @@
                         if (typeof ohlcv[1] !== 'undefined')
                             data.push(ohlcv)
                     }
-                    this.chart_title = this.resource_name(id);
+                    this.chart_title = this.resourceName(id);
                     this.chart_data.ohlcv = data;
                  })
                 .catch(err => {
