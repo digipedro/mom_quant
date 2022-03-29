@@ -135,15 +135,11 @@
             setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
             
             let queries = window.location.search.replace(/^\?/, '').split('&'), split;
-            let chart_to_load = 'full_pc'
 			for( let i = 0; i < queries.length; i++ ) {
 				split = queries[i].split('=');
 				if (split[0] === 'chart')
-                    chart_to_load = split[1]
+                    this.chart_to_load = split[1]
             }
-            
-            this.loadChart(chart_to_load);
-            //this.loadPowerChart();
 		},
 	    vuetify: new Vuetify({
             theme: { dark: true },
@@ -176,6 +172,7 @@
             },
             show_chart: 0,
             lock_chart: false,
+            chart_to_load: 'full_pc',
 	    },
         components: {
           trading: TradingVueJs.TradingVue
@@ -221,6 +218,8 @@
                     return this.capitalize(id.replaceAll('_', ' '));
             },
             buildTable() {
+                this.loadChart(this.chart_to_load);
+                
                 this.dtable = [];
                 for (const [main_key, main_value] of  Object.entries(this.summary)) {
                     let item = {
