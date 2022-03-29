@@ -590,7 +590,7 @@
             display_name: Mine Ice III
             building: mining_rig
             input:
-                power: 40
+                power: 60
                 stamina: 4
             output:
                 ice: [250, 450, 306.94]
