@@ -543,8 +543,8 @@
                 stamina: 2
             output:
                 regolith: [100, 200, 128.3]
-                barite: [5, 10, 5.3]
-                halite: [0, 5, 0.3]
+                barite: [5, 10, 5.25]
+                halite: [0, 5, 0.25]
         mine_regolith_2:
             display_name: Mine Regolith II
             building: mining_rig
@@ -564,9 +564,8 @@
                 stamina: 5
                 barite: 10
             output:
-                regolith: [400, 700, 513.75]
-                barite: [0, 100, 6.875]
-                halite: [0, 5, 0.3]
+                regolith: [400, 700, 506.94]
+                barite: [0, 5, 0.3]
         mine_ice_1:
             display_name: Mine Ice I
             building: mining_rig
