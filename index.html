@@ -426,12 +426,14 @@
                     return 1;
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);
-                    if (rarity == 'C' || rarity == 'U' || rarity == 'R')
+                    if (rarity == 'C' || rarity == 'U')
                         return this.getCheapestShards(rarity) * 4;
-                    if (rarity == 'E')
+                    if (rarity == 'R')
                         return this.getCheapestShards(rarity) * 5;
+                    if (rarity == 'E')
+                        return this.getCheapestShards(rarity) * 6;
                     if (rarity == 'L')
-                        return this.getCheapestShards(rarity) * 7;
+                        return this.getCheapestShards(rarity) * 8;
                     if (rarity == 'M')
                         return this.getCheapestShards(rarity) * 10;
                 }
