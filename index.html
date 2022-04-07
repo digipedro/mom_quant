@@ -249,7 +249,7 @@
             selected_sell_price: 'Last Sold',
             power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III'],
             selected_power_source: 'Charge Power Cell',
-            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Drink Coffee', 'Slava Ukraini', 'Drink Mushroom Tea', 'Job', 'Daily Ration'],
+            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Eat Mushroom Cake', 'Drink Coffee', 'Slava Ukraini', 'Drink Mushroom Tea', 'Job', 'Daily Ration'],
             stamina_help_text: '',
             selected_stamina_source: 'Eat Meal',
             market_timestamp: 0,
@@ -376,6 +376,8 @@
                     return (30 * food + 10 * water - 2 * waste) / 16;
                 if (method == 'Eat Feast')
                     return (90 * food + 30 * water - 6 * waste) / 32;
+                if (method == 'Eat Mushroom Cake')
+                    return (this.getPrice('mushroom_cake', this.selected_buy_price) - 2.5 * waste - 10) / 18;
                 if (method == 'Drink Coffee')
                     return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
                 if (method == 'Slava Ukraini')
@@ -540,6 +542,7 @@
                 this.stamina_help_text = '<b>Eat Snack</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
                                         +'<b>Eat Meal</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
                                         +'<b>Eat Feast</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
+                                        +'<b>Eat Mushroom Cake</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Mushroom Cake')) + '</span> avg<br>'
                                         +'<b>Drink Coffee</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Coffee')) + '</span> avg<br>'
                                         +'<b>Slava Ukraini</b> - <span class="dusk">' + localnum(this.getStaminaCost('Slava Ukraini')) + '</span> avg<br>'
                                         +'<b>Drink Mushroom Tea</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Mushroom Tea')) + '</span> avg<br>'

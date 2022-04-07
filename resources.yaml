@@ -594,7 +594,7 @@
             output:
                 ice: [250, 450, 306.94]
         #roverworks
-        assemble_haulting_rover:
+        assemble_hauling_rover:
             display_name: Assemble Hauling Rover
             building: rover_works
             input:
@@ -616,6 +616,17 @@
                 stamina: 8
             output:
                 rover_explore: 1
+        make_hauling_token:
+            display_name: Make Hauling Token
+            building: rover_works
+            input:
+                rover_haul: 1
+                power: 40
+                metis: 14
+                stamina: 
+            output:
+                rover_haul: 1
+                hauling_token: 1.1
         #polar workshop
         rodriguez_well:
             display_name: Rodriguez Well
