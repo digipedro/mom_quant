@@ -185,6 +185,8 @@
                 power: 60
             output:
                 carbon_dioxide: [2, 15, 3.6]
+                nitrogen: 0.075
+                argon: 0.075
         make_soil:
             display_name: Make Soil
             building: cad
