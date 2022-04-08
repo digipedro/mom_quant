@@ -623,7 +623,7 @@
                 rover_haul: 1
                 power: 40
                 metis: 14
-                stamina: 
+                stamina: 5
             output:
                 rover_haul: 1
                 hauling_token: 1.1
