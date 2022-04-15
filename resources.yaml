@@ -87,6 +87,7 @@
                 soil: 1
             output:
                 food: [10, 14, 12]
+                sprout_seed: [0, 1, 0.08]
         plant_lettuce:
             display_name: Plant Lettuce
             building: greenhouse
@@ -98,6 +99,7 @@
                 soil: 2
             output:
                 food: [20, 50, 35]
+                lettuce_seed: [0, 1, 0.1]
         plant_carrots:
             display_name: Plant Carrots
             building: greenhouse
@@ -109,6 +111,7 @@
                 soil: 4
             output:
                 food: [50, 70, 60]
+                carrot_seed: [0, 1, 0.1]
         plant_sweet_potato:
             display_name: Plant Sweet Potato
             building: greenhouse
@@ -120,6 +123,7 @@
                 soil: 5
             output:
                 food: [90, 150, 120]
+                sweet_potato_seed: [0, 1, 0.1]
         plant_soy:
             display_name: Plant Soy
             building: greenhouse
@@ -131,6 +135,7 @@
                 soil: 7
             output:
                 food: [140, 230, 185]
+                soy_seed: [0, 1, 0.08]
         plant_coffee:
             display_name: Plant Coffee
             building: greenhouse
@@ -154,6 +159,7 @@
                 soil: 1
             output:
                 bamboo: [16, 28, 22]
+                bamboo_seed: [0, 1, 0.1]
         plant_sorghum:
             display_name: Plant Sorghum
             building: greenhouse
@@ -165,6 +171,7 @@
                 soil: 3
             output:
                 sorghum: [20, 34, 27]
+                sorghum_seed: [0, 1, 0.1]
         grow_mushrooms:
             display_name: Grow Mushrooms
             building: greenhouse
@@ -214,7 +221,7 @@
                 power: 20
                 stamina: 2
             output:
-                dusk: [30, 100, 51]
+                dusk: [60, 75, 67.5]
         #smelter
         smelt_iron:
             display_name: Smelt Iron
