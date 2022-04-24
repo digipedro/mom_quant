@@ -54,6 +54,8 @@
             display_name: Apprentice Chemistry Research
         research_chemistry_n:
             display_name: Novice Chemistry Research
+        research_electrical_n:
+            display_name: Novice Electrical Research
         shard_research:
             display_name: Research Paper
         shard_greenhouse_C:
@@ -670,6 +672,7 @@
             display_name: Baijiu
             building: tea_shop
             input:
+                power: 10
                 fermented_sorghum: 3
                 bamboo: 2
                 water: 3
@@ -920,6 +923,17 @@
                 shard_research: 1
             output:
                 research_chemistry_n: 1
+        electonics_101:
+            display_name: Electronics 101
+            building: library
+            input:
+                stamina: 5
+                power: 10
+                electronic_bits: 3
+                broken_pc: 1
+                shard_research: 1
+            output:
+                research_electrical_n: 1
         #other
         scavange:
             display_name: Scavange (free power)
