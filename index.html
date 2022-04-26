@@ -424,6 +424,8 @@
                     return this.getPowerCost(this.selected_power_source);
                 if (id == 'stamina')
                     return this.getStaminaCost(this.selected_stamina_source);
+                if (id.endsWith('_tools'))
+                    return this.getPrice(id + '_n', type) / 50;
                 if (id == 'dusk')
                     return 1;
                 if (id.startsWith('bazaar_coin_')) {

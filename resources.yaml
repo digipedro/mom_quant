@@ -34,8 +34,6 @@
             display_name: PVC
         pla:
             display_name: PLA
-        perchlorate:
-            display_name: Potassium Perchlorate
         pvc_pipe:
             display_name: PVC Pipe
         coffee_ground:
@@ -56,6 +54,8 @@
             display_name: Novice Chemistry Research
         research_electrical_n:
             display_name: Novice Electrical Research
+        research_fabrication_n:
+            display_name: Novice Fabrication Research
         shard_research:
             display_name: Research Paper
         shard_greenhouse_C:
@@ -75,7 +75,13 @@
         bazaar_coin_U:
             display_name: Bazaar Coin (U)
         bazaar_coin_R:
-            display_name: Bazaar Coin (R)
+            display_name: Bazaar Coin (R)            
+        scavenging_tools_n:
+            display_name: Novice Scavenging Tools
+        fabrication_tools_n:
+            display_name: Novice Fabrication Tools
+        chemistry_tools_n:
+            display_name: Novice Chemistry Tools
     recipies:
         # greenhouse
         plant_sprouts:
@@ -273,6 +279,18 @@
             output:
                 smelt_steel: [2, 15, 3.6]
                 barite: 0.33
+        smelt_glass:
+            display_name: Smelt Glass
+            building: smelter
+            level:
+                fabrication: 20
+            input:
+                stamina: 4
+                power: 20
+                regolith: 300
+                fabrication_tools: 1
+            output:
+                smelt_aluminum: [2, 15, 3.6]
         #machine_shop
         make_aluminum_plate:
             display_name: Make Aluminum Plate
@@ -387,6 +405,56 @@
                 stamina: 3
             output:
                 pvc_pipe: [2, 15, 3.555]
+        make_novice_scavenging_tools:
+            display_name: Make Novice Scavenging Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 24
+            input:
+                smelt_aluminum: 1
+                smelt_titanium: 1
+                pvc_raw: 2
+                metis: 10
+                power: 40
+                stamina: 5
+            output:
+                scavenging_tools_n: 1
+        make_bamboo_furniture:
+            display_name: Make Bamboo Furniture
+            building: 3d_print_shop
+            level:
+                fabrication: 30
+            input:
+                stamina: 6
+                power: 50
+                bamboo: 5
+                pla: 5
+                fabrication_tools: 2
+            output:
+                bamboo_furniture: 1
+        make_battery_backup:
+            display_name: Make Battery Backup
+            building: 3d_print_shop
+            level:
+                fabrication: 35
+            input:
+                stamina: 5
+                power: 30
+                empty_pc: 30
+                electronics_parts: 1
+                smelt_steel: 5
+                fabrication_tools: 2
+            output:
+                battery_backup: 1
+        pvc_transport:
+            display_name: PVC Transport
+            building: 3d_print_shop
+            input:
+                stamina: 2
+                power: 20
+                pvc_pipe: 5
+            output:
+                dusk: [40, 55, 47.5]
         #water filter
         filter_water:
             display_name: Filter Water
@@ -439,6 +507,21 @@
                 hydrogen: 2
                 oxygen: 1
         #chem lab
+        make_concrete:
+            display_name: Make Concrete
+            building: chem_lab
+            level:
+                chemistry: 25
+                fabrication: 25
+            input:
+                stamina: 3
+                power: 50
+                regolith: 1000
+                water: 100
+                sulfur: 10
+                chemistry_tools: 2
+            output:
+                concrete: [5, 10, 7.5]
         make_pvc:
             display_name: Make PVC
             building: chem_lab
@@ -481,6 +564,22 @@
                 stamina: 2
             output:
                 empty_pc: [2, 5, 2.2]
+        make_metis_weave:
+            display_name: Make Metis Weave
+            building: chem_lab
+            level:
+                chemistry: 30
+            input:
+                stamina: 2
+                power: 40
+                metis: 10
+                mushrooms: 8
+                waste: 5
+                water: 10
+                perchlorate: 5
+                chemistry_tools: 2
+            output:
+                metis_weave: [5, 10, 7.5]
         repair_broken_cell:
             display_name: Repair Broken Power Cell
             building: chem_lab
@@ -934,6 +1033,16 @@
                 shard_research: 1
             output:
                 research_electrical_n: 1
+        intro_to_fabrication:
+            display_name: Intro to Fabrication
+            building: library
+            input:
+                stamina: 5
+                power: 10
+                smelt_iron: 2
+                shard_research: 1
+            output:
+                research_fabrication_n: 1
         #other
         scavange:
             display_name: Scavange (free power)
@@ -963,30 +1072,10 @@
                 water_rich_clay: 0.033
                 halite: 0.3
         novice_scavaning:
-            display_name: Novice Scavenge (free power)
+            display_name: Novice Scavenge
             input:
                 stamina: 1
-                dusk: 1
-            output_speculative: true
-            output:
-                ice: 5.42
-                regolith: 5.89
-                metal_bits: 0.27
-                electronic_bits: 0.25
-                water_rich_clay: 0.05
-                vibes: 0.11
-                barite: 0.22
-                dusk: 0.26
-                halite: 0.22
-                empty_pc: 0.03
-                rover_wires: 0.03
-                metis: 0.11
-                smelt_copper: 0.03
-        novice_scavaning_powered:
-            display_name: Novice Scavenge (pay power)
-            input:
-                stamina: 1
-                dusk: 1
+                scavenging_tools: 1
                 power: 1
             output_speculative: true
             output:
