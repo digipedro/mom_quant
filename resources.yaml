@@ -74,6 +74,8 @@
             display_name: Greenhouse Shard (L)
         shard_greenhouse_M:
             display_name: Greenhouse Shard (M)
+        concrete_habitat_C1:
+            display_name: Concrete Habitat (C)
         bazaar_coin_C:
             display_name: Bazaar Coin (C)
         bazaar_coin_U:
@@ -745,12 +747,10 @@
             display_name: Make Hauling Token
             building: rover_works
             input:
-                rover_haul: 1
                 power: 40
                 metis: 14
                 stamina: 5
             output:
-                rover_haul: 1
                 hauling_token: 1.1
         #polar workshop
         rodriguez_well:
@@ -1139,6 +1139,24 @@
                 fabrication_tools: 2
             output:
                 habitat_skeleton: 1
+        create_concrete_habitat:
+            display_name: Create Concrete Habitat
+            building: engineering_bay
+            level:
+                fabrication: 50
+            input:
+                habitat_kit: 1
+                olympus_air_system: 1
+                bamboo_furniture: 4
+                wastezilla: 1
+                battery_backup: 2
+                airlock: 2
+                habitat_skeleton: 1
+                power: 200
+                stamina: 20
+                fabrication_tools: 3
+            output:
+                concrete_habitat_C1: 1
         #Printed Concrete Habitat
         where_lunch:
             display_name: Where Lunch?
