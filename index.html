@@ -487,12 +487,17 @@
                     
                     let sale_breakdown = [];
                     let sale = [0, 0, 0]
+                    let sale_gain = 0;
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].output)) {
                         let item = {}
                         if (Array.isArray(value2)) {
                             sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
                             sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
                             sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
+                            if (key2 == 'dusk')
+                                sale_gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
+                            else
+                                sale_gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
                             item.resource = this.resourceName(key2) + ' x ' + value2[2];
                             item.value = localnum(this.getPrice(key2, this.selected_sell_price) * value2[2]);
                             if (value2[2] > 1 && key2 != 'dusk')
@@ -502,6 +507,10 @@
                             sale[0] += avg_price;
                             sale[1] += avg_price;
                             sale[2] += avg_price;
+                            if (key2 == 'dusk')
+                                sale_gain += avg_price
+                            else
+                                sale_gain += avg_price * 0.95;
                             item.resource = this.resourceName(key2) + ' x ' + value2;
                             item.value = localnum(avg_price);
                             if (value2 > 1 && key2 != 'dusk')
@@ -509,7 +518,7 @@
                         }
                         sale_breakdown.push(item);
                     }
-                    let gain = (sale[2] * 0.95 - cost);
+                    let gain = (sale_gain - cost);
                     let roi = (gain / cost * 100);
                     
                     gain = localnum(gain);

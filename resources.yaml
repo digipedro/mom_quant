@@ -1295,7 +1295,7 @@
             input:
                 stamina: 1
             output:
-                dusk: 1                
+                dusk: 1
     buildings:
         solar_panel:
             display_name: Solar Panel
