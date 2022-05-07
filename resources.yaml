@@ -1242,8 +1242,8 @@
             output:
                 dusk: [250, 350, 300]
         #other
-        scavange:
-            display_name: Scavange (free power)
+        scavenging:
+            display_name: Scavenging (free power)
             input:
                 stamina: 1
             output_speculative: true
@@ -1255,8 +1255,8 @@
                 sprout_seed: 0.033
                 water_rich_clay: 0.033
                 halite: 0.3
-        scavange_powered:
-            display_name: Scavange (pay power)
+        scavenging_powered:
+            display_name: Scavenging (pay power)
             input:
                 stamina: 1
                 power: 1
@@ -1269,8 +1269,8 @@
                 sprout_seed: 0.033
                 water_rich_clay: 0.033
                 halite: 0.3
-        novice_scavaning:
-            display_name: Novice Scavenge
+        novice_scavenging:
+            display_name: Novice Scavenging
             input:
                 stamina: 1
                 scavenging_tools: 1
