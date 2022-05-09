@@ -60,6 +60,8 @@
             display_name: Novice Machining Research
         research_robotics_n:
             display_name: Novice Robotics Research
+        research_mining_n:
+            display_name: Novice Mining Research
         shard_research:
             display_name: Research Paper
         shard_greenhouse_C:
@@ -876,7 +878,19 @@
                 paper: 15
                 bazaar_coin_R: 1
             output:
-                shard_research: 12      
+                shard_research: 12
+        areology_110:
+            display_name: Areology 110
+            building: library
+            input:
+                stamina: 5
+                power: 10
+                water_rich_clay: 10
+                barite: 10
+                halite: 10
+                shard_research: 1
+            output:
+                research_mining_n: 1
         areology_210:
             display_name: Areology 210
             building: library
