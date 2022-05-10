@@ -144,11 +144,11 @@
       
       <template v-slot:item.cost="props">
           <v-edit-dialog>
-            {{ props.item.cost }}
+            {{ props.item.cost | localnum }}
             <template v-slot:input>
             <v-card style="border: 1px solid white;">
               <v-list dense color="grey darken-3" rounded>
-                <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.cost }}</span></v-list-item-title>
+                <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.cost | localnum}}</span></v-list-item-title>
                 <small v-if="props.item.level_required" style="color: #99f">{{ props.item.level_required }}</small>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.cost_breakdown">
@@ -163,11 +163,11 @@
       
       <template v-slot:item.sale="props">
           <v-edit-dialog>
-            {{ props.item.sale }}
+            {{ props.item.sale | localnum }}
             <template v-slot:input>
             <v-card style="border: 1px solid white">
               <v-list dense color="grey darken-3" rounded>
-                <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.sale }}</span></v-list-item-title>
+                <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.sale | localnum }}</span></v-list-item-title>
                 <v-divider></v-divider>
                 <small v-if="props.item.output_speculative" style="color: #f99">Speculative Estimate</small>
                 <template v-for="(line, index) in props.item.sale_breakdown">
@@ -186,7 +186,7 @@
       
       <template v-slot:item.roi="{ item }">
         <v-chip :color="getColor(item.roi)">
-          {{ item.roi }}%
+          {{ item.roi | localnum }}%
         </v-chip>
       </template>
     </v-data-table>
@@ -288,6 +288,11 @@
             ]
 	    },
         filters: {
+            localnum: function (num) {
+                if (isNaN(num))
+                    return "---";
+                return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+            }
         },
         computed: {
             filteredResources() {
@@ -328,15 +333,15 @@
             tableSort(items, index, isDesc) {
                 items.sort((a, b) => {
                     if (isDesc[0]) {
-                        if (typeof a[index] == 'undefined' || a[index].includes('---'))
+                        if ((typeof a[index] == 'number' && isNaN(a[index])) || (typeof a[index] == 'string' && a[index].includes('---')))
                           return -1;
-                        if (typeof b[index] == 'undefined' || b[index].includes('---'))
+                        if ((typeof a[index] == 'number' && isNaN(b[index])) || (typeof b[index] == 'string' && b[index].includes('---')))
                           return 1;
                         return parseFloat(a[index]) < parseFloat(b[index]) ? -1 : 1;
                     } else {
-                        if (typeof a[index] == 'undefined' || a[index].includes('---'))
+                        if ((typeof a[index] == 'number' && isNaN(a[index])) || (typeof a[index] == 'string' && a[index].includes('---')))
                             return 1;
-                        if (typeof b[index] == 'undefined' || b[index].includes('---'))
+                        if ((typeof a[index] == 'number' && isNaN(b[index])) || (typeof b[index] == 'string' && b[index].includes('---')))
                             return -1;
                         return parseFloat(a[index]) > parseFloat(b[index]) ? -1 : 1;
                     }
@@ -491,6 +496,7 @@
                     
                     let sale_breakdown = [];
                     let sale = [0, 0, 0]
+                    let market_fee_offset = [0, 0];
                     let sale_gain = 0;
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].output)) {
                         let item = {}
@@ -498,9 +504,11 @@
                             sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
                             sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
                             sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                            if (key2 == 'dusk')
+                            if (key2 == 'dusk') {
                                 sale_gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                            else
+                                market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * 0.05;
+                                market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * 0.05;
+                            } else
                                 sale_gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
                             item.resource = this.resourceName(key2) + ' x ' + value2[2];
                             item.value = localnum(this.getPrice(key2, this.selected_sell_price) * value2[2]);
@@ -527,17 +535,17 @@
                     
                     gain = localnum(gain);
                     if (sale[0] != sale[1]) {
-                        gain += ' (' + localnum(sale[0] * 0.95 - cost)
-                              + ' ~ ' + localnum(sale[1] * 0.95 - cost) + ')'
+                        gain += ' (' + localnum(sale[0] * 0.95 - cost + market_fee_offset[0])
+                              + ' ~ ' + localnum(sale[1] * 0.95 - cost + market_fee_offset[1]) + ')'
                     }
                     
                     let entry = {
                         id: key,
                         name: value.display_name,
-                        cost: localnum(cost),
-                        sale: localnum(sale[2]),
+                        cost: cost,
+                        sale: sale[2],
                         gain: gain,
-                        roi: localnum(roi),
+                        roi: roi,
                         cost_breakdown: cost_breakdown,
                         sale_breakdown: sale_breakdown,
                         output_speculative: this.odata.recipies[key].output_speculative,

@@ -754,6 +754,20 @@
                 stamina: 5
             output:
                 hauling_token: 1.1
+        hauler_missions_1:
+            display_name: Hauler Missions 1
+            building: rover_works
+            input:
+                power: 40
+            output_speculative: true
+            output:
+                smelt_steel: 0.3
+                shard_solar_panel_E: 1.6
+                smelt_iron: 1.0
+                smelt_copper: 0.4
+                water: 7.0
+                ice: 10.0
+                shard_grindnbrew_E: 0.6
         #polar workshop
         rodriguez_well:
             display_name: Rodriguez Well
