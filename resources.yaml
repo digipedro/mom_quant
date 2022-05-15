@@ -665,9 +665,9 @@
                 stamina: 2
             output:
                 regolith: [100, 200, 128.3]
-                barite: [5, 10, 5.25]
-                halite: [0, 5, 0.25]
-                sulfur: [0, 5, 0.25]
+                barite: [5, 10, 5.3]
+                halite: [0, 5, 0.3]
+                sulfur: [0, 5, 0.3]
         mine_regolith_2:
             display_name: Mine Regolith II
             building: mining_rig
@@ -679,7 +679,7 @@
                 regolith: [200, 400, 256.05]
                 barite: [0, 20, 6.375]
                 halite: [0, 5, 0.3]
-                sulfur: [0, 5, 0.25]
+                sulfur: [0, 5, 0.3]
         mine_regolith_3:
             display_name: Mine Regolith III
             building: mining_rig
@@ -690,7 +690,7 @@
             output:
                 regolith: [400, 700, 506.94]
                 barite: [0, 5, 0.3]
-                sulfur: [0, 5, 0.25]
+                sulfur: [0, 5, 0.3]
         mine_ice_1:
             display_name: Mine Ice I
             building: mining_rig
@@ -761,16 +761,20 @@
                 power: 40
             output_speculative: true
             output:
-                smelt_steel: 0.2105
-                shard_solar_panel_E: 0.8421
-                smelt_iron: 1.0
-                shard_chem_lab_R: 0.4737
-                smelt_copper: 1.0
-                water: 7.3684
-                ice: 5.2632
-                shard_grindnbrew_E: 0.3158
-                shard_3d_print_shop_U: 0.2105
-                shard_greenhouse_C: 0.1053
+                smelt_steel: 0.366
+                shard_solar_panel_E: 0.533
+                smelt_iron: 0.633
+                shard_chem_lab_R: 0.3
+                smelt_copper: 1.13
+                water: 4.66
+                ice: 9.66
+                shard_grindnbrew_E: 0.2
+                shard_3d_print_shop_U: 0.13
+                shard_greenhouse_C: 0.06
+                shard_rover_works_C: 0.06
+                shard_grindnbrew_U: 0.16
+                shard_3d_print_shop_C: 0.1
+                shard_grindnbrew_C: 0.1
         #polar workshop
         rodriguez_well:
             display_name: Rodriguez Well
