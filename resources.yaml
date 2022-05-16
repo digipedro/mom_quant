@@ -92,6 +92,14 @@
             display_name: Novice Fabrication Tools
         chemistry_tools_n:
             display_name: Novice Chemistry Tools
+        electrical_tools_n:
+            display_name: Novice Electrical Tools
+        lifescience_tools_n:
+            display_name: Novice Life Science Tools
+        machining_tools_n:
+            display_name: Novice Machining Tools
+        robotics_tools_n:
+            display_name: Novice Robitics Tools
         wastezilla:
             display_name: WasteZilla
     recipies:
@@ -375,6 +383,7 @@
                 regolith: 500
                 power: 40
                 stamina: 5
+                electrical_tools: 2
             output:
                 electronics_parts: [1, 4, 1.665]
         make_paper:
@@ -390,6 +399,8 @@
         make_structural_parts:
             display_name: Make Structural Parts
             building: 3d_print_shop
+            level:
+                fabrication: 40
             input:
                 smelt_steel: 10
                 titanium_plate: 3
@@ -401,6 +412,8 @@
         make_mushroom_cake:
             display_name: Make Mushroom Cake
             building: 3d_print_shop
+            level:
+                fabrication: 10
             input:
                 mushrooms: 20
                 food: 10
@@ -421,26 +434,116 @@
             display_name: Make Novice Scavenging Tools
             building: 3d_print_shop
             level:
-                fabrication: 24
+                fabrication: 5
             input:
                 smelt_aluminum: 1
-                smelt_titanium: 1
-                pvc_raw: 2
-                metis: 10
-                power: 40
+                bamboo: 10
+                pvc_raw: 1
+                metis: 3
+                power: 20
                 stamina: 5
+                fabrication_tools: 1
             output:
                 scavenging_tools_n: 1
+        make_novice_chemistry_tools:
+            display_name: Make Novice Chemistry Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 20
+            input:
+                argon: 2
+                oxygen: 5
+                pla: 5
+                metis: 5
+                power: 20
+                stamina: 5
+                fabrication_tools: 1
+            output:
+                chemistry_tools_n: 1
+        make_novice_electrical_tools:
+            display_name: Make Novice Electrical Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 15
+            input:
+                empty_pc: 1
+                rover_wires: 3
+                pvc: 1
+                metis: 3
+                power: 20
+                stamina: 5
+                fabrication_tools: 1
+            output:
+                electrical_tools_n: 1
+        make_novice_fabrication_tools:
+            display_name: Make Novice Fabrication Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 10
+            input:
+                pvc_pipe: 1
+                bamboo: 10
+                paper: 5
+                metis: 5
+                power: 20
+                stamina: 5
+            output:
+                fabrication_tools_n: 1
+        make_novice_life_sciense_tools:
+            display_name: Make Novice Life Science Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 15
+            input:
+                soil: 25
+                water: 25
+                regolith: 250
+                metis: 3
+                power: 20
+                stamina: 5
+                fabication_tools: 1
+            output:
+                lifescience_tools_n: 1
+        make_novice_machining_tools:
+            display_name: Make Novice Machining Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 20
+            input:
+                steel: 1
+                metal_bits: 5
+                electronic_bits: 3
+                metis: 5
+                power: 40
+                stamina: 5
+                fabication_tools: 1
+            output:
+                machining_tools_n: 1
+        make_novice_robotice_tools:
+            display_name: Make Novice Robotics Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 25
+            input:
+                metal_bits: 5
+                electronic_bits: 5
+                rover_wires: 5
+                metis: 5
+                power: 40
+                stamina: 5
+                fabication_tools: 2
+            output:
+                robotics_tools_n: 1
         make_bamboo_furniture:
             display_name: Make Bamboo Furniture
             building: 3d_print_shop
             level:
-                fabrication: 30
+                fabrication: 25
             input:
                 stamina: 6
                 power: 50
-                bamboo: 5
-                pla: 5
+                bamboo: 25
+                pla: 3
                 fabrication_tools: 2
             output:
                 bamboo_furniture: 1
@@ -467,6 +570,18 @@
                 pvc_pipe: 5
             output:
                 dusk: [40, 55, 47.5]
+        rare_solar_shard:
+            display_name: Make Rare Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 40
+            input:
+                stamina: 2
+                power: 40
+                siliconcrystals_raw: 1
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_R: 1
         #water filter
         filter_water:
             display_name: Filter Water
@@ -795,12 +910,15 @@
         stem_sets:
             display_name: STEM sets for Earthlings
             building: polar_workshop
+            level:
+                fabrication: 15
             input:
                 ice: 1000
                 regolith: 1000
                 aluminum_plate: 4
                 power: 50
                 stamina: 4
+                fabrication_tools: 1
             output:
                 dusk: [100, 2000, 178.5]
         #bazaar
@@ -829,6 +947,8 @@
         baijiu_by_the_case:
             display_name: Baijiu By the Case
             building: tea_shop
+            level:
+                fabrication: 10
             input:
                 baijiu: 24
                 power: 20
@@ -838,6 +958,8 @@
         aqua_ares:
             display_name: AQUA ARES
             building: tea_shop
+            level:
+                fabrication: 5
             input:
                 water: 100
                 paper: 12
@@ -849,6 +971,8 @@
         bamboo_by_skal:
             display_name: Bamboo by Skal
             building: tea_shop
+            level:
+                fabrication: 5
             input:
                 paper: 2
                 bamboo: 100
@@ -860,6 +984,8 @@
         ceramics_by_yingge:
             display_name: Ceramics By Yingge
             building: tea_shop
+            level:
+                fabrication: 5
             input:
                 regolith: 2000
                 water: 100
