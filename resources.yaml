@@ -115,7 +115,8 @@
                 soil: 1
             output:
                 food: [10, 14, 12]
-                sprout_seed: [0, 1, 0.08]
+                sprout_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
         plant_lettuce:
             display_name: Plant Lettuce
             building: greenhouse
@@ -128,6 +129,7 @@
             output:
                 food: [20, 50, 35]
                 lettuce_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.1]
         plant_carrots:
             display_name: Plant Carrots
             building: greenhouse
@@ -140,6 +142,7 @@
             output:
                 food: [50, 70, 60]
                 carrot_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
         plant_sweet_potato:
             display_name: Plant Sweet Potato
             building: greenhouse
@@ -152,6 +155,7 @@
             output:
                 food: [90, 150, 120]
                 sweet_potato_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
         plant_soy:
             display_name: Plant Soy
             building: greenhouse
@@ -163,7 +167,8 @@
                 soil: 7
             output:
                 food: [140, 230, 185]
-                soy_seed: [0, 1, 0.08]
+                soy_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
         plant_coffee:
             display_name: Plant Coffee
             building: greenhouse
@@ -176,6 +181,7 @@
             output:
                 coffee_cherry: [28, 42, 35]
                 coffee_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
         plant_bamboo:
             display_name: Plant Bamboo
             building: greenhouse
@@ -188,6 +194,7 @@
             output:
                 bamboo: [16, 28, 22]
                 bamboo_seed: [0, 1, 0.1]
+                soil: [0, 1, 0.1]
         plant_sorghum:
             display_name: Plant Sorghum
             building: greenhouse
@@ -199,7 +206,8 @@
                 soil: 3
             output:
                 sorghum: [20, 34, 27]
-                sorghum_seed: [0, 1, 0.1]
+                sorghum_seed: [0, 2, 0.3]
+                soil: [0, 1, 0.1]
         grow_mushrooms:
             display_name: Grow Mushrooms
             building: greenhouse
