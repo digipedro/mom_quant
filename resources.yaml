@@ -598,8 +598,8 @@
             building: water_filter
             input:
                 stamina: 1
-                coffee_cherry: 26
-                power: 10
+                coffee_cherry: 28
+                power: 20
             output:
                 coffee_bean_green: [20, 26, 23]
         ferment_sorghum:
