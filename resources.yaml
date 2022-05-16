@@ -400,7 +400,7 @@
             display_name: Make Structural Parts
             building: 3d_print_shop
             level:
-                fabrication: 40
+                fabrication: 10
             input:
                 smelt_steel: 10
                 titanium_plate: 3
