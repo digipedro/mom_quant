@@ -1318,6 +1318,20 @@
                 fabrication_tools: 3
             output:
                 concrete_habitat_C1: 1
+        make_mining_shard_c:
+            display_name: Make Mining Rig Shard (C)
+            building: engineering_bay
+            level:
+                fabrication: 20
+            input:
+                stamina: 3
+                power: 20
+                bazaar_coin_C: 1
+                dusk: 10
+                metis: 3
+                fabrication_tools: 1
+            output:
+                shard_mining_rig_C: 1
         #Printed Concrete Habitat
         where_lunch:
             display_name: Where Lunch?
