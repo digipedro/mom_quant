@@ -102,6 +102,8 @@
             display_name: Novice Robitics Tools
         wastezilla:
             display_name: WasteZilla
+        siliconcrystals_raw:
+            display_name: Raw Silicon Crystals
     recipies:
         # greenhouse
         plant_sprouts:
@@ -319,6 +321,16 @@
                 fabrication_tools: 1
             output:
                 glass: [1, 4, 2.5]
+        make_silicon_crystals:
+            display_name: Make Silicon Crystals
+            building: smelter
+            input:
+                regolith: 100
+                power: 40
+                stamina: 1
+                carbon_dioxide: 3
+            output:
+                siliconcrystals_raw: [1, 2, 1.1111]
         #machine_shop
         make_aluminum_plate:
             display_name: Make Aluminum Plate
@@ -383,8 +395,10 @@
                 rover_chassis: 1
         #3d print shop
         make_electronics_parts:
-            display_name: Make Electonics Parts
+            display_name: Make Electronics Parts
             building: 3d_print_shop
+            level:
+                electrical: 25
             input:
                 smelt_copper: 10
                 pvc_raw: 2
@@ -590,6 +604,21 @@
                 fabrication_tools: 2
             output:
                 shard_solar_panel_R: 1
+        craft_solar_panel:
+            display_name: Craft Solar Panel (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 60
+            input:
+                power: 200
+                stamina: 5
+                electrical_grade_silicon: 10
+                aluminum_plate: 3
+                glass: 1
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                solar_panel_U: 1
         #water filter
         filter_water:
             display_name: Filter Water
@@ -742,6 +771,15 @@
                 stamina: 1
             output:
                 empty_pc: [3, 6, 3.7]
+        fab_electrical_grade_silicon:
+            display_name: Fabricate Electrical Grade Silicon
+            building: chem_lab
+            input:
+                power: 60
+                stamina: 1
+                siliconcrystals_raw: 4
+            output:
+                electrical_grade_silicon: [1, 2, 1.1111]
         #grind n' brew
         grind_coffee:
             display_name: Grind Coffee Beans
@@ -1154,10 +1192,10 @@
                 shard_greenhouse_U: 1
                 stamina: 3
             output:
-                sprout_seed: [3, 7, 5]
-                lettuce_seed: [1, 3, 2]
-                sorghum_seed: [12, 18, 15]
-                sweet_potato_seed: [1, 3, 2]
+                sprout_seed: [0, 35, 6.25]
+                lettuce_seed: [0, 15, 2.5]
+                sorghum_seed: [0, 90, 18.75]
+                sweet_potato_seed: [0, 15, 2.5]
         advanced_seed_study:
             display_name: Advanced Seed Study
             building: library
@@ -1167,10 +1205,10 @@
                 shard_greenhouse_E: 1
                 stamina: 6
             output:
-                sweet_potato_seed: [1, 3, 2]
-                bamboo_seed: [6, 18, 12]
-                carrot_seed: [2, 6, 4]
-                soy_seed: [1, 2, 1.5]
+                sweet_potato_seed: [0, 21, 3.5]
+                bamboo_seed: [0, 126, 21]
+                carrot_seed: [0, 42, 7]
+                soy_seed: [0, 14, 2.625]
         expert_seed_study:
             display_name: Expert Seed Study
             building: library
@@ -1180,10 +1218,10 @@
                 shard_greenhouse_M: 1
                 stamina: 9
             output:
-                carrot_seed: [3, 7, 5]
-                coffee_seed: [2, 3, 2.5]
-                soy_seed: [2, 4, 3]
-                mushroom_spores: [4, 8, 6]
+                carrot_seed: [0, 70, 12.5]
+                coffee_seed: [0, 30, 6.25]
+                soy_seed: [0, 40, 7.5]
+                mushroom_spores: [0, 80, 15]
         life_science_101:
             display_name: Life Science 101
             building: library
