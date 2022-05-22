@@ -1049,7 +1049,6 @@
                 stamina: 4
                 power: 10
                 paper: 3
-                bazaar_coin_C: 1
             output:
                 shard_research: 2
         senior_research_paper:
@@ -1059,7 +1058,6 @@
                 stamina: 8
                 power: 20
                 paper: 6
-                bazaar_coin_U: 1
             output:
                 shard_research: 5
         graduate_research_paper:
@@ -1069,7 +1067,6 @@
                 stamina: 16
                 power: 30
                 paper: 15
-                bazaar_coin_R: 1
             output:
                 shard_research: 12
         areology_110:

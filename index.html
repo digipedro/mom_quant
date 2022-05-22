@@ -22,6 +22,9 @@
       .v-select-list .v-list-item {
         min-height: 0 !important;
       }
+      .v-btn {
+        text-transform:none !important;
+      }
   </style>
 
 </head>
@@ -127,6 +130,42 @@
             </v-chip-group>
         </v-col>
       </v-row>
+      <v-row dense>
+        <v-col cols="24" sm="12">
+            <v-dialog v-model="level_dialog" persistent max-width="600px" @click:outside="closeLevelDialog">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn color="gray" dark v-bind="attrs" v-on="on">
+                    Filter by XP Level
+                  </v-btn>
+                  <span style="padding-left: 0.5em">{{ level_hide_count }} hidden</span>
+                </template>
+              <v-card>
+                <v-card-title>
+                  <span class="text-h5">Hide tasks above level...</span>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-row v-for="slider in level_sliders" :key="slider.id">
+                      <v-col cols="12">
+                        <v-slider :label="slider.name" v-model="slider.value" class="align-center" min="1" max="145" hide-details>
+                            <template v-slot:append>
+                              <v-text-field v-model="slider.value" class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px"></v-text-field>
+                            </template>
+                        </v-slider>
+                        <span class="small">{{ level_hides[slider.id] }} {{ slider.name }} taks hidden</span>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="gray" dark @click="closeLevelDialog">Apply</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+            
+        </v-col>
+      </v-row>
       <v-row :class="{red:market_time_warning}" class="text-right" dense>
         <v-col class="text-right" cols="24" sm="12">
           Market data {{ market_timetext }}
@@ -215,6 +254,18 @@
         return s.charAt(0).toUpperCase() + s.slice(1)
       }
       
+      const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+      
+      const default_level_hides = {
+                chemistry: 0,
+                electrical: 0,
+                fabrication: 0,
+                'life science': 0,
+                machining: 0,
+                mining: 0,
+                robotics: 0
+            };
+      
       
 	  var vv = new Vue({
 	    el: '#app',
@@ -236,6 +287,13 @@
                     this.selected_stamina_source = value;
                 if (key == 'bldg_hide')
                     this.bldg_hide = JSON.parse(value);
+                if (key == 'levels') {
+                    let level_set = JSON.parse(value);
+                    for (const [key, value] of Object.entries(level_set)) {
+                        let idx = this.level_sliders.findIndex(x => x.id === key);
+                        this.level_sliders[idx].value = value;
+                    }
+                }
             }
             
             setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
@@ -257,6 +315,18 @@
             stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Eat Mushroom Cake', 'Drink Coffee', 'Slava Ukraini', 'Drink Mushroom Tea', 'Job', 'Daily Ration'],
             stamina_help_text: '',
             selected_stamina_source: 'Eat Meal',
+            level_dialog: false,
+            level_sliders: [
+                {id: 'chemistry', name: 'Chemistry', value: 145},
+                {id: 'electrical', name: 'Electrical', value: 145},
+                {id: 'fabrication', name: 'Fabrication', value: 145},
+                {id: 'life science', name: 'Life Science', value: 145},
+                {id: 'machining', name: 'Machining', value: 145},
+                {id: 'mining', name: 'Mining', value: 145},
+                {id: 'robotics', name: 'Robotics', value: 145},
+            ],
+            level_hides: {...default_level_hides},                    
+            level_hide_count: 0,
             market_timestamp: 0,
             market_timetext: 'Loading...',
             market_time_warning: false,
@@ -288,11 +358,8 @@
             ]
 	    },
         filters: {
-            localnum: function (num) {
-                if (isNaN(num))
-                    return "---";
-                return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-            }
+            localnum: function (num) { return localnum(num) },
+            capitalize: function (text) { return capitalize(text) }
         },
         computed: {
             filteredResources() {
@@ -302,7 +369,15 @@
                         filteredTable.push(this.resources[i])
                 }
                 return filteredTable;
-            },
+            }
+        },
+        watch: {
+            level_sliders: {
+                handler(newValue, oldValue) {
+                    this.countHiddenByLevel();
+                },
+                deep: true
+            }
         },
 	    methods: {
             toggleAllBldgs() {
@@ -312,8 +387,13 @@
                 }
                 this.buildTable()
             },
-            menuClick(index){
+            menuClick(index) {
                window.location.href = this.menuitems[index].href;
+            },
+            closeLevelDialog() {
+                this.level_dialog = false;
+                this.saveUserSettings()
+                this.buildTable()
             },
             filter(id) {
                 for (const [key, value] of Object.entries(this.bldg_items)) {
@@ -359,10 +439,33 @@
                         this.bldg_hide.push(value.id)
                 }
                 localStorage.setItem('bldg_hide', JSON.stringify(this.bldg_hide));
+                let levels = {}
+                for (let i = 0; i < this.level_sliders.length; i++) {
+                    levels[this.level_sliders[i].id] = this.level_sliders[i].value;
+                }
+                localStorage.setItem('levels', JSON.stringify(levels));
             },
             changeSelect(id) {
                 this.saveUserSettings();
                 this.buildTable();
+            },
+            countHiddenByLevel() {
+                this.level_hides = {...default_level_hides}
+                
+                if (!('recipies' in this.odata))
+                    return;
+                
+                for (const [key, value] of Object.entries(this.odata.recipies)) {
+                    if ('level' in value) {
+                        for (const [key2, value2] of Object.entries(value.level)) {
+                            let idx = this.level_sliders.findIndex(x => x.id === key2);
+                            if (value2 > this.level_sliders[idx].value) {
+                                this.level_hides[key2]++
+                            }
+                        }
+                    }
+                }
+                this.level_hide_count = sumValues(this.level_hides);
             },
             updateTimer() {
                 if (this.market_timestamp == 0)
@@ -539,6 +642,16 @@
                               + ' ~ ' + localnum(sale[1] * 0.95 - cost + market_fee_offset[1]) + ')'
                     }
                     
+                    let show = !('building' in value && this.checkForFilter(value.building));
+                    if (show && 'level' in value) {
+                        for (const [key2, value2] of Object.entries(value.level)) {
+                            let idx = this.level_sliders.findIndex(x => x.id === key2);
+                            if (value2 > this.level_sliders[idx].value) {
+                                show = false;
+                            }
+                        }
+                    }
+                    
                     let entry = {
                         id: key,
                         name: value.display_name,
@@ -551,7 +664,7 @@
                         output_speculative: this.odata.recipies[key].output_speculative,
                         icon: 'images/' + value.building + '.webp',
                         icon_title: this.building_name(value.building),
-                        show: !('building' in value && this.checkForFilter(value.building))
+                        show: show
                     }
                     
                     if (value.level) {
@@ -563,7 +676,8 @@
                     }
                 
                     if (first_time) {
-                        this.resources.push(entry)
+                        this.resources.push(entry);
+                        this.countHiddenByLevel();
                     } else {
                         for (let i = 0; i < this.resources.length; i++)
                             if (this.resources[i].id == key)
@@ -610,7 +724,7 @@
                 if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
             },
             async loadMarket() {
-                 // await fetch("/market.json")
+                 //await fetch("market.json")
                  await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/wholemarket2")
                     .then(res => res.json())
                     .then(out => {
