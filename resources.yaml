@@ -490,7 +490,7 @@
             input:
                 empty_pc: 1
                 rover_wires: 3
-                pvc: 1
+                pvc_raw: 1
                 metis: 3
                 power: 20
                 stamina: 5
@@ -1375,6 +1375,47 @@
                 fabrication_tools: 1
             output:
                 shard_mining_rig_C: 1
+        crafting_wires:
+            display_name: Crafting Wires
+            building: engineering_bay
+            input:
+                stamina: 2
+                metal_bits: 6
+                electronic_bits: 3
+                pvc_raw: 1
+                fabrication_tools: 1
+            output:
+                rover_wires: [3, 8, 4.725]
+                metal_bits: [0, 2, 0.65]
+                electronic_bits: [0, 2, 0.65]
+        shredding_copper:
+            display_name: Shredding Copper
+            building: engineering_bay
+            level:
+                machining: 3
+            input:
+                stamina: 1
+                power: 10
+                smelt_copper: 1
+                metal_bits: 5
+                machining_tools: 1
+            output:
+                regolith: [0, 100, 45]
+                electronic_bits: [6, 18, 9.8]
+                machining_tools: [0, 1, 0.4]
+        shredding_iron:
+            display_name: Shredding Iron
+            building: engineering_bay
+            level:
+                machining: 1
+            input:
+                stamina: 1
+                power: 10
+                smelt_iron: 3
+                water: 2
+            output:
+                regolith: [0, 100, 41.25]
+                metal_bits: [12, 30, 18.4]      
         #Printed Concrete Habitat
         where_lunch:
             display_name: Where Lunch?
