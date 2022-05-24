@@ -26,6 +26,8 @@
             display_name: Steel
         smelt_copper:
             display_name: Copper Ore
+        smelt_mgs:
+            display_name: Electrical Grade Silicon
         sorghum_seed:
             display_name: Sorghum Seeds
         bamboo_seed:
@@ -368,8 +370,8 @@
                 fabrication_tools: 1
             output:
                 glass: [1, 4, 2.5]
-        make_silicon_crystals:
-            display_name: Make Silicon Crystals
+        smelt_silicon_crystals:
+            display_name: Smelt Silicon Crystals
             building: smelter
             input:
                 regolith: 100
@@ -647,7 +649,7 @@
             input:
                 stamina: 2
                 power: 40
-                siliconcrystals_raw: 1
+                siliconcrystals_raw: 2
                 fabrication_tools: 2
             output:
                 shard_solar_panel_R: 1
@@ -659,13 +661,19 @@
             input:
                 power: 200
                 stamina: 5
-                electrical_grade_silicon: 10
+                smelt_mgs: 10
                 aluminum_plate: 3
                 glass: 1
                 minting_token: 3
                 fabrication_tools: 3
             output:
-                solar_panel-gen3_U1: 1
+                lootset:
+                    - solar_panel-gen3_C1: [0.465, 1, 1]
+                    - solar_panel-gen3_U1: [0.3, 1, 1]
+                    - solar_panel-gen3_R1: [0.15, 1, 1]
+                    - solar_panel-gen3_E1: [0.06, 1, 1]
+                    - solar_panel-gen3_L1: [0.02, 1, 1]
+                    - solar_panel-gen3_M1: [0.05, 1, 1]
         #water filter
         filter_water:
             display_name: Filter Water
@@ -819,14 +827,14 @@
             output:
                 empty_pc: [3, 6, 3.7]
         fab_electrical_grade_silicon:
-            display_name: Fabricate Electrical Grade Silicon
+            display_name: Process Electrical Grade Silicon
             building: chem_lab
             input:
                 power: 60
                 stamina: 1
                 siliconcrystals_raw: 4
             output:
-                electrical_grade_silicon: [1, 2, 1.1111]
+                smelt_mgs: [1, 2, 1.1111]
         #grind n' brew
         grind_coffee:
             display_name: Grind Coffee Beans
@@ -970,22 +978,327 @@
             building: rover_works
             input:
                 power: 40
-            output_speculative: true
             output:
-                smelt_steel: 0.366
-                shard_solar_panel_E: 0.533
-                smelt_iron: 0.633
-                shard_chem_lab_R: 0.3
-                smelt_copper: 1.13
-                water: 4.66
-                ice: 9.66
-                shard_grindnbrew_E: 0.2
-                shard_3d_print_shop_U: 0.13
-                shard_greenhouse_C: 0.06
-                shard_rover_works_C: 0.06
-                shard_grindnbrew_U: 0.16
-                shard_3d_print_shop_C: 0.1
-                shard_grindnbrew_C: 0.1
+                lootset:
+                    - percent: 50
+                    - lootset:
+                        - percent: 13.79
+                        - lootlist:
+                            - ice: [1, 25, 150]
+                        - percent: 13.79
+                        - lootlist:
+                            - water: [1, 30, 100]
+                        - percent: 13.79
+                        - lootlist:
+                            - smelt_iron: [1, 1, 5]
+                        - percent: 13.79
+                        - lootlist:
+                            - smelt_copper: [1, 1, 5]
+                        - percent: 13.79
+                        - lootlist:
+                            - smelt_steel: [1, 1, 3]
+                        - percent: 3.45
+                        - lootlist:
+                            - surveyor_coin: [1, 1, 1]
+                        - percent: 13.79
+                        - lootset:
+                            - shard_grindnbrew_C: [0.0833, 1, 3]
+                            - shard_greenhouse_C: [0.0833, 1, 3]
+                            - shard_solar_panel_C: [0.0833, 1, 3]
+                            - shard_water_filter_C: [0.0833, 1, 3]
+                            - shard_cad_C: [0.0833, 1, 3]
+                            - shard_mining_rig_C: [0.0833, 1, 3]
+                            - shard_smelter_C: [0.0833, 1, 3]
+                            - shard_machine_shop_C: [0.0833, 1, 3]
+                            - shard_sab_reactor_C: [0.0833, 1, 3]
+                            - shard_chem_lab_C: [0.0833, 1, 3]
+                            - shard_3d_print_shop_C: [0.0833, 1, 3]
+                            - shard_rover_works_C: [0.0833, 1, 3]
+                        - percent: 6.9
+                        - lootset:
+                            - shard_grindnbrew_U: [0.0833, 3, 6]
+                            - shard_greenhouse_U: [0.0833, 3, 6]
+                            - shard_solar_panel_U: [0.0833, 3, 6]
+                            - shard_water_filter_U: [0.0833, 3, 6]
+                            - shard_cad_U: [0.0833, 3, 6]
+                            - shard_mining_rig_U: [0.0833, 3, 6]
+                            - shard_smelter_U: [0.0833, 3, 6]
+                            - shard_machine_shop_U: [0.0833, 3, 6]
+                            - shard_sab_reactor_U: [0.0833, 3, 6]
+                            - shard_chem_lab_U: [0.0833, 3, 6]
+                            - shard_3d_print_shop_U: [0.0833, 3, 6]
+                            - shard_rover_works_U: [0.0833, 3, 6]
+                        - percent: 3.45
+                        - lootset:
+                            - shard_grindnbrew_R: [0.0833, 5, 10]
+                            - shard_greenhouse_R: [0.0833, 5, 10]
+                            - shard_solar_panel_R: [0.0833, 5, 10]
+                            - shard_water_filter_R: [0.0833, 5, 10]
+                            - shard_cad_R: [0.0833, 5, 10]
+                            - shard_mining_rig_R: [0.0833, 5, 10]
+                            - shard_smelter_R: [0.0833, 5, 10]
+                            - shard_machine_shop_R: [0.0833, 5, 10]
+                            - shard_sab_reactor_R: [0.0833, 5, 10]
+                            - shard_chem_lab_R: [0.0833, 5, 10]
+                            - shard_3d_print_shop_R: [0.0833, 5, 10]
+                            - shard_rover_works_R: [0.0833, 5, 10]
+                        - percent: 3.45
+                        - lootset:
+                            - shard_grindnbrew_E: [0.0833, 5, 20]
+                            - shard_greenhouse_E: [0.0833, 5, 20]
+                            - shard_solar_panel_E: [0.0833, 5, 20]
+                            - shard_water_filter_E: [0.0833, 5, 20]
+                            - shard_cad_E: [0.0833, 5, 20]
+                            - shard_mining_rig_E: [0.0833, 5, 20]
+                            - shard_smelter_E: [0.0833, 5, 20]
+                            - shard_machine_shop_E: [0.0833, 5, 20]
+                            - shard_sab_reactor_E: [0.0833, 5, 20]
+                            - shard_chem_lab_E: [0.0833, 5, 20]
+                            - shard_3d_print_shop_E: [0.0833, 5, 20]
+                            - shard_rover_works_E: [0.0833, 5, 20]
+                    - repeat: 1.5
+                    - percent: 50
+                    - lootset:
+                        - percent: 13.79
+                        - lootlist:
+                            - ice: [1, 25, 150]
+                        - percent: 13.79
+                        - lootlist:
+                            - water: [1, 30, 100]
+                        - percent: 13.79
+                        - lootlist:
+                            - smelt_iron: [1, 1, 5]
+                        - percent: 13.79
+                        - lootlist:
+                            - smelt_copper: [1, 1, 5]
+                        - percent: 13.79
+                        - lootlist:
+                            - smelt_steel: [1, 1, 3]
+                        - percent: 3.45
+                        - lootlist:
+                            - surveyor_coin: [1, 1, 1]
+                        - percent: 13.79
+                        - lootset:
+                            - shard_grindnbrew_C: [0.0833, 1, 3]
+                            - shard_greenhouse_C: [0.0833, 1, 3]
+                            - shard_solar_panel_C: [0.0833, 1, 3]
+                            - shard_water_filter_C: [0.0833, 1, 3]
+                            - shard_cad_C: [0.0833, 1, 3]
+                            - shard_mining_rig_C: [0.0833, 1, 3]
+                            - shard_smelter_C: [0.0833, 1, 3]
+                            - shard_machine_shop_C: [0.0833, 1, 3]
+                            - shard_sab_reactor_C: [0.0833, 1, 3]
+                            - shard_chem_lab_C: [0.0833, 1, 3]
+                            - shard_3d_print_shop_C: [0.0833, 1, 3]
+                            - shard_rover_works_C: [0.0833, 1, 3]
+                        - percent: 6.9
+                        - lootset:
+                            - shard_grindnbrew_U: [0.0833, 3, 6]
+                            - shard_greenhouse_U: [0.0833, 3, 6]
+                            - shard_solar_panel_U: [0.0833, 3, 6]
+                            - shard_water_filter_U: [0.0833, 3, 6]
+                            - shard_cad_U: [0.0833, 3, 6]
+                            - shard_mining_rig_U: [0.0833, 3, 6]
+                            - shard_smelter_U: [0.0833, 3, 6]
+                            - shard_machine_shop_U: [0.0833, 3, 6]
+                            - shard_sab_reactor_U: [0.0833, 3, 6]
+                            - shard_chem_lab_U: [0.0833, 3, 6]
+                            - shard_3d_print_shop_U: [0.0833, 3, 6]
+                            - shard_rover_works_U: [0.0833, 3, 6]
+                        - percent: 3.45
+                        - lootset:
+                            - shard_grindnbrew_R: [0.0833, 5, 10]
+                            - shard_greenhouse_R: [0.0833, 5, 10]
+                            - shard_solar_panel_R: [0.0833, 5, 10]
+                            - shard_water_filter_R: [0.0833, 5, 10]
+                            - shard_cad_R: [0.0833, 5, 10]
+                            - shard_mining_rig_R: [0.0833, 5, 10]
+                            - shard_smelter_R: [0.0833, 5, 10]
+                            - shard_machine_shop_R: [0.0833, 5, 10]
+                            - shard_sab_reactor_R: [0.0833, 5, 10]
+                            - shard_chem_lab_R: [0.0833, 5, 10]
+                            - shard_3d_print_shop_R: [0.0833, 5, 10]
+                            - shard_rover_works_R: [0.0833, 5, 10]
+                        - percent: 3.45
+                        - lootset:
+                            - shard_grindnbrew_E: [0.0833, 5, 20]
+                            - shard_greenhouse_E: [0.0833, 5, 20]
+                            - shard_solar_panel_E: [0.0833, 5, 20]
+                            - shard_water_filter_E: [0.0833, 5, 20]
+                            - shard_cad_E: [0.0833, 5, 20]
+                            - shard_mining_rig_E: [0.0833, 5, 20]
+                            - shard_smelter_E: [0.0833, 5, 20]
+                            - shard_machine_shop_E: [0.0833, 5, 20]
+                            - shard_sab_reactor_E: [0.0833, 5, 20]
+                            - shard_chem_lab_E: [0.0833, 5, 20]
+                            - shard_3d_print_shop_E: [0.0833, 5, 20]
+                            - shard_rover_works_E: [0.0833, 5, 20]
+        hauler_missions_2:
+            display_name: Hauler Missions 2
+            building: rover_works
+            input:
+                power: 60
+            output:
+                lootset:
+                    - repeat: 0.75
+                    - percent: 50
+                    - lootlist:
+                        - lootset:
+                            - percent: 20
+                            - lootlist:
+                                - water: [1, 30, 100]
+                            - percent: 10
+                            - lootlist:
+                                - dusk: [1, 10, 50]
+                            - percent: 20
+                            - lootlist:
+                                - smelt_steel: [1, 1, 5]
+                            - percent: 20
+                            - lootlist:
+                                - smelt_iron: [1, 1, 5]
+                            - percent: 20
+                            - lootlist:
+                                - smelt_copper: [1, 1, 5]
+                            - percent: 10
+                            - lootlist:
+                                - surveyor_coin: [1, 1, 1]
+                        - lootset:                   
+                            - percent: 49.38
+                            - lootset:
+                                - shard_grindnbrew_C: [0.0833, 1, 3]
+                                - shard_greenhouse_C: [0.0833, 1, 3]
+                                - shard_solar_panel_C: [0.0833, 1, 3]
+                                - shard_water_filter_C: [0.0833, 1, 3]
+                                - shard_cad_C: [0.0833, 1, 3]
+                                - shard_mining_rig_C: [0.0833, 1, 3]
+                                - shard_smelter_C: [0.0833, 1, 3]
+                                - shard_machine_shop_C: [0.0833, 1, 3]
+                                - shard_sab_reactor_C: [0.0833, 1, 3]
+                                - shard_chem_lab_C: [0.0833, 1, 3]
+                                - shard_3d_print_shop_C: [0.0833, 1, 3]
+                                - shard_rover_works_C: [0.0833, 1, 3]
+                            - percent: 24.69
+                            - lootset:
+                                - shard_grindnbrew_U: [0.0833, 3, 6]
+                                - shard_greenhouse_U: [0.0833, 3, 6]
+                                - shard_solar_panel_U: [0.0833, 3, 6]
+                                - shard_water_filter_U: [0.0833, 3, 6]
+                                - shard_cad_U: [0.0833, 3, 6]
+                                - shard_mining_rig_U: [0.0833, 3, 6]
+                                - shard_smelter_U: [0.0833, 3, 6]
+                                - shard_machine_shop_U: [0.0833, 3, 6]
+                                - shard_sab_reactor_U: [0.0833, 3, 6]
+                                - shard_chem_lab_U: [0.0833, 3, 6]
+                                - shard_3d_print_shop_U: [0.0833, 3, 6]
+                                - shard_rover_works_U: [0.0833, 3, 6]
+                            - percent: 18.52
+                            - lootset:
+                                - shard_grindnbrew_R: [0.0833, 5, 10]
+                                - shard_greenhouse_R: [0.0833, 5, 10]
+                                - shard_solar_panel_R: [0.0833, 5, 10]
+                                - shard_water_filter_R: [0.0833, 5, 10]
+                                - shard_cad_R: [0.0833, 5, 10]
+                                - shard_mining_rig_R: [0.0833, 5, 10]
+                                - shard_smelter_R: [0.0833, 5, 10]
+                                - shard_machine_shop_R: [0.0833, 5, 10]
+                                - shard_sab_reactor_R: [0.0833, 5, 10]
+                                - shard_chem_lab_R: [0.0833, 5, 10]
+                                - shard_3d_print_shop_R: [0.0833, 5, 10]
+                                - shard_rover_works_R: [0.0833, 5, 10]
+                            - percent: 7.41
+                            - lootset:
+                                - shard_grindnbrew_E: [0.0833, 5, 20]
+                                - shard_greenhouse_E: [0.0833, 5, 20]
+                                - shard_solar_panel_E: [0.0833, 5, 20]
+                                - shard_water_filter_E: [0.0833, 5, 20]
+                                - shard_cad_E: [0.0833, 5, 20]
+                                - shard_mining_rig_E: [0.0833, 5, 20]
+                                - shard_smelter_E: [0.0833, 5, 20]
+                                - shard_machine_shop_E: [0.0833, 5, 20]
+                                - shard_sab_reactor_E: [0.0833, 5, 20]
+                                - shard_chem_lab_E: [0.0833, 5, 20]
+                                - shard_3d_print_shop_E: [0.0833, 5, 20]
+                                - shard_rover_works_E: [0.0833, 5, 20]
+                    - repeat: 1.25
+                    - percent: 50
+                    - lootlist:
+                        - lootset:
+                            - percent: 20
+                            - lootlist:
+                                - water: [1, 30, 100]
+                            - percent: 10
+                            - lootlist:
+                                - dusk: [1, 10, 50]
+                            - percent: 20
+                            - lootlist:
+                                - smelt_steel: [1, 1, 5]
+                            - percent: 20
+                            - lootlist:
+                                - smelt_iron: [1, 1, 5]
+                            - percent: 20
+                            - lootlist:
+                                - smelt_copper: [1, 1, 5]
+                            - percent: 10
+                            - lootlist:
+                                - surveyor_coin: [1, 1, 1]
+                        - lootset:                   
+                            - percent: 49.38
+                            - lootset:
+                                - shard_grindnbrew_C: [0.0833, 1, 3]
+                                - shard_greenhouse_C: [0.0833, 1, 3]
+                                - shard_solar_panel_C: [0.0833, 1, 3]
+                                - shard_water_filter_C: [0.0833, 1, 3]
+                                - shard_cad_C: [0.0833, 1, 3]
+                                - shard_mining_rig_C: [0.0833, 1, 3]
+                                - shard_smelter_C: [0.0833, 1, 3]
+                                - shard_machine_shop_C: [0.0833, 1, 3]
+                                - shard_sab_reactor_C: [0.0833, 1, 3]
+                                - shard_chem_lab_C: [0.0833, 1, 3]
+                                - shard_3d_print_shop_C: [0.0833, 1, 3]
+                                - shard_rover_works_C: [0.0833, 1, 3]
+                            - percent: 24.69
+                            - lootset:
+                                - shard_grindnbrew_U: [0.0833, 3, 6]
+                                - shard_greenhouse_U: [0.0833, 3, 6]
+                                - shard_solar_panel_U: [0.0833, 3, 6]
+                                - shard_water_filter_U: [0.0833, 3, 6]
+                                - shard_cad_U: [0.0833, 3, 6]
+                                - shard_mining_rig_U: [0.0833, 3, 6]
+                                - shard_smelter_U: [0.0833, 3, 6]
+                                - shard_machine_shop_U: [0.0833, 3, 6]
+                                - shard_sab_reactor_U: [0.0833, 3, 6]
+                                - shard_chem_lab_U: [0.0833, 3, 6]
+                                - shard_3d_print_shop_U: [0.0833, 3, 6]
+                                - shard_rover_works_U: [0.0833, 3, 6]
+                            - percent: 18.52
+                            - lootset:
+                                - shard_grindnbrew_R: [0.0833, 5, 10]
+                                - shard_greenhouse_R: [0.0833, 5, 10]
+                                - shard_solar_panel_R: [0.0833, 5, 10]
+                                - shard_water_filter_R: [0.0833, 5, 10]
+                                - shard_cad_R: [0.0833, 5, 10]
+                                - shard_mining_rig_R: [0.0833, 5, 10]
+                                - shard_smelter_R: [0.0833, 5, 10]
+                                - shard_machine_shop_R: [0.0833, 5, 10]
+                                - shard_sab_reactor_R: [0.0833, 5, 10]
+                                - shard_chem_lab_R: [0.0833, 5, 10]
+                                - shard_3d_print_shop_R: [0.0833, 5, 10]
+                                - shard_rover_works_R: [0.0833, 5, 10]
+                            - percent: 7.41
+                            - lootset:
+                                - shard_grindnbrew_E: [0.0833, 5, 20]
+                                - shard_greenhouse_E: [0.0833, 5, 20]
+                                - shard_solar_panel_E: [0.0833, 5, 20]
+                                - shard_water_filter_E: [0.0833, 5, 20]
+                                - shard_cad_E: [0.0833, 5, 20]
+                                - shard_mining_rig_E: [0.0833, 5, 20]
+                                - shard_smelter_E: [0.0833, 5, 20]
+                                - shard_machine_shop_E: [0.0833, 5, 20]
+                                - shard_sab_reactor_E: [0.0833, 5, 20]
+                                - shard_chem_lab_E: [0.0833, 5, 20]
+                                - shard_3d_print_shop_E: [0.0833, 5, 20]
+                                - shard_rover_works_E: [0.0833, 5, 20]
+
         #polar workshop
         rodriguez_well:
             display_name: Rodriguez Well
@@ -1009,14 +1322,20 @@
             level:
                 fabrication: 15
             input:
+                stamina: 4
+                power: 50
                 ice: 1000
                 regolith: 1000
                 aluminum_plate: 4
-                power: 50
-                stamina: 4
                 fabrication_tools: 1
             output:
-                dusk: [100, 2000, 178.5]
+                lootset:
+                    - dusk: [0.011, 2000, 2000]
+                    - dusk: [0.0549, 800, 800]
+                    - dusk: [0.0549, 300, 300]
+                    - dusk: [0.0549, 200, 200]
+                    - dusk: [0.0549, 150, 150]
+                    - dusk: [0.7692, 100, 100]
         #bazaar
         #tea shop
         baijiu:
@@ -1182,9 +1501,11 @@
                 ice: 20
                 power: 20
                 stamina: 5
-            output_speculative: true
             output:
-                dusk: [6, 90, 12]
+                lootset:
+                    - dusk: [0.0588, 75, 90]
+                    - dusk: [0.1176, 25, 50]
+                    - dusk: [0.8235, 6, 9]
         exobiology_505:
             display_name: Exobiology 505
             building: library
@@ -1193,9 +1514,11 @@
                 ice: 80
                 power: 40
                 stamina: 5
-            output_speculative: true
             output:
-                dusk: [18, 125, 36]
+                lootset:
+                    - dusk: [0.0588, 90, 125]
+                    - dusk: [0.1176, 50, 75]
+                    - dusk: [0.8235, 18, 20]
         exobiology_555:
             display_name: Exobiology 555
             building: library
@@ -1204,9 +1527,11 @@
                 ice: 200
                 power: 60
                 stamina: 5
-            output_speculative: true
             output:
-                dusk: [30, 250, 60]
+                lootset:
+                    - dusk: [0.0588, 150, 200]
+                    - dusk: [0.1176, 80, 125]
+                    - dusk: [0.8235, 28, 32]
         human_factors:
             display_name: Human Factors
             building: library
@@ -1264,10 +1589,12 @@
                 shard_greenhouse_E: 1
                 stamina: 6
             output:
-                sweet_potato_seed: [0, 21, 3.5]
-                bamboo_seed: [0, 126, 21]
-                carrot_seed: [0, 42, 7]
-                soy_seed: [0, 14, 2.625]
+                lootset:
+                    - repeat: 7
+                    - bamboo_seed: [0.25, 6, 18]
+                    - carrot_seed: [0.25, 2, 6]
+                    - sweet_potato_seed: [0.25, 1, 3]
+                    - soy_seed: [0.25, 1, 2]
         expert_seed_study:
             display_name: Expert Seed Study
             building: library
@@ -1277,10 +1604,12 @@
                 shard_greenhouse_M: 1
                 stamina: 9
             output:
-                carrot_seed: [0, 70, 12.5]
-                coffee_seed: [0, 30, 6.25]
-                soy_seed: [0, 40, 7.5]
-                mushroom_spores: [0, 80, 15]
+                lootset:
+                    - repeat: 10
+                    - mushroom_spores: [0.25, 4, 8]
+                    - carrot_seed: [0.25, 3, 7]
+                    - soy_seed: [0.25, 2, 4]
+                    - coffee_seed: [0.25, 2, 3]
         life_science_101:
             display_name: Life Science 101
             building: library
@@ -1447,9 +1776,15 @@
                 pvc_raw: 1
                 fabrication_tools: 1
             output:
-                rover_wires: [3, 8, 4.725]
-                metal_bits: [0, 2, 0.65]
-                electronic_bits: [0, 2, 0.65]
+                lootset:
+                    - percent: 65
+                    - lootlist:
+                        - rover_wires: [1, 3, 4]
+                        - metal_bits: [1, 0, 2]
+                        - electronic_bits: [1, 0, 2]
+                    - percent: 35
+                    - lootlist:
+                        - rover_wires: [1, 6, 8]
         shredding_copper:
             display_name: Shredding Copper
             building: engineering_bay
@@ -1462,9 +1797,15 @@
                 metal_bits: 5
                 machining_tools: 1
             output:
-                regolith: [0, 100, 45]
-                electronic_bits: [6, 18, 9.8]
-                machining_tools: [0, 1, 0.4]
+                lootset:
+                    - percent: 60
+                    - lootlist:
+                        - regolith: [1, 50, 100]
+                        - electronic_bits: [1, 6, 8]                  
+                    - percent: 40
+                    - lootlist:
+                        - electronic_bits: [1, 10, 18]
+                        - machining_tools: [1, 1, 1]
         shredding_iron:
             display_name: Shredding Iron
             building: engineering_bay
@@ -1476,8 +1817,14 @@
                 smelt_iron: 3
                 water: 2
             output:
-                regolith: [0, 100, 41.25]
-                metal_bits: [12, 30, 18.4]      
+                lootset:
+                    - percent: 55
+                    - lootlist:
+                        - regolith: [1, 50, 100]
+                        - metal_bits: [1, 12, 14]                  
+                    - percent: 45
+                    - lootlist:
+                        - metal_bits: [1, 20, 30]   
         #Printed Concrete Habitat
         where_lunch:
             display_name: Where Lunch?
@@ -1563,21 +1910,8 @@
             output:
                 dusk: [250, 350, 300]
         #other
-        scavenging:
-            display_name: Scavenging (free power)
-            input:
-                stamina: 1
-            output_speculative: true
-            output:
-                ice: 3.66
-                regolith: 3.07
-                metal_bits: 0.27
-                carrot_seed: 0.1
-                sprout_seed: 0.033
-                water_rich_clay: 0.033
-                halite: 0.3
         scavenging_powered:
-            display_name: Scavenging (pay power)
+            display_name: Scavenging
             input:
                 stamina: 1
                 power: 1
@@ -1598,19 +1932,22 @@
                 power: 1
             output_speculative: true
             output:
-                ice: 5.42
-                regolith: 5.89
-                metal_bits: 0.27
-                electronic_bits: 0.25
-                water_rich_clay: 0.05
-                vibes: 0.11
-                barite: 0.22
-                dusk: 0.26
-                halite: 0.22
-                empty_pc: 0.03
-                rover_wires: 0.03
-                metis: 0.11
-                smelt_copper: 0.03
+                ice: 1.64
+                regolith: 8.24
+                metal_bits: 0.2
+                electronic_bits: 0.18
+                water_rich_clay: 0.02
+                vibes: 0.0
+                barite: 0.24
+                dusk: 0.72
+                halite: 1.5
+                empty_pc: 0.04
+                rover_wires: 0.0
+                metis: 0.46
+                smelt_copper: 0.0
+                shard_3d_print_shop_L: 0.02
+                shard_chem_lab_L: 0.02
+                sunflower_seeds: 0.2
         do_job:
             display_name: Do Job
             input:

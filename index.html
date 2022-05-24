@@ -587,6 +587,103 @@
             building_name(id) {
                 return (id === undefined) ? '' : this.odata.buildings[id].display_name
             },
+            processLoot(key2, value2, items, sale) {
+                let min_gain = null;
+                let max_gain = null;
+                let repeat = 1;
+                for (let i = 0; i < value2.length; i++) {
+                    let item = Object.keys(value2[i])[0];
+                    let probs = [0, 0, 0];
+                    let price = 1;
+                    if (item == 'repeat') {
+                        repeat = value2[i][item];
+                        continue;
+                    } else if (item == 'percent' || item == 'lootlist' || item == 'lootset') {
+                        let percent = 1.0;
+                        if (item == 'percent') {
+                            percent = value2[i][item] / 100;
+                            i = i + 1;
+                        }
+                        let r_items = {};
+                        let r_sale = { min: 0, max: 0, avg: 0, gain: 0 };
+                        key2 = Object.keys(value2[i])[0];
+                        this.processLoot(key2, value2[i][key2], r_items, r_sale);
+                        
+                        sale.avg += r_sale.avg * percent * repeat;
+                        sale.gain += r_sale.gain * percent * repeat;
+                        probs = [percent, r_sale.min * repeat * 0.95, r_sale.max * repeat * 0.95];
+                        
+                        for (const [i_id, i_values] of Object.entries(r_items)) {
+                            if (items.hasOwnProperty(i_id)) {
+                                items[i_id].number += i_values.number * percent * repeat;
+                                items[i_id].price += i_values.price * percent * repeat;
+                            } else {
+                                items[i_id] = i_values;
+                                items[i_id].number = items[i_id].number * percent * repeat;
+                                items[i_id].price = items[i_id].price * percent * repeat;
+                            }
+                        }
+
+                    } else {
+                        probs = value2[i][item];
+                        price = this.getPrice(item, this.selected_sell_price);
+                    
+                        let avg_yield = (probs[1] + probs[2]) / 2;
+                    
+                        if (items.hasOwnProperty(item)) {
+                            items[item].number += avg_yield * probs[0];
+                            items[item].price += price * avg_yield * probs[0];
+                        } else {
+                            items[item] = {
+                                number: avg_yield * probs[0] * repeat,
+                                name: this.resourceName(item),
+                                price: price * avg_yield * probs[0] * repeat
+                            }
+                        }
+                    
+                        sale.avg += price * avg_yield * probs[0];
+                        if (item != 'dusk')
+                            price = price * 0.95;
+                        sale.gain += price * avg_yield * probs[0];
+                    }
+                    
+                    if (probs[0] == 1) {
+                        if (min_gain == null)
+                            min_gain = 0;
+                        min_gain += price * probs[1];
+                    } else if (key2 == 'lootset') {
+                        if (min_gain == null) {
+                            min_gain = price * probs[1];
+                        } else {
+                            let test = price * probs[1];
+                            min_gain = (test < min_gain) ? test : min_gain;
+                        }
+                    }
+                    
+                    if (probs[0] == 1) {
+                        if (max_gain == null)
+                            max_gain = 0;
+                        max_gain += price * probs[2];
+                    } else {
+                        if (max_gain == null) {
+                            max_gain = price * probs[2];
+                        } else {
+                            let test = price * probs[2];
+                            if (key2 == 'lootset')
+                                max_gain = (test > max_gain) ? test : max_gain;
+                            else
+                                max_gain += test;
+                        }
+                    }
+                }
+                sale.avg = sale.avg * repeat;
+                sale.gain = sale.gain * repeat;
+                min_gain = min_gain * repeat;
+                max_gain = max_gain * repeat;
+                // divide min and max by 0.95 because we already include market fee here but not in simple method
+                sale.min = min_gain / 0.95;
+                sale.max = max_gain / 0.95;
+            },
             buildTable(first_time = false) {
                 for (const [key, value] of Object.entries(this.odata.recipies)) {                    
                     let cost = 0;
@@ -598,83 +695,18 @@
                     }
                     
                     let sale_breakdown = [];
-                    let sale = [0, 0, 0]
+                    let sale = { min: 0, max: 0, avg: 0, gain: 0}
                     let market_fee_offset = [0, 0];
-                    let sale_gain = 0;
                     for (const [key2, value2] of Object.entries(this.odata.recipies[key].output)) {
                         if (key2 == 'lootset' || key2 == 'lootlist') {
                             let items = {};
-                            let min_gain = null;
-                            let max_gain = null;
-                            let repeat = 1;
-                            for (let i = 0; i < value2.length; i++) {
-                                let item = Object.keys(value2[i])[0];
-                                if (item == 'repeat') {
-                                    repeat = value2[i][item];
-                                    continue;
-                                }
-                                let probs = value2[i][item];
-                                let price = this.getPrice(item, this.selected_sell_price);
-                                
-                                let avg_yield = (probs[1] + probs[2]) / 2;
-                                
-                                if (items.hasOwnProperty(item)) {
-                                    items[item].number += avg_yield * probs[0];
-                                    items[item].price += price * avg_yield * probs[0];
-                                } else {
-                                    items[item] = {
-                                        number: avg_yield * probs[0],
-                                        name: this.resourceName(item),
-                                        price:  price * avg_yield * probs[0]
-                                    }
-                                }
-                                
-                                sale[2] += price * avg_yield * probs[0];
-                                if (item != 'dusk')
-                                    price = price * 0.95;
-                                sale_gain += price * avg_yield * probs[0];
-                                
-                                
-                                if (probs[0] == 1) {
-                                    if (min_gain == null)
-                                        min_gain = 0;
-                                    min_gain += price * probs[1];
-                                } else if (key2 == 'lootset') {
-                                    if (min_gain == null) {
-                                        min_gain = price * probs[1];
-                                    } else {
-                                        let test = price * probs[1];
-                                        min_gain = (test < min_gain) ? test : min_gain;
-                                    }
-                                }
-                                
-                                if (probs[0] == 1) {
-                                    if (max_gain == null)
-                                        max_gain = 0;
-                                    max_gain += price * probs[2];
-                                } else {
-                                    if (max_gain == null) {
-                                        max_gain = price * probs[2];
-                                    } else {
-                                        let test = price * probs[2];
-                                        if (key2 == 'lootset')
-                                            max_gain = (test > max_gain) ? test : max_gain;
-                                        else
-                                            max_gain += test;
-                                    }
-                                }
-                            }
-                            sale[2] = sale[2] * repeat;
-                            sale_gain = sale_gain * repeat;
-                            min_gain = min_gain * repeat;
-                            max_gain = max_gain * repeat;
-                            // divide min and max by 0.95 because we already include market fee here but not in simple method
-                            sale[0] = min_gain / 0.95;
-                            sale[1] = max_gain / 0.95;
+                            
+                            this.processLoot(key2, value2, items, sale)
+
                             for (const [aitem, values] of Object.entries(items)) {
                                 let titem = {
-                                    resource: values.name + ' x ' + localnum(values.number * repeat),
-                                    value: localnum(values.price * repeat)
+                                    resource: values.name + ' x ' + localnum(values.number),
+                                    value: localnum(values.price)
                                 }
                                 if (aitem != 'dusk')
                                     titem.unitcost = localnum(this.getPrice(aitem, this.selected_sell_price));
@@ -683,28 +715,28 @@
                         } else {
                             let item = {}
                             if (Array.isArray(value2)) {
-                                sale[0] += this.getPrice(key2, this.selected_sell_price) * value2[0];
-                                sale[1] += this.getPrice(key2, this.selected_sell_price) * value2[1];
-                                sale[2] += this.getPrice(key2, this.selected_sell_price) * value2[2];
+                                sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0];
+                                sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1];
+                                sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2];
                                 if (key2 == 'dusk') {
-                                    sale_gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
+                                    sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
                                     market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * 0.05;
                                     market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * 0.05;
                                 } else
-                                    sale_gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
+                                    sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
                                 item.resource = this.resourceName(key2) + ' x ' + value2[2];
                                 item.value = localnum(this.getPrice(key2, this.selected_sell_price) * value2[2]);
                                 if (value2[2] > 1 && key2 != 'dusk')
                                     item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
                             } else {
                                 let avg_price = this.getPrice(key2, this.selected_sell_price) * value2;
-                                sale[0] += avg_price;
-                                sale[1] += avg_price;
-                                sale[2] += avg_price;
+                                sale.min += avg_price;
+                                sale.max += avg_price;
+                                sale.avg += avg_price;
                                 if (key2 == 'dusk')
-                                    sale_gain += avg_price
+                                    sale.gain += avg_price
                                 else
-                                    sale_gain += avg_price * 0.95;
+                                    sale.gain += avg_price * 0.95;
                                 item.resource = this.resourceName(key2) + ' x ' + value2;
                                 item.value = localnum(avg_price);
                                 if (value2 > 1 && key2 != 'dusk')
@@ -713,13 +745,13 @@
                             sale_breakdown.push(item);
                         }
                     }
-                    let gain = (sale_gain - cost);
+                    let gain = (sale.gain - cost);
                     let roi = (gain / cost * 100);
                     
                     gain = localnum(gain);
-                    if (sale[0] != sale[1]) {
-                        gain += ' (' + localnum(sale[0] * 0.95 - cost + market_fee_offset[0])
-                              + ' ~ ' + localnum(sale[1] * 0.95 - cost + market_fee_offset[1]) + ')'
+                    if (sale.min != sale.max) {
+                        gain += ' (' + localnum(sale.min * 0.95 - cost + market_fee_offset[0])
+                              + ' ~ ' + localnum(sale.max * 0.95 - cost + market_fee_offset[1]) + ')'
                     }
                     
                     let show = !('building' in value && this.checkForFilter(value.building));
@@ -736,7 +768,7 @@
                         id: key,
                         name: value.display_name,
                         cost: cost,
-                        sale: sale[2],
+                        sale: sale.avg,
                         gain: gain,
                         roi: roi,
                         cost_breakdown: cost_breakdown,
