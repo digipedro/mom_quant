@@ -229,9 +229,11 @@
                 stamina: 1
                 power: 60
             output:
-                carbon_dioxide: [2, 15, 3.6]
-                nitrogen: 0.075
-                argon: 0.075
+                lootlist:
+                    - carbon_dioxide: [1.0, 2, 5]
+                    - carbon_dioxide: [0.1111, 1, 10]
+                    - nitrogen: [0.05, 1, 2]
+                    - argon: [0.05, 1, 2]
         make_soil:
             display_name: Make Soil
             building: cad
@@ -239,7 +241,7 @@
                 stamina: 1
                 waste: 2
                 power: 10
-                regolith: 15
+                regolith: 25
             output:
                 soil: 4
         roast_coffee_beans:
@@ -260,6 +262,34 @@
                 stamina: 2
             output:
                 dusk: [60, 75, 67.5]
+        process_sunflower_oil:
+            display_name: Process Sunflower Oil
+            building: cad
+            input:
+                stamina: 1
+                sunflower_seeds: 5
+                power: 20
+            output:
+                sunflower_oil: [1, 2, 1.1]
+        package_sunflower_snack:
+            display_name: Package Sunflower Seed Snack
+            building: cad
+            input:
+                stamina: 3
+                sunflower_seeds: 12
+                power: 10
+                halite: 3
+            output:
+                sunflower_seed_snack: [1, 2, 1.1]
+        roast_sunflower_seeds:
+             display_name: Roast Sunflower Seeds
+             building: cad
+             input:
+                 stamina: 2
+                 sunflower_seeds: 12
+                 power: 10
+             output:
+                 roasted_sunflower_seeds: [1, 2, 1.1]
         #smelter
         smelt_iron:
             display_name: Smelt Iron
@@ -618,7 +648,7 @@
                 minting_token: 3
                 fabrication_tools: 3
             output:
-                solar_panel_U: 1
+                solar_panel-gen3_U1: 1
         #water filter
         filter_water:
             display_name: Filter Water
@@ -837,10 +867,13 @@
                 stamina: 3
                 barite: 3
             output:
-                regolith: [200, 400, 256.05]
-                barite: [0, 20, 6.375]
-                halite: [0, 5, 0.3]
-                sulfur: [0, 5, 0.3]
+                lootlist:
+                    - regolith: [1, 200, 300]
+                    - regolith: [0.1111, 10, 100]
+                    - barite: [0.75, 5, 10]
+                    - barite: [0.1, 5, 10]
+                    - halite: [0.1, 1, 5]
+                    - sulfur: [0.1, 1, 5]
         mine_regolith_3:
             display_name: Mine Regolith III
             building: mining_rig
@@ -1000,7 +1033,9 @@
                 power: 20
                 stamina: 4
             output:
-                dusk: [32, 888, 91.92]
+                lootset:
+                    - dusk: [0.07, 888, 888]
+                    - dusk: [0.93, 32, 32]
         aqua_ares:
             display_name: AQUA ARES
             building: tea_shop
@@ -1039,7 +1074,13 @@
                 power: 20
                 stamina: 3
             output:
-                dusk: [0, 5000, 124.74]
+                lootset:
+                    - dusk: [0.0099, 5000, 5000]
+                    - dusk: [0.0198, 1000, 1000]
+                    - dusk: [0.0495, 500, 500]
+                    - dusk: [0.0792, 200, 200]
+                    - dusk: [0.1485, 100, 100]
+                    - soil: [0.6931, 1, 1]
         #pirate radio
         #library
         freshmen_research_paper:
@@ -1089,9 +1130,11 @@
                 power: 20
                 shard_research: 1
                 regolith: 25
-            output_speculative: true
             output:
-                dusk: [6, 90, 12]
+                lootset:
+                    - dusk: [0.0588, 75, 90]
+                    - dusk: [0.1176, 25, 50]
+                    - dusk: [0.8235, 6, 9]
         areology_310:
             display_name: Areology 310
             building: library
@@ -1189,10 +1232,12 @@
                 shard_greenhouse_U: 1
                 stamina: 3
             output:
-                sprout_seed: [0, 35, 6.25]
-                lettuce_seed: [0, 15, 2.5]
-                sorghum_seed: [0, 90, 18.75]
-                sweet_potato_seed: [0, 15, 2.5]
+                lootset:
+                    - repeat: 5
+                    - sorghum_seed: [0.25, 12, 18]
+                    - sprout_seed: [0.25, 3, 7]
+                    - lettuce_seed: [0.25, 1, 3]
+                    - sweet_potato_seed: [0.25, 1, 3]
         advanced_seed_study:
             display_name: Advanced Seed Study
             building: library
