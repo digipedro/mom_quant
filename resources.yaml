@@ -104,6 +104,8 @@
             display_name: WasteZilla
         siliconcrystals_raw:
             display_name: Raw Silicon Crystals
+        shard_glushkos_greenhouse_A:
+            display_name: Glushko's Greenhouse Shard
     recipies:
         # greenhouse
         plant_sprouts:
@@ -221,6 +223,21 @@
                 sorghum: 25
             output:
                 mushrooms: [6, 15, 10.5]
+        plant_sunflower_seeds:
+            display_name: Plant Sunflower Seeds
+            building: greenhouse
+            input:
+                stamina: 1
+                water: 7
+                power: 15
+                sunflower_seeds: 3
+                soil: 3
+            output:
+                lootlist:
+                    - sunflower_seeds: [0.1, 1, 3]
+                    - sunflower: [1, 1, 2]
+                    - soil: [0.2, 1, 1]
+                    - shard_glushkos_greenhouse_A: [0.0033, 1, 1]
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide
