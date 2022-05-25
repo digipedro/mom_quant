@@ -405,7 +405,7 @@
             input:
                 smelt_steel: 5
                 aluminum_plate: 5
-                power: 30
+                power: 40
                 stamina: 5
             output:
                 machined_parts: [1, 4, 1.66]
