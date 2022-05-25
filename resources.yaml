@@ -438,10 +438,25 @@
                 power: 20
                 stamina: 3
             output:
-                machined_parts: [0, 5, 2.5]
-                electronic_bits: [0, 8, 4]
-                rover_wheels: [0, 8, 4]
-                rover_chassis: 1
+                machined_parts: [0, 5, 2]
+                electronic_bits: [0, 8, 3.3]
+                rover_wheels: [0, 8, 3.3]
+                rover_chassis: [0, 1, 0.95]
+        create_air_tank:
+            display_name: Create Air Tank
+            building: machine_shop
+            level:
+                fabrication: 30
+            input:
+                stamina: 8
+                power: 120
+                steel: 10
+                argon: 1
+                oxygen: 21
+                nitrogen: 78
+                fabrication_tools: 2
+            output:
+                air_tank: 1
         #3d print shop
         make_electronics_parts:
             display_name: Make Electronics Parts
