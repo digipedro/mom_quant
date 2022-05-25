@@ -1056,7 +1056,7 @@
                             - shard_chem_lab_E: [0.0833, 5, 20]
                             - shard_3d_print_shop_E: [0.0833, 5, 20]
                             - shard_rover_works_E: [0.0833, 5, 20]
-                    - repeat: 1.5
+                    - repeat: 2
                     - percent: 50
                     - lootset:
                         - percent: 13.79
@@ -1140,7 +1140,7 @@
                 power: 60
             output:
                 lootset:
-                    - repeat: 0.75
+                    - repeat: 1.5
                     - percent: 50
                     - lootlist:
                         - lootset:
@@ -1219,7 +1219,7 @@
                                 - shard_chem_lab_E: [0.0833, 5, 20]
                                 - shard_3d_print_shop_E: [0.0833, 5, 20]
                                 - shard_rover_works_E: [0.0833, 5, 20]
-                    - repeat: 1.25
+                    - repeat: 2.5
                     - percent: 50
                     - lootlist:
                         - lootset:
