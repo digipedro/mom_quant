@@ -987,7 +987,7 @@
                 metis: 6
                 stamina: 5
             output:
-                hauling_token: 1.1
+                hauling_token: [1, 2, 1.1]
         survey_area1:
             display_name: Survey Area I
             building: rover_works
@@ -2084,21 +2084,23 @@
                 power: 1
             output_speculative: true
             output:
-                ice: 1.64
-                regolith: 8.24
-                metal_bits: 0.2
-                electronic_bits: 0.18
+                ice: 3.62
+                regolith: 6.59
+                metal_bits: 0.22
+                electronic_bits: 0.2
                 water_rich_clay: 0.02
-                vibes: 0.0
+                vibes: 0.01
                 barite: 0.24
-                dusk: 0.72
-                halite: 1.5
+                dusk: 0.36
+                halite: 0.99
                 empty_pc: 0.04
-                rover_wires: 0.0
-                metis: 0.46
+                rover_wires: 0.07
+                metis: 0.3
                 smelt_copper: 0.0
-                shard_3d_print_shop_L: 0.02
-                shard_chem_lab_L: 0.02
+                shard_3d_print_shop_L: 0.01
+                shard_chem_lab_L: 0.01
+                shard_mining_ric_U: 0.01
+                shard_cad_R: 0.01
                 sunflower_seeds: 0.2
         do_job:
             display_name: Do Job
