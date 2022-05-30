@@ -66,18 +66,6 @@
             display_name: Novice Mining Research
         shard_research:
             display_name: Research Paper
-        shard_greenhouse_C:
-            display_name: Greenhouse Shard (C)
-        shard_greenhouse_U:
-            display_name: Greenhouse Shard (U)
-        shard_greenhouse_R:
-            display_name: Greenhouse Shard (R)
-        shard_greenhouse_E:
-            display_name: Greenhouse Shard (E)
-        shard_greenhouse_L:
-            display_name: Greenhouse Shard (L)
-        shard_greenhouse_M:
-            display_name: Greenhouse Shard (M)
         concrete_habitat_C1:
             display_name: Concrete Habitat (C)
         bazaar_coin_C:
@@ -457,6 +445,100 @@
                 fabrication_tools: 2
             output:
                 air_tank: 1
+        disassemble_common_solar_panel:
+            display_name: Disassemble Common Solar Panel
+            building: machine_shop
+            level:
+                electrical: 5
+            input:
+                solar_panel-22_C1: 1
+                stamina: 5
+                electrical_tools: 5
+                power: 60
+            output:
+                electronic_bits: 8
+                rover_wires: 7
+                metal_bits: 6
+                shard_solar_panel_C: [1, 2, 1.5]
+                aluminum_plate: 1
+        disassemble_uncommon_solar_panel:
+            display_name: Disassemble Uncommon Solar Panel
+            building: machine_shop
+            level:
+                electrical: 10
+            input:
+                solar_panel-22_U1: 1
+                stamina: 5
+                electrical_tools: 5
+                power: 60
+            output:
+                metal_bits: [20, 25, 22.5]
+                rover_wires: [15, 20, 17.5]
+                shard_solar_panel_U: [2, 3, 2.5]
+                electronic_bits: [2, 3, 2.5]
+                aluminum_plate: [2, 3, 2.5]
+                circut_component: [2, 3, 2.5]
+                glass: 2
+        disassemble_rare_solar_panel:
+            display_name: Disassemble Rare Solar Panel
+            building: machine_shop
+            level:
+                electrical: 20
+            input:
+                solar_panel-22_R1: 1
+                stamina: 5
+                electrical_tools: 5
+                power: 60
+            output:
+                metal_bits: [12, 20, 16]
+                rover_wires: 10
+                electronic_bits: 10
+                shard_solar_panel_R: [3, 5, 4]
+                glass: 4
+                circut_component: 3
+                electronics_parts: [1, 2, 1.5]
+                smelt_mgs: 2
+                aluminum_plate: 2
+        disassemble_epic_panel:
+            display_name: Disassemble Epic Solar Panel
+            building: machine_shop
+            level:
+                electrical: 30
+            input:
+                solar_panel-22_E1: 1
+                stamina: 5
+                electrical_tools: 5
+                power: 60
+            output:
+                metal_bits: [50, 60, 55]
+                rover_wires: [25, 50, 37.5]
+                electronic_bits: [15, 20, 17.5]
+                shard_solar_panel_E: [10, 15, 12.5]
+                circut_component: [6, 7, 6.5]
+                smelt_mgs: [5, 6, 5.5]
+                glass: 6
+                electronics_parts: 4
+                aluminum_plate: 2
+        disassemble_legendary_panel:
+            display_name: Disassemble Legendary Solar Panel
+            building: machine_shop
+            level:
+                electrical: 40
+            input:
+                solar_panel-22_L1: 1
+                stamina: 5
+                electrical_tools: 5
+                power: 60
+            output:
+                shard_solar_panel_L: [40, 50, 45]
+                rover_wires: [25, 50, 37.5]
+                electronic_bits: 20
+                metal_bits: [25, 30, 27.5]
+                smelt_mgs: [8, 10, 9]
+                circut_component: 10
+                aluminum_plate: [8, 10, 9]
+                electronics_parts: 8
+                glass: 6
         #3d print shop
         make_electronics_parts:
             display_name: Make Electronics Parts
@@ -647,6 +729,21 @@
                 fabrication_tools: 2
             output:
                 battery_backup: 1
+        alt_make_battery_backup:
+            display_name: Alternative Make Battery Backup
+            building: 3d_print_shop
+            level:
+                electrical: 30
+            input:
+                circuit_component: 8
+                full_pc: 4
+                smelt_copper: 3
+                rover_wires: 40
+                electrical_tools: 5
+                power: 100
+                stamina: 10
+            output:
+                battery_backup: 1
         pvc_transport:
             display_name: PVC Transport
             building: 3d_print_shop
@@ -766,7 +863,7 @@
                 power: 20
                 stamina: 3
             output:
-                pvc_raw: [2, 15, 4]
+                pvc_raw: [2, 15, 4.111]
         make_pla:
             display_name: Make PLA
             building: chem_lab
@@ -850,6 +947,95 @@
                 siliconcrystals_raw: 4
             output:
                 smelt_mgs: [1, 2, 1.1111]
+        battery_conditioning1:
+            display_name: Battery Conditioning I
+            building: chem_lab
+            level:
+                electrical: 5
+            input:
+                full_pc: 3
+                stamina: 1
+                electrical_tools: 1
+                power: 20
+            output:
+                empty_pc: 3
+        battery_conditioning2:
+            display_name: Battery Conditioning II
+            building: chem_lab
+            level:
+                electrical: 15
+            input:
+                full_pc: 6
+                stamina: 2
+                electrical_tools: 2
+                power: 40
+            output:
+                empty_pc: 6
+        battery_conditioning3:
+            display_name: Battery Conditioning III
+            building: chem_lab
+            level:
+                electrical: 25
+            input:
+                full_pc: 9
+                stamina: 3
+                electrical_tools: 3
+                power: 60
+            output:
+                empty_pc: 9
+        disassemble_pwoer_cells:
+            display_name: Disassemble Power Cells
+            building: chem_lab
+            level:
+                electrical: 30
+            input:
+                empty_pc: 3
+                electrical_tools: 2
+                power: 20
+                stamina: 2
+            output:
+                rover_wires: [12, 20, 16]
+                electronic_bits: [12, 20, 16]
+                metal_bits: [12, 20, 16]
+                halite: [2, 5, 3.5]
+        alternative_make_electronic_parts:
+            display_name: Alternative Make Electronic Parts
+            building: chem_lab
+            level:
+                electrical: 20
+            input:
+                circuit_component: 5
+                electrical_tools: 3
+                power: 20
+                stamina: 5
+            output:
+                electronics_parts: [1, 4, 1.65]
+        alternative_fabricate_wires:
+            display_name: Alternative Fabricate Wires
+            building: chem_lab
+            level:
+                electrical: 5
+            input:
+                smelt_copper: 1
+                electrical_tools: 1
+                power: 20
+                stamina: 2
+            output:
+                rover_wires: [10, 20, 12.85]
+        fabricate_circuit_component:
+            display_name: Fabricate Circuit Component
+            building: chem_lab
+            level:
+                electrical: 15
+            input:
+                electronic_bits: 5
+                rover_wires: 6
+                siliconcrystals_raw: 1
+                electrical_tools: 1
+                power: 10
+                stamina: 2
+            output:
+                circuit_component: [1, 2, 1.1]
         #grind n' brew
         grind_coffee:
             display_name: Grind Coffee Beans
@@ -887,6 +1073,19 @@
                 stamina: 2
             output:
                 full_pc: 3
+        calibrate_power_inverter:
+            display_name: Calibrate Power Inverter
+            building: solar_panel
+            level:
+                electrical: 15
+            input:
+                stamina: 5
+                full_pc: 1
+                power: 20
+                electrical_tools: 2
+                rover_wires: 3
+            output:
+                empty_pc: 1
         #mining rig
         mine_regolith_1:
             display_name: Mine Regolith I
@@ -2289,32 +2488,35 @@
                 sprout_seed: 0.033
                 water_rich_clay: 0.033
                 halite: 0.3
-        novice_scavenging:
-            display_name: Novice Scavenging
+        advanced_scavenging:
+            display_name: Advanced Scavenging
             input:
                 stamina: 1
                 scavenging_tools: 1
                 power: 1
             output_speculative: true
             output:
-                ice: 3.62
-                regolith: 6.59
-                metal_bits: 0.22
-                electronic_bits: 0.2
+                ice: 5.1267
+                regolith: 6.0
+                metal_bits: 0.28
+                electronic_bits: 0.1867
                 water_rich_clay: 0.02
-                vibes: 0.01
-                barite: 0.24
-                dusk: 0.36
-                halite: 0.99
-                empty_pc: 0.04
-                rover_wires: 0.07
-                metis: 0.3
+                vibes: 0.0267
+                barite: 0.16
+                dusk: 0.2867
+                halite: 0.66
+                empty_pc: 0.0267
+                rover_wires: 0.0533
+                metis: 0.26
                 smelt_copper: 0.0
-                shard_3d_print_shop_L: 0.01
-                shard_chem_lab_L: 0.01
-                shard_mining_ric_U: 0.01
-                shard_cad_R: 0.01
-                sunflower_seeds: 0.2
+                shard_3d_print_shop_L: 0.0067
+                shard_chem_lab_L: 0.0067
+                shard_mining_ric_U: 0.0067
+                shard_cad_R: 0.0067
+                shard_cad_L: 0.0067
+                shard_greenhouse_L: 0.0067
+                shard_polar_workshop_R: 0.0067
+                sunflower_seeds: 0.1733
         do_job:
             display_name: Do Job
             input:
