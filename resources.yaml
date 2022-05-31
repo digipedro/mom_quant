@@ -561,7 +561,7 @@
                 pla: 4
                 bamboo: 8
                 power: 10
-                stamina: 2
+                stamina: 1
             output:
                 paper: [3, 6, 4.5]
         make_structural_parts:
@@ -595,9 +595,9 @@
             input:
                 pvc_raw: 3
                 power: 20
-                stamina: 3
+                stamina: 1
             output:
-                pvc_pipe: [2, 15, 3.555]
+                pvc_pipe: [2, 15, 4.111]
         make_novice_scavenging_tools:
             display_name: Make Novice Scavenging Tools
             building: 3d_print_shop
@@ -759,7 +759,7 @@
             level:
                 fabrication: 40
             input:
-                stamina: 2
+                stamina: 1
                 power: 40
                 siliconcrystals_raw: 2
                 fabrication_tools: 2
@@ -1022,6 +1022,20 @@
                 stamina: 2
             output:
                 rover_wires: [10, 20, 12.85]
+        alt_make_power_cell:
+            display_name: Alternative Make Power Cell
+            building: chem_lab
+            level:
+                electrical: 35
+            input:
+                halite: 3
+                water: 3
+                circuit_component: 1
+                electrical_tools: 3
+                power: 20
+                stamina: 2
+            output:
+                empty_pc: [4, 10, 4.4]
         fabricate_circuit_component:
             display_name: Fabricate Circuit Component
             building: chem_lab
@@ -1882,7 +1896,7 @@
             level:
                 fabrication: 15
             input:
-                stamina: 4
+                stamina: 2
                 power: 50
                 ice: 1000
                 regolith: 1000
@@ -1927,7 +1941,7 @@
             input:
                 baijiu: 24
                 power: 20
-                stamina: 4
+                stamina: 3
             output:
                 lootset:
                     - dusk: [0.07, 888, 888]
@@ -1942,9 +1956,12 @@
                 paper: 12
                 pla: 12
                 power: 20
-                stamina: 3
+                stamina: 1
             output:
-                dusk: [40, 120, 59]
+                lootset:
+                    - dusk: [0.1, 80, 120]
+                    - dusk: [0.2, 60, 80]
+                    - dusk: [0.7, 40, 60]
         bamboo_by_skal:
             display_name: Bamboo by Skal
             building: tea_shop
@@ -1968,7 +1985,7 @@
                 water: 100
                 pla: 10
                 power: 20
-                stamina: 3
+                stamina: 2
             output:
                 lootset:
                     - dusk: [0.0099, 5000, 5000]
