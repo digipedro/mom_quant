@@ -2207,6 +2207,22 @@
                 shard_research: 1
             output:
                 research_electrical_n: 1
+        study_circuit_theory:
+            display_name: Study Circuit Theory
+            building: library
+            level:
+                electrical: 30
+            input:
+                empty_pc: 1
+                broken_pc: 1
+                full_pc: 1
+                electronic_bits: 5
+                circuit_component: 1
+                electrical_tools: 3
+                power: 20
+                stamina: 2
+            output:
+                research_electrical_n: 2
         intro_to_fabrication:
             display_name: Intro to Fabrication
             building: library
