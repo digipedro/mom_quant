@@ -241,6 +241,38 @@
                     - carbon_dioxide: [0.1111, 1, 10]
                     - nitrogen: [0.05, 1, 2]
                     - argon: [0.05, 1, 2]
+        capture_co2_2:
+            display_name: Capture Carbon Dioxide II
+            building: cad
+            level:
+                chemistry: 25
+            input:
+                stamina: 3
+                power: 80
+                chemistry_tools: 2
+            output:
+                lootlist:
+                    - carbon_dioxide: [1.0, 3, 10]
+                    - carbon_dioxide: [0.1111, 4, 9]
+                    - nitrogen: [0.1, 2, 5]
+                    - argon: [0.1, 2, 5]
+                    - nitrogen: [1.0, 1, 1]
+        capture_co2_3:
+            display_name: Capture Carbon Dioxide III
+            building: cad
+            level:
+                chemistry: 50
+            input:
+                stamina: 4
+                power: 100
+                chemistry_tools: 3
+            output:
+                lootlist:
+                    - carbon_dioxide: [1.0, 6, 12]
+                    - carbon_dioxide: [0.1111, 5, 10]
+                    - nitrogen: [0.05, 3, 6]
+                    - argon: [0.05, 3, 8]
+                    - nitrogen: [1.0, 2, 2]
         make_soil:
             display_name: Make Soil
             building: cad
