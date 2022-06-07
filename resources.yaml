@@ -239,7 +239,7 @@
                 lootlist:
                     - carbon_dioxide: [1.0, 2, 5]
                     - carbon_dioxide: [0.1111, 1, 10]
-                    - nitrogen: [0.05, 1, 2]
+                    - nitrogen: [0.1, 1, 2]
                     - argon: [0.05, 1, 2]
         capture_co2_2:
             display_name: Capture Carbon Dioxide II
@@ -2553,35 +2553,6 @@
                 sprout_seed: 0.033
                 water_rich_clay: 0.033
                 halite: 0.3
-        advanced_scavenging:
-            display_name: Advanced Scavenging
-            input:
-                stamina: 1
-                scavenging_tools: 1
-                power: 1
-            output_speculative: true
-            output:
-                ice: 5.1267
-                regolith: 6.0
-                metal_bits: 0.28
-                electronic_bits: 0.1867
-                water_rich_clay: 0.02
-                vibes: 0.0267
-                barite: 0.16
-                dusk: 0.2867
-                halite: 0.66
-                empty_pc: 0.0267
-                rover_wires: 0.0533
-                metis: 0.26
-                smelt_copper: 0.0
-                shard_3d_print_shop_L: 0.0067
-                shard_chem_lab_L: 0.0067
-                shard_mining_ric_U: 0.0067
-                shard_cad_R: 0.0067
-                shard_cad_L: 0.0067
-                shard_greenhouse_L: 0.0067
-                shard_polar_workshop_R: 0.0067
-                sunflower_seeds: 0.1733
         do_job:
             display_name: Do Job
             input:
