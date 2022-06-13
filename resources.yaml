@@ -96,7 +96,7 @@
             display_name: Raw Silicon Crystals
         shard_glushkos_greenhouse_A:
             display_name: Glushko's Greenhouse Shard
-    recipies:
+    recipes:
         # greenhouse
         plant_sprouts:
             display_name: Plant Sprouts
@@ -1015,7 +1015,7 @@
                 power: 60
             output:
                 empty_pc: 9
-        disassemble_pwoer_cells:
+        disassemble_power_cells:
             display_name: Disassemble Power Cells
             building: chem_lab
             level:
@@ -1224,8 +1224,17 @@
                 stamina: 8
             output:
                 rover_explore: 1
-        make_hauling_token:
-            display_name: Make Hauling Token
+        make_hauling_token_c1:
+            display_name: Make Hauling Token (Common Lvl 1)
+            building: rover_works
+            input:
+                power: 40
+                metis: 14
+                stamina: 5
+            output:
+                hauling_token: [1, 2, 1.1]            
+        make_hauling_token_e5:
+            display_name: Make Hauling Token (Epic Lvl 5)
             building: rover_works
             input:
                 power: 20

@@ -452,10 +452,10 @@
             countHiddenByLevel() {
                 this.level_hides = {...default_level_hides}
                 
-                if (!('recipies' in this.odata))
+                if (!('recipes' in this.odata))
                     return;
                 
-                for (const [key, value] of Object.entries(this.odata.recipies)) {
+                for (const [key, value] of Object.entries(this.odata.recipes)) {
                     if ('level' in value) {
                         for (const [key2, value2] of Object.entries(value.level)) {
                             let idx = this.level_sliders.findIndex(x => x.id === key2);
@@ -677,10 +677,10 @@
                 sale.max = max_gain / 0.95;
             },
             buildTable(first_time = false) {
-                for (const [key, value] of Object.entries(this.odata.recipies)) {                    
+                for (const [key, value] of Object.entries(this.odata.recipes)) {                    
                     let cost = 0;
                     let cost_breakdown = [];
-                    for (const [key2, value2] of Object.entries(this.odata.recipies[key].input)) {
+                    for (const [key2, value2] of Object.entries(this.odata.recipes[key].input)) {
                         let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
                         cost += unit_cost;
                         cost_breakdown.push( {resource: this.resourceName(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
@@ -689,7 +689,7 @@
                     let sale_breakdown = [];
                     let sale = { min: 0, max: 0, avg: 0, gain: 0}
                     let market_fee_offset = [0, 0];
-                    for (const [key2, value2] of Object.entries(this.odata.recipies[key].output)) {
+                    for (const [key2, value2] of Object.entries(this.odata.recipes[key].output)) {
                         if (key2 == 'lootset' || key2 == 'lootlist') {
                             let items = {};
                             
@@ -773,7 +773,7 @@
                         roi: roi,
                         cost_breakdown: cost_breakdown,
                         sale_breakdown: sale_breakdown,
-                        output_speculative: this.odata.recipies[key].output_speculative,
+                        output_speculative: this.odata.recipes[key].output_speculative,
                         icon: 'images/' + value.building + '.webp',
                         icon_title: this.building_name(value.building),
                         show: show
