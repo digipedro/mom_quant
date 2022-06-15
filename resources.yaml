@@ -509,7 +509,7 @@
                 shard_solar_panel_U: [2, 3, 2.5]
                 electronic_bits: [2, 3, 2.5]
                 aluminum_plate: [2, 3, 2.5]
-                circut_component: [2, 3, 2.5]
+                circuit_component: [2, 3, 2.5]
                 glass: 2
         disassemble_rare_solar_panel:
             display_name: Disassemble Rare Solar Panel
@@ -527,7 +527,7 @@
                 electronic_bits: 10
                 shard_solar_panel_R: [3, 5, 4]
                 glass: 4
-                circut_component: 3
+                circuit_component: 3
                 electronics_parts: [1, 2, 1.5]
                 smelt_mgs: 2
                 aluminum_plate: 2
@@ -546,7 +546,7 @@
                 rover_wires: [25, 50, 37.5]
                 electronic_bits: [15, 20, 17.5]
                 shard_solar_panel_E: [10, 15, 12.5]
-                circut_component: [6, 7, 6.5]
+                circuit_component: [6, 7, 6.5]
                 smelt_mgs: [5, 6, 5.5]
                 glass: 6
                 electronics_parts: 4
@@ -567,7 +567,7 @@
                 electronic_bits: 20
                 metal_bits: [25, 30, 27.5]
                 smelt_mgs: [8, 10, 9]
-                circut_component: 10
+                circuit_component: 10
                 aluminum_plate: [8, 10, 9]
                 electronics_parts: 8
                 glass: 6
