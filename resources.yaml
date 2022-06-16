@@ -817,7 +817,7 @@
                     - solar_panel-gen3_R1: [0.15, 1, 1]
                     - solar_panel-gen3_E1: [0.06, 1, 1]
                     - solar_panel-gen3_L1: [0.02, 1, 1]
-                    - solar_panel-gen3_M1: [0.05, 1, 1]
+                    - solar_panel-gen3_M1: [0.005, 1, 1]
         #water filter
         filter_water:
             display_name: Filter Water
