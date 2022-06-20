@@ -2494,7 +2494,7 @@
             input:
                 stamina: 4
                 power: 50
-                bazaar_coin_E: 1
+                bazaar_coin_E: 2
                 bazaar_coin_R: 2
                 bazaar_coin_U: 2
             output_speculative: true
