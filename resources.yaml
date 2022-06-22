@@ -409,7 +409,7 @@
                 power: 40
                 stamina: 3
             output:
-                aluminum_plate: [2, 10, 3.33]
+                aluminum_plate: [2, 10, 3.833]
         make_titanium_plate:
             display_name: Make Titanium Plate
             building: machine_shop
@@ -418,7 +418,7 @@
                 power: 40
                 stamina: 3
             output:
-                titanium_plate: [2, 10, 3.33]
+                titanium_plate: [2, 10, 3.833]
         make_machined_parts:
             display_name: Make Machined Parts
             building: machine_shop
