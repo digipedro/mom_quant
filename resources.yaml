@@ -153,6 +153,8 @@
         plant_soy:
             display_name: Plant Soy
             building: greenhouse
+            level:
+                life science: 15
             input:
                 stamina: 5
                 water: 30
@@ -166,6 +168,8 @@
         plant_coffee:
             display_name: Plant Coffee
             building: greenhouse
+            level:
+                life science: 15
             input:
                 stamina: 2
                 water: 8
@@ -179,6 +183,8 @@
         plant_bamboo:
             display_name: Plant Bamboo
             building: greenhouse
+            level:
+                life science: 10
             input:
                 stamina: 2
                 water: 10
@@ -205,6 +211,8 @@
         grow_mushrooms:
             display_name: Grow Mushrooms
             building: greenhouse
+            level:
+                life science: 20
             input:
                 stamina: 5
                 water: 30
@@ -286,6 +294,8 @@
         roast_coffee_beans:
             display_name: Roast Coffee Beans
             building: cad
+            level:
+                chemistry: 25
             input:
                 stamina: 1
                 coffee_bean_green: 20
@@ -450,7 +460,7 @@
             output:
                 rover_wheels: [1, 2, 1.1]
         salvage_rover:
-            display_name: Salvage Rover
+            display_name: Salvage Rover (Low Level Shop)
             building: machine_shop
             input:
                 broken_rover: 1
@@ -462,6 +472,19 @@
                 electronic_bits: [0, 8, 3.3]
                 rover_wheels: [0, 8, 3.3]
                 rover_chassis: [0, 1, 0.95]
+        salvage_rover_maxed:
+            display_name: Salvage Rover (High Level Shop)
+            building: machine_shop
+            input:
+                broken_rover: 1
+                titanum_plate: 2
+                power: 20
+                stamina: 3
+            output:
+                machined_parts: [0, 5, 2.4]
+                electronic_bits: [0, 8, 3.6]
+                rover_wheels: [0, 8, 3.6]
+                rover_chassis: 1
         create_air_tank:
             display_name: Create Air Tank
             building: machine_shop
@@ -832,6 +855,8 @@
         ferment_coffee_beans:
             display_name: Ferment Coffee Beans
             building: water_filter
+            level:
+                chemistry: 20
             input:
                 stamina: 1
                 coffee_cherry: 26
@@ -841,6 +866,8 @@
         ferment_sorghum:
             display_name: Ferment Sorghum
             building: water_filter
+            level:
+                chemistry: 30
             input:
                 stamina: 2
                 sorghum: 12
@@ -909,6 +936,8 @@
         make_perchlorate:
             display_name: Make Perchlorate
             building: chem_lab
+            level:
+                chemistry: 5
             input:
                 halite: 4
                 water: 5
@@ -919,6 +948,8 @@
         craft_empty_pc:
             display_name: Craft Empty Power Cell
             building: chem_lab
+            level:
+                electrical: 10
             input:
                 halite: 4
                 water: 5
@@ -951,25 +982,31 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [2, 4, 2.4]
+                empty_pc: [1, 5, 1.4]
         repair_broken_cell2:
             display_name: Repair Broken Power Cell II
             building: chem_lab
+            level:
+                electrical: 35
             input:
                 broken_pc: 10
-                power: 20
+                power: 18
                 stamina: 1
+                electrical_tools: 2
             output:
-                empty_pc: [2, 4, 2.7]
+                empty_pc: [2, 6, 2.9]
         repair_broken_cell3:
             display_name: Repair Broken Power Cell III
             building: chem_lab
+            level:
+                electrical: 50
             input:
                 broken_pc: 10
-                power: 20
+                power: 15
                 stamina: 1
+                electrical_tools: 3
             output:
-                empty_pc: [3, 6, 3.7]
+                empty_pc: [3, 8, 4.4]
         fab_electrical_grade_silicon:
             display_name: Process Electrical Grade Silicon
             building: chem_lab
@@ -1083,25 +1120,75 @@
             output:
                 circuit_component: [1, 2, 1.1]
         #grind n' brew
-        grind_coffee:
-            display_name: Grind Coffee Beans
+        grind_beans_s:
+            display_name: Grind Beans (Small)
             building: grindnbrew
+            level:
+                life science: 10
             input:
-                stamina: 2
-                coffee_bean_roasted: 14
+                stamina: 1
+                coffee_bean_roasted: 8
+                power: 10
+            output:
+                coffee_ground: [3, 5, 4]
+        grind_beans_m:
+            display_name: Grind Beans (Medium)
+            building: grindnbrew
+            level:
+                life science: 35
+            input:
+                stamina: 1
+                coffee_bean_roasted: 16
                 power: 20
             output:
                 coffee_ground: [8, 12, 10]
-        brew_coffee:
-            display_name: Brew Coffee
+        grind_beans_l:
+            display_name: Grind Beans (Large)
             building: grindnbrew
+            level:
+                life science: 60
             input:
-                stamina: 3
+                stamina: 1
+                coffee_bean_roasted: 28
+                power: 30
+            output:
+                coffee_ground: [14, 20, 17]
+        brew_coffee_s:
+            display_name: Brew Coffee (S)
+            building: grindnbrew
+            level:
+                chemistry: 10
+            input:
+                stamina: 1
                 coffee_ground: 4
+                water: 6
+                power: 20
+            output:
+                coffee_brewed: [1, 2, 1.5]
+        brew_coffee_m:
+            display_name: Brew Coffee (M)
+            building: grindnbrew
+            level:
+                chemistry: 25
+            input:
+                stamina: 2
+                coffee_ground: 8
                 water: 12
-                power: 40
+                power: 30
             output:
                 coffee_brewed: [2, 4, 3]
+        brew_coffee_l:
+            display_name: Brew Coffee (L)
+            building: grindnbrew
+            level:
+                chemistry: 40
+            input:
+                stamina: 1
+                coffee_ground: 16
+                water: 20
+                power: 30
+            output:
+                coffee_brewed: [4, 7, 5.5]
         #solar_panel
         charge_power_cell:
             display_name: Charge Power Cell
@@ -1111,9 +1198,21 @@
                 stamina: 1
             output:
                 full_pc: 1
+        charge_power_cell2:
+            display_name: Charge Power Cell II
+            building: solar_panel
+            level:
+                electrical: 25
+            input:
+                empty_pc: 2
+                stamina: 2
+            output:
+                full_pc: 2
         charge_power_cell3:
             display_name: Charge Power Cell III
             building: solar_panel
+            level:
+                electrical: 50
             input:
                 empty_pc: 3
                 stamina: 2
@@ -1967,6 +2066,8 @@
         mushroom_tea:
             display_name: Mushroom Tea
             building: tea_shop
+            level:
+                life science: 15
             input:
                 mushrooms: 10
                 water: 10
