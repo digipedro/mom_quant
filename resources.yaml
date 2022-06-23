@@ -96,6 +96,8 @@
             display_name: Raw Silicon Crystals
         shard_glushkos_greenhouse_A:
             display_name: Glushko's Greenhouse Shard
+        shard_library_S:
+            display_name: Library Shard
     recipes:
         # greenhouse
         plant_sprouts:
@@ -2505,6 +2507,34 @@
                 fabrication_tools: 1
             output:
                 shard_mining_rig_C: 1
+        make_mining_shard_u:
+            display_name: Make Mining Rig Shard (U)
+            building: engineering_bay
+            level:
+                fabrication: 30
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_U: 1
+                dusk: 10
+                metis: 3
+                fabrication_tools: 2
+            output:
+                shard_mining_rig_U: 1
+        make_library_shard:
+            display_name: Make Library Shard (S)
+            building: engineering_bay
+            level:
+                fabrication: 65
+            input:
+                stamina: 4
+                power: 40
+                metis: 3
+                glass: 4
+                concrete: 2
+                fabrication_tools: 3
+            output:
+                shard_library_S: 1
         crafting_wires:
             display_name: Crafting Wires
             building: engineering_bay
