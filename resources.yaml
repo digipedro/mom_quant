@@ -843,6 +843,21 @@
                     - solar_panel-gen3_E1: [0.06, 1, 1]
                     - solar_panel-gen3_L1: [0.02, 1, 1]
                     - solar_panel-gen3_M1: [0.005, 1, 1]
+        create_engineering_bay_kit:
+            display_name: Create Engineering Bay Kit
+            building: 3d_print_shop
+            level:
+                fabrication: 80
+            input:
+                power: 80
+                stamina: 5
+                dusk: 400
+                bazaar_coin_L: 10
+                bazaar_coin_M: 10
+                minting_token: 5
+                fabrication_tools: 4
+            output:
+                engineering_bay_kit: 1
         #water filter
         filter_water:
             display_name: Filter Water
@@ -917,24 +932,81 @@
         make_pvc:
             display_name: Make PVC
             building: chem_lab
+            level:
+                chemistry: 10
+            input:
+                methane: 3
+                hydrogen: 3
+                water: 3
+                power: 10
+                stamina: 1
+                chemistry_tools: 1
+            output:
+                pvc_raw: [1, 5, 2.15]
+        make_pvc2:
+            display_name: Make PVC II
+            building: chem_lab
+            level:
+                chemistry: 35
             input:
                 methane: 5
                 hydrogen: 5
                 water: 5
                 power: 20
-                stamina: 3
+                stamina: 2
+                chemistry_tools: 2
             output:
-                pvc_raw: [2, 15, 4.111]
-        make_pla:
-            display_name: Make PLA
+                pvc_raw: [2, 7, 3.2222]
+        make_pvc3:
+            display_name: Make PVC III
             building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                methane: 7
+                hydrogen: 7
+                water: 7
+                power: 30
+                stamina: 3
+                chemistry_tools: 3
+            output:
+                pvc_raw: [4, 13, 6.6666]
+        make_pla1:
+            display_name: Make PLA I
+            building: chem_lab
+            level:
+                chemistry: 5
+            input:
+                fermented_sorghum: 8
+                carbon_dioxide: 2
+                power: 10
+                stamina: 1
+            output:
+                pla: [3, 5, 4]
+        make_pla2:
+            display_name: Make PLA II
+            building: chem_lab
+            level:
+                chemistry: 20
             input:
                 fermented_sorghum: 20
                 carbon_dioxide: 5
                 power: 20
-                stamina: 1
+                stamina: 2
             output:
                 pla: [5, 10, 7.5]
+        make_pla3:
+            display_name: Make PLA III
+            building: chem_lab
+            level:
+                chemistry: 40
+            input:
+                fermented_sorghum: 35
+                carbon_dioxide: 10
+                power: 30
+                stamina: 3
+            output:
+                pla: [10, 20, 15]
         make_perchlorate:
             display_name: Make Perchlorate
             building: chem_lab

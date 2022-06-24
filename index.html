@@ -497,6 +497,17 @@
                     return (this.getPrice('coffee_brewed', this.selected_buy_price) - 2) / 10;
                 if (method == 'Drink Mushroom Tea')
                     return (this.getPrice('mushroom_tea', this.selected_buy_price) - 7) / 15;
+                if (method == 'Sunflower Seeds')
+                    return (this.getPrice('stamina', this.selected_buy_price) * 2
+                        + this.getPrice('sunflower_seeds', this.selected_buy_price) * 12
+                        + this.getPrice('power', this.selected_buy_price) * 10
+                        - 1.5 * waste) / 7.5
+                if (method == 'Sunflower Snack')
+                    return (this.getPrice('stamina', this.selected_buy_price) * 3
+                        + this.getPrice('sunflower_seeds', this.selected_buy_price) * 12
+                        + this.getPrice('power', this.selected_buy_price) * 10
+                        + this.getPrice('halite', this.selected_buy_price) * 3
+                        - 1.5 * waste) / 18
                 if (method == 'Job')
                     return 1.04;
                 if (method == 'Daily Ration')
@@ -799,12 +810,14 @@
                 this.stamina_help_text = '<b>Eat Snack</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
                                         +'<b>Eat Meal</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
                                         +'<b>Eat Feast</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
-                                        +'<b>Eat Mushroom Cake</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Mushroom Cake')) + '</span> avg<br>'
                                         +'<b>Drink Coffee</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Coffee')) + '</span> avg<br>'
                                         +'<b>Slava Ukraini</b> - <span class="dusk">' + localnum(this.getStaminaCost('Slava Ukraini')) + '</span> avg<br>'
+                                        +'<b>Roasted Sun Seeds</b>  - <span class="dusk">' + localnum(this.getStaminaCost('Sunflower Seeds')) + '</span> avg<br>'
+                                        +'<b>Sunflower Snack</b>  - <span class="dusk">' + localnum(this.getStaminaCost('Sunflower Snack')) + '</span> avg<br>'
                                         +'<b>Drink Mushroom Tea</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Mushroom Tea')) + '</span> avg<br>'
+                                        +'<b>Eat Mushroom Cake</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Mushroom Cake')) + '</span> avg<br>'
                                         +'<b>Job</b> - <span class="dusk">1.040</span><br>'
-                                        +'<b>Daily Ration</b> - <span class="dusk"> 0.000</span><br>'
+                                        +'<b>Eat Ration</b> - <span class="dusk"> 0.000</span><br>'
                 this.power_market = localnum(this.getPowerCost('Market Price') * 20);
                 this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
                 this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);
