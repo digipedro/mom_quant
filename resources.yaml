@@ -1236,7 +1236,7 @@
                 stamina: 1
                 coffee_ground: 4
                 water: 6
-                power: 20
+                power: 15
             output:
                 coffee_brewed: [1, 2, 1.5]
         brew_coffee_m:
@@ -1246,23 +1246,23 @@
                 chemistry: 25
             input:
                 stamina: 2
-                coffee_ground: 8
-                water: 12
-                power: 30
+                coffee_ground: 10
+                water: 10
+                power: 20
             output:
-                coffee_brewed: [2, 4, 3]
+                coffee_brewed: [3, 5, 4]
         brew_coffee_l:
             display_name: Brew Coffee (L)
             building: grindnbrew
             level:
                 chemistry: 40
             input:
-                stamina: 1
+                stamina: 3
                 coffee_ground: 16
                 water: 20
-                power: 30
+                power: 25
             output:
-                coffee_brewed: [4, 7, 5.5]
+                coffee_brewed: [5, 9, 7]
         #solar_panel
         charge_power_cell:
             display_name: Charge Power Cell
