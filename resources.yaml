@@ -1056,7 +1056,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [1, 5, 1.4]
+                empty_pc: [1, 5, 1.9]
         repair_broken_cell2:
             display_name: Repair Broken Power Cell II
             building: chem_lab
