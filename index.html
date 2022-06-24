@@ -104,8 +104,9 @@
                   <b>Market Price</b> (<span class="dusk">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
                   <b>Charge Power Cell</b> (<span class="dusk">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
                   <b>Charge Power Cell III</b> (<span class="dusk">{{ power_charge3 }}</span> per cell) - Stamina cost of charging Power cells 3-for-2<br>
-                  <b>1 Dusk Work Order</b> (<span class="dusk">{{ work_order1 }}</span> per cell) - 1.04 Dusk to charge cell<br>
-                  <b>2 Dusk Work Order</b> (<span class="dusk">{{ work_order2 }}</span> per cell) - 2.08 Dusk to charge cell<br>
+                  <b>1 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order1 }}</span> per cell) - 1.04 Dusk to charge cell<br>
+                  <b>2 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order2 }}</span> per cell) - 2.08 Dusk to charge cell<br>
+                  <b>3 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order3 }}</span> per cell) - 3.12 Dusk to charge cell<br>
                   Prices included 2% chance of cell breaking
             </span>
         </v-col>
@@ -312,7 +313,7 @@
             selected_buy_price: 'Last Sold',
             sell_price: ['Last Sold', '24H Avg', 'Split', 'Lower', 'Higher'],
             selected_sell_price: 'Last Sold',
-            power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III', '1 Dusk Work Order', '2 Dusk Work Order'],
+            power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III', '1 Dusk per Cell Work Order', '2 Dusk per Cell Work Order', '3 Dusk per Cell Work Order'],
             selected_power_source: 'Charge Power Cell',
             stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Eat Mushroom Cake', 'Drink Coffee', 'Slava Ukraini', 'Drink Mushroom Tea', 'Job', 'Daily Ration'],
             stamina_help_text: '',
@@ -337,6 +338,7 @@
             power_charge3: 1,
             work_order1: 1,
             work_order2: 2,
+            work_order3: 3,
             user_settings: {},
             bldg_items: [],
             bldg_hide: [],
@@ -526,10 +528,12 @@
                 let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.02;
                 if (source == 'Charge Power Cell III')
                     return (this.getStaminaCost(this.selected_stamina_source) * 2 + broken_tax * 3) / 60
-                if (source == '1 Dusk Work Order')
+                if (source == '1 Dusk per Cell Work Order')
                     return (1.04 + broken_tax ) / 20
-                if (source == '2 Dusk Work Order')
-                    return (2.08 * 2 + broken_tax * 2) / 40
+                if (source == '2 Dusk per Cell Work Order')
+                    return (2.08 + broken_tax ) / 20
+                if (source == '3 Dusk per Cell Work Order')
+                    return (3.12 + broken_tax) / 20
                 // 'Charge Power Cell'
                 return (this.getStaminaCost(this.selected_stamina_source) + broken_tax) / 20
             },
@@ -829,8 +833,9 @@
                 this.power_market = localnum(this.getPowerCost('Market Price') * 20);
                 this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
                 this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);
-                this.work_order1 = localnum(this.getPowerCost('1 Dusk Work Order') * 20);
-                this.work_order2 = localnum(this.getPowerCost('2 Dusk Work Order') * 20);
+                this.work_order1 = localnum(this.getPowerCost('1 Dusk per Cell Work Order') * 20);
+                this.work_order2 = localnum(this.getPowerCost('2 Dusk per Cell Work Order') * 20);
+                this.work_order3 = localnum(this.getPowerCost('3 Dusk per Cell Work Order') * 20);
             },
             async loadYAML() {
                 await fetch('resources.yaml', {
