@@ -572,6 +572,8 @@
                     return 1;
                 if (id == 'surveyor_coin')
                     return 45;
+                if (id == 'resource_credit')
+                    return 0.5;
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);
                     if (rarity == 'C' || rarity == 'U')

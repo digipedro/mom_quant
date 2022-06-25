@@ -544,9 +544,9 @@
                 metal_bits: [20, 25, 22.5]
                 rover_wires: [15, 20, 17.5]
                 shard_solar_panel_U: [2, 3, 2.5]
-                electronic_bits: [2, 3, 2.5]
-                aluminum_plate: [2, 3, 2.5]
-                circuit_component: [2, 3, 2.5]
+                electronic_bits: [1, 2, 1.5]
+                aluminum_plate: [1, 2, 1.5]
+                circuit_component: [1, 2, 1.5]
                 glass: 2
         disassemble_rare_solar_panel:
             display_name: Disassemble Rare Solar Panel
@@ -580,7 +580,7 @@
                 power: 60
             output:
                 metal_bits: [50, 60, 55]
-                rover_wires: [25, 50, 37.5]
+                rover_wires: [25, 30, 27.5]
                 electronic_bits: [15, 20, 17.5]
                 shard_solar_panel_E: [10, 15, 12.5]
                 circuit_component: [6, 7, 6.5]
@@ -601,7 +601,7 @@
             output:
                 shard_solar_panel_L: [40, 50, 45]
                 rover_wires: [25, 50, 37.5]
-                electronic_bits: 20
+                electronic_bits: [10, 30, 20]
                 metal_bits: [25, 30, 27.5]
                 smelt_mgs: [8, 10, 9]
                 circuit_component: 10
@@ -2701,9 +2701,8 @@
                 food: 100
                 water: 12
                 bazaar_coin_U: 1
-            output_speculative: true
             output:
-                dusk: [70, 120, 95]
+                dusk: [70, 120, 88.3333]
         jam_session:
             display_name: Jam Session
             building: concrete_habitat
@@ -2727,9 +2726,11 @@
                 bazaar_coin_E: 2
                 bazaar_coin_R: 2
                 bazaar_coin_U: 2
-            output_speculative: true
             output:
-                dusk: [100, 1000, 170]
+                lootset:
+                    - dusk: [0.0588, 750, 1000]
+                    - dusk: [0.1176, 125, 750]
+                    - dusk: [0.8235, 100, 125]
         social_science_experiments:
             display_name: Social Science Experiments
             building: concrete_habitat
@@ -2739,9 +2740,11 @@
                 food: 100
                 water: 50
                 bazaar_coin_R: 2
-            output_speculative: true
             output:
-                dusk: [100, 1000, 170]
+                lootset:
+                    - dusk: [0.0588, 500, 1000]
+                    - dusk: [0.1176, 250, 500]
+                    - dusk: [0.8235, 100, 200]
         wine_down:
             display_name: Wine Down
             building: concrete_habitat
@@ -2774,13 +2777,20 @@
             building: concrete_habitat
             input:
                 stamina: 6
-                power: 20
+                power: 60
                 food: 500
                 water: 100
                 bazaar_coin_U: 1
-            output_speculative: true
             output:
-                dusk: [250, 350, 300]
+                lootlist:
+                    - lootset:
+                        - dusk: [0.0588, 300, 350]
+                        - dusk: [0.1176, 275, 300]
+                        - dusk: [0.8235, 250, 275]
+                    - lootset:
+                        - resource_credit: [0.0588, 4, 5]
+                        - resource_credit: [0.1176, 2, 4]
+                        - resource_credit: [0.8235, 1, 2]
         #other
         scavenging_powered:
             display_name: Scavenging
