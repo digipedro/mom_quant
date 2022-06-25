@@ -2701,9 +2701,11 @@
                 baijiu: 6
                 water: 42
                 bazaar_coin_R: 1
-            output_speculative: true
             output:
-                vibes: [10, 25, 17.5]
+                lootset:
+                    - vibes: [0.0588, 15, 25]
+                    - vibes: [0.1176, 12, 15]
+                    - vibes: [0.8235, 10, 12]
         advanced_project_testing:
             display_name: Advanced Project Testing
             building: concrete_habitat
@@ -2737,9 +2739,11 @@
                 baijiu: 12
                 ice: 36
                 bazaar_coin_C: 1
-            output_speculative: true
             output:
-                dusk: [0, 300, 150]
+                lootset:
+                    - dusk: [0.0588, 200, 300]
+                    - dusk: [0.1176, 100, 200]
+                    - dusk: [0.8235, 0, 100]
         reality_tv_rights:
             display_name: Reality TV Rights
             building: concrete_habitat
@@ -2748,9 +2752,11 @@
                 power: 20
                 food: 250
                 baijiu: 12
-            output_speculative: true
             output:
-                dusk: [80, 200, 140]
+                lootset:
+                    - dusk: [0.0588, 150, 200]
+                    - dusk: [0.1176, 100, 150]
+                    - dusk: [0.8235, 80, 100]
         mars_bnb:
             display_name: Mars BnB
             building: concrete_habitat
