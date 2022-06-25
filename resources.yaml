@@ -597,6 +597,19 @@
                 electronics_parts: 8
                 glass: 6
         #3d print shop
+        make_electronic_bits:
+            display_name: Make Electronic Bits
+            building: 3d_print_shop
+            level:
+                electrical: 5
+            input:
+                smelt_iron: 1
+                rover_wires: 1
+                electrical_tools: 1
+                power: 40
+                stamina: 1
+            output:
+                electronic_bits: [10, 20, 12.85]
         make_electronics_parts:
             display_name: Make Electronics Parts
             building: 3d_print_shop
