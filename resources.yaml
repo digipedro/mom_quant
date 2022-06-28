@@ -90,6 +90,8 @@
             display_name: Novice Machining Tools
         robotics_tools_n:
             display_name: Novice Robitics Tools
+        lifescience_tools:
+            display_name: Life Science Tools
         wastezilla:
             display_name: WasteZilla
         siliconcrystals_raw:
@@ -292,7 +294,33 @@
                 power: 10
                 regolith: 25
             output:
-                soil: 4
+                soil: [4, 6, 5]
+        make_soil2:
+            display_name: Make Soil II
+            building: cad
+            level:
+                life science: 25
+            input:
+                stamina: 2
+                waste: 10
+                power: 20
+                regolith: 100
+                lifescience_tools: 2
+            output:
+                soil: [12, 20, 16]
+        make_soil3:
+            display_name: Make Soil III
+            building: cad
+            level:
+                life science: 50
+            input:
+                stamina: 3
+                waste: 25
+                power: 30
+                regolith: 250
+                lifescience_tools: 3
+            output:
+                soil: [24, 40, 32]
         roast_coffee_beans:
             display_name: Roast Coffee Beans
             building: cad
@@ -892,8 +920,34 @@
                 stamina: 1
                 ice: 40
             output:
-                water: 16
-                regolith: 4
+                water: [15, 18, 16.5]
+                regolith: [3, 5, 4]
+        filter_water2:
+            display_name: Filter Water II
+            building: water_filter
+            level:
+                life science: 30
+            input:
+                power: 20
+                stamina: 2
+                ice: 100
+                lifescience_tools: 2
+            output:
+                water: [35, 60, 57.5]
+                regolith: [8, 12, 10]
+        filter_water3:
+            display_name: Filter Water III
+            building: water_filter
+            level:
+                life science: 60
+            input:
+                power: 30
+                stamina: 3
+                ice: 250
+                lifescience_tools: 3
+            output:
+                water: [75, 125, 100]
+                regolith: [12, 18, 15]
         ferment_coffee_beans:
             display_name: Ferment Coffee Beans
             building: water_filter
@@ -906,20 +960,44 @@
             output:
                 coffee_bean_green: [20, 26, 23]
         ferment_sorghum:
-            display_name: Ferment Sorghum
+            display_name: Ferment Sorghum I
+            building: water_filter
+            input:
+                stamina: 2
+                sorghum: 6
+                power: 10
+            output:
+                fermented_sorghum: [5, 10, 7.5]
+        ferment_sorghum2:
+            display_name: Ferment Sorghum II
             building: water_filter
             level:
                 chemistry: 30
             input:
                 stamina: 2
                 sorghum: 12
-                power: 10
+                power: 15
+                chemistry_tools: 1
             output:
-                fermented_sorghum: [18, 36, 27]
+                fermented_sorghum: [12, 20, 16]
+        ferment_sorghum3:
+            display_name: Ferment Sorghum III
+            building: water_filter
+            level:
+                chemistry: 55
+            input:
+                stamina: 3
+                sorghum: 24
+                power: 20
+                chemistry_tools: 2
+            output:
+                fermented_sorghum: [20, 30, 25]
         #Sabatier Reactor
         produce_methane:
             display_name: Produce Methane
             building: sab_reactor
+            level:
+                chemistry: 5
             input:
                 carbon_dioxide: 1
                 hydrogen: 4
@@ -928,16 +1006,70 @@
             output:
                 methane: 1
                 water: 2
+        produce_methane2:
+            display_name: Produce Methane II
+            building: sab_reactor
+            level:
+                chemistry: 40
+            input:
+                carbon_dioxide: 3
+                hydrogen: 12
+                power: 20
+                stamina: 3
+                chemistry_tools: 2
+            output:
+                methane: 3
+                water: 6
+        produce_methane3:
+            display_name: Produce Methane III
+            building: sab_reactor
+            level:
+                chemistry: 80
+            input:
+                carbon_dioxide: 8
+                hydrogen: 32
+                power: 40
+                stamina: 4
+                chemistry_tools: 3
+            output:
+                methane: 5
+                water: 10
         split_water:
             display_name: Split Water
             building: sab_reactor
             input:
-                water: 2
+                water: 8
                 power: 10
                 stamina: 1
             output:
-                hydrogen: 2
-                oxygen: 1
+                hydrogen: 3
+                oxygen: 2
+        split_water2:
+            display_name: Split Water II
+            building: sab_reactor
+            level:
+                chemistry: 30
+            input:
+                water: 24
+                power: 20
+                stamina: 2
+                chemistry_tools: 2
+            output:
+                hydrogen: 12
+                oxygen: 6
+        split_water3:
+            display_name: Split Water III
+            building: sab_reactor
+            level:
+                chemistry: 70
+            input:
+                water: 48
+                power: 30
+                stamina: 3
+                chemistry_tools: 3
+            output:
+                hydrogen: 24
+                oxygen: 12
         #chem lab
         make_concrete:
             display_name: Make Concrete
