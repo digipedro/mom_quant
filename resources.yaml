@@ -1355,7 +1355,7 @@
             display_name: Grind Beans (Small)
             building: grindnbrew
             level:
-                life science: 10
+                life science: 5
             input:
                 stamina: 1
                 coffee_bean_roasted: 8
@@ -1366,7 +1366,7 @@
             display_name: Grind Beans (Medium)
             building: grindnbrew
             level:
-                life science: 35
+                life science: 20
             input:
                 stamina: 1
                 coffee_bean_roasted: 16
@@ -1377,7 +1377,7 @@
             display_name: Grind Beans (Large)
             building: grindnbrew
             level:
-                life science: 60
+                life science: 35
             input:
                 stamina: 1
                 coffee_bean_roasted: 28
