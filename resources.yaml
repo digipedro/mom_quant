@@ -368,7 +368,7 @@
                  sunflower_seeds: 12
                  power: 10
              output:
-                 roasted_sunflower_seeds: [1, 2, 1.1]
+                 sunflower_seeds_roasted: [1, 2, 1.1]
         #smelter
         smelt_iron:
             display_name: Smelt Iron
@@ -874,7 +874,7 @@
                 siliconcrystals_raw: 2
                 fabrication_tools: 2
             output:
-                shard_solar_panel_R: 1
+                shard_solar_panel_R: [7, 14, 10.5]
         craft_solar_panel:
             display_name: Craft Solar Panel (Gen 3)
             building: 3d_print_shop
@@ -2735,7 +2735,7 @@
                 metis: 3
                 fabrication_tools: 1
             output:
-                shard_mining_rig_C: 1
+                shard_mining_rig_C: [3, 5, 4]
         make_mining_shard_u:
             display_name: Make Mining Rig Shard (U)
             building: engineering_bay
@@ -2749,7 +2749,7 @@
                 metis: 3
                 fabrication_tools: 2
             output:
-                shard_mining_rig_U: 1
+                shard_mining_rig_U: [5, 10, 7.5]
         make_library_shard:
             display_name: Make Library Shard (S)
             building: engineering_bay

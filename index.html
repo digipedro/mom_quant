@@ -134,7 +134,7 @@
         </v-col>
       </v-row>
       <v-row dense>
-        <v-col cols="24" sm="12">
+        <v-col cols="4">
             <v-dialog v-model="level_dialog" persistent max-width="600px" @click:outside="closeLevelDialog">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn color="gray" dark v-bind="attrs" v-on="on">
@@ -167,6 +167,35 @@
               </v-card>
             </v-dialog>
             
+        </v-col>
+        <v-col cols="4">
+          <v-dialog v-model="liquidity_dialog" persistent max-width="600px" @click:outside="closeLiquidityDialog">
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="gray" dark v-bind="attrs" v-on="on">
+                  Hide Low Volume
+                </v-btn>
+                <span style="padding-left: 0.5em">{{ liquidity_hide_count }} hidden</span>
+              </template>
+            <v-card>
+              <v-card-title>
+                <span>Hide tasks if primary output has a 24-hour sales volume less than...</span>
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col cols="12">
+                      <v-slider v-model="liquidity_slider" :tick-labels="liquidity_slider_labels" :max="4" step="1" ticks="always" tick-size="4">
+                      </v-slider>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="gray" dark @click="closeLiquidityDialog">Apply</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-col>
       </v-row>
       <v-row :class="{red:market_time_warning}" class="text-right" dense>
@@ -214,7 +243,7 @@
                 <small v-if="props.item.output_speculative" style="color: #f99">Speculative Estimate</small>
                 <template v-for="(line, index) in props.item.sale_breakdown">
                     <v-list-item-content>
-                    {{ line.resource }} :  {{ line.value }} <small v-if="line.unitcost">({{ line.unitcost }} each)</small>
+                    {{ line.resource }} :  {{ line.value_txt }} <small v-if="line.unitcost">({{ line.unitcost }} each)</small>
                     </v-list-item-content>
                 </template>
             </v-card>
@@ -288,6 +317,8 @@
                     this.selected_power_source = value;
                 if (key == 'selected_stamina_source' && this.stamina_source.includes(value))
                     this.selected_stamina_source = value;
+                if (key == 'liquidity_slider')
+                    this.liquidity_slider = value;
                 if (key == 'bldg_hide')
                     this.bldg_hide = JSON.parse(value);
                 if (key == 'levels') {
@@ -330,6 +361,11 @@
             ],
             level_hides: {...default_level_hides},                    
             level_hide_count: 0,
+            liquidity_hide_count: 0,
+            liquidity_dialog: false,
+            liquidity_slider: 0,
+            liquidity_slider_labels: ['All', '10', '100', '1000', '10000'],
+            liquidity_slider_values: [0, 10, 100, 1000, 10000],
             market_timestamp: 0,
             market_timetext: 'Loading...',
             market_time_warning: false,
@@ -450,10 +486,16 @@
                     levels[this.level_sliders[i].id] = this.level_sliders[i].value;
                 }
                 localStorage.setItem('levels', JSON.stringify(levels));
+                localStorage.setItem('liquidity_slider', this.liquidity_slider);
             },
             changeSelect(id) {
                 this.saveUserSettings();
                 this.buildTable();
+            },
+            closeLiquidityDialog() {
+                this.liquidity_dialog = false;
+                this.saveUserSettings()
+                this.buildTable()
             },
             countHiddenByLevel() {
                 this.level_hides = {...default_level_hides}
@@ -504,16 +546,9 @@
                 if (method == 'Drink Mushroom Tea')
                     return (this.getPrice('mushroom_tea', this.selected_buy_price) - 7) / 15;
                 if (method == 'Sunflower Seeds')
-                    return (this.getPrice('stamina', this.selected_buy_price) * 2
-                        + this.getPrice('sunflower_seeds', this.selected_buy_price) * 12
-                        + this.getPrice('power', this.selected_buy_price) * 10
-                        - 1.5 * waste) / 7.5
+                    return (this.getPrice('sunflower_seeds_roasted', this.selected_buy_price) - 1.5 * waste) / 7.5;
                 if (method == 'Sunflower Snack')
-                    return (this.getPrice('stamina', this.selected_buy_price) * 3
-                        + this.getPrice('sunflower_seeds', this.selected_buy_price) * 12
-                        + this.getPrice('power', this.selected_buy_price) * 10
-                        + this.getPrice('halite', this.selected_buy_price) * 3
-                        - 1.5 * waste) / 18
+                    return (this.getPrice('sunflower_seed_snack', this.selected_buy_price) - 1.5 * waste) / 18;
                 if (method == 'Job')
                     return 1.04;
                 if (method == 'Daily Ration')
@@ -611,6 +646,14 @@
                 else
                     return capitalize(id.replaceAll('_', ' '));
             },
+            resourceVolume(id) {
+                for (let i = 0; i < this.market.length; i++) {
+                    if (this.market[i].id == id) {                        
+                        return this.market[i].attributes.lastDayVolume
+                    }
+                }
+                return 0;
+            },
             building_name(id) {
                 return (id === undefined) ? '' : this.odata.buildings[id].display_name
             },
@@ -702,6 +745,7 @@
                 sale.max = max_gain / 0.95;
             },
             buildTable(first_time = false) {
+                this.liquidity_hide_count = 0;
                 for (const [key, value] of Object.entries(this.odata.recipes)) {                    
                     let cost = 0;
                     let cost_breakdown = [];
@@ -726,7 +770,9 @@
                             for (const [aitem, values] of Object.entries(items)) {
                                 let titem = {
                                     resource: values.name + ' x ' + localnum(values.number),
-                                    value: localnum(values.price)
+                                    value_num: values.price,
+                                    value_txt: localnum(values.price),
+                                    volume: this.resourceVolume(aitem)
                                 }
                                 sale.avg += values.price;
                                 if (aitem == 'dusk') {
@@ -750,7 +796,8 @@
                                 } else
                                     sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
                                 item.resource = this.resourceName(key2) + ' x ' + value2[2];
-                                item.value = localnum(this.getPrice(key2, this.selected_sell_price) * value2[2]);
+                                item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2];
+                                item.value_txt = localnum(item.value_num);
                                 if (value2[2] > 1 && key2 != 'dusk')
                                     item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
                             } else {
@@ -763,10 +810,12 @@
                                 else
                                     sale.gain += avg_price * 0.95;
                                 item.resource = this.resourceName(key2) + ' x ' + value2;
-                                item.value = localnum(avg_price);
+                                item.value_num = avg_price;
+                                item.value_txt = localnum(avg_price);
                                 if (value2 > 1 && key2 != 'dusk')
                                     item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
                             }
+                            item.volume = this.resourceVolume(key2);
                             sale_breakdown.push(item);
                         }
                     }
@@ -779,7 +828,22 @@
                               + ' ~ ' + localnum(sale.max * 0.95 - cost + market_fee_offset[1]) + ')'
                     }
                     
-                    let show = !('building' in value && this.checkForFilter(value.building));
+                    // building filter
+                    let show = true;
+                    // liquidity filter
+                    if (this.liquidity_slider > 0) {
+                        for (i = 0; i < sale_breakdown.length; i++) {
+                             if (sale_breakdown[i].resource.startsWith("Dusk"))
+                                continue;
+                            if ((sale_breakdown[i].value_num * 2) >= sale.gain && sale_breakdown[i].volume < this.liquidity_slider_values[this.liquidity_slider]) {
+                                show = false;
+                                this.liquidity_hide_count++;
+                            }
+                        }
+                    }
+                    if (show)
+                        show = !('building' in value && this.checkForFilter(value.building));
+                    // level filter
                     if (show && 'level' in value) {
                         for (const [key2, value2] of Object.entries(value.level)) {
                             let idx = this.level_sliders.findIndex(x => x.id === key2);
@@ -788,6 +852,7 @@
                             }
                         }
                     }
+
                     
                     let entry = {
                         id: key,
