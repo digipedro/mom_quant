@@ -2985,14 +2985,14 @@
             building: 3d_print_shop
             input:
                 stamina: 3
-                steel: 5
+                smelt_steel: 5
                 electronic_bits: 10
                 rover_wires: 5
                 full_pc: 1
                 power: 20
             output:
                 vibes: [12, 18, 13.375]
-                shard_reserach: [4, 5, 4.5]
+                shard_research: [4, 5, 4.5]
                 metis: [1, 2, 1.5]
         setup_liberty_lights:
             display_name: Setup Liberty Lights🎉
@@ -3001,7 +3001,7 @@
                 stamina: 2
                 rover_wires: 2
                 power: 40
-                electical_tools: 1
+                electrical_tools: 1
             output:
                 vibes: [5, 10, 7.5]
         modify_martian_auto:
