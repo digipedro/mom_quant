@@ -197,6 +197,9 @@
             </v-card>
           </v-dialog>
         </v-col>
+        <v-col cols="3">
+            <v-select :items="gain_mode" v-on:change="changeSelect" v-model="selected_gain_mode" dense></v-select>
+        </v-col>
       </v-row>
       <v-row :class="{red:market_time_warning}" class="text-right" dense>
         <v-col class="text-right" cols="24" sm="12">
@@ -317,6 +320,8 @@
                     this.selected_power_source = value;
                 if (key == 'selected_stamina_source' && this.stamina_source.includes(value))
                     this.selected_stamina_source = value;
+                if (key == 'selected_gain_mode' && this.gain_mode.includes(value))
+                    this.selected_gain_mode = value;
                 if (key == 'liquidity_slider')
                     this.liquidity_slider = value;
                 if (key == 'bldg_hide')
@@ -328,6 +333,7 @@
                         this.level_sliders[idx].value = value;
                     }
                 }
+                this.setGainHeader();
             }
             
             setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
@@ -366,6 +372,8 @@
             liquidity_slider: 0,
             liquidity_slider_labels: ['All', '10', '100', '1000', '10000'],
             liquidity_slider_values: [0, 10, 100, 1000, 10000],
+            gain_mode: ['Gain per Task', 'Gain per Power Cell', 'Gain per Stamina'],
+            selected_gain_mode: 'Gain per Task',
             market_timestamp: 0,
             market_timetext: 'Loading...',
             market_time_warning: false,
@@ -475,6 +483,7 @@
                 localStorage.setItem('selected_sell_price', this.selected_sell_price);
                 localStorage.setItem('selected_power_source', this.selected_power_source);
                 localStorage.setItem('selected_stamina_source', this.selected_stamina_source);
+                localStorage.setItem('selected_gain_mode', this.selected_gain_mode);
                 this.bldg_hide = []
                 for (const [key, value] of Object.entries(this.bldg_items)) {
                     if (this.bldg_items[key].disabled)
@@ -490,7 +499,16 @@
             },
             changeSelect(id) {
                 this.saveUserSettings();
+                this.setGainHeader();
                 this.buildTable();
+            },
+            setGainHeader() {
+                if (this.selected_gain_mode == 'Gain per Power Cell')
+                    this.headers[3].text = 'Gain / Power (After Fees)'
+                else if (this.selected_gain_mode == 'Gain per Stamina')
+                    this.headers[3].text = 'Gain / Stamina (After Fees)'
+                else
+                    this.headers[3].text = 'Gain / Task (After Fees)'
             },
             closeLiquidityDialog() {
                 this.liquidity_dialog = false;
@@ -749,10 +767,16 @@
                 for (const [key, value] of Object.entries(this.odata.recipes)) {                    
                     let cost = 0;
                     let cost_breakdown = [];
+                    let power_used = 0;
+                    let stamins_used = 0;
                     for (const [key2, value2] of Object.entries(this.odata.recipes[key].input)) {
                         let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
                         cost += unit_cost;
                         cost_breakdown.push( {resource: this.resourceName(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
+                        if (key2 == "power")
+                            power_used = value2;
+                        if (key2 == "stamina")
+                            stamina_used = value2;
                     }
                     
                     let sale_breakdown = [];
@@ -822,10 +846,20 @@
                     let gain = (sale.gain - cost);
                     let roi = (gain / cost * 100);
                     
-                    gain = localnum(gain);
-                    if (sale.min != sale.max) {
-                        gain += ' (' + localnum(sale.min * 0.95 - cost + market_fee_offset[0])
-                              + ' ~ ' + localnum(sale.max * 0.95 - cost + market_fee_offset[1]) + ')'
+                    let divisor = 1;
+                    if (this.selected_gain_mode == "Gain per Power Cell")
+                        divisor = (power_used / 20);
+                    else if (this.selected_gain_mode == "Gain per Power Stamina")
+                        divisor = stamina_used;
+                        
+                    if (divisor == 0)
+                        gain = '---'
+                    else {
+                        gain = localnum(gain / divisor);
+                        if (sale.min != sale.max) {
+                            gain += ' (' + localnum((sale.min * 0.95 - cost + market_fee_offset[0]) / divisor)
+                                  + ' ~ ' + localnum((sale.max * 0.95 - cost + market_fee_offset[1]) / divisor) + ')'
+                        }
                     }
                     
                     // building filter
