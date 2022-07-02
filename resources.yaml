@@ -3075,6 +3075,48 @@
             output:
                 liberty_herbs: [4, 5, 4.5]
                 vibes: [1, 3, 2]
+        accommodate_guests:
+            display_name: Accommodate Guests 🎉
+            building: concrete_habitat
+            input:
+                stamina: 2
+                coffee_brewed: 1
+                water: 40
+                glass: 2
+                ice: 10
+                food: 10
+                power: 40
+            output:
+                vibes: [5, 10, 7.5]
+                dusk: [5, 10, 7.5]
+                shard_research: [2, 3, 2.5]
+        brew_liberty_coffee:
+            display_name: Brew Liberty Coffee 🎉
+            building: grindnbrew
+            input:
+                stamina: 2
+                coffee_ground: 16
+                water: 40
+                power: 20
+                halite: 5
+                liberty_herbs: 1
+            output:
+                liberty_coffee: [4, 6, 5]
+                vibes: [1, 3, 2]
+                shard_research: 1
+        liberty_tea:
+            display_name: Liberty Tea 🎉
+            building: tea_shop
+            input:
+                water: 40
+                power: 5
+                liberty_herbs: 2
+                halite: 5
+                ice: 5
+                stamina: 1
+            output:
+                vibes: [1, 5, 3]
+                liberty_tea: [2, 3, 2.5]
     buildings:
         solar_panel:
             display_name: Solar Panel
