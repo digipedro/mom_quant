@@ -698,7 +698,7 @@
                 power: 30
                 stamina: 6
             output:
-                mushroom_cake: [0, 5, 2.1]
+                mushroom_cake: [0, 5, 1.4]
         extrude_pvc_pipe:
             display_name: Extrude PVC Pipe
             building: 3d_print_shop
