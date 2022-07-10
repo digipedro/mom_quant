@@ -102,6 +102,8 @@
             display_name: Library Shard
         keycard_copper:
             display_name: Copper Key Card
+        art_faded:
+            display_name: Faded Art
     recipes:
         # greenhouse
         plant_sprouts:
@@ -700,7 +702,7 @@
                 power: 30
                 stamina: 6
             output:
-                mushroom_cake: [0, 5, 1.4]
+                mushroom_cake: [1, 4, 1.4]
         extrude_pvc_pipe:
             display_name: Extrude PVC Pipe
             building: 3d_print_shop
