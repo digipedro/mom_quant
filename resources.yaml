@@ -100,13 +100,8 @@
             display_name: Glushko's Greenhouse Shard
         shard_library_S:
             display_name: Library Shard
-        faded_art:
-            display_name: Faded Art
-        cantina_coin:
-            display_name: Cantina Coins
         keycard_copper:
             display_name: Copper Key Card
-            
     recipes:
         # greenhouse
         plant_sprouts:
@@ -2952,15 +2947,13 @@
             output:
                 dusk: 1                
         # cantina
-        # there is a task rotation on the cantina, and these tasks are not documented on the Player Guide.
-        # I will add the tasks everyday, and I plan to finish in a week or so. 
+        # added by millorfernades (@fuseki#1488)
         # cantina sunday tasks
-        # added faded_art to resource list
         faded_collection:
             display_name: Faded Collection
             building: cantina
             input:
-                faded_art: 1
+                art_faded: 1
             output:
                 dusk: [2, 5, 3.5]
         bamboozled:
@@ -3000,7 +2993,7 @@
                 water: 20
                 cantina_coin: 6
             output:
-                dusk: [30, 50, 40]
+                dusk: [35, 65, 50]
                 keycard_copper: [0, 1, 0.006]               
         barite_necessities:
             display_name: Barite Necessities
@@ -3022,11 +3015,11 @@
             display_name: Repair Broken EVA Suit
             building: cantina
             level:
-                electrical: 40
+                electrical: 35
             input:
                 rover_wires: 12
                 electronic_bits: 4
-                electrical_tools_n: 3
+                electrical_tools: 3
                 circuit_component: 1
                 stamina: 2
             output:
@@ -3071,8 +3064,6 @@
             display_name: Engineering Bay
         concrete_habitat:
             display_name: Habitat
-        # cantina
-        # added by millorfernades (@fuseki#1488)
         cantina:
             display_name: Cantina            
             
