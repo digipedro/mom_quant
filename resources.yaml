@@ -2871,7 +2871,7 @@
                 power: 30
                 food: 100
                 water: 50
-                bazaar_coin_R: 2
+                bazaar_coin_C: 2
             output:
                 lootset:
                     - dusk: [0.0588, 500, 1000]
