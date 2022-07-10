@@ -625,6 +625,8 @@
                     return 1;
                 if (id == 'surveyor_coin')
                     return 45;
+                if (id == 'cantina_coin')
+                    return Math.min(this.getPrice('aluminum_plate', type) / 10, this.getPrice('titanium_plate', type) / 25)
                 if (id == 'resource_credit')
                     return 0.5;
                 if (id.startsWith('bazaar_coin_')) {
