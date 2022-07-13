@@ -106,8 +106,6 @@
             display_name: Faded Art
         candycane: 
             display_name: Candy Canes
-        fractal_shard:
-            display_name: Fractal Shard
     recipes:
         # greenhouse
         plant_sprouts:
@@ -2958,22 +2956,25 @@
         faded_collection:
             display_name: Faded Collection
             building: cantina
+            day: sun
             input:
                 art_faded: 1
             output:
                 dusk: [2, 5, 3.5]
-        bamboozled:
-            display_name: Bamboozled
+        bamboozled_sun:
+            display_name: Bamboozled (Sunday)
             building: cantina
+            day: sun
             input:
                 bamboo: 30
                 water_rich_clay: 5
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]        
+                dusk: [20, 30, 25]
         hit_the_ice:
             display_name: Hit The Ice
             building: cantina
+            day: [sun, wed]
             input:
                 ice: 300
                 electronic_bits: 10
@@ -2984,6 +2985,7 @@
         most_of_my_friends_argon:
             display_name: Most of My Friends Argon
             building: cantina
+            day: [sun, wed]
             input:
                 argon: 4
                 metal_bits: 20
@@ -2994,6 +2996,7 @@
         hungry_hungry_martians:
             display_name: Hungry Hungry Martians
             building: cantina
+            day: [sun, wed]
             input:
                 food: 100
                 water: 20
@@ -3001,9 +3004,10 @@
             output:
                 dusk: [35, 65, 50]
                 keycard_copper: [0, 1, 0.006]               
-        barite_necessities:
-            display_name: Barite Necessities
+        barite_necessities_sun:
+            display_name: Barite Necessities (Sunday)
             building: cantina
+            day: sun
             input:
                 barite: 25
                 cantina_coin: 2
@@ -3012,6 +3016,7 @@
         seeding_the_way:
             display_name: Seeding The Way
             building: cantina
+            day: sun
             input:
                 sunflower_seeds: 4
                 cantina_coin: 1
@@ -3034,6 +3039,7 @@
         stale_sweets:
             display_name: Stale Sweets
             building: cantina
+            day: mon
             input: 
                 candycane: 25
             output: 
@@ -3041,6 +3047,7 @@
         cosmic_delivery:
             display_name: Cosmic Delivery
             building: cantina
+            day: mon
             input: 
                 fractal_shard: 1
                 water_rich_clay: 1
@@ -3050,6 +3057,7 @@
         breathing_room:
             display_name: Breathing Room
             building: cantina
+            day: mon
             input: 
                 oxygen: 50
                 electronic_bits: 5
@@ -3060,6 +3068,7 @@
         salty_solution:              
             display_name: Salty Solution
             building: cantina
+            day: mon
             input: 
                 halite: 100
                 metal_bits: 20
@@ -3070,6 +3079,7 @@
         tasty_beverages:                
             display_name: Tasty Beverages
             building: cantina
+            day: mon
             input: 
                 water: 30
                 ice: 10
@@ -3081,6 +3091,7 @@
         sculpting_solutions:
             display_name: Sculpting Solutions
             building: cantina
+            day: mon
             input: 
                 water_rich_clay: 8
                 cantina_coin: 5               
@@ -3089,10 +3100,48 @@
         smelly_situation:
             display_name: Smelly Situation
             building: cantina
+            day: mon
             input: 
                 sulfur: 25
                 cantina_coin: 1               
             output: 
+                dusk: [3, 10, 6.5]
+        # cantina Wednesday tasks
+        bamboozled_wed:
+            display_name: Bamboozled (Wednesday)
+            building: cantina
+            day: wed
+            input:
+                bamboo: 35
+                water_rich_clay: 3
+                cantina_coin: 3
+            output:
+                dusk: [20, 30, 25]
+        odds_and_ends:
+            display_name: Odds and Ends
+            building: cantina
+            day: wed
+            input:
+                metal_bits: 7
+            output:
+                dusk: [2, 5, 3.5]
+        barite_necessities_wed:
+            display_name: Barite Necessities (Wednesday)
+            building: cantina
+            day: wed
+            input:
+                barite: 35
+                cantina_coin: 2
+            output:
+                dusk: [10, 20, 15]
+        express_o_delivery:
+            display_name: Express-o Delivery
+            building: cantina
+            day: wed
+            input:
+                coffee_bean_roasted: 2
+                cantina_coin: 1
+            output:
                 dusk: [3, 10, 6.5]
         #event
     buildings:

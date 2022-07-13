@@ -224,6 +224,7 @@
               <v-list dense color="grey darken-3" rounded>
                 <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.cost | localnum}}</span></v-list-item-title>
                 <small v-if="props.item.level_required" style="color: #99f">{{ props.item.level_required }}</small>
+                <small v-if="props.item.day_text" style="color: #99f">{{ props.item.day_text }}</small>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.cost_breakdown">
                     <v-list-item-content>
@@ -764,6 +765,23 @@
                 sale.min = min_gain / 0.95;
                 sale.max = max_gain / 0.95;
             },
+            expandDay(day) {
+                if (day == 'mon')
+                    return 'Monday'
+                if (day == 'tue')
+                    return 'Tuesday'
+                if (day == 'wed')
+                    return 'Wednesday'
+                if (day == 'thu')
+                    return 'Thursday'
+                if (day == 'fri')
+                    return 'Friday'
+                if (day == 'sat')
+                    return 'Saturday'
+                if (day == 'sun')
+                    return 'Sunday'
+                return ''
+            },
             buildTable(first_time = false) {
                 this.liquidity_hide_count = 0;
                 for (const [key, value] of Object.entries(this.odata.recipes)) {                    
@@ -911,6 +929,18 @@
                             level_text += capitalize(level_name) + ' Level ' + level_num + ', '
                         }
                         entry.level_required = level_text.slice(0, -2);
+                    }
+                    
+                    if (value.day) {
+                        if (Array.isArray(value.day)) {
+                            let day_text = '';
+                            for (let i = 0; i < value.day.length; i++) {
+                                day_text += this.expandDay(value.day[i]) + ', '
+                            }
+                            entry.day_text = day_text.slice(0, -2);
+                        } else {
+                            entry.day_text = this.expandDay(value.day);
+                        }
                     }
                 
                     if (first_time) {
