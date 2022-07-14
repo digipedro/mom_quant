@@ -3039,7 +3039,7 @@
         stale_sweets:
             display_name: Stale Sweets
             building: cantina
-            day: mon
+            day: [mon, thu]
             input: 
                 candycane: 25
             output: 
@@ -3054,8 +3054,8 @@
                 cantina_coin: 3
             output: 
                 dusk: [20, 30, 25]
-        breathing_room:
-            display_name: Breathing Room
+        breathing_room_mon:
+            display_name: Breathing Room (Monday)
             building: cantina
             day: mon
             input: 
@@ -3064,20 +3064,20 @@
                 cantina_coin: 4
             output: 
                 dusk: [25, 55, 40]
-                keycard_copper:: 0.0074
+                keycard_copper: 0.0074
         salty_solution:              
             display_name: Salty Solution
             building: cantina
-            day: mon
+            day: [mon, thu]
             input: 
                 halite: 100
                 metal_bits: 20
                 cantina_coin: 5
             output: 
                 dusk: [30, 50, 40]
-                keycard_copper:: 0.0033
-        tasty_beverages:                
-            display_name: Tasty Beverages
+                keycard_copper: 0.0033
+        tasty_beverages_mon:
+            display_name: Tasty Beverages (Monday)
             building: cantina
             day: mon
             input: 
@@ -3086,8 +3086,8 @@
                 glass: 2
                 cantina_coin: 6
             output: 
-                dusk: [35, 65, 45]
-                keycard_copper:: 0.006                
+                dusk: [35, 65, 50]
+                keycard_copper: 0.006                
         sculpting_solutions:
             display_name: Sculpting Solutions
             building: cantina
@@ -3142,6 +3142,58 @@
                 coffee_bean_roasted: 2
                 cantina_coin: 1
             output:
+                dusk: [3, 10, 6.5]
+        # cantina Thursday tasks
+        black_market_crystals:
+            display_name: Black Market Crystals
+            building: cantina
+            day: thu
+            input:
+                siliconcrystals_raw: 1
+                electronic_bits: 3
+                cantina_coin: 3
+            output:
+                dusk: [20, 30, 25]
+        breathing_room_thu:
+            display_name: Breathing Room (Thursday)
+            building: cantina
+            day: thu
+            input: 
+                oxygen: 35
+                water_rich_clay: 10
+                cantina_coin: 4
+            output: 
+                dusk: [25, 55, 40]
+                keycard_copper: 0.0074
+        tasty_beverages_thu:
+            display_name: Tasty Beverages (Thursday)
+            building: cantina
+            day: thu
+            input: 
+                water: 125
+                ice: 1
+                glass: 2
+                cantina_coin: 6
+            output: 
+                dusk: [35, 65, 50]
+                keycard_copper: 0.006
+        green_bean_profits:
+            display_name: Green Bean Profits
+            building: cantina
+            day: thu
+            input:
+                coffee_bean_green: 10
+                cantina_coin: 2
+            output:
+                dusk: [10, 20, 15]
+        smelly_situation2:
+            display_name: Smelly Situation II
+            building: cantina
+            day: thu
+            input: 
+                sulfur: 20
+                cantina_coin: 1               
+            output: 
                 dusk: [3, 10, 6.5]
         #event
     buildings:
