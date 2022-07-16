@@ -74,8 +74,10 @@
             display_name: Bazaar Coin (U)
         bazaar_coin_R:
             display_name: Bazaar Coin (R)
+        bazaar_coin_L:
+            display_name: Bazaar Coin (L)
         bazaar_coin_E:
-            display_name: Bazaar Coin (E)        
+            display_name: Bazaar Coin (E)
         scavenging_tools_n:
             display_name: Novice Scavenging Tools
         fabrication_tools_n:
@@ -2756,6 +2758,62 @@
                 fabrication_tools: 2
             output:
                 shard_mining_rig_U: [5, 10, 7.5]
+        make_engineering_shard_c:
+            display_name: Make Engineering Shard (C)
+            building: engineering_bay
+            level:
+                fabrication: 50
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_E: 1
+                dusk: 20
+                metis: 4
+                fabrication_tool: 3
+            output:
+                shard_engineering_bay_C: [3, 5, 4]
+        make_engineering_shard_u:
+            display_name: Make Engineering Shard (U)
+            building: engineering_bay
+            level:
+                fabrication: 60
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_E: 1
+                dusk: 20
+                metis: 4
+                fabrication_tool: 3
+            output:
+                shard_engineering_bay_U: [5, 10, 7.5]
+        make_habitat_shard_c:
+            display_name: Make Habitat Shard (C)
+            building: engineering_bay
+            level:
+                fabrication: 25
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_L: 1
+                dusk: 10
+                metis: 4
+                fabrication_tool: 2
+            output:
+                shard_concrete_habitat_C: [3, 5, 4]
+        make_habitat_shard_u:
+            display_name: Make Habitat Shard (U)
+            building: engineering_bay
+            level:
+                fabrication: 30
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_L: 1
+                dusk: 10
+                metis: 4
+                fabrication_tool: 2
+            output:
+                shard_concrete_habitat_U: [5, 10, 7.5]
         make_library_shard:
             display_name: Make Library Shard (S)
             building: engineering_bay
@@ -3251,7 +3309,7 @@
             building: cantina
             day: fri
             input: 
-                Bamboo: 35
+                bamboo: 35
                 water: 10
                 cantina_coin: 2
             output: 
