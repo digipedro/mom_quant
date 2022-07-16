@@ -3195,6 +3195,76 @@
                 cantina_coin: 1               
             output: 
                 dusk: [3, 10, 6.5]
+        # cantina Friday tasks
+        bits_and_pieces:
+            display_name: Bits and Pieces
+            building: cantina
+            day: fri
+            input: 
+                metal_bits: 8
+            output: 
+                dusk: [2, 5, 3.5]
+        waste_disposal:
+            display_name: Waste Disposal
+            building: cantina
+            day: fri
+            input: 
+                waste: 300
+                water_rich_clay: 3
+                cantina_coin: 3
+            output: 
+                dusk: [20, 30, 25]
+        baijiu_blitz:
+            display_name: Baijiu Blitz
+            building: cantina
+            day: fri
+            input: 
+                baijiu: 4
+                cantina_coin: 4
+            output: 
+                dusk: [25, 55, 40]
+                keycard_copper: 0.0074
+        transport_summer_ice:
+            display_name: Transport Summer Ice
+            building: cantina
+            day: fri
+            input: 
+                ice: 250
+                metal_bits: 25
+                cantina_coin: 5
+            output: 
+                dusk: [30, 50, 40]
+                keycard_copper: 0.0033
+        summer_scrap_collection:
+            display_name: Summer Scrap Collection
+            building: cantina
+            day: fri
+            input: 
+                metal_bits: 20
+                rover_wires: 22
+                cantina_coin: 6
+            output: 
+                dusk: [35, 65, 50]
+                keycard_copper: 0.006
+        bamboozled_fri:
+            display_name: Bamboozled (Friday)
+            building: cantina
+            day: fri
+            input: 
+                Bamboo: 35
+                water: 10
+                cantina_coin: 2
+            output: 
+                dusk: [10, 20, 15]
+        spread_golden_profits:
+            display_name: Spread Golden Profits
+            building: cantina
+            day: fri
+            input:
+                sunflower_seeds: 4
+                cantina_coin: 1
+            output:
+                dusk: [3, 10, 6.5]                
         #event
     buildings:
         solar_panel:
