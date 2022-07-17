@@ -2786,6 +2786,20 @@
                 fabrication_tool: 3
             output:
                 shard_engineering_bay_U: [5, 10, 7.5]
+        make_engineering_shard_r:
+            display_name: Make Engineering Shard (R)
+            building: engineering_bay
+            level:
+                fabrication: 70
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_E: 1
+                dusk: 20
+                metis: 4
+                fabrication_tool: 4
+            output:
+                shard_engineering_bay_U: [9, 18, 13.5]
         make_habitat_shard_c:
             display_name: Make Habitat Shard (C)
             building: engineering_bay
@@ -2814,6 +2828,20 @@
                 fabrication_tool: 2
             output:
                 shard_concrete_habitat_U: [5, 10, 7.5]
+        make_habitat_shard_r:
+            display_name: Make Habitat Shard (R)
+            building: engineering_bay
+            level:
+                fabrication: 35
+            input:
+                stamina: 3
+                power: 40
+                bazaar_coin_L: 1
+                dusk: 10
+                metis: 4
+                fabrication_tool: 2
+            output:
+                shard_concrete_habitat_R: [9, 18, 13.5]
         make_library_shard:
             display_name: Make Library Shard (S)
             building: engineering_bay
