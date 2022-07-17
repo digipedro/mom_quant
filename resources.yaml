@@ -50,6 +50,8 @@
             display_name: Apprentice Life Science Research
         research_lifescience_n:
             display_name: Novice Life Science Research
+        research_chemistry_j:
+            display_name: Journeyman Chemistry Research
         research_chemistry_a:
             display_name: Apprentice Chemistry Research
         research_chemistry_n:
@@ -2404,6 +2406,26 @@
                 paper: 15
             output:
                 shard_research: 12
+        study_session:
+            display_name: Study Session
+            building: library
+            input:
+                stamina: 5
+                power: 15
+                paper: 3
+                vibes: 1
+            output:
+                shard_research: [3, 5, 4]
+        group_study_session:
+            display_name: Group Study Session
+            building: library
+            input:
+                stamina: 10
+                power: 25
+                paper: 8
+                vibes: 2
+            output:
+                shard_research: [7, 13, 10]
         areology_110:
             display_name: Areology 110
             building: library
@@ -2594,6 +2616,71 @@
                 shard_research: 1
             output:
                 research_chemistry_n: 1
+        chemistry_102:
+            display_name: Chemistry 202
+            building: library
+            level:
+                chemistry: 25
+            input:
+                stamina: 5
+                power: 20
+                oxygen: 2
+                perchlorate: 2
+                shard_research: 2
+                chemistry_tools: 1
+            output:
+                research_chemistry_n: [2, 5, 2.55625]
+                research_chemistry_a: [0, 1, 0.0125]
+        chemistry_303:
+            display_name: Chemistry 303
+            building: library
+            level:
+                chemistry: 50
+            input:
+                stamina: 5
+                power: 30
+                oxygen: 8
+                nitrogen: 2
+                shard_research: 3
+                chemistry_tools: 2
+            output:
+                research_chemistry_n: [3, 8, 4.0834]
+                research_chemistry_a: [0, 2, 0.0375]
+                research_chemistry_j: [0, 1, 0.0083]
+        chemistry_404:
+            display_name: Chemistry 404
+            building: library
+            level:
+                chemistry: 75
+            input:
+                stamina: 5
+                power: 40
+                argon: 2
+                nitrogen: 3
+                shard_research: 5
+                chemistry_tools: 3
+            output:
+                research_chemistry_n: [1, 5, 0.225]
+                research_chemistry_a: [2, 5, 2.53125]
+                research_chemistry_j: [0, 1, 0.0125]
+                research_chemistry_e: [0, 1, 0.0063]
+        chemistry_505:
+            display_name: Chemistry 505
+            building: library
+            level:
+                chemistry: 100
+            input:
+                stamina: 5
+                power: 50
+                argon: 5
+                nitrogen: 10
+                shard_research: 7
+                chemistry_tools: 5
+            output:
+                research_chemistry_a: [3, 8, 4.15]
+                research_chemistry_j: [0, 4, 0.1725]
+                research_chemistry_e: [0, 1, 0.01]
+                research_chemistry_m: [0, 1, 0.0025]
         electronics_101:
             display_name: Electronics 101
             building: library
