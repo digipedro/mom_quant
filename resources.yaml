@@ -2856,7 +2856,7 @@
                 bazaar_coin_E: 1
                 dusk: 20
                 metis: 4
-                fabrication_tool: 3
+                fabrication_tools: 3
             output:
                 shard_engineering_bay_C: [3, 5, 4]
         make_engineering_shard_u:
@@ -2870,7 +2870,7 @@
                 bazaar_coin_E: 1
                 dusk: 20
                 metis: 4
-                fabrication_tool: 3
+                fabrication_tools: 3
             output:
                 shard_engineering_bay_U: [5, 10, 7.5]
         make_engineering_shard_r:
@@ -2884,9 +2884,9 @@
                 bazaar_coin_E: 1
                 dusk: 20
                 metis: 4
-                fabrication_tool: 4
+                fabrication_tools: 4
             output:
-                shard_engineering_bay_U: [9, 18, 13.5]
+                shard_engineering_bay_R: [9, 18, 13.5]
         make_habitat_shard_c:
             display_name: Make Habitat Shard (C)
             building: engineering_bay
@@ -2898,7 +2898,7 @@
                 bazaar_coin_L: 1
                 dusk: 10
                 metis: 4
-                fabrication_tool: 2
+                fabrication_tools: 2
             output:
                 shard_concrete_habitat_C: [3, 5, 4]
         make_habitat_shard_u:
@@ -2912,7 +2912,7 @@
                 bazaar_coin_L: 1
                 dusk: 10
                 metis: 4
-                fabrication_tool: 2
+                fabrication_tools: 2
             output:
                 shard_concrete_habitat_U: [5, 10, 7.5]
         make_habitat_shard_r:
@@ -2926,7 +2926,7 @@
                 bazaar_coin_L: 1
                 dusk: 10
                 metis: 4
-                fabrication_tool: 2
+                fabrication_tools: 2
             output:
                 shard_concrete_habitat_R: [9, 18, 13.5]
         make_library_shard:
