@@ -46,26 +46,6 @@
             display_name: Exploring Rover
         rover_haul:
             display_name: Hauling Rover
-        research_lifescience_a:
-            display_name: Apprentice Life Science Research
-        research_lifescience_n:
-            display_name: Novice Life Science Research
-        research_chemistry_j:
-            display_name: Journeyman Chemistry Research
-        research_chemistry_a:
-            display_name: Apprentice Chemistry Research
-        research_chemistry_n:
-            display_name: Novice Chemistry Research
-        research_electrical_n:
-            display_name: Novice Electrical Research
-        research_fabrication_n:
-            display_name: Novice Fabrication Research
-        research_machining_n:
-            display_name: Novice Machining Research
-        research_robotics_n:
-            display_name: Novice Robotics Research
-        research_mining_n:
-            display_name: Novice Mining Research
         shard_research:
             display_name: Research Paper
         concrete_habitat_C1:
@@ -2705,8 +2685,58 @@
                 shard_research: 2
                 electrical_tools: 2
             output:
-                esearch_electrical_n: [2, 5, 2.55625]
-                esearch_electrical_a: [0, 1, 0.0125]
+                research_electrical_n: [2, 5, 2.55625]
+                research_electrical_a: [0, 1, 0.0125]
+        electronics_301:
+            display_name: Electronics 301
+            building: library
+            level:
+                electrical: 50
+            input:
+                stamina: 6
+                power: 30
+                electronic_bits: 3
+                broken_pc: 3
+                shard_research: 3
+                electrical_tools: 3
+            output:
+                research_electrical_n: [3, 8, 4.0834]
+                research_electrical_a: [0, 2, 0.0375]
+                research_electrical_j: [0, 1, 0.0083]
+        electronics_401:
+            display_name: Electronics 401
+            building: library
+            level:
+                electrical: 75
+            input:
+                stamina: 8
+                power: 40
+                smelt_mgs: 1
+                circuit_component: 1
+                shard_research: 5
+                electrical_tools: 4
+            output:
+                research_electrical_a: [3, 8, 4.15]
+                research_electrical_j: [0, 4, 0.1725]
+                research_electrical_e: [0, 1, 0.01]
+                research_electrical_m: [0, 1, 0.0025]
+        electronics_501:
+            display_name: Electronics 501
+            building: library
+            level:
+                electrical: 100
+            input:
+                stamina: 10
+                power: 50
+                smelt_mgs: 4
+                circuit_component: 2
+                shard_research: 7
+                electrical_tools: 5
+            output:
+                research_electrical_n: [1, 5, 0.225]
+                research_electrical_a: [2, 5, 2.53125]
+                research_electrical_j: [0, 1, 0.0125]
+                research_electrical_e: [0, 1, 0.0063]
         study_circuit_theory:
             display_name: Study Circuit Theory
             building: library
@@ -2727,9 +2757,9 @@
             display_name: Intro to Fabrication
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
-                smelt_iron: 2
+                smelt_iron: 1
                 shard_research: 1
             output:
                 research_fabrication_n: 1
@@ -2747,14 +2777,83 @@
             display_name: Robotics 101
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
-                rover_wires: 10
-                electronics_bits: 10
+                rover_wires: 5
+                electronic_bits: 5
                 broken_pc: 1
                 shard_research: 1
             output:
                 research_robotics_n: 1
+        robotics_201:
+            display_name: Dynamics & Kinematics (Robotics 201)
+            building: library
+            level:
+                robotics: 25
+            input:
+                stamina: 4
+                power: 20
+                rover_wires: 5
+                electronic_bits: 5
+                broken_pc: 1
+                shard_research: 2
+                robotics_tools: 2
+            output:
+                research_robotics_n: [2, 5, 2.55625]
+                research_robotics_a: [0, 1, 0.0125]
+        robotics_301:
+            display_name: Dynamics & Kinematics (Robotics 301)
+            building: library
+            level:
+                robotics: 50
+            input:
+                stamina: 6
+                power: 30
+                rover_wires: 5
+                electronic_bits: 5
+                broken_pc: 3
+                shard_research: 3
+                robotics_tools: 3
+            output:
+                research_robotics_n: [3, 8, 4.0834]
+                research_robotics_a: [0, 2, 0.0375]
+                research_robotics_j: [0, 1, 0.0083]
+        robotics_401:
+            display_name: Dynamics & Kinematics (Robotics 401)
+            building: library
+            level:
+                robotics: 75
+            input:
+                stamina: 8
+                power: 40
+                rover_wires: 5
+                electronic_bits: 5
+                circuit_component: 1
+                shard_research: 5
+                robotics_tools: 4
+            output:
+                research_robotics_n: [1, 5, 0.225]
+                research_robotics_a: [2, 5, 2.53125]
+                research_robotics_j: [0, 1, 0.0125]
+                research_robotics_e: [0, 1, 0.0063]
+        robotics_501:
+            display_name: Dynamics & Kinematics (Robotics 501)
+            building: library
+            level:
+                robotics: 100
+            input:
+                stamina: 10
+                power: 50
+                rover_wires: 5
+                electronic_bits: 10
+                circuit_component: 3
+                shard_research: 7
+                robotics_tools: 5
+            output:
+                research_robotics_a: [3, 8, 4.15]
+                research_robotics_j: [0, 4, 0.1725]
+                research_robotics_e: [0, 1, 0.01]
+                research_robotics_m: [0, 1, 0.0025]
         #engineering bay
         airlock:
             display_name: Create Airlock

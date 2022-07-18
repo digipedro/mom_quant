@@ -292,6 +292,8 @@
       
       const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
       
+      const research_re = /research_([a-z]+)_([najem])/;
+      
       const default_level_hides = {
                 chemistry: 0,
                 electrical: 0,
@@ -664,8 +666,24 @@
             resourceName(id) {
                 if (this.odata.resources[id])
                     return this.odata.resources[id].display_name
-                else
-                    return capitalize(id.replaceAll('_', ' '));
+                
+                let match = research_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Research';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = 'Apprentice' + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+
+                return capitalize(id.replaceAll('_', ' '));
             },
             resourceVolume(id) {
                 for (let i = 0; i < this.market.length; i++) {

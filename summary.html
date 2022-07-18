@@ -124,6 +124,11 @@
           return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
       }
       
+      const capitalize = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1)
+      }
+      
+      const research_re = /research_([a-z]+)_([najem])/;
             
 	  var vv = new Vue({
 	    el: '#app',
@@ -214,8 +219,24 @@
             resourceName(id) {
                 if (this.odata.resources[id])
                     return this.odata.resources[id].display_name
-                else
-                    return this.capitalize(id.replaceAll('_', ' '));
+                
+                let match = research_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Research';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = 'Apprentice' + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+
+                return capitalize(id.replaceAll('_', ' '));
             },
             buildTable() {
                 this.loadChart(this.chart_to_load);
