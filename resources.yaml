@@ -777,7 +777,7 @@
                 stamina: 5
             output:
                 fabrication_tools_n: 1
-        make_novice_life_sciense_tools:
+        make_novice_life_science_tools:
             display_name: Make Novice Life Science Tools
             building: 3d_print_shop
             level:
@@ -789,7 +789,7 @@
                 metis: 3
                 power: 20
                 stamina: 5
-                fabication_tools: 1
+                fabrication_tools: 1
             output:
                 lifescience_tools_n: 1
         make_novice_machining_tools:
@@ -804,7 +804,7 @@
                 metis: 5
                 power: 40
                 stamina: 5
-                fabication_tools: 1
+                fabrication_tools: 1
             output:
                 machining_tools_n: 1
         make_novice_robotice_tools:
@@ -819,7 +819,7 @@
                 metis: 5
                 power: 40
                 stamina: 5
-                fabication_tools: 2
+                fabrication_tools: 2
             output:
                 robotics_tools_n: 1
         make_bamboo_furniture:
@@ -2685,13 +2685,28 @@
             display_name: Electronics 101
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
                 electronic_bits: 3
                 broken_pc: 1
                 shard_research: 1
             output:
                 research_electrical_n: 1
+        electronics_201:
+            display_name: Electronics 201
+            building: library
+            level:
+                electrical: 25
+            input:
+                stamina: 4
+                power: 20
+                electronic_bits: 2
+                broken_pc: 2
+                shard_research: 2
+                electrical_tools: 2
+            output:
+                esearch_electrical_n: [2, 5, 2.55625]
+                esearch_electrical_a: [0, 1, 0.0125]
         study_circuit_theory:
             display_name: Study Circuit Theory
             building: library
