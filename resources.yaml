@@ -2410,10 +2410,10 @@
             display_name: Areology 110
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
-                water_rich_clay: 10
-                barite: 10
+                water_rich_clay: 5
+                barite: 5
                 halite: 10
                 shard_research: 1
             output:
@@ -2421,81 +2421,76 @@
         areology_210:
             display_name: Areology 210
             building: library
+            level:
+                mining: 25
             input:
-                stamina: 5
+                stamina: 4
                 power: 20
-                shard_research: 1
-                regolith: 25
+                regolith: 100
+                halite: 15
+                barite: 5
+                water_rich_clay: 5
+                shard_research: 2
+                mining_tools: 2
             output:
-                lootset:
-                    - dusk: [0.0588, 75, 90]
-                    - dusk: [0.1176, 25, 50]
-                    - dusk: [0.8235, 6, 9]
+                research_mining_n: [2, 5, 2.55625]
+                research_mining_a: [0, 1, 0.0125]
         areology_310:
             display_name: Areology 310
             building: library
+            level:
+                mining: 50
             input:
-                stamina: 5
-                power: 40
+                stamina: 6
+                power: 30
+                regolith: 300
+                halite: 25
+                barite: 15
+                water_rich_clay: 15
                 shard_research: 3
-                regolith: 100
+                mining_tools: 3
             output:
-                lootset:
-                    - dusk: [0.0588, 90, 125]
-                    - dusk: [0.1176, 50, 75]
-                    - dusk: [0.8235, 18, 25]
+                research_mining_n: [3, 8, 4.0834]
+                research_mining_a: [0, 2, 0.0375]
+                research_mining_j: [0, 1, 0.0083]
         areology_410:
             display_name: Areology 410
             building: library
+            level:
+                mining: 75
             input:
-                stamina: 5
-                power: 60
-                shard_research: 5
-                regolith: 250
-            output:
-                lootset:
-                    - dusk: [0.0588, 150, 250]
-                    - dusk: [0.1176, 80, 150]
-                    - dusk: [0.8235, 30, 45]
-        exobiology_499:
-            display_name: Exobiology 499
-            building: library
-            input:
-                shard_research: 1
-                ice: 20
-                power: 20
-                stamina: 5
-            output:
-                lootset:
-                    - dusk: [0.0588, 75, 90]
-                    - dusk: [0.1176, 25, 50]
-                    - dusk: [0.8235, 6, 9]
-        exobiology_505:
-            display_name: Exobiology 505
-            building: library
-            input:
-                shard_research: 3
-                ice: 80
+                stamina: 8
                 power: 40
-                stamina: 5
-            output:
-                lootset:
-                    - dusk: [0.0588, 90, 125]
-                    - dusk: [0.1176, 50, 75]
-                    - dusk: [0.8235, 18, 20]
-        exobiology_555:
-            display_name: Exobiology 555
-            building: library
-            input:
+                regolith: 500
+                halite: 50
+                barite: 25
+                water_rich_clay: 25
                 shard_research: 5
-                ice: 200
-                power: 60
-                stamina: 5
+                mining_tools: 4
             output:
-                lootset:
-                    - dusk: [0.0588, 150, 200]
-                    - dusk: [0.1176, 80, 125]
-                    - dusk: [0.8235, 28, 32]
+                research_mining_n: [1, 5, 0.225]
+                research_mining_a: [2, 5, 2.53125]
+                research_mining_j: [0, 1, 0.0125]
+                research_mining_e: [0, 1, 0.0063]
+        areology_555:
+            display_name: Areology 555
+            building: library
+            level:
+                mining: 100
+            input:
+                stamina: 10
+                power: 50
+                regolith: 1000
+                halite: 100
+                barite: 75
+                water_rich_clay: 50
+                shard_research: 7
+                mining_tools: 5
+            output:
+                research_mining_a: [3, 8, 4.15]
+                research_mining_j: [0, 4, 0.1725]
+                research_mining_e: [0, 1, 0.01]
+                research_mining_m: [0, 1, 0.0025]
         human_factors:
             display_name: Human Factors
             building: library
@@ -2574,17 +2569,87 @@
                     - carrot_seed: [0.25, 3, 7]
                     - soy_seed: [0.25, 2, 4]
                     - coffee_seed: [0.25, 2, 3]
-        life_science_101:
-            display_name: Life Science 101
+        exobiology_101:
+            display_name: Exobiology 101
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
-                water: 5
-                soil: 5
+                ice: 50
+                soil: 3
                 shard_research: 1
             output:
                 research_lifescience_n: 1
+        exobiology_201:
+            display_name: Exobiology 201
+            building: library
+            level:
+                life science: 25
+            input:
+                stamina: 4
+                power: 20
+                ice: 100
+                water: 10
+                soil: 5
+                shard_research: 2
+                lifescience_tools: 2
+            output:
+                research_lifescience_n: [2, 5, 2.55625]
+                research_lifescience_a: [0, 1, 0.0125]
+        exobiology_301:
+            display_name: Exobiology 301
+            building: library
+            level:
+                life science: 50
+            input:
+                stamina: 6
+                power: 30
+                ice: 200
+                water: 25
+                soil: 25
+                shard_research: 3
+                lifescience_tools: 3
+            output:
+                research_lifescience_n: [3, 8, 4.0834]
+                research_lifescience_a: [0, 2, 0.0375]
+                research_lifescience_j: [0, 1, 0.0083]
+        exobiology_401:
+            display_name: Exobiology 401
+            building: library
+            level:
+                life science: 75
+            input:
+                stamina: 8
+                power: 40
+                ice: 300
+                water: 30
+                soil: 30
+                shard_research: 5
+                lifescience_tools: 4
+            output:
+                research_lifescience_n: [1, 5, 0.225]
+                research_lifescience_a: [2, 5, 2.53125]
+                research_lifescience_j: [0, 1, 0.0125]
+                research_lifescience_e: [0, 1, 0.0063]
+        exobiology_501:
+            display_name: Exobiology 501
+            building: library
+            level:
+                life science: 100
+            input:
+                stamina: 10
+                power: 50
+                regolith: 600
+                ice: 600
+                water: 60
+                soil: 60
+                shard_research: 7
+                lifescience_tools: 5
+            output:
+                research_lifescience_a: [3, 8, 4.15]
+                research_lifescience_j: [0, 4, 0.1725]
+                research_lifescience_e: [0, 1, 0.01]
+                research_lifescience_m: [0, 1, 0.0025]
         chemistry_101:
             display_name: Chemistry 101
             building: library
@@ -2596,7 +2661,7 @@
                 shard_research: 1
             output:
                 research_chemistry_n: 1
-        chemistry_102:
+        chemistry_202:
             display_name: Chemistry 202
             building: library
             level:
@@ -2767,9 +2832,10 @@
             display_name: Intro to Machining
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
                 metal_bits: 5
+                smelt_iron: 1
                 shard_research: 1
             output:
                 research_machining_n: 1
