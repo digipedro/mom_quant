@@ -2781,10 +2781,10 @@
                 shard_research: 5
                 electrical_tools: 4
             output:
-                research_electrical_a: [3, 8, 4.15]
-                research_electrical_j: [0, 4, 0.1725]
-                research_electrical_e: [0, 1, 0.01]
-                research_electrical_m: [0, 1, 0.0025]
+                research_electrical_n: [1, 5, 0.225]
+                research_electrical_a: [2, 5, 2.53125]
+                research_electrical_j: [0, 1, 0.0125]
+                research_electrical_e: [0, 1, 0.0063]
         electronics_501:
             display_name: Electronics 501
             building: library
@@ -2798,10 +2798,10 @@
                 shard_research: 7
                 electrical_tools: 5
             output:
-                research_electrical_n: [1, 5, 0.225]
-                research_electrical_a: [2, 5, 2.53125]
-                research_electrical_j: [0, 1, 0.0125]
-                research_electrical_e: [0, 1, 0.0063]
+                research_electrical_a: [3, 8, 4.15]
+                research_electrical_j: [0, 4, 0.1725]
+                research_electrical_e: [0, 1, 0.01]
+                research_electrical_m: [0, 1, 0.0025]
         study_circuit_theory:
             display_name: Study Circuit Theory
             building: library
@@ -2828,6 +2828,68 @@
                 shard_research: 1
             output:
                 research_fabrication_n: 1
+        fabrication_201:
+            display_name: "Fabrication 201: Welding"
+            building: library
+            level:
+                fabrication: 25
+            input:
+                stamina: 4
+                power: 20
+                pvc_pipe: 1
+                shard_research: 2
+                fabrication_tools: 2
+            output:
+                research_fabrication_n: [2, 5, 2.55625]
+                research_fabrication_a: [0, 1, 0.0125]
+        fabrication_301:
+            display_name: "Fabrication 301: Bending"
+            building: library
+            level:
+                fabrication: 50
+            input:
+                stamina: 6
+                power: 30
+                smelt_aluminum: 3
+                shard_research: 3
+                fabrication_tools: 3
+            output:
+                research_fabrication_n: [3, 8, 4.0834]
+                research_fabrication_a: [0, 2, 0.0375]
+                research_fabrication_j: [0, 1, 0.0083]
+        fabrication_401:
+            display_name: "Fabrication 401: Welding"
+            building: library
+            level:
+                fabrication: 75
+            input:
+                stamina: 8
+                power: 40
+                smelt_steel: 7
+                shard_research: 5
+                fabrication_tools: 4
+            output:
+                research_fabrication_n: [1, 5, 0.225]
+                research_fabrication_a: [2, 5, 2.53125]
+                research_fabrication_j: [0, 1, 0.0125]
+                research_fabrication_e: [0, 1, 0.0063]
+        fabrication_501:
+            display_name: "Fabrication 501: Manufacturing"
+            building: library
+            level:
+                fabrication: 100
+            input:
+                stamina: 10
+                power: 50
+                smelt_titanium: 3
+                smelt_steel: 7
+                shard_research: 7
+                fabrication_tools: 5
+            output:
+                research_fabrication_a: [3, 8, 4.15]
+                research_fabrication_j: [0, 4, 0.1725]
+                research_fabrication_e: [0, 1, 0.01]
+                research_fabrication_m: [0, 1, 0.0025]
         intro_to_machining:
             display_name: Intro to Machining
             building: library
@@ -2839,6 +2901,70 @@
                 shard_research: 1
             output:
                 research_machining_n: 1
+        machining_201:
+            display_name: "Machining 201: Metal Stamping"
+            building: library
+            level:
+                machining: 25
+            input:
+                stamina: 4
+                power: 20
+                metal_bits: 10
+                smelt_aluminum: 1
+                shard_research: 2
+                machining_tools: 2
+            output:
+                research_machining_n: [2, 5, 2.55625]
+                research_machining_a: [0, 1, 0.0125]
+        machining_301:
+            display_name: "Machining 301: Metal Forging"
+            building: library
+            level:
+                machining: 50
+            input:
+                stamina: 6
+                power: 30
+                metal_bits: 20
+                smelt_aluminum: 3
+                shard_research: 3
+                machining_tools: 3
+            output:
+                research_machining_n: [3, 8, 4.0834]
+                research_machining_a: [0, 2, 0.0375]
+                research_machining_j: [0, 1, 0.0083]
+        machining_401:
+            display_name: "Machining 401: Assembling"
+            building: library
+            level:
+                machining: 75
+            input:
+                stamina: 8
+                power: 40
+                smelt_steel: 7
+                shard_research: 5
+                machining_tools: 4
+            output:
+                research_machining_n: [1, 5, 0.225]
+                research_machining_a: [2, 5, 2.53125]
+                research_machining_j: [0, 1, 0.0125]
+                research_machining_e: [0, 1, 0.0063]
+        machining_501:
+            display_name: "Machining 501: Electro-Chemical Machining"
+            building: library
+            level:
+                machining: 100
+            input:
+                stamina: 10
+                power: 50
+                smelt_titanium: 3
+                smelt_copper: 3
+                shard_research: 7
+                machining_tools: 5
+            output:
+                research_machining_a: [3, 8, 4.15]
+                research_machining_j: [0, 4, 0.1725]
+                research_machining_e: [0, 1, 0.01]
+                research_machining_m: [0, 1, 0.0025]
         robotics_101:
             display_name: Robotics 101
             building: library
