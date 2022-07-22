@@ -2499,9 +2499,11 @@
                 food: 10
                 power: 20
                 stamina: 5
-            output_speculative: true
             output:
-                dusk: [6, 90, 12]
+                lootset:
+                    - dusk: [0.0588, 75, 90]
+                    - dusk: [0.1176, 25, 50]
+                    - dusk: [0.8235, 6, 9]
         dem_bones:
             display_name: Dem Bones
             building: library
@@ -2510,9 +2512,11 @@
                 food: 30
                 power: 40
                 stamina: 5
-            output_speculative: true
             output:
-                dusk: [18, 125, 36]
+                lootset:
+                    - dusk: [0.0588, 90, 125]
+                    - dusk: [0.1176, 50, 75]
+                    - dusk: [0.8235, 18, 25]
         mars_madness:
             display_name: Mars Madness
             building: library
@@ -2521,9 +2525,11 @@
                 food: 60
                 power: 60
                 stamina: 5
-            output_speculative: true
             output:
-                dusk: [30, 250, 60]
+                lootset:
+                    - dusk: [0.0588, 150, 250]
+                    - dusk: [0.1176, 80, 150]
+                    - dusk: [0.8235, 30, 45]
         basic_seed_study:
             display_name: Basic Seed Study
             building: library
@@ -2978,7 +2984,7 @@
             output:
                 research_robotics_n: 1
         robotics_201:
-            display_name: Dynamics & Kinematics (Robotics 201)
+            display_name: Dynamics & Kinematics
             building: library
             level:
                 robotics: 25
@@ -2994,7 +3000,7 @@
                 research_robotics_n: [2, 5, 2.55625]
                 research_robotics_a: [0, 1, 0.0125]
         robotics_301:
-            display_name: Dynamics & Kinematics (Robotics 301)
+            display_name: Locomotion
             building: library
             level:
                 robotics: 50
@@ -3011,7 +3017,7 @@
                 research_robotics_a: [0, 2, 0.0375]
                 research_robotics_j: [0, 1, 0.0083]
         robotics_401:
-            display_name: Dynamics & Kinematics (Robotics 401)
+            display_name: Artificial Intelligence
             building: library
             level:
                 robotics: 75
@@ -3029,7 +3035,7 @@
                 research_robotics_j: [0, 1, 0.0125]
                 research_robotics_e: [0, 1, 0.0063]
         robotics_501:
-            display_name: Dynamics & Kinematics (Robotics 501)
+            display_name: Bionics and Biomimetics
             building: library
             level:
                 robotics: 100
