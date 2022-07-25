@@ -3551,7 +3551,7 @@
                 electronic_bits: 5
                 cantina_coin: 4
             output: 
-                dusk: [25, 55, 40]
+                dusk: [25, 45, 35]
                 keycard_copper: 0.0074
         salty_solution:              
             display_name: Salty Solution
@@ -3562,7 +3562,7 @@
                 metal_bits: 20
                 cantina_coin: 5
             output: 
-                dusk: [30, 50, 40]
+                dusk: [25, 50, 37.5]
                 keycard_copper: 0.0033
         tasty_beverages_mon:
             display_name: Tasty Beverages (Monday)
@@ -3574,7 +3574,7 @@
                 glass: 2
                 cantina_coin: 6
             output: 
-                dusk: [35, 65, 50]
+                dusk: [30, 60, 45]
                 keycard_copper: 0.006                
         sculpting_solutions:
             display_name: Sculpting Solutions
