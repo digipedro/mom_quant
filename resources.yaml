@@ -3056,7 +3056,7 @@
             display_name: Create Airlock
             building: engineering_bay
             level:
-                fabrication: 30
+                fabrication: 15
             input:
                 electronics_parts: 2
                 machined_parts: 1
@@ -3065,6 +3065,28 @@
                 fabrication_tools: 2
             output:
                 airlock: 1
+        create_shelter:
+            display_name: Create Shelter
+            building: engineering_bay
+            level:
+                fabrication: 25
+            input:
+                stamina: 5
+                power: 120
+                airlock: 1
+                aluminum_plate: 1
+                circuit_component: 1
+                glass: 1
+                bamboo_furniture: 1
+                fabrication_tools: 1
+            output:
+                lootset:
+                    - shelter_C1: [0, 1, 0.465]
+                    - shelter_U1: [0, 1, 0.3]
+                    - shelter_R1: [0, 1, 0.15]
+                    - shelter_E1: [0, 1, 0.06]
+                    - shelter_L1: [0, 1, 0.02]
+                    - shelter_M1: [0, 1, 0.005]
         wastezilla:
             display_name: Create WasteZilla
             building: engineering_bay
@@ -3576,13 +3598,13 @@
             output: 
                 dusk: [30, 60, 45]
                 keycard_copper: 0.006                
-        sculpting_solutions:
-            display_name: Sculpting Solutions
+        sculpting_solutions_mon:
+            display_name: Sculpting Solutions (Monday)
             building: cantina
             day: mon
             input: 
                 water_rich_clay: 8
-                cantina_coin: 5               
+                cantina_coin: 5
             output: 
                 dusk: [10, 20, 15]
         smelly_situation:
@@ -3592,6 +3614,78 @@
             input: 
                 sulfur: 25
                 cantina_coin: 1               
+            output: 
+                dusk: [3, 10, 6.5]
+        # cantina Tuesday tasks
+        bits_and_pieces_tue:
+            display_name: Bits and Pieces (Tuesday)
+            building: cantina
+            day: tue
+            input: 
+                metal_bits: 4
+                electronic_bits: 1
+            output: 
+                dusk: [2, 5, 3.5]
+        waste_disposal_tue:
+            display_name: Waste Disposal (Tuesday)
+            building: cantina
+            day: tue
+            input: 
+                waste: 300
+                soil: 8
+                cantina_coin: 3
+            output: 
+                dusk: [20, 30, 25]
+        breathing_room_tue:
+            display_name: Breathing Room (Tuesday)
+            building: cantina
+            day: tue
+            input: 
+                oxygen: 50
+                water: 25
+                cantina_coin: 4
+            output: 
+                dusk: [25, 45, 35]
+                keycard_copper: 0.0074
+        scrubbing_supplies:
+            display_name: Scrubbing Supplies
+            building: cantina
+            day: tue
+            input: 
+                ice: 275
+                metal_bits: 25
+                cantina_coin: 5
+            output: 
+                dusk: [25, 50, 37.5]
+                keycard_copper: 0.0033
+        electric_boogie:
+            display_name: Electric Boogie
+            building: cantina
+            day: tue
+            input:
+                electronic_bits: 2
+                rover_wires: 2
+                siliconcrystals_raw: 2
+                cantina_coin: 6
+            output: 
+                dusk: [30, 60, 45]
+                keycard_copper: 0.006
+        sculpting_solutions_tue:
+            display_name: Sculpting Solutions (Tuesday)
+            building: cantina
+            day: tue
+            input: 
+                water_rich_clay: 9
+                cantina_coin: 2
+            output: 
+                dusk: [10, 20, 15]
+        food_donations:
+            display_name: Food Donations
+            building: cantina
+            day: tue
+            input: 
+                food: 15
+                cantina_coin: 2
             output: 
                 dusk: [3, 10, 6.5]
         # cantina Wednesday tasks
@@ -3684,16 +3778,16 @@
             output: 
                 dusk: [3, 10, 6.5]
         # cantina Friday tasks
-        bits_and_pieces:
-            display_name: Bits and Pieces
+        bits_and_pieces_fri:
+            display_name: Bits and Pieces (Friday)
             building: cantina
             day: fri
             input: 
                 metal_bits: 8
             output: 
                 dusk: [2, 5, 3.5]
-        waste_disposal:
-            display_name: Waste Disposal
+        waste_disposal_fri:
+            display_name: Waste Disposal (Friday)
             building: cantina
             day: fri
             input: 
