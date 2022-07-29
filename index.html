@@ -574,6 +574,8 @@
                     return 1.04;
                 if (method == 'Daily Ration')
                     return 0;
+                if (method == 'Martizen')
+                    return (60 * food + 20 * water - 4 * waste) / 16;
                 // 'Eat Meal'
                 return (60 * food + 20 * water - 4 * waste) / 24;
             },
@@ -979,6 +981,7 @@
                                         +'<b>Sunflower Snack</b>  - <span class="dusk">' + localnum(this.getStaminaCost('Sunflower Snack')) + '</span> avg<br>'
                                         +'<b>Drink Mushroom Tea</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Mushroom Tea')) + '</span> avg<br>'
                                         +'<b>Eat Mushroom Cake</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Mushroom Cake')) + '</span> avg<br>'
+                                        +'<b>Martizen</b> - <span class="dusk">' + localnum(this.getStaminaCost('Martizen')) + '</span> avg<br>'
                                         +'<b>Job</b> - <span class="dusk">1.040</span><br>'
                                         +'<b>Eat Ration</b> - <span class="dusk"> 0.000</span><br>'
                 this.power_market = localnum(this.getPowerCost('Market Price') * 20);

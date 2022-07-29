@@ -3793,7 +3793,7 @@
                 baijiu: 4
                 cantina_coin: 4
             output: 
-                dusk: [25, 55, 40]
+                dusk: [20, 45, 32.5]
                 keycard_copper: 0.0074
         transport_summer_ice:
             display_name: Transport Summer Ice
@@ -3804,7 +3804,7 @@
                 metal_bits: 25
                 cantina_coin: 5
             output: 
-                dusk: [30, 50, 40]
+                dusk: [25, 50, 37.5]
                 keycard_copper: 0.0033
         summer_scrap_collection:
             display_name: Summer Scrap Collection
@@ -3815,7 +3815,7 @@
                 rover_wires: 22
                 cantina_coin: 6
             output: 
-                dusk: [35, 65, 50]
+                dusk: [30, 60, 45]
                 keycard_copper: 0.006
         bamboozled_fri:
             display_name: Bamboozled (Friday)
