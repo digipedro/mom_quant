@@ -121,6 +121,8 @@
   <script>
       
       function localnum(num) {
+          if (isNaN(num) || num === null)
+              return "---";
           return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
       }
       
