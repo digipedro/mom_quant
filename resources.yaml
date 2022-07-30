@@ -90,12 +90,6 @@
             display_name: Faded Art
         candycane:
             display_name: Candy Canes
-        3d_print_shop-gen2_C1:
-            display_name: Common 3D Print Shop (Gen 2)
-        3d_print_shop-gen2_U1:
-            display_name: Uncommon 3D Print Shop (Gen 2)
-        3d_print_shop-gen2_R1:
-            display_name: Rare 3D Print Shop (Gen 2)
     recipes:
         # greenhouse
         plant_sprouts:
@@ -221,8 +215,8 @@
                 sorghum: 25
             output:
                 mushrooms: [6, 15, 10.5]
-        plant_sunflower_seeds:
-            display_name: Plant Sunflower Seeds
+        plant_sunflower:
+            display_name: Plant Sunflower
             building: greenhouse
             input:
                 stamina: 1
@@ -3354,7 +3348,8 @@
                 stamina: 5
                 metal_bits: 10
                 aluminum_plate: 2
-                minting_token: 1
+                metis_weave: 2
+                minting_token: 2
                 fabrication_tools: 3
             output:
                 3d_print_shop-gen2_U1: 1
@@ -3368,12 +3363,14 @@
                 stamina: 5
                 metal_bits: 10
                 aluminum_plate: 3
+                metis_weave: 3
                 minting_token: 3
                 fabrication_tools: 3
             output:
                 3d_print_shop-gen2_R1: 1
         craft_CAD_kit_gen3:
             display_name: Craft C.A.D. Kit (Gen 3)
+            building: engineering_bay
             level:
                 fabrication: 45
             input:
@@ -3428,6 +3425,7 @@
                 stamina: 5
                 rover_wires: 10
                 smelt_iron: 6
+                glass: 1
                 minting_token: 2
                 fabrication_tools: 3
             output:
@@ -3442,7 +3440,7 @@
                 stamina: 5
                 rover_wires: 15
                 smelt_steel: 3
-                smelt_glass: 2
+                glass: 2
                 minting_token: 3
                 fabrication_tools: 3
             output:
@@ -3506,7 +3504,7 @@
                 power: 200
                 stamina: 4
                 aluminum_plate: 1
-                smelt_glass: 3
+                glass: 1
                 minting_token: 1
                 fabrication_tools: 3
             output:
@@ -3520,7 +3518,7 @@
                 power: 200
                 stamina: 4
                 aluminum_plate: 2
-                smelt_glass: 2
+                glass: 2
                 minting_token: 2
                 fabrication_tools: 3
             output:
@@ -3534,7 +3532,7 @@
                 power: 200
                 stamina: 4
                 aluminum_plate: 3
-                smelt_glass: 3
+                glass: 3
                 metis_weave: 2
                 minting_token: 3
                 fabrication_tools: 3
@@ -3542,6 +3540,7 @@
                 greenhouse-gen3_R1: 1
         craft_mining_rig_kit_gen2:
             display_name: Craft Mining Rig Kit (Gen 2)
+            building: engineering_bay
             level:
                 fabrication: 85
             input:
@@ -3625,8 +3624,7 @@
             input:
                 power: 200
                 stamina: 5
-                smelt_iron: 1
-                empty_pc: 1
+                smelt_iron: 2
                 rover_wires: 5
                 aluminum_plate: 2
                 minting_token: 1
@@ -3772,6 +3770,7 @@
                 power: 10
                 carbon_dioxide: 1
                 water: 5
+                sprout_seed: 5
                 nitrogen: 1
                 waste: 1
                 lifescience_tools: 1
@@ -4298,6 +4297,69 @@
             day: fri
             input:
                 sunflower_seeds: 4
+                cantina_coin: 1
+            output:
+                dusk: [3, 10, 6.5]
+        # cantina Saturday tasks
+        smelted_dreams:
+            display_name: Smelted Dreams
+            building: cantina
+            day: sat
+            input:
+                smelter_C1: 1
+            output:
+                dusk: [2, 5, 3.5]
+        cad_return:
+            display_name: CAD Return
+            building: cantina
+            day: sat
+            input:
+                cad-22_C1: 1
+                cantina_coin: 2
+            output:
+                dusk: [20, 30, 25]
+        water_filter_storage:
+            display_name: Water Filter Storage
+            building: cantina
+            day: sat
+            input:
+                water_filter-22_C1: 1
+                cantina_coin: 4
+            output:
+                dusk: [20, 45, 32.5]
+        greenhouse_overstock:
+            display_name: Greenhouse Overstock
+            building: cantina
+            day: sat
+            input:
+                greenhouse_C1: 1
+                cantina_coin: 3
+            output:
+                dusk: [25, 50, 37.5]
+        solar_panel_repo:
+            display_name: Solar Panel Repo
+            building: cantina
+            day: sat
+            input:
+                solar_panel-22_C1: 1
+                cantina_coin: 4
+            output:
+                dusk: [30, 60, 45]
+        chemical_redistribution:
+            display_name: Chemical Redistribution
+            building: cantina
+            day: sat
+            input:
+                chem_lab_C1: 1
+                cantina_coin: 2
+            output:
+                dusk: [10, 20, 15]
+        reactor_recovery:
+            display_name: Reactor Recovery
+            building: cantina
+            day: sat
+            input:
+                sab_reactor_C1: 1
                 cantina_coin: 1
             output:
                 dusk: [3, 10, 6.5]
