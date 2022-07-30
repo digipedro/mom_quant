@@ -923,7 +923,7 @@
                 ice: 100
                 lifescience_tools: 2
             output:
-                water: [35, 60, 57.5]
+                water: [35, 60, 47.5]
                 regolith: [8, 12, 10]
         filter_water3:
             display_name: Filter Water III
