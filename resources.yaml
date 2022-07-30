@@ -88,8 +88,14 @@
             display_name: Copper Key Card
         art_faded:
             display_name: Faded Art
-        candycane: 
+        candycane:
             display_name: Candy Canes
+        3d_print_shop-gen2_C1:
+            display_name: Common 3D Print Shop (Gen 2)
+        3d_print_shop-gen2_U1:
+            display_name: Uncommon 3D Print Shop (Gen 2)
+        3d_print_shop-gen2_R1:
+            display_name: Rare 3D Print Shop (Gen 2)
     recipes:
         # greenhouse
         plant_sprouts:
@@ -525,7 +531,7 @@
             input:
                 stamina: 8
                 power: 120
-                steel: 10
+                smelt_steel: 10
                 argon: 1
                 oxygen: 21
                 nitrogen: 78
@@ -778,7 +784,7 @@
             level:
                 fabrication: 20
             input:
-                steel: 1
+                smelt_steel: 1
                 metal_bits: 5
                 electronic_bits: 3
                 metis: 5
@@ -1551,7 +1557,7 @@
                 metis: 14
                 stamina: 5
             output:
-                hauling_token: [1, 2, 1.1]            
+                hauling_token: [1, 2, 1.1]
         make_hauling_token_e5:
             display_name: Make Hauling Token (Epic Lvl 5)
             building: rover_works
@@ -1726,7 +1732,7 @@
                             - smelt_iron: [0.2, 1, 5]
                             - smelt_copper: [0.2, 1, 5]
                             - surveyor_coin: [0.1, 1, 1]
-                        - lootset:                   
+                        - lootset:
                             - percent: 49.38
                             - lootset:
                                 - shard_grindnbrew_C: [0.0833, 1, 3]
@@ -1793,7 +1799,7 @@
                             - smelt_iron: [0.2, 1, 5]
                             - smelt_copper: [0.2, 1, 5]
                             - surveyor_coin: [0.1, 1, 1]
-                        - lootset:                   
+                        - lootset:
                             - percent: 49.38
                             - lootset:
                                 - shard_grindnbrew_C: [0.0833, 1, 3]
@@ -3103,7 +3109,7 @@
                 pvc_pipe: 4
                 air_tank: 2
                 power: 120
-                fabrication_tools: 2            
+                fabrication_tools: 2
             output:
                 olympus_air_system: 1
         print_habitat_skeleton:
@@ -3300,7 +3306,7 @@
                     - percent: 60
                     - lootlist:
                         - regolith: [1, 50, 100]
-                        - electronic_bits: [1, 6, 8]                  
+                        - electronic_bits: [1, 6, 8]
                     - percent: 40
                     - lootlist:
                         - electronic_bits: [1, 10, 18]
@@ -3320,10 +3326,471 @@
                     - percent: 55
                     - lootlist:
                         - regolith: [1, 50, 100]
-                        - metal_bits: [1, 12, 14]                  
+                        - metal_bits: [1, 12, 14]
                     - percent: 45
                     - lootlist:
-                        - metal_bits: [1, 20, 30]   
+                        - metal_bits: [1, 20, 30]
+        craft_3D_print_shop_gen2_c:
+            display_name: Craft Common 3D Print Shop (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 55
+            input:
+                power: 200
+                stamina: 5
+                metal_bits: 10
+                aluminum_plate: 2
+                minting_token: 1
+                fabrication_tools: 3
+            output:
+                3d_print_shop-gen2_C1: 1
+        craft_3D_print_shop_gen2_u:
+            display_name: Craft Uncommon 3D Print Shop (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 60
+            input:
+                power: 200
+                stamina: 5
+                metal_bits: 10
+                aluminum_plate: 2
+                minting_token: 1
+                fabrication_tools: 3
+            output:
+                3d_print_shop-gen2_U1: 1
+        craft_3D_print_shop_gen2_r:
+            display_name: Craft Rare 3D Print Shop (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 65
+            input:
+                power: 200
+                stamina: 5
+                metal_bits: 10
+                aluminum_plate: 3
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                3d_print_shop-gen2_R1: 1
+        craft_CAD_kit_gen3:
+            display_name: Craft C.A.D. Kit (Gen 3)
+            level:
+                fabrication: 45
+            input:
+                power: 40
+                stamina: 5
+                concrete: 2
+                smelt_steel: 1
+                electronic_bits: 15
+                fabrication_tools: 2
+            output:
+                cad_kit: 1
+        craft_CAD_gen3:
+            display_name: Craft C.A.D. (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 55
+            input:
+                power: 200
+                stamina: 5
+                cad_kit: 1
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                cad-gen3_R1: 1
+            output:
+                lootset:
+                    - cad-gen3_C1: [0, 1, 0.465]
+                    - cad-gen3_U1: [0, 1, 0.3]
+                    - cad-gen3_R1: [0, 1, 0.15]
+                    - cad-gen3_E1: [0, 1, 0.06]
+                    - cad-gen3_L1: [0, 1, 0.02]
+                    - cad-gen3_M1: [0, 1, 0.005]
+        craft_chem_lab_gen2_c:
+            display_name: Craft Common Chem Lab (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 50
+            input:
+                power: 200
+                stamina: 5
+                rover_wires: 5
+                smelt_iron: 3
+                minting_token: 1
+                fabrication_tools: 3
+            output:
+                chem_lab-gen2_C1: 1
+        craft_chem_lab_gen2_u:
+            display_name: Craft Uncommon Chem Lab (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 55
+            input:
+                power: 200
+                stamina: 5
+                rover_wires: 10
+                smelt_iron: 6
+                minting_token: 2
+                fabrication_tools: 3
+            output:
+                chem_lab-gen2_U1: 1
+        craft_chem_lab_gen2_r:
+            display_name: Craft Rare Chem Lab (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 60
+            input:
+                power: 200
+                stamina: 5
+                rover_wires: 15
+                smelt_steel: 3
+                smelt_glass: 2
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                chem_lab-gen2_R1: 1
+        craft_grindnbrew-gen2_C1:
+            display_name: Craft Common Grind N' Brew (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 35
+            input:
+                power: 200
+                stamina: 5
+                titanum_plate: 5
+                aluminum_plate: 3
+                machined_parts: 3
+                minting_token: 1
+                fabrication_tools: 3
+                water: 150
+            output:
+                grindnbrew-gen2_C1: 1
+        craft_grindnbrew-gen2_U1:
+            display_name: Craft Uncommon Grind N' Brew (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 40
+            input:
+                power: 200
+                stamina: 5
+                titanum_plate: 6
+                aluminum_plate: 3
+                machined_parts: 3
+                minting_token: 2
+                fabrication_tools: 3
+                water: 150
+                metis_weave: 5
+            output:
+                grindnbrew-gen2_U1: 1
+        craft_grindnbrew-gen2_R1:
+            display_name: Craft Rare Grind N' Brew (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 45
+            input:
+                power: 200
+                stamina: 5
+                titanum_plate: 6
+                aluminum_plate: 3
+                machined_parts: 5
+                minting_token: 3
+                fabrication_tools: 3
+                water: 150
+                metis_weave: 15
+            output:
+                grindnbrew-gen2_R1: 1
+        craft_greenhouse-gen3_C1:
+            display_name: Craft Common Greenhouse (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 20
+            input:
+                power: 200
+                stamina: 4
+                aluminum_plate: 1
+                smelt_glass: 3
+                minting_token: 1
+                fabrication_tools: 3
+            output:
+                greenhouse-gen3_C1: 1
+        craft_greenhouse-gen3_U1:
+            display_name: Craft Uncommon Greenhouse (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 25
+            input:
+                power: 200
+                stamina: 4
+                aluminum_plate: 2
+                smelt_glass: 2
+                minting_token: 2
+                fabrication_tools: 3
+            output:
+                greenhouse-gen3_U1: 1
+        craft_greenhouse-gen3_R1:
+            display_name: Craft Rare Greenhouse (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 30
+            input:
+                power: 200
+                stamina: 4
+                aluminum_plate: 3
+                smelt_glass: 3
+                metis_weave: 2
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                greenhouse-gen3_R1: 1
+        craft_mining_rig_kit_gen2:
+            display_name: Craft Mining Rig Kit (Gen 2)
+            level:
+                fabrication: 85
+            input:
+                power: 50
+                stamina: 5
+                structural_parts: 1
+                metal_bits: 50
+                aluminum_plate: 5
+                concrete: 10
+                fabrication_tools: 4
+            output:
+                mining_rig_kit: 1
+        craft_mining_rig_gen2:
+            display_name: Craft Mining Rig (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 100
+            input:
+                power: 200
+                stamina: 20
+                mining_rig_kit: 1
+                minting_token: 35
+                fabrication_tools: 5
+            output:
+                lootset:
+                    - mining_rig-gen2_C1: [0, 1, 0.465]
+                    - mining_rig-gen2_U1: [0, 1, 0.3]
+                    - mining_rig-gen2_R1: [0, 1, 0.15]
+                    - mining_rig-gen2_E1: [0, 1, 0.06]
+                    - mining_rig-gen2_L1: [0, 1, 0.02]
+                    - mining_rig-gen2_M1: [0, 1, 0.005]
+        craft_smelter-gen2_C1:
+            display_name: Craft Common Smelter (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 45
+            input:
+                power: 200
+                stamina: 5
+                titanum_plate: 1
+                rover_wires: 10
+                minting_token: 1
+                fabrication_tools: 3
+            output:
+                smelter-gen2_C1: 1
+        craft_smelter-gen2_U1:
+            display_name: Craft Uncommon Smelter (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 50
+            input:
+                power: 200
+                stamina: 5
+                titanum_plate: 1
+                rover_wires: 15
+                metis_weave: 1
+                minting_token: 2
+                fabrication_tools: 3
+            output:
+                smelter-gen2_U1: 1
+        craft_smelter-gen2_R1:
+            display_name: Craft Rare Smelter (Gen 2)
+            building: engineering_bay
+            level:
+                fabrication: 55
+            input:
+                power: 200
+                stamina: 5
+                titanum_plate: 1
+                rover_wires: 15
+                metis_weave: 2
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                smelter-gen2_R1: 1
+        craft_water_filter-gen3_C1:
+            display_name: Craft Common Water Filter (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 10
+            input:
+                power: 200
+                stamina: 5
+                smelt_iron: 1
+                empty_pc: 1
+                rover_wires: 5
+                aluminum_plate: 2
+                minting_token: 1
+                fabrication_tools: 3
+            output:
+                water_filter-gen3_C1: 1
+        craft_water_filter-gen3_U1:
+            display_name: Craft Uncommon Water Filter (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 15
+            input:
+                power: 200
+                stamina: 5
+                smelt_iron: 3
+                rover_wires: 10
+                aluminum_plate: 2
+                metis_weave: 3
+                minting_token: 2
+                fabrication_tools: 3
+            output:
+                water_filter-gen3_U1: 1
+        craft_water_filter-gen3_R1:
+            display_name: Craft Rare Water Filter (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 20
+            input:
+                power: 200
+                stamina: 5
+                smelt_steel: 5
+                rover_wires: 15
+                aluminum_plate: 2
+                metis_weave: 3
+                minting_token: 3
+                fabrication_tools: 3
+            output:
+                water_filter-gen3_R1: 1
+        make_metis_shield_C1:
+            display_name: Make Common Metis Shield
+            building: engineering_bay
+            level:
+                fabrication: 60
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 10
+                smelt_steel: 2
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                metis_shield_C1: 1
+        make_metis_shield_U1:
+            display_name: Make Uncommon Metis Shield
+            building: engineering_bay
+            level:
+                fabrication: 80
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 15
+                smelt_steel: 8
+                electronics_parts: 1
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                metis_shield_U1: 1
+        make_metis_shield_R1:
+            display_name: Make Rare Metis Shield
+            building: engineering_bay
+            level:
+                fabrication: 100
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 25
+                smelt_steel: 15
+                electronics_parts: 4
+                machined_parts: 3
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                metis_shield_R1: 1
+        make_metis_shield_E1:
+            display_name: Make Epic Metis Shield
+            building: engineering_bay
+            level:
+                fabrication: 110
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 30
+                smelt_steel: 25
+                electronics_parts: 8
+                machined_parts: 7
+                structural_parts: 2
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                metis_shield_E1: 1
+        make_metis_shield_L1:
+            display_name: Make Legendary Metis Shield
+            building: engineering_bay
+            level:
+                fabrication: 120
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 50
+                smelt_steel: 30
+                electronics_parts: 16
+                machined_parts: 14
+                structural_parts: 12
+                titanium_plate: 10
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                metis_shield_L1: 1
+        make_metis_shield_M1:
+            display_name: Make Mythic Metis Shield
+            building: engineering_bay
+            level:
+                fabrication: 130
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 80
+                smelt_steel: 80
+                electronics_parts: 35
+                machined_parts: 32
+                structural_parts: 20
+                titanium_plate: 20
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                metis_shield_M1: 1
+        #Shelter
+        sprouts_aeroponic_experimentation:
+            display_name: Sprouts Aeroponic Experimentation
+            building: Shelter
+            input:
+                stamina: 3
+                power: 10
+                carbon_dioxide: 1
+                water: 5
+                nitrogen: 1
+                waste: 1
+                lifescience_tools: 1
+            output:
+                food: [30, 40, 35]
+                oxygen: [15, 35, 10]
+                sprout_seed: [1, 5, 0.3]
+                nitrogen: [0, 1, 0.4]
+        extra_credit:
+            display_name: Extra Credit
+            building: Shelter
+            input:
+                stamina: 1
+                power: 5
+                coffee_brewed: 1
+            output:
+                dusk: 0
         #Printed Concrete Habitat
         where_lunch:
             display_name: Where Lunch?
@@ -3444,7 +3911,7 @@
             input:
                 stamina: 1
             output:
-                dusk: 1                
+                dusk: 1
         # cantina
         # added by millorfernades (@fuseki#1488)
         # cantina Sunday tasks
@@ -3490,7 +3957,7 @@
                 cantina_coin: 5
             output:
                 dusk: [25, 50, 37.5]
-                keycard_copper: [0, 1, 0.0033]                
+                keycard_copper: [0, 1, 0.0033]
         hungry_hungry_martians:
             display_name: Hungry Hungry Martians
             building: cantina
@@ -3502,7 +3969,7 @@
                 cantina_coin: 6
             output:
                 dusk: [30, 60, 45]
-                keycard_copper: [0, 1, 0.006]               
+                keycard_copper: [0, 1, 0.006]
         barite_necessities_sun:
             display_name: Barite Necessities (Sunday)
             building: cantina
@@ -3539,112 +4006,112 @@
             display_name: Stale Sweets
             building: cantina
             day: [mon, thu]
-            input: 
+            input:
                 candycane: 25
-            output: 
+            output:
                 dusk: [2, 5, 3.5]
         cosmic_delivery:
             display_name: Cosmic Delivery
             building: cantina
             day: mon
-            input: 
+            input:
                 fractal_shard: 1
                 water_rich_clay: 1
                 cantina_coin: 3
-            output: 
+            output:
                 dusk: [20, 30, 25]
         breathing_room_mon:
             display_name: Breathing Room (Monday)
             building: cantina
             day: mon
-            input: 
+            input:
                 oxygen: 50
                 electronic_bits: 5
                 cantina_coin: 4
-            output: 
+            output:
                 dusk: [25, 45, 35]
                 keycard_copper: 0.0074
-        salty_solution:              
+        salty_solution:
             display_name: Salty Solution
             building: cantina
             day: [mon, thu]
-            input: 
+            input:
                 halite: 100
                 metal_bits: 20
                 cantina_coin: 5
-            output: 
+            output:
                 dusk: [25, 50, 37.5]
                 keycard_copper: 0.0033
         tasty_beverages_mon:
             display_name: Tasty Beverages (Monday)
             building: cantina
             day: mon
-            input: 
+            input:
                 water: 30
                 ice: 10
                 glass: 2
                 cantina_coin: 6
-            output: 
+            output:
                 dusk: [30, 60, 45]
-                keycard_copper: 0.006                
+                keycard_copper: 0.006
         sculpting_solutions_mon:
             display_name: Sculpting Solutions (Monday)
             building: cantina
             day: mon
-            input: 
+            input:
                 water_rich_clay: 8
                 cantina_coin: 5
-            output: 
+            output:
                 dusk: [10, 20, 15]
         smelly_situation:
             display_name: Smelly Situation
             building: cantina
             day: mon
-            input: 
+            input:
                 sulfur: 25
-                cantina_coin: 1               
-            output: 
+                cantina_coin: 1
+            output:
                 dusk: [3, 10, 6.5]
         # cantina Tuesday tasks
         bits_and_pieces_tue:
             display_name: Bits and Pieces (Tuesday)
             building: cantina
             day: tue
-            input: 
+            input:
                 metal_bits: 4
                 electronic_bits: 1
-            output: 
+            output:
                 dusk: [2, 5, 3.5]
         waste_disposal_tue:
             display_name: Waste Disposal (Tuesday)
             building: cantina
             day: tue
-            input: 
+            input:
                 waste: 300
                 soil: 8
                 cantina_coin: 3
-            output: 
+            output:
                 dusk: [20, 30, 25]
         breathing_room_tue:
             display_name: Breathing Room (Tuesday)
             building: cantina
             day: tue
-            input: 
+            input:
                 oxygen: 50
                 water: 25
                 cantina_coin: 4
-            output: 
+            output:
                 dusk: [25, 45, 35]
                 keycard_copper: 0.0074
         scrubbing_supplies:
             display_name: Scrubbing Supplies
             building: cantina
             day: tue
-            input: 
+            input:
                 ice: 275
                 metal_bits: 25
                 cantina_coin: 5
-            output: 
+            output:
                 dusk: [25, 50, 37.5]
                 keycard_copper: 0.0033
         electric_boogie:
@@ -3656,26 +4123,26 @@
                 rover_wires: 2
                 siliconcrystals_raw: 2
                 cantina_coin: 6
-            output: 
+            output:
                 dusk: [30, 60, 45]
                 keycard_copper: 0.006
         sculpting_solutions_tue:
             display_name: Sculpting Solutions (Tuesday)
             building: cantina
             day: tue
-            input: 
+            input:
                 water_rich_clay: 9
                 cantina_coin: 2
-            output: 
+            output:
                 dusk: [10, 20, 15]
         food_donations:
             display_name: Food Donations
             building: cantina
             day: tue
-            input: 
+            input:
                 food: 15
                 cantina_coin: 2
-            output: 
+            output:
                 dusk: [3, 10, 6.5]
         # cantina Wednesday tasks
         bamboozled_wed:
@@ -3729,23 +4196,23 @@
             display_name: Breathing Room (Thursday)
             building: cantina
             day: thu
-            input: 
+            input:
                 oxygen: 35
                 water_rich_clay: 10
                 cantina_coin: 4
-            output: 
+            output:
                 dusk: [20, 45, 32.5]
                 keycard_copper: 0.0074
         tasty_beverages_thu:
             display_name: Tasty Beverages (Thursday)
             building: cantina
             day: thu
-            input: 
+            input:
                 water: 125
                 ice: 1
                 glass: 2
                 cantina_coin: 6
-            output: 
+            output:
                 dusk: [30, 60, 45]
                 keycard_copper: 0.006
         green_bean_profits:
@@ -3761,35 +4228,35 @@
             display_name: Smelly Situation II
             building: cantina
             day: thu
-            input: 
+            input:
                 sulfur: 20
-                cantina_coin: 1               
-            output: 
+                cantina_coin: 1
+            output:
                 dusk: [3, 10, 6.5]
         # cantina Friday tasks
         bits_and_pieces_fri:
             display_name: Bits and Pieces (Friday)
             building: cantina
             day: fri
-            input: 
+            input:
                 metal_bits: 8
-            output: 
+            output:
                 dusk: [2, 5, 3.5]
         waste_disposal_fri:
             display_name: Waste Disposal (Friday)
             building: cantina
             day: fri
-            input: 
+            input:
                 waste: 300
                 water_rich_clay: 3
                 cantina_coin: 3
-            output: 
+            output:
                 dusk: [20, 30, 25]
         baijiu_blitz:
             display_name: Baijiu Blitz
             building: cantina
             day: fri
-            input: 
+            input:
                 baijiu: 4
                 cantina_coin: 4
             output: 
@@ -3799,7 +4266,7 @@
             display_name: Transport Summer Ice
             building: cantina
             day: fri
-            input: 
+            input:
                 ice: 250
                 metal_bits: 25
                 cantina_coin: 5
@@ -3810,7 +4277,7 @@
             display_name: Summer Scrap Collection
             building: cantina
             day: fri
-            input: 
+            input:
                 metal_bits: 20
                 rover_wires: 22
                 cantina_coin: 6
@@ -3821,11 +4288,11 @@
             display_name: Bamboozled (Friday)
             building: cantina
             day: fri
-            input: 
+            input:
                 bamboo: 35
                 water: 10
                 cantina_coin: 2
-            output: 
+            output:
                 dusk: [10, 20, 15]
         spread_golden_profits:
             display_name: Spread Golden Profits
@@ -3835,7 +4302,7 @@
                 sunflower_seeds: 4
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]                
+                dusk: [3, 10, 6.5]
         #event
     buildings:
         solar_panel:
@@ -3877,5 +4344,4 @@
         concrete_habitat:
             display_name: Habitat
         cantina:
-            display_name: Cantina            
-            
+            display_name: Cantina
