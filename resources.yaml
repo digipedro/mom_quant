@@ -3397,8 +3397,6 @@
                 minting_token: 3
                 fabrication_tools: 3
             output:
-                cad-gen3_R1: 1
-            output:
                 lootset:
                     - cad-gen3_C1: [0, 1, 0.465]
                     - cad-gen3_U1: [0, 1, 0.3]
@@ -3768,7 +3766,7 @@
         #Shelter
         sprouts_aeroponic_experimentation:
             display_name: Sprouts Aeroponic Experimentation
-            building: Shelter
+            building: shelter
             input:
                 stamina: 3
                 power: 10
@@ -3784,7 +3782,7 @@
                 nitrogen: [0, 1, 0.4]
         extra_credit:
             display_name: Extra Credit
-            building: Shelter
+            building: shelter
             input:
                 stamina: 1
                 power: 5
@@ -4345,3 +4343,5 @@
             display_name: Habitat
         cantina:
             display_name: Cantina
+        shelter:
+            display_name: Shelter
