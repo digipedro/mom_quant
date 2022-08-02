@@ -4109,7 +4109,7 @@
                 metal_bits: 25
                 cantina_coin: 5
             output:
-                dusk: [25, 50, 37.5]
+                dusk: [30, 50, 40]
                 keycard_copper: 0.0033
         electric_boogie:
             display_name: Electric Boogie
@@ -4138,7 +4138,7 @@
             day: tue
             input:
                 food: 15
-                cantina_coin: 2
+                cantina_coin: 1
             output:
                 dusk: [3, 10, 6.5]
         # cantina Wednesday tasks
