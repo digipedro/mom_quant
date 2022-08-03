@@ -640,6 +640,7 @@
                 stamina: 1
             output:
                 electronic_bits: [10, 20, 12.85]
+                circuit_component: [0, 1, 0.1]
         make_electronics_parts:
             display_name: Make Electronics Parts
             building: 3d_print_shop
@@ -853,6 +854,7 @@
                 pvc_pipe: 5
             output:
                 dusk: [40, 55, 47.5]
+                baijiu: [0, 5, 1.5]
         rare_solar_shard:
             display_name: Make Rare Solar Shard
             building: 3d_print_shop
@@ -1022,7 +1024,7 @@
                 stamina: 4
                 chemistry_tools: 3
             output:
-                methane: 5
+                methane: [5, 10, 5.8]
                 water: 10
         split_water:
             display_name: Split Water
@@ -1177,7 +1179,8 @@
                 pvc_pipe: 1
                 stamina: 2
             output:
-                empty_pc: [2, 5, 2.2]
+                empty_pc: [2, 5, 2.7]
+                full_pc: [0, 1, 0.5]
         make_metis_weave:
             display_name: Make Metis Weave
             building: chem_lab
@@ -1202,7 +1205,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [1, 5, 1.9]
+                empty_pc: [1, 5, 2.25]
         repair_broken_cell2:
             display_name: Repair Broken Power Cell II
             building: chem_lab
@@ -1214,7 +1217,7 @@
                 stamina: 1
                 electrical_tools: 2
             output:
-                empty_pc: [2, 6, 2.9]
+                empty_pc: [2, 6, 3.55]
         repair_broken_cell3:
             display_name: Repair Broken Power Cell III
             building: chem_lab
@@ -1226,7 +1229,7 @@
                 stamina: 1
                 electrical_tools: 3
             output:
-                empty_pc: [3, 8, 4.4]
+                empty_pc: [3, 8, 4.4444]
         fab_electrical_grade_silicon:
             display_name: Process Electrical Grade Silicon
             building: chem_lab
@@ -1235,7 +1238,8 @@
                 stamina: 1
                 siliconcrystals_raw: 4
             output:
-                smelt_mgs: [1, 2, 1.1111]
+                smelt_mgs: [2, 3, 2.1111]
+                siliconcrystals_raw: [0, 2, 1.5]
         battery_conditioning1:
             display_name: Battery Conditioning I
             building: chem_lab
@@ -1324,7 +1328,8 @@
                 power: 20
                 stamina: 2
             output:
-                empty_pc: [4, 10, 4.4]
+                empty_pc: [2, 6, 4]
+                full_pc: [0, 4, 1.875]
         fabricate_circuit_component:
             display_name: Fabricate Circuit Component
             building: chem_lab
@@ -1446,11 +1451,11 @@
             input:
                 stamina: 5
                 full_pc: 1
-                power: 20
                 electrical_tools: 2
                 rover_wires: 3
             output:
                 empty_pc: 1
+                full_pc: [0, 1, 0.1]
         #mining rig
         mine_regolith_1:
             display_name: Mine Regolith I
@@ -2249,7 +2254,7 @@
                 power: 10
                 stamina: 1
             output:
-                ice: [12, 36, 24]
+                ice: [14, 40, 27]
         stem_sets:
             display_name: STEM sets for Earthlings
             building: polar_workshop
@@ -2306,8 +2311,12 @@
                 stamina: 3
             output:
                 lootset:
-                    - dusk: [0.07, 888, 888]
-                    - dusk: [0.93, 32, 32]
+                    - dusk: [0.0338, 1000, 3000]
+                    - dusk: [0.0483, 250, 500]
+                    - dusk: [0.0483, 200, 250]
+                    - dusk: [0.0966, 130, 200]
+                    - dusk: [0.1932, 100, 170]
+                    - dusk: [0.5797, 0, 100]
         aqua_ares:
             display_name: AQUA ARES
             building: tea_shop
@@ -2321,9 +2330,12 @@
                 stamina: 1
             output:
                 lootset:
-                    - dusk: [0.1, 80, 120]
-                    - dusk: [0.2, 60, 80]
-                    - dusk: [0.7, 40, 60]
+                    - dusk: [0.005, 200, 20000]
+                    - dusk: [0.02, 250, 500]
+                    - dusk: [0.06, 200, 210]
+                    - dusk: [0.15, 150, 180]
+                    - dusk: [0.3, 135, 150]
+                    - dusk: [0.465, 0, 100]
         bamboo_by_skal:
             display_name: Bamboo by Skal
             building: tea_shop
@@ -2336,7 +2348,13 @@
                 power: 50
                 stamina: 4
             output:
-                dusk: [24, 64, 41.4]
+                lootset:
+                    - dusk: [0.005, 50, 500]
+                    - dusk: [0.02, 200, 250]
+                    - dusk: [0.06, 180, 200]
+                    - dusk: [0.15, 50, 125]
+                    - dusk: [0.3, 125, 180]
+                    - dusk: [0.465, 0, 75]
         ceramics_by_yingge:
             display_name: Ceramics By Yingge
             building: tea_shop
@@ -3271,8 +3289,7 @@
             input:
                 stamina: 2
                 metal_bits: 6
-                electronic_bits: 3
-                pvc_raw: 1
+                electronic_bits: 5
                 fabrication_tools: 1
             output:
                 lootset:
