@@ -60,22 +60,6 @@
             display_name: Bazaar Coin (L)
         bazaar_coin_E:
             display_name: Bazaar Coin (E)
-        scavenging_tools_n:
-            display_name: Novice Scavenging Tools
-        fabrication_tools_n:
-            display_name: Novice Fabrication Tools
-        chemistry_tools_n:
-            display_name: Novice Chemistry Tools
-        electrical_tools_n:
-            display_name: Novice Electrical Tools
-        lifescience_tools_n:
-            display_name: Novice Life Science Tools
-        machining_tools_n:
-            display_name: Novice Machining Tools
-        robotics_tools_n:
-            display_name: Novice Robitics Tools
-        lifescience_tools:
-            display_name: Life Science Tools
         wastezilla:
             display_name: WasteZilla
         siliconcrystals_raw:
@@ -90,6 +74,30 @@
             display_name: Faded Art
         candycane:
             display_name: Candy Canes
+        scavenging_tools_Apprentice:
+            display_name: Apprentice Scavenging Tools
+        scavenging_tools_Artisan:
+            display_name: Artisan Scavenging Tools
+        scavenging_tools_Journeyman:
+            display_name: Journeyman Scavenging Tools
+        scavenging_tools_Expert:
+            display_name: Expert Scavenging Tools
+        scavenging_tools_Master:
+            display_name: Master Scavenging Tools
+        chemistry_tools_ar:
+            display_name: Artisan Chemistry Tools
+        electrical_tools_ar:
+            display_name: Artisan Electrical Tools
+        fabrication_tools_ar:
+            display_name: Artisan Fabrication Tools
+        lifescience_tools_ar:
+            display_name: Artisan Lifescience Tools
+        machining_tools_ar:
+            display_name: Artisan Machining Tools
+        mining_tools_ar:
+            display_name: Artisan Mining Tools
+        robotics_tools_ar:
+            display_name: Artisan Robotics Tools
     recipes:
         # greenhouse
         plant_sprouts:
@@ -230,6 +238,21 @@
                     - sunflower: [1, 1, 2]
                     - soil: [0.2, 1, 1]
                     - shard_glushkos_greenhouse_A: [0.0033, 1, 1]
+        make_apprentice_life_science_tools:
+            display_name: Make Apprentice Life Science Tools
+            building: greenhouse
+            level:
+                life science: 30
+                fabrication: 25
+            input:
+                lifescience_tools_n: 1
+                metis: 3
+                water: 15
+                soil: 10
+                power: 20
+                stamina: 5
+            output:
+                lifescience_tools_a: 1
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide
@@ -626,6 +649,36 @@
                 aluminum_plate: [8, 10, 9]
                 electronics_parts: 8
                 glass: 6
+        make_apprentice_electrical_tools:
+            display_name: Make Apprentice Electrical Tools
+            building: machine_shop
+            level:
+                electrical: 35
+                fabrication: 25
+            input:
+                electrical_tools_n: 1
+                metis: 3
+                empty_pc: 1
+                rover_wires: 3
+                power: 20
+                stamina: 5
+            output:
+                electrical_tools_a: 1
+        make_apprentice_machining_tools:
+            display_name: Make Apprentice Machining Tools
+            building: machine_shop
+            level:
+                machining: 40
+                fabrication: 25
+            input:
+                machining_tools_n: 1
+                metis: 5
+                metal_bits: 5
+                electronic_bits: 3
+                power: 50
+                stamina: 5
+            output:
+                machining_tools_a: 1
         #3d print shop
         make_electronic_bits:
             display_name: Make Electronic Bits
@@ -903,6 +956,21 @@
                 fabrication_tools: 4
             output:
                 engineering_bay_kit: 1
+        make_apprentice+_abrication_tools:
+            display_name: Make Apprentice Fabrication Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 30
+            input:
+                fabrication_tools_n: 1
+                metis: 5
+                pvc_pipe: 1
+                bamboo: 5
+                paper: 2
+                power: 20
+                stamina: 5
+            output:
+                fabrication_tools_a: 1
         #water filter
         filter_water:
             display_name: Filter Water
@@ -1344,6 +1412,21 @@
                 stamina: 2
             output:
                 circuit_component: [1, 2, 1.1]
+        make_apprentice_chemistry_tools:
+            display_name: Make Apprentice Chemistry Tools
+            building: chem_lab
+            level:
+                chemistry: 35
+                fabrication: 25
+            input:
+                chemistry_tools_n: 1
+                metis: 5
+                oxygen: 1
+                pla: 3
+                power: 20
+                stamina: 4
+            output:
+                chemistry_tools_a: 1
         #grind n' brew
         grind_beans_s:
             display_name: Grind Beans (Small)
@@ -1525,6 +1608,21 @@
             output:
                 ice: [250, 450, 306.94]
                 sulfur: [0, 10, 0.55]
+        make_apprentice_mining_tools:
+            display_name: Make Apprentice Mining Tools
+            building: mining_rig
+            level:
+                mining: 35
+                fabrication: 25
+            input:
+                mining_tools_n: 1
+                metis: 3
+                smelt_iron: 1
+                metal_bits: 3
+                power: 30
+                stamina: 4
+            output:
+                mining_tools_a: 1
         #roverworks
         assemble_hauling_rover:
             display_name: Assemble Hauling Rover
@@ -1566,6 +1664,20 @@
                 stamina: 5
             output:
                 hauling_token: [1, 2, 1.1]
+        make_apprentice_robotics_tools:
+            display_name: Make Apprentice Robotics Tools
+            building: rover_works
+            level:
+                robotics: 40
+                fabrication: 25
+            input:
+                robotics_tools_n: 1
+                metis: 4
+                metal_bits: 1
+                power: 30
+                stamina: 4
+            output:
+                robotics_tools_a: 1
         survey_area1:
             display_name: Survey Area I
             building: rover_works
@@ -3927,6 +4039,33 @@
             output:
                 dusk: 1
         # cantina
+        repair_broken_EVA_suit:
+            display_name: Repair Broken EVA Suit
+            building: cantina
+            level:
+                electrical: 35
+            input:
+                rover_wires: 12
+                electronic_bits: 4
+                electrical_tools: 3
+                circuit_component: 1
+                stamina: 2
+            output:
+                dusk: [30, 800, 64.267]
+        make_apprentice_scavenging_tools:
+            display_name: Make Apprentice Scavenging Tools
+            building: cantina
+            level:
+                scavenging: 30
+                fabrication: 25
+            input:
+                scavenging_tools_n: 1
+                metis: 3
+                electronic_bits: 25
+                smelt_aluminum: 2
+                stamina: 4
+            output:
+                scavenging_tools_Apprentice: 1
         # added by millorfernades (@fuseki#1488)
         # cantina Sunday tasks
         faded_collection:
@@ -4002,19 +4141,6 @@
                 cantina_coin: 1
             output:
                 dusk: [3, 10, 6.5]
-        repair_broken_EVA_suit:
-            display_name: Repair Broken EVA Suit
-            building: cantina
-            level:
-                electrical: 35
-            input:
-                rover_wires: 12
-                electronic_bits: 4
-                electrical_tools: 3
-                circuit_component: 1
-                stamina: 2
-            output:
-                dusk: [30, 800, 64.267]
         # cantina Monday tasks
         stale_sweets:
             display_name: Stale Sweets

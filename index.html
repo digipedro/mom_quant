@@ -293,6 +293,7 @@
       const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
       
       const research_re = /research_([a-z]+)_([najem])/;
+      const tools_re = /([a-z]+)_tools_([najem])/;
       
       const default_level_hides = {
                 chemistry: 0,
@@ -301,7 +302,8 @@
                 'life science': 0,
                 machining: 0,
                 mining: 0,
-                robotics: 0
+                robotics: 0,
+                scavenging: 0
             };
       
       
@@ -367,6 +369,7 @@
                 {id: 'machining', name: 'Machining', value: 145},
                 {id: 'mining', name: 'Mining', value: 145},
                 {id: 'robotics', name: 'Robotics', value: 145},
+                {id: 'scavenging', name: 'Scavenging', value: 145}
             ],
             level_hides: {...default_level_hides},                    
             level_hide_count: 0,
@@ -575,7 +578,7 @@
                 if (method == 'Daily Ration')
                     return 0;
                 if (method == 'Martizen')
-                    return (60 * food + 20 * water - 4 * waste) / 16;
+                    return (60 * food + 20 * water - 2 * waste) / 22;
                 // 'Eat Meal'
                 return (60 * food + 20 * water - 4 * waste) / 24;
             },
@@ -676,6 +679,22 @@
                 let match = research_re.exec(id);
                 if (match != null) {
                     let name = ' ' + capitalize(match[1]) + ' Research';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = 'Apprentice' + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+                
+                match = tools_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Tools';
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
@@ -930,7 +949,6 @@
                             }
                         }
                     }
-
                     
                     let entry = {
                         id: key,
