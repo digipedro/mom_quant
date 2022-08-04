@@ -1039,7 +1039,7 @@
                 power: 15
                 chemistry_tools: 1
             output:
-                fermented_sorghum: [12, 20, 16]
+                fermented_sorghum: [12, 16, 14]
         ferment_sorghum3:
             display_name: Ferment Sorghum III
             building: water_filter
@@ -1092,7 +1092,7 @@
                 stamina: 4
                 chemistry_tools: 3
             output:
-                methane: [5, 10, 5.8]
+                methane: [5, 12, 7]
                 water: 10
         split_water:
             display_name: Split Water
@@ -1172,7 +1172,7 @@
                 stamina: 2
                 chemistry_tools: 2
             output:
-                pvc_raw: [2, 7, 3.2222]
+                pvc_raw: [2, 9, 4.2222]
         make_pvc3:
             display_name: Make PVC III
             building: chem_lab
@@ -1210,7 +1210,7 @@
                 power: 20
                 stamina: 2
             output:
-                pla: [5, 10, 7.5]
+                pla: [6, 12, 9]
         make_pla3:
             display_name: Make PLA III
             building: chem_lab
@@ -1222,7 +1222,7 @@
                 power: 30
                 stamina: 3
             output:
-                pla: [10, 20, 15]
+                pla: [12, 24, 18]
         make_perchlorate:
             display_name: Make Perchlorate
             building: chem_lab
