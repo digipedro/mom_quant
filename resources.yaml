@@ -777,6 +777,7 @@
                 oxygen: 5
                 pla: 5
                 metis: 5
+                dusk: 10
                 power: 20
                 stamina: 5
                 fabrication_tools: 1
@@ -792,6 +793,7 @@
                 rover_wires: 3
                 pvc_raw: 1
                 metis: 3
+                dusk: 10
                 power: 20
                 stamina: 5
                 fabrication_tools: 1
@@ -807,6 +809,7 @@
                 bamboo: 10
                 paper: 5
                 metis: 5
+                dusk: 10
                 power: 20
                 stamina: 5
             output:
@@ -822,6 +825,7 @@
                 regolith: 250
                 metis: 3
                 power: 20
+                dusk: 10
                 stamina: 5
                 fabrication_tools: 1
             output:
@@ -836,11 +840,28 @@
                 metal_bits: 5
                 electronic_bits: 3
                 metis: 5
+                dusk: 10
                 power: 40
                 stamina: 5
                 fabrication_tools: 1
             output:
                 machining_tools_n: 1
+        make_novice_mining_tools:
+            display_name: Make Novice Mining Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 20
+            input:
+                smelt_iron: 2
+                metal_bits: 10
+                bamboo: 20
+                metis: 5
+                dusk: 10
+                power: 40
+                stamina: 5
+                fabrication_tools: 1
+            output:
+                mining_tools_n: 1
         make_novice_robotice_tools:
             display_name: Make Novice Robotics Tools
             building: 3d_print_shop
@@ -851,6 +872,7 @@
                 electronic_bits: 5
                 rover_wires: 5
                 metis: 5
+                dusk: 10
                 power: 40
                 stamina: 5
                 fabrication_tools: 2
