@@ -802,8 +802,6 @@
         make_novice_fabrication_tools:
             display_name: Make Novice Fabrication Tools
             building: 3d_print_shop
-            level:
-                fabrication: 10
             input:
                 pvc_pipe: 1
                 bamboo: 10
@@ -4024,7 +4022,7 @@
             display_name: Mars BnB
             building: concrete_habitat
             input:
-                stamina: 6
+                stamina: 8
                 power: 60
                 food: 500
                 water: 100
@@ -4433,7 +4431,7 @@
                 metal_bits: 25
                 cantina_coin: 5
             output: 
-                dusk: [25, 50, 37.5]
+                dusk: [30, 50, 40]
                 keycard_copper: 0.0033
         summer_scrap_collection:
             display_name: Summer Scrap Collection
