@@ -4199,8 +4199,9 @@
                 halite: 100
                 metal_bits: 20
                 cantina_coin: 5
+                vibes: 20
             output:
-                dusk: [25, 50, 37.5]
+                dusk: [10, 400, 72]
                 keycard_copper: 0.0033
         tasty_beverages_mon:
             display_name: Tasty Beverages (Monday)
