@@ -2390,7 +2390,7 @@
             output:
                 ice: [14, 40, 27]
         stem_sets:
-            display_name: STEM sets for Earthlings
+            display_name: STEM Sets for Earthlings
             building: polar_workshop
             level:
                 fabrication: 15
@@ -2780,7 +2780,7 @@
             display_name: Chemistry 101
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
                 oxygen: 2
                 perchlorate: 2
@@ -4119,7 +4119,7 @@
         hit_the_ice:
             display_name: Hit The Ice
             building: cantina
-            day: [sun, wed]
+            day: sun
             input:
                 ice: 300
                 electronic_bits: 10
@@ -4305,6 +4305,17 @@
                 cantina_coin: 2
             output:
                 dusk: [10, 20, 15]
+        hit_the_ice_harder:
+            display_name: Hit The Ice Harder
+            building: cantina
+            day: wed
+            input:
+                ice: 300
+                electronic_bits: 10
+                cantina_coin: 4
+            output:
+                dusk: [20, 45, 32.5]
+                keycard_copper: [0, 1, 0.0074]
         food_donations:
             display_name: Food Donations
             building: cantina
