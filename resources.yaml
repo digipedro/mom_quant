@@ -2309,10 +2309,15 @@
                 lootlist:
                     - repeat: 2
                     - lootset:
-                        - dusk: [0.137, 10, 40]
-                        - smelt_titanium: [0.274, 1, 5]
-                        - smelt_aluminum: [0.274, 1, 5]
-                        - smelt_steel: [0.274, 1, 5]
+                        - percent: 13.7
+                        - lootset:
+                            - dusk: [0.025, 25, 150]
+                            - dusk: [0.15, 15, 75]
+                            - dusk: [0.325, 10, 50]
+                            - dusk: [0.50, 5, 20]
+                        - smelt_titanium: [0.274, 2, 5]
+                        - smelt_aluminum: [0.274, 2, 5]
+                        - smelt_steel: [0.274, 2, 5]
                         - surveyor_coin: [0.0411, 1, 1]
                     - repeat: 2
                     - lootset:
