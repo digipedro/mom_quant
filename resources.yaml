@@ -4029,9 +4029,9 @@
                 baijiu: 12
             output:
                 lootset:
-                    - dusk: [0.0588, 150, 200]
-                    - dusk: [0.1176, 100, 150]
-                    - dusk: [0.8235, 80, 100]
+                    - dusk: [0.0588, 500, 800]
+                    - dusk: [0.1176, 300, 500]
+                    - dusk: [0.8235, 80, 90]
         mars_bnb:
             display_name: Mars BnB
             building: concrete_habitat
