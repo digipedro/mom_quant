@@ -3972,9 +3972,9 @@
                 bazaar_coin_R: 1
             output:
                 lootset:
-                    - vibes: [0.0588, 15, 25]
-                    - vibes: [0.1176, 12, 15]
-                    - vibes: [0.8235, 10, 12]
+                    - vibes: [0.03, 15, 25]
+                    - vibes: [0.07, 12, 15]
+                    - vibes: [0.9, 10, 12]
         advanced_project_testing:
             display_name: Advanced Project Testing
             building: concrete_habitat
@@ -4029,9 +4029,9 @@
                 baijiu: 12
             output:
                 lootset:
-                    - dusk: [0.0588, 500, 800]
-                    - dusk: [0.1176, 300, 500]
-                    - dusk: [0.8235, 80, 90]
+                    - dusk: [0.03, 500, 800]
+                    - dusk: [0.07, 300, 500]
+                    - dusk: [0.9, 80, 90]
         mars_bnb:
             display_name: Mars BnB
             building: concrete_habitat
@@ -4041,12 +4041,13 @@
                 food: 500
                 water: 100
                 bazaar_coin_U: 1
+                bazaar_coin_R: 2
+                vibes: 3
             output:
                 lootlist:
                     - lootset:
-                        - dusk: [0.0588, 300, 350]
-                        - dusk: [0.1176, 275, 300]
-                        - dusk: [0.8235, 250, 275]
+                        - dusk: [0.03, 0, 700]
+                        - dusk: [0.97, 0, 500]
                     - lootset:
                         - resource_credit: [0.0588, 4, 5]
                         - resource_credit: [0.1176, 2, 4]
