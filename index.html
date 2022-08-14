@@ -647,8 +647,6 @@
                     return Math.min(this.getPrice('aluminum_plate', type) / 10, this.getPrice('titanium_plate', type) / 25)
                 if (id == 'resource_credit')
                     return 0.5;
-                if (id == 'minting_token')
-                    return 90;
                 
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);

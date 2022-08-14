@@ -2590,8 +2590,8 @@
                 shard_research: 2
                 mining_tools: 2
             output:
-                research_mining_n: [2.55625, 2, 5]
-                research_mining_a: [0.0125, 0, 1]
+                research_mining_n: [2, 5, 2.55625]
+                research_mining_a: [0, 1, 0.0125]
         areology_310:
             display_name: Areology 310
             building: library
@@ -2608,9 +2608,9 @@
                 shard_research: 3
                 mining_tools: 3
             output:
-                research_mining_n: [4.0834, 3, 8]
-                research_mining_a: [0.0375, 0, 2]
-                research_mining_j: [0.0083, 0, 1]
+                research_mining_n: [3, 8, 4.0834]
+                research_mining_a: [0, 2, 0.0375]
+                research_mining_j: [0, 1, 0.0083]
         areology_410:
             display_name: Areology 410
             building: library
@@ -2627,10 +2627,10 @@
                 shard_research: 5
                 mining_tools: 4
             output:
-                research_mining_n: [0.225, 1, 5]
-                research_mining_a: [2.53125, 2, 5]
-                research_mining_j: [0.0125, 0, 1]
-                research_mining_e: [0.0063, 0, 1]
+                research_mining_n: [1, 5, 0.225]
+                research_mining_a: [2, 5, 2.53125]
+                research_mining_j: [0, 1, 0.0125]
+                research_mining_e: [0, 1, 0.0063]
         areology_555:
             display_name: Areology 555
             building: library
@@ -2647,10 +2647,10 @@
                 shard_research: 7
                 mining_tools: 5
             output:
-                research_mining_a: [4.15, 3, 8]
-                research_mining_j: [0.1725, 0, 4]
-                research_mining_e: [0.01, 0, 1]
-                research_mining_m: [0.0025, 0, 1]
+                research_mining_a: [3, 8, 4.15]
+                research_mining_j: [0, 4, 0.1725]
+                research_mining_e: [0, 1, 0.01]
+                research_mining_m: [0, 1, 0.0025]
         basic_seed_study:
             display_name: Basic Seed Study
             building: library
