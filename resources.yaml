@@ -4000,11 +4000,13 @@
                 food: 100
                 water: 50
                 bazaar_coin_C: 2
+                bazaar_coin_R: 2
+                vibes: 3
             output:
                 lootset:
-                    - dusk: [0.0588, 500, 1000]
-                    - dusk: [0.1176, 250, 500]
-                    - dusk: [0.8235, 100, 200]
+                    - dusk: [0.03, 0, 1000]
+                    - dusk: [0.07, 0, 500]
+                    - dusk: [0.9, 0, 250]
         wine_down:
             display_name: Wine Down
             building: concrete_habitat
