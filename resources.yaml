@@ -3985,11 +3985,12 @@
                 bazaar_coin_E: 2
                 bazaar_coin_R: 2
                 bazaar_coin_U: 2
+                vibes: 3
             output:
                 lootset:
-                    - dusk: [0.0588, 750, 1000]
-                    - dusk: [0.1176, 125, 750]
-                    - dusk: [0.8235, 100, 125]
+                    - dusk: [0.03, 0, 2000]
+                    - dusk: [0.07, 0, 750]
+                    - dusk: [0.9, 0, 200]
         social_science_experiments:
             display_name: Social Science Experiments
             building: concrete_habitat
@@ -4088,7 +4089,13 @@
                 circuit_component: 1
                 stamina: 2
             output:
-                dusk: [30, 800, 64.267]
+                lootset:
+                    - dusk: [0.011, 800, 800]
+                    - dusk: [0.0549, 360, 360]
+                    - dusk: [0.0549, 120, 120]
+                    - dusk: [0.0549, 60, 60]
+                    - dusk: [0.0549, 50, 50]
+                    - dusk: [0.7692, 30, 30]
         make_apprentice_scavenging_tools:
             display_name: Make Apprentice Scavenging Tools
             building: cantina
@@ -4123,7 +4130,11 @@
                 vibes: 1
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         hit_the_ice:
             display_name: Hit The Ice
             building: cantina
@@ -4134,7 +4145,11 @@
                 vibes: 1
                 cantina_coin: 4
             output:
-                dusk: [20, 45, 32.5]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: [0, 1, 0.0074]
         most_of_my_friends_argon:
             display_name: Most of My Friends Argon
@@ -4146,7 +4161,11 @@
                 vibes: 1
                 cantina_coin: 5
             output:
-                dusk: [25, 50, 37.5]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
                 keycard_copper: [0, 1, 0.0033]
         hungry_hungry_martians:
             display_name: Hungry Hungry Martians
@@ -4158,7 +4177,11 @@
                 vibes: 1
                 cantina_coin: 6
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: [0, 1, 0.006]
         barite_necessities_sun:
             display_name: Barite Necessities (Sunday)
@@ -4168,7 +4191,11 @@
                 barite: 25
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         seeding_the_way:
             display_name: Seeding The Way
             building: cantina
@@ -4177,7 +4204,11 @@
                 sunflower_seeds: 4
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Monday tasks
         stale_sweets:
             display_name: Stale Sweets
@@ -4298,7 +4329,11 @@
                 soil: 8
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         breathing_room_tue:
             display_name: Breathing Room (Tuesday)
             building: cantina
@@ -4319,7 +4354,11 @@
                 metal_bits: 25
                 cantina_coin: 5
             output:
-                dusk: [30, 50, 40]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         electric_boogie:
             display_name: Electric Boogie
@@ -4331,7 +4370,11 @@
                 siliconcrystals_raw: 2
                 cantina_coin: 6
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         sculpting_solutions_tue:
             display_name: Sculpting Solutions (Tuesday)
@@ -4341,7 +4384,11 @@
                 water_rich_clay: 9
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         hit_the_ice_harder:
             display_name: Hit The Ice Harder
             building: cantina
@@ -4351,7 +4398,11 @@
                 electronic_bits: 10
                 cantina_coin: 4
             output:
-                dusk: [20, 45, 32.5]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: [0, 1, 0.0074]
         food_donations:
             display_name: Food Donations
@@ -4361,7 +4412,11 @@
                 food: 15
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Wednesday tasks
         bamboozled_wed:
             display_name: Bamboozled (Wednesday)
@@ -4372,7 +4427,11 @@
                 water_rich_clay: 3
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         odds_and_ends:
             display_name: Odds and Ends
             building: cantina
@@ -4389,7 +4448,11 @@
                 barite: 35
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         express_o_delivery:
             display_name: Express-o Delivery
             building: cantina
@@ -4398,7 +4461,11 @@
                 coffee_bean_roasted: 2
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Thursday tasks
         black_market_crystals:
             display_name: Black Market Crystals
@@ -4409,7 +4476,11 @@
                 electronic_bits: 3
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         breathing_room_thu:
             display_name: Breathing Room (Thursday)
             building: cantina
@@ -4419,7 +4490,11 @@
                 water_rich_clay: 10
                 cantina_coin: 4
             output:
-                dusk: [20, 45, 32.5]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         tasty_beverages_thu:
             display_name: Tasty Beverages (Thursday)
@@ -4431,7 +4506,11 @@
                 glass: 2
                 cantina_coin: 6
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         green_bean_profits:
             display_name: Green Bean Profits
@@ -4441,7 +4520,11 @@
                 coffee_bean_green: 10
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         smelly_situation2:
             display_name: Smelly Situation II
             building: cantina
@@ -4450,7 +4533,11 @@
                 sulfur: 20
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Friday tasks
         bits_and_pieces_fri:
             display_name: Bits and Pieces (Friday)
@@ -4469,7 +4556,11 @@
                 water_rich_clay: 3
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         baijiu_blitz:
             display_name: Baijiu Blitz
             building: cantina
@@ -4478,7 +4569,11 @@
                 baijiu: 4
                 cantina_coin: 4
             output: 
-                dusk: [20, 45, 32.5]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         transport_summer_ice:
             display_name: Transport Summer Ice
@@ -4489,7 +4584,11 @@
                 metal_bits: 25
                 cantina_coin: 5
             output: 
-                dusk: [30, 50, 40]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         summer_scrap_collection:
             display_name: Summer Scrap Collection
@@ -4500,7 +4599,11 @@
                 rover_wires: 22
                 cantina_coin: 6
             output: 
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         bamboozled_fri:
             display_name: Bamboozled (Friday)
@@ -4511,7 +4614,11 @@
                 water: 10
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         spread_golden_profits:
             display_name: Spread Golden Profits
             building: cantina
@@ -4520,7 +4627,11 @@
                 sunflower_seeds: 4
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Saturday tasks
         smelted_dreams:
             display_name: Smelted Dreams
@@ -4547,7 +4658,11 @@
                 water_filter-22_C1: 1
                 cantina_coin: 4
             output:
-                dusk: [20, 45, 32.5]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
         greenhouse_overstock:
             display_name: Greenhouse Overstock
             building: cantina
@@ -4574,7 +4689,11 @@
                 chem_lab_C1: 1
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         reactor_recovery:
             display_name: Reactor Recovery
             building: cantina
@@ -4583,7 +4702,11 @@
                 sab_reactor_C1: 1
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         #event
     buildings:
         solar_panel:
