@@ -3234,7 +3234,7 @@
                     - shelter_L1: [0.02, 0, 1]
                     - shelter_M1: [0.005, 0, 1]
         wastezilla:
-            display_name: Create WasteZilla
+            display_name: Engineer WasteZilla
             building: engineering_bay
             level:
                 fabrication: 25
@@ -3249,7 +3249,7 @@
             output:
                 wastezilla: 1
         olympus_air_system:
-            display_name: Olympus Air System
+            display_name: Fabricate Olympus Air System
             building: engineering_bay
             level:
                 fabrication: 35
@@ -4119,7 +4119,11 @@
             input:
                 art_faded: 1
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         bamboozled_sun:
             display_name: Bamboozled (Sunday)
             building: cantina
@@ -4190,6 +4194,7 @@
             input:
                 barite: 25
                 cantina_coin: 2
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 50]
@@ -4245,6 +4250,7 @@
                 oxygen: 50
                 electronic_bits: 5
                 cantina_coin: 4
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 150]
@@ -4276,6 +4282,7 @@
                 water: 30
                 ice: 10
                 glass: 2
+                vibes: 1
                 cantina_coin: 6
             output:
                 lootset:
@@ -4290,7 +4297,8 @@
             day: mon
             input:
                 water_rich_clay: 8
-                cantina_coin: 5
+                cantina_coin: 2
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 50]
@@ -4319,7 +4327,11 @@
                 metal_bits: 4
                 electronic_bits: 1
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         waste_disposal_tue:
             display_name: Waste Disposal (Tuesday)
             building: cantina
@@ -4328,6 +4340,7 @@
                 waste: 300
                 soil: 8
                 cantina_coin: 3
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 50, 100]
@@ -4342,17 +4355,23 @@
                 oxygen: 50
                 water: 25
                 cantina_coin: 4
+                vibes: 1
             output:
-                dusk: [25, 45, 35]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         scrubbing_supplies:
             display_name: Scrubbing Supplies
             building: cantina
             day: tue
             input:
-                ice: 275
+                ice: 350
                 metal_bits: 25
                 cantina_coin: 5
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 50, 150]
@@ -4369,6 +4388,7 @@
                 rover_wires: 2
                 siliconcrystals_raw: 2
                 cantina_coin: 6
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 50, 150]
@@ -4383,6 +4403,7 @@
             input:
                 water_rich_clay: 9
                 cantina_coin: 2
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 50]
@@ -4397,6 +4418,7 @@
                 ice: 300
                 electronic_bits: 10
                 cantina_coin: 4
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 150]
@@ -4425,6 +4447,7 @@
             input:
                 bamboo: 35
                 water_rich_clay: 3
+                vibes: 1
                 cantina_coin: 3
             output:
                 lootset:
@@ -4439,7 +4462,11 @@
             input:
                 metal_bits: 7
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         barite_necessities_wed:
             display_name: Barite Necessities (Wednesday)
             building: cantina
@@ -4447,6 +4474,7 @@
             input:
                 barite: 35
                 cantina_coin: 2
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 50]
@@ -4474,6 +4502,7 @@
             input:
                 siliconcrystals_raw: 1
                 electronic_bits: 3
+                vibes: 1
                 cantina_coin: 3
             output:
                 lootset:
@@ -4488,6 +4517,7 @@
             input:
                 oxygen: 35
                 water_rich_clay: 10
+                vibes: 1
                 cantina_coin: 4
             output:
                 lootset:
@@ -4504,6 +4534,7 @@
                 water: 125
                 ice: 1
                 glass: 2
+                vibes: 1
                 cantina_coin: 6
             output:
                 lootset:
@@ -4518,6 +4549,7 @@
             day: thu
             input:
                 coffee_bean_green: 10
+                vibes: 1
                 cantina_coin: 2
             output:
                 lootset:
@@ -4546,7 +4578,11 @@
             input:
                 metal_bits: 8
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         waste_disposal_fri:
             display_name: Waste Disposal (Friday)
             building: cantina
@@ -4554,6 +4590,7 @@
             input:
                 waste: 300
                 water_rich_clay: 3
+                vibes: 1
                 cantina_coin: 3
             output:
                 lootset:
@@ -4567,6 +4604,7 @@
             day: fri
             input:
                 baijiu: 4
+                vibes: 1
                 cantina_coin: 4
             output: 
                 lootset:
@@ -4582,6 +4620,7 @@
             input:
                 ice: 250
                 metal_bits: 25
+                vibes: 1
                 cantina_coin: 5
             output: 
                 lootset:
@@ -4597,6 +4636,7 @@
             input:
                 metal_bits: 20
                 rover_wires: 22
+                vibes: 1
                 cantina_coin: 6
             output: 
                 lootset:
@@ -4613,6 +4653,7 @@
                 bamboo: 35
                 water: 10
                 cantina_coin: 2
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 25, 50]
@@ -4640,22 +4681,32 @@
             input:
                 smelter_C1: 1
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         cad_return:
             display_name: CAD Return
             building: cantina
             day: sat
             input:
                 cad-22_C1: 1
+                vibes: 1
                 cantina_coin: 2
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         water_filter_storage:
             display_name: Water Filter Storage
             building: cantina
             day: sat
             input:
                 water_filter-22_C1: 1
+                vibes: 1
                 cantina_coin: 4
             output:
                 lootset:
@@ -4669,24 +4720,35 @@
             day: sat
             input:
                 greenhouse_C1: 1
+                vibes: 1
                 cantina_coin: 3
             output:
-                dusk: [25, 50, 37.5]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
         solar_panel_repo:
             display_name: Solar Panel Repo
             building: cantina
             day: sat
             input:
                 solar_panel-22_C1: 1
+                vibes: 1 
                 cantina_coin: 4
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
         chemical_redistribution:
             display_name: Chemical Redistribution
             building: cantina
             day: sat
             input:
                 chem_lab_C1: 1
+                vibes: 1
                 cantina_coin: 2
             output:
                 lootset:
