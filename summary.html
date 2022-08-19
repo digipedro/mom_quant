@@ -386,7 +386,7 @@
                     
                     // Get time of last sale rounded up to neast hour, then start 7 days earlier
                     let end_time = new Date(out[out.length-1].lastSoldAt);
-                    end_time.setMinutes(end_time.getMinutes() + 30);
+                    end_time.setMinutes(end_time.getMinutes() + 59);
                     end_time.setMinutes(0, 0, 0);
                     let start_time = end_time - 604800000;
                     
