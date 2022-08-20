@@ -3962,7 +3962,7 @@
                 water: 12
                 bazaar_coin_U: 1
             output:
-                dusk: [70, 120, 88.3333]
+                dusk: [70, 120, 82.5]
         jam_session:
             display_name: Jam Session
             building: concrete_habitat
