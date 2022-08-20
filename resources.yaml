@@ -1009,7 +1009,7 @@
                 siliconcrystals_raw: 1
                 fabrication_tools: 3
             output:
-                shard_solar_panel_E: [15, 30, 22.5]
+                shard_solar_panel_L: [15, 30, 22.5]
         craft_solar_panel:
             display_name: Craft Solar Panel (Gen 3)
             building: 3d_print_shop
