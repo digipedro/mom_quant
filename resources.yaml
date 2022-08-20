@@ -928,6 +928,28 @@
             output:
                 dusk: [40, 55, 47.5]
                 baijiu: [0, 5, 1.5]
+        make_engineering_bay:
+            display_name: Make Engineering Bay
+            building: 3d_print_shop
+            level:
+                fabrication: 110
+            input:
+                stamina: 5
+                power: 100
+                engineering_bay_kit: 1
+                electronic_parts: 1
+                structural_parts: 2
+                machined_parts: 2
+                minting_token: 5
+                fabrication_tools: 5
+            output:
+                lootset:
+                    - engineering_bay_C1: [0.465, 1, 1]
+                    - engineering_bay_U1: [0.3, 1, 1]
+                    - engineering_bay_R1: [0.15, 1, 1]
+                    - engineering_bay_E1: [0.06, 1, 1]
+                    - engineering_bay_L1: [0.02, 1, 1]
+                    - engineering_bay_M1: [0.005, 1, 1]
         rare_solar_shard:
             display_name: Make Rare Solar Shard
             building: 3d_print_shop
@@ -940,6 +962,18 @@
                 fabrication_tools: 2
             output:
                 shard_solar_panel_R: [7, 14, 10.5]
+        uncommon_solar_shard:
+            display_name: Make Uncommon Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 35
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 3
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_U: [5, 10, 7.5]            
         craft_solar_panel:
             display_name: Craft Solar Panel (Gen 3)
             building: 3d_print_shop
@@ -948,7 +982,7 @@
             input:
                 power: 200
                 stamina: 5
-                smelt_mgs: 10
+                smelt_mgs: 9
                 aluminum_plate: 3
                 glass: 1
                 minting_token: 3
