@@ -950,6 +950,30 @@
                     - engineering_bay_E1: [0.06, 1, 1]
                     - engineering_bay_L1: [0.02, 1, 1]
                     - engineering_bay_M1: [0.005, 1, 1]
+        common_solar_shard:
+            display_name: Make Common Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 30
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 3
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_C: [3, 5, 4]
+        uncommon_solar_shard:
+            display_name: Make Uncommon Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 35
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 3
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_U: [5, 10, 7.5]
         rare_solar_shard:
             display_name: Make Rare Solar Shard
             building: 3d_print_shop
@@ -962,18 +986,30 @@
                 fabrication_tools: 2
             output:
                 shard_solar_panel_R: [7, 14, 10.5]
-        uncommon_solar_shard:
-            display_name: Make Uncommon Solar Shard
+        epic_solar_shard:
+            display_name: Make Epic Solar Shard
             building: 3d_print_shop
             level:
-                fabrication: 35
+                fabrication: 45
             input:
                 stamina: 1
                 power: 40
-                siliconcrystals_raw: 3
+                siliconcrystals_raw: 2
                 fabrication_tools: 2
             output:
-                shard_solar_panel_U: [5, 10, 7.5]            
+                shard_solar_panel_E: [10, 20, 15]
+        legendary_solar_shard:
+            display_name: Make Legendary Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 50
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 1
+                fabrication_tools: 3
+            output:
+                shard_solar_panel_E: [15, 30, 22.5]
         craft_solar_panel:
             display_name: Craft Solar Panel (Gen 3)
             building: 3d_print_shop
