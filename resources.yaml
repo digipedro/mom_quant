@@ -84,20 +84,6 @@
             display_name: Expert Scavenging Tools
         scavenging_tools_Master:
             display_name: Master Scavenging Tools
-        chemistry_tools_ar:
-            display_name: Artisan Chemistry Tools
-        electrical_tools_ar:
-            display_name: Artisan Electrical Tools
-        fabrication_tools_ar:
-            display_name: Artisan Fabrication Tools
-        lifescience_tools_ar:
-            display_name: Artisan Lifescience Tools
-        machining_tools_ar:
-            display_name: Artisan Machining Tools
-        mining_tools_ar:
-            display_name: Artisan Mining Tools
-        robotics_tools_ar:
-            display_name: Artisan Robotics Tools
     recipes:
         # greenhouse
         plant_sprouts:
@@ -519,7 +505,7 @@
             building: machine_shop
             input:
                 broken_rover: 1
-                titanum_plate: 2
+                titanium_plate: 2
                 power: 20
                 stamina: 3
             output:
@@ -532,7 +518,7 @@
             building: machine_shop
             input:
                 broken_rover: 1
-                titanum_plate: 2
+                titanium_plate: 2
                 power: 20
                 stamina: 3
             output:
@@ -937,7 +923,7 @@
                 stamina: 5
                 power: 100
                 engineering_bay_kit: 1
-                electronic_parts: 1
+                electronics_parts: 1
                 structural_parts: 2
                 machined_parts: 2
                 minting_token: 5
@@ -3686,7 +3672,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 5
+                titanium_plate: 5
                 aluminum_plate: 3
                 machined_parts: 3
                 minting_token: 1
@@ -3702,7 +3688,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 6
+                titanium_plate: 6
                 aluminum_plate: 3
                 machined_parts: 3
                 minting_token: 2
@@ -3719,7 +3705,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 6
+                titanium_plate: 6
                 aluminum_plate: 3
                 machined_parts: 5
                 minting_token: 3
@@ -3813,7 +3799,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 1
+                titanium_plate: 1
                 rover_wires: 10
                 minting_token: 1
                 fabrication_tools: 3
@@ -3827,7 +3813,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 1
+                titanium_plate: 1
                 rover_wires: 15
                 metis_weave: 1
                 minting_token: 2
@@ -3842,7 +3828,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 1
+                titanium_plate: 1
                 rover_wires: 15
                 metis_weave: 2
                 minting_token: 3

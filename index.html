@@ -677,7 +677,17 @@
                             return Math.max(this.market[i].attributes.lastSoldPrice, this.market[i].attributes.averageDaySoldPrice);
                     }
                 }
-                return 0;
+                
+                // items not in market but may be added in future
+                
+                if (id == 'sunflower')
+                    return 0;
+                if (id == 'research_machining_e')
+                    return 0;
+                
+                console.log('ERROR: No price for', id);
+                
+                return NaN;
             },
             resourceName(id) {
                 if (this.odata.resources[id])
@@ -689,7 +699,7 @@
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
-                        name = 'Apprentice' + name;
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
                     else if (match[2] == 'j')
                         name = 'Journeyman' + name;
                     else if (match[2] == 'e')
@@ -705,7 +715,7 @@
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
-                        name = 'Apprentice' + name;
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
                     else if (match[2] == 'j')
                         name = 'Journeyman' + name;
                     else if (match[2] == 'e')

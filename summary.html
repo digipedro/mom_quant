@@ -229,7 +229,7 @@
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
-                        name = 'Apprentice' + name;
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
                     else if (match[2] == 'j')
                         name = 'Journeyman' + name;
                     else if (match[2] == 'e')
@@ -238,14 +238,14 @@
                         name = 'Master' + name;
                     return name;
                 }
-                
+            
                 match = tools_re.exec(id);
                 if (match != null) {
                     let name = ' ' + capitalize(match[1]) + ' Tools';
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
-                        name = 'Apprentice' + name;
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
                     else if (match[2] == 'j')
                         name = 'Journeyman' + name;
                     else if (match[2] == 'e')
