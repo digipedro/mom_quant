@@ -665,6 +665,134 @@
                 stamina: 5
             output:
                 machining_tools_a: 1
+        make_journeyman_chemistry_tools:
+            display_name: Make Journeyman Chemistry Tools
+            building: machine_shop
+            level:
+                machining: 60
+            input:
+                chemistry_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                chemistry_tools_j: 1
+        make_journeyman_electrical_tools:
+            display_name: Make Journeyman Electrical Tools
+            building: machine_shop
+            level:
+                machining: 60
+            input:
+                electrical_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                electrical_tools_j: 1
+        make_journeyman_fabrication_tools:
+            display_name: Make Journeyman Fabrication Tools
+            building: machine_shop
+            level:
+                machining: 45
+            input:
+                fabrication_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                fabrication_tools_j: 1
+        make_journeyman_life_science_tools:
+            display_name: Make Journeyman Life Science Tools
+            building: machine_shop
+            level:
+                machining: 55
+            input:
+                lifescience_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                lifescience_tools_j: 1
+        make_journeyman_machining_tools:
+            display_name: Make Journeyman Machining Tools
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                machining_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                machining_tools_j: 1
+        make_journeyman_mining_tools:
+            display_name: Make Journeyman Mining Tools
+            building: machine_shop
+            level:
+                machining: 65
+            input:
+                mining_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                mining_tools_j: 1
+        make_journeyman_robotics_tools:
+            display_name: Make Journeyman Robotics Tools
+            building: machine_shop
+            level:
+                machining: 70
+            input:
+                robotics_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                robotics_tools_j: 1
+        make_journeyman_scavenging_tools:
+            display_name: Make Journeyman Scavenging Tools
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                scavenging_tools_Apprentice: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                scavenging_tools_Journeyman: 1
         #3d print shop
         make_electronic_bits:
             display_name: Make Electronic Bits
@@ -3813,6 +3941,7 @@
                 bazaar_coin_E: 2
                 bazaar_coin_R: 4
                 bazaar_coin_U: 2
+                bazaar_coin_L: 2
                 vibes: 3
             output:
                 lootset:
