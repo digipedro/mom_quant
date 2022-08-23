@@ -1899,6 +1899,8 @@
             building: rover_works
             input:
                 power: 40
+                stamina: 2
+                robotics_tools: 1
             output:
                 lootset:
                     - repeat: 1.5
@@ -1970,6 +1972,8 @@
             building: rover_works
             input:
                 power: 60
+                stamina: 3
+                robotics_tools: 1
             output:
                 lootset:
                     - repeat: 2
@@ -2043,6 +2047,9 @@
             building: rover_works
             input:
                 power: 80
+                stamina: 2
+                robotics_tools: 2
+                scavenging_tools: 2
             output:
                 lootset:
                     - repeat: 2
@@ -2068,6 +2075,9 @@
             building: rover_works
             input:
                 power: 100
+                stamina: 3
+                robotics_tools: 3
+                scavenging_tools: 3
             output:
                 lootset:
                     - repeat: 2.07
@@ -2163,6 +2173,8 @@
             day: [mon, thu]
             input:
                 power: 80
+                stamina: 4
+                robotics_tools: 1
             output:
                 lootset:
                     - repeat: 3
@@ -2261,6 +2273,8 @@
             day: [mon, thu]
             input:
                 power: 100
+                stamina: 4
+                robotics_tools: 1
             output:
                 lootlist:
                     - repeat: 2
@@ -4223,7 +4237,7 @@
                 halite: 100
                 metal_bits: 20
                 cantina_coin: 5
-                vibes: 20
+                vibes: 1
             output:
                 lootset:
                     - dusk: [0.0169, 50, 150]
