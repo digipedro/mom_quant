@@ -733,7 +733,7 @@
             display_name: Make Journeyman Machining Tools
             building: machine_shop
             level:
-                machining: 50
+                machining: 40
             input:
                 machining_tools_a: 1
                 metis: 3
@@ -765,7 +765,7 @@
             display_name: Make Journeyman Robotics Tools
             building: machine_shop
             level:
-                machining: 70
+                machining: 50
             input:
                 robotics_tools_a: 1
                 metis: 3
