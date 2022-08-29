@@ -224,7 +224,7 @@
                     - sunflower: [1, 1, 2]
                     - soil: [0.2, 1, 1]
                     - shard_glushkos_greenhouse_A: [0.0033, 1, 1]
-        make_apprentice_life_science_tools:
+        make_apprentice_lifescience_tools:
             display_name: Make Apprentice Life Science Tools
             building: greenhouse
             level:
@@ -713,7 +713,7 @@
                 minting_token: 1
             output:
                 fabrication_tools_j: 1
-        make_journeyman_life_science_tools:
+        make_journeyman_lifescience_tools:
             display_name: Make Journeyman Life Science Tools
             building: machine_shop
             level:
@@ -926,7 +926,7 @@
                 stamina: 5
             output:
                 fabrication_tools_n: 1
-        make_novice_life_science_tools:
+        make_novice_lifescience_tools:
             display_name: Make Novice Life Science Tools
             building: 3d_print_shop
             level:
@@ -974,7 +974,7 @@
                 fabrication_tools: 1
             output:
                 mining_tools_n: 1
-        make_novice_robotice_tools:
+        make_novice_robotics_tools:
             display_name: Make Novice Robotics Tools
             building: 3d_print_shop
             level:
@@ -1160,7 +1160,7 @@
                 fabrication_tools: 4
             output:
                 engineering_bay_kit: 1
-        make_apprentice+_abrication_tools:
+        make_apprentice_fabrication_tools:
             display_name: Make Apprentice Fabrication Tools
             building: 3d_print_shop
             level:
