@@ -4126,13 +4126,13 @@
                     - dusk: [0.3051, 20, 50]
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: [0, 1, 0.0074]
-        most_of_my_friends_argon:
-            display_name: Most of My Friends Argon
+        most_of_my_friends_argon_sun:
+            display_name: Most of My Friends Argon (Sun)
             building: cantina
-            day: [sun, wed]
+            day: sun
             input:
                 argon: 4
-                metal_bits: 20
+                metal_bits: 50
                 vibes: 1
                 cantina_coin: 5
             output:
@@ -4147,8 +4147,8 @@
             building: cantina
             day: [sun, wed]
             input:
-                food: 100
-                water: 20
+                food: 130
+                water: 30
                 vibes: 1
                 cantina_coin: 6
             output:
@@ -4163,7 +4163,7 @@
             building: cantina
             day: sun
             input:
-                barite: 25
+                barite: 50
                 cantina_coin: 2
                 vibes: 1
             output:
@@ -4191,7 +4191,7 @@
             building: cantina
             day: [mon, thu]
             input:
-                candycane: 25
+                candycane: 50
             output:
                 lootset:
                     - dusk: [0.1, 5, 15]
@@ -4204,7 +4204,7 @@
         #    building: cantina
         #    day: mon
         #    input:
-        #        fractal_shard: 1
+        #        fractal_shard: 5
         #        water_rich_clay: 1
         #        cantina_coin: 3
         #    output:
@@ -4219,7 +4219,7 @@
             day: mon
             input:
                 oxygen: 50
-                electronic_bits: 5
+                electronic_bits: 100
                 cantina_coin: 4
                 vibes: 1
             output:
@@ -4229,13 +4229,13 @@
                     - dusk: [0.3051, 20, 50]
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
-        salty_solution:
-            display_name: Salty Solution
+        salty_solution_mon:
+            display_name: Salty Solution (Monday)
             building: cantina
-            day: [mon, thu]
+            day: mon
             input:
-                halite: 100
-                metal_bits: 20
+                halite: 150
+                metal_bits: 50
                 cantina_coin: 5
                 vibes: 1
             output:
@@ -4251,7 +4251,7 @@
             day: mon
             input:
                 water: 30
-                ice: 10
+                ice: 20
                 glass: 2
                 vibes: 1
                 cantina_coin: 6
@@ -4267,7 +4267,7 @@
             building: cantina
             day: mon
             input:
-                water_rich_clay: 8
+                water_rich_clay: 20
                 cantina_coin: 2
                 vibes: 1
             output:
@@ -4380,22 +4380,6 @@
                     - dusk: [0.3051, 20, 50]
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
-        hit_the_ice_harder:
-            display_name: Hit The Ice Harder
-            building: cantina
-            day: wed
-            input:
-                ice: 300
-                electronic_bits: 10
-                cantina_coin: 4
-                vibes: 1
-            output:
-                lootset:
-                    - dusk: [0.0169, 25, 150]
-                    - dusk: [0.1695, 25, 75]
-                    - dusk: [0.3051, 20, 50]
-                    - dusk: [0.5085, 15, 25]
-                keycard_copper: [0, 1, 0.0074]
         food_donations:
             display_name: Food Donations
             building: cantina
@@ -4410,13 +4394,29 @@
                     - dusk: [0.3, 3, 7]
                     - dusk: [0.4, 1, 5]
         # cantina Wednesday tasks
+        hit_the_ice_harder:
+            display_name: Hit The Ice Harder
+            building: cantina
+            day: wed
+            input:
+                ice: 500
+                electronic_bits: 135
+                cantina_coin: 4
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
+                keycard_copper: [0, 1, 0.0074]
         bamboozled_wed:
             display_name: Bamboozled (Wednesday)
             building: cantina
             day: wed
             input:
-                bamboo: 35
-                water_rich_clay: 3
+                bamboo: 30
+                water_rich_clay: 4
                 vibes: 1
                 cantina_coin: 3
             output:
@@ -4430,7 +4430,7 @@
             building: cantina
             day: wed
             input:
-                metal_bits: 7
+                metal_bits: 10
             output:
                 lootset:
                     - dusk: [0.1, 5, 15]
@@ -4442,7 +4442,7 @@
             building: cantina
             day: wed
             input:
-                barite: 35
+                barite: 50
                 cantina_coin: 2
                 vibes: 1
             output:
@@ -4456,7 +4456,7 @@
             building: cantina
             day: wed
             input:
-                coffee_bean_roasted: 2
+                coffee_bean_roasted: 4
                 cantina_coin: 1
             output:
                 lootset:
@@ -4464,6 +4464,22 @@
                     - dusk: [0.2, 5, 12]
                     - dusk: [0.3, 3, 7]
                     - dusk: [0.4, 1, 5]
+        most_of_my_friends_argon_web:
+            display_name: Most of My Friends Argon (Wed)
+            building: cantina
+            day: wed
+            input:
+                argon: 6
+                metal_bits: 15
+                vibes: 1
+                cantina_coin: 5
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: [0, 1, 0.0033]
         # cantina Thursday tasks
         black_market_crystals:
             display_name: Black Market Crystals
@@ -4471,7 +4487,7 @@
             day: thu
             input:
                 siliconcrystals_raw: 1
-                electronic_bits: 3
+                electronic_bits: 10
                 vibes: 1
                 cantina_coin: 3
             output:
@@ -4485,8 +4501,8 @@
             building: cantina
             day: thu
             input:
-                oxygen: 35
-                water_rich_clay: 10
+                oxygen: 50
+                water_rich_clay: 22
                 vibes: 1
                 cantina_coin: 4
             output:
@@ -4501,8 +4517,8 @@
             building: cantina
             day: thu
             input:
-                water: 125
-                ice: 1
+                water: 25
+                ice: 125
                 glass: 2
                 vibes: 1
                 cantina_coin: 6
@@ -4532,7 +4548,7 @@
             building: cantina
             day: thu
             input:
-                sulfur: 20
+                sulfur: 50
                 cantina_coin: 1
             output:
                 lootset:
@@ -4540,6 +4556,22 @@
                     - dusk: [0.2, 5, 12]
                     - dusk: [0.3, 3, 7]
                     - dusk: [0.4, 1, 5]
+        salty_solution_thu:
+            display_name: Salty Solution (Thursday)
+            building: cantina
+            day: thu
+            input:
+                halite: 125
+                metal_bits: 30
+                cantina_coin: 5
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: 0.0033
         # cantina Friday tasks
         bits_and_pieces_fri:
             display_name: Bits and Pieces (Friday)
@@ -4559,7 +4591,7 @@
             day: fri
             input:
                 waste: 300
-                water_rich_clay: 3
+                water_rich_clay: 10
                 vibes: 1
                 cantina_coin: 3
             output:
@@ -4573,7 +4605,7 @@
             building: cantina
             day: fri
             input:
-                baijiu: 4
+                baijiu: 5
                 vibes: 1
                 cantina_coin: 4
             output: 
@@ -4588,8 +4620,8 @@
             building: cantina
             day: fri
             input:
-                ice: 250
-                metal_bits: 25
+                ice: 500
+                metal_bits: 40
                 vibes: 1
                 cantina_coin: 5
             output: 
@@ -4604,8 +4636,8 @@
             building: cantina
             day: fri
             input:
-                metal_bits: 20
-                rover_wires: 22
+                metal_bits: 100
+                rover_wires: 25
                 vibes: 1
                 cantina_coin: 6
             output: 
