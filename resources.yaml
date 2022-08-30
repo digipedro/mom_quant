@@ -4295,8 +4295,8 @@
             building: cantina
             day: tue
             input:
-                metal_bits: 4
-                electronic_bits: 1
+                metal_bits: 10
+                electronic_bits: 5
             output:
                 lootset:
                     - dusk: [0.1, 5, 15]
@@ -4308,8 +4308,7 @@
             building: cantina
             day: tue
             input:
-                waste: 300
-                soil: 8
+                waste: 425
                 cantina_coin: 3
                 vibes: 1
             output:
@@ -4323,8 +4322,8 @@
             building: cantina
             day: tue
             input:
-                oxygen: 50
-                water: 25
+                oxygen: 25
+                water: 70
                 cantina_coin: 4
                 vibes: 1
             output:
@@ -4334,29 +4333,13 @@
                     - dusk: [0.3051, 20, 50]
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
-        scrubbing_supplies:
-            display_name: Scrubbing Supplies
-            building: cantina
-            day: tue
-            input:
-                ice: 350
-                metal_bits: 25
-                cantina_coin: 5
-                vibes: 1
-            output:
-                lootset:
-                    - dusk: [0.0169, 50, 150]
-                    - dusk: [0.1695, 25, 100]
-                    - dusk: [0.3051, 25, 50]
-                    - dusk: [0.5085, 10, 45]
-                keycard_copper: 0.0033
         electric_boogie:
             display_name: Electric Boogie
             building: cantina
             day: tue
             input:
-                electronic_bits: 2
-                rover_wires: 2
+                electronic_bits: 25
+                rover_wires: 5
                 siliconcrystals_raw: 2
                 cantina_coin: 6
                 vibes: 1
@@ -4372,7 +4355,7 @@
             building: cantina
             day: tue
             input:
-                water_rich_clay: 9
+                water_rich_clay: 18
                 cantina_coin: 2
                 vibes: 1
             output:
@@ -4381,6 +4364,22 @@
                     - dusk: [0.1695, 20, 35]
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
+        metal_and_ice:
+            display_name: Metal & Ice
+            building: cantina
+            day: tue
+            input:
+                ice: 500
+                metal_bits: 35
+                cantina_coin: 5
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: 0.0033
         hit_the_ice_harder:
             display_name: Hit The Ice Harder
             building: cantina
