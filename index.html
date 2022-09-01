@@ -611,7 +611,7 @@
                     let shard_name = { ...this.cheapest_shard };
                     for (let i = 0; i < this.market.length; i++) {
                         if (this.market[i].id.startsWith('shard_') && this.market[i].id.charAt(this.market[i].id.length - 2) == '_') {
-                            if (this.market[i].id.startsWith('shard_concrete'))
+                            if (this.market[i].id.startsWith('shard_concrete') || this.market[i].id.startsWith('shard_shelter'))
                                 continue;
                             let r = this.market[i].id.slice(-1);
                             let price = this.getPrice(this.market[i].id, this.selected_buy_price);

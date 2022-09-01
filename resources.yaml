@@ -4186,10 +4186,10 @@
                     - dusk: [0.3, 3, 7]
                     - dusk: [0.4, 1, 5]
         # cantina Monday tasks
-        stale_sweets:
-            display_name: Stale Sweets
+        stale_sweets_mon:
+            display_name: Stale Sweets (Monday)
             building: cantina
-            day: [mon, thu]
+            day: mon
             input:
                 candycane: 50
             output:
@@ -4481,6 +4481,18 @@
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: [0, 1, 0.0033]
         # cantina Thursday tasks
+        stale_sweets_thu:
+            display_name: Stale Sweets (Thursday)
+            building: cantina
+            day: thu
+            input:
+                candycane: 75
+            output:
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         black_market_crystals:
             display_name: Black Market Crystals
             building: cantina
