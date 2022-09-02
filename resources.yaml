@@ -4618,6 +4618,7 @@
             day: fri
             input:
                 baijiu: 5
+                electronic_bits: 50
                 vibes: 1
                 cantina_coin: 4
             output: 
@@ -4679,7 +4680,7 @@
             building: cantina
             day: fri
             input:
-                sunflower_seeds: 4
+                sunflower_seeds: 5
                 cantina_coin: 1
             output:
                 lootset:
