@@ -4012,11 +4012,11 @@
             input:
                 stamina: 8
                 power: 60
-                food: 500
+                food: 700
                 water: 100
                 bazaar_coin_U: 1
                 bazaar_coin_R: 2
-                vibes: 3
+                vibes: 7
             output:
                 lootlist:
                     - lootset:
