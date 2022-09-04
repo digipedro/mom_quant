@@ -4012,11 +4012,11 @@
             input:
                 stamina: 8
                 power: 60
-                food: 500
+                food: 700
                 water: 100
                 bazaar_coin_U: 1
                 bazaar_coin_R: 2
-                vibes: 3
+                vibes: 7
             output:
                 lootlist:
                     - lootset:
@@ -4111,12 +4111,12 @@
                     - dusk: [0.3051, 10, 40]
                     - dusk: [0.5085, 5, 25]
         hit_the_ice:
-            display_name: Hit The Ice
+            display_name: Hit The Ice (Sun)
             building: cantina
             day: sun
             input:
                 ice: 300
-                electronic_bits: 10
+                electronic_bits: 100
                 vibes: 1
                 cantina_coin: 4
             output:
@@ -4142,13 +4142,13 @@
                     - dusk: [0.3051, 25, 50]
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: [0, 1, 0.0033]
-        hungry_hungry_martians:
-            display_name: Hungry Hungry Martians
+        hungry_hungry_martian_sun:
+            display_name: Hungry Hungry Martians (Sun)
             building: cantina
-            day: [sun, wed]
+            day: sun
             input:
                 food: 130
-                water: 30
+                water: 20
                 vibes: 1
                 cantina_coin: 6
             output:
@@ -4425,6 +4425,22 @@
                     - dusk: [0.1695, 20, 70]
                     - dusk: [0.3051, 10, 40]
                     - dusk: [0.5085, 5, 25]
+        hungry_hungry_martian_wed:
+            display_name: Hungry Hungry Martians (Wed)
+            building: cantina
+            day: wed
+            input:
+                food: 130
+                water: 30
+                vibes: 1
+                cantina_coin: 6
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
+                keycard_copper: [0, 1, 0.006]
         odds_and_ends:
             display_name: Odds and Ends
             building: cantina
