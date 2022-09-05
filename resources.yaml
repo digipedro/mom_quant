@@ -4115,7 +4115,7 @@
             building: cantina
             day: sun
             input:
-                ice: 300
+                ice: 500
                 electronic_bits: 100
                 vibes: 1
                 cantina_coin: 4
