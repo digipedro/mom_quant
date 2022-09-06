@@ -510,7 +510,7 @@
                 stamina: 3
             output:
                 machined_parts: [0, 5, 2]
-                electronic_bits: [0, 8, 3.3]
+                electronics_parts: [0, 8, 3.3]
                 rover_wheels: [0, 8, 3.3]
                 rover_chassis: [0, 1, 0.95]
         salvage_rover_maxed:
@@ -523,7 +523,7 @@
                 stamina: 3
             output:
                 machined_parts: [0, 5, 2.4]
-                electronic_bits: [0, 8, 3.6]
+                electronics_parts: [0, 8, 3.6]
                 rover_wheels: [0, 8, 3.6]
                 rover_chassis: 1
         create_air_tank:
