@@ -1511,7 +1511,7 @@
                 siliconcrystals_raw: 4
             output:
                 smelt_mgs: [2, 3, 2.1111]
-                siliconcrystals_raw: [0, 2, 1.5]
+                siliconcrystals_raw: [0, 2, 0.75]
         battery_conditioning1:
             display_name: Battery Conditioning I
             building: chem_lab
