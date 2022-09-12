@@ -84,6 +84,12 @@
             display_name: Expert Scavenging Tools
         scavenging_tools_Master:
             display_name: Master Scavenging Tools
+        steel_bb:
+            display_name: Steel Ball Bearings
+        copper_spring:
+            display_name: Copper Coil Spring
+        steel_spring:
+            display_name: Steel Machined Spring
     recipes:
         # greenhouse
         plant_sprouts:
@@ -452,6 +458,173 @@
             output:
                 siliconcrystals_raw: [1, 2, 1.1111]
         #machine_shop
+        copper_coil_spring1:
+            display_name: Copper Coil Spring I
+            building: machine_shop
+            input:
+                power: 10
+                smelt_copper: 3
+                metal_bits: 25
+                rover_wires: 3
+                stamina: 1
+                machining_tools: 1
+            output:
+                copper_spring: 1
+        copper_coil_spring2:
+            display_name: Copper Coil Spring II
+            building: machine_shop
+            level:
+                machining: 30
+            input:
+                power: 20
+                smelt_copper: 12
+                metal_bits: 100
+                rover_wires: 10
+                stamina: 2
+                machining_tools: 2
+            output:
+                copper_spring: [3, 5, 4]
+        copper_coil_spring3:
+            display_name: Copper Coil Spring III
+            building: machine_shop
+            level:
+                machining: 65
+            input:
+                power: 30
+                smelt_copper: 24
+                metal_bits: 200
+                rover_wires: 20
+                stamina: 3
+                machining_tools: 3
+            output:
+                copper_spring: [8, 16, 12]
+        make_glass_panel:
+            display_name: Make Glass Panel
+            building: machine_shop
+            level:
+                machining: 75
+            input:
+                metis_weave: 3
+                glass: 5
+                aluminum_plate: 2
+                stamina: 1
+            output:
+                glass_panel: 1
+        medium_steel_ball_bearings:
+            display_name: Medium Steel Ball Bearings
+            building: machine_shop
+            level:
+                machining: 15
+            input:
+                power: 40
+                smelt_steel: 20
+                metal_bits: 50
+                sunflower_oil: 3
+                stamina: 2
+                machining_tools: 1
+            output:
+                steel_bb: [1, 3, 2]
+        medium_copper_coil_spring:
+            display_name: Medium Copper Coil Spring
+            building: machine_shop
+            level:
+                machining: 20
+            input:
+                power: 40
+                smelt_copper: 20
+                rover_wires: 50
+                stamina: 3
+                machining_tools: 3
+            output:
+                copper_spring: 1
+        pressure_gauge:
+            display_name: Pressure Gauge
+            building: machine_shop
+            level:
+                machining: 20
+            input:
+                power: 40
+                smelt_aluminum: 10
+                copper_spring: 2
+                electronics_parts: 2
+                machined_parts: 2
+                stamina: 2
+                machining_tools: 2
+            output:
+                pressure_gage: 1
+        repair_damaged_novice_tools:
+            display_name: Repair Damaged Novice Tools
+            building: machine_shop
+            level:
+                machining: 15
+            input:
+                power: 10
+                damaged_tools_n: 1
+                smelt_steel: 2
+                empty_pc: 1
+                rover_wires: 3
+                stamina: 1
+                machining_tools: 1
+            output:
+                damaged_tools_n: [0, 1, 0.7]
+                chemistry_tools_n: [0, 1, 0.0375]
+                electrical_tools_n: [0, 1, 0.0375]
+                fabrication_tools_n: [0, 1, 0.0375]
+                lifescience_tools_n: [0, 1, 0.0375]
+                machining_tools_n: [0, 1, 0.0375]
+                mining_tools_n: [0, 1, 0.0375]
+                robotics_tools_n: [0, 1, 0.0375]
+                scavenging_tools_n: [0, 1, 0.0375]
+        repair_damaged_apprentice_tools:
+            display_name: Repair Damaged Apprentice Tools
+            building: machine_shop
+            level:
+                machining: 35
+            input:
+                power: 20
+                damaged_tools_a: 1
+                smelt_steel: 4
+                empty_pc: 2
+                rover_wires: 5
+                stamina: 2
+                machining_tools: 2
+            output:
+                damaged_tools_a: [0, 1, 0.7]
+                chemistry_tools_a: [0, 1, 0.0375]
+                electrical_tools_a: [0, 1, 0.0375]
+                fabrication_tools_a: [0, 1, 0.0375]
+                lifescience_tools_a: [0, 1, 0.0375]
+                machining_tools_a: [0, 1, 0.0375]
+                mining_tools_a: [0, 1, 0.0375]
+                robotics_tools_a: [0, 1, 0.0375]
+                scavenging_tools_a: [0, 1, 0.0375]
+        steel_ball_bearings:
+            display_name: Steel Ball Bearings
+            building: machine_shop
+            level:
+                machining: 5
+            input:
+                power: 20
+                smelt_steel: 5
+                metal_bits: 15
+                sunflower_oil: 1
+                stamina: 1
+                machining_tools: 1
+            output:
+                steel_bb: [1, 3, 2]
+        steel_machined_spring:
+            display_name: Steel Machined Spring
+            building: machine_shop
+            level:
+                machining: 95
+            input:
+                power: 20
+                smelt_steel: 50
+                machined_parts: 3
+                machining_tools: 2
+                stamina: 2
+            output:
+                steel_spring: [1, 2, 1.5]
         make_aluminum_plate:
             display_name: Make Aluminum Plate
             building: machine_shop
