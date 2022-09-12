@@ -384,8 +384,9 @@
             building: smelter
             input:
                 regolith: 500
-                power: 40
-                stamina: 2
+                power: 30
+                stamina: 1
+                mining_tools: 1
             output:
                 lootlist:
                     - smelt_iron: [1, 2, 5]
@@ -395,8 +396,9 @@
             building: smelter
             input:
                 regolith: 1500
-                power: 40
-                stamina: 3
+                power: 60
+                stamina: 4
+                mining_tools: 4
             output:
                 lootlist:
                     - smelt_copper: [1, 2, 5]
@@ -407,8 +409,9 @@
             building: smelter
             input:
                 regolith: 1000
-                power: 40
-                stamina: 5
+                power: 50
+                stamina: 3
+                mining_tools: 3
             output:
                 lootlist:
                     - smelt_aluminum: [1, 2, 5]
@@ -418,8 +421,9 @@
             building: smelter
             input:
                 regolith: 2500
-                power: 40
-                stamina: 4
+                power: 80
+                stamina: 5
+                mining_tools: 5
             output:
                 lootlist:
                     - smelt_titanium: [1, 2, 5]
@@ -431,7 +435,8 @@
                 carbon_dioxide: 10
                 smelt_iron: 15
                 power: 40
-                stamina: 3
+                stamina: 2
+                mining_tools: 2
             output:
                 lootlist:
                     - smelt_steel: [1, 2, 5]
@@ -446,7 +451,7 @@
                 stamina: 4
                 power: 20
                 regolith: 300
-                fabrication_tools: 1
+                machining_tools: 1
             output:
                 lootlist:
                     - glass: [1, 1, 1]
