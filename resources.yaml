@@ -86,8 +86,12 @@
             display_name: Master Scavenging Tools
         steel_bb:
             display_name: Steel Ball Bearings
+        medium_steel_bb:
+            display_name: Medium Steel Ball Bearings
         copper_spring:
             display_name: Copper Coil Spring
+        medium_copper_spring:
+            display_name: Medium Copper Coil Spring
         steel_spring:
             display_name: Steel Machined Spring
     recipes:
@@ -523,7 +527,7 @@
                 stamina: 2
                 machining_tools: 1
             output:
-                steel_bb: [1, 3, 2]
+                medium_steel_bb: [1, 3, 2]
         medium_copper_coil_spring:
             display_name: Medium Copper Coil Spring
             building: machine_shop
@@ -536,7 +540,7 @@
                 stamina: 3
                 machining_tools: 3
             output:
-                copper_spring: 1
+                medium_copper_spring: 1
         pressure_gauge:
             display_name: Pressure Gauge
             building: machine_shop
@@ -597,7 +601,30 @@
                 machining_tools_a: [0, 1, 0.0375]
                 mining_tools_a: [0, 1, 0.0375]
                 robotics_tools_a: [0, 1, 0.0375]
-                scavenging_tools_a: [0, 1, 0.0375]
+                scavenging_tools_Apprentice: [0, 1, 0.0375]
+        repair_damaged_journeyman_tools:
+            display_name: Repair Damaged Journeyman Tools
+            building: machine_shop
+            level:
+                machining: 55
+            input:
+                power: 30
+                damaged_tools_j: 1
+                smelt_steel: 6
+                empty_pc: 3
+                rover_wires: 7
+                stamina: 3
+                machining_tools: 3
+            output:
+                damaged_tools_j: [0, 1, 0.7]
+                chemistry_tools_j: [0, 1, 0.0375]
+                electrical_tools_j: [0, 1, 0.0375]
+                fabrication_tools_j: [0, 1, 0.0375]
+                lifescience_tools_j: [0, 1, 0.0375]
+                machining_tools_j: [0, 1, 0.0375]
+                mining_tools_j: [0, 1, 0.0375]
+                robotics_tools_j: [0, 1, 0.0375]
+                scavenging_tools_Journeyman: [0, 1, 0.0375]
         steel_ball_bearings:
             display_name: Steel Ball Bearings
             building: machine_shop
@@ -3592,7 +3619,7 @@
             display_name: Shredding Copper
             building: engineering_bay
             level:
-                machining: 3
+                machining: 5
             input:
                 stamina: 1
                 power: 10
@@ -4201,7 +4228,7 @@
                         - resource_credit: [0.8235, 1, 2]
         #other
         scavenging_powered:
-            display_name: Scavenging
+            display_name: Scavenge (Level 0)
             input:
                 stamina: 1
                 power: 1
