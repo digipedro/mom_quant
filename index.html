@@ -791,7 +791,7 @@
                         }
                     }
                     
-                    let market_fee = (item == 'dusk') ? 1.0 : 0.95
+                    let market_fee = (item == 'dusk' || item == 'cantina_coin') ? 1.0 : 0.95
                     
                     if (probs[0] == 1) {
                         if (min_gain == null)
@@ -894,7 +894,7 @@
                                 sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0];
                                 sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1];
                                 sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                                if (key2 == 'dusk') {
+                                if (key2 == 'dusk' || key2 == 'cantina_coin') {
                                     sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
                                     market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * 0.05;
                                     market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * 0.05;
@@ -910,7 +910,7 @@
                                 sale.min += avg_price;
                                 sale.max += avg_price;
                                 sale.avg += avg_price;
-                                if (key2 == 'dusk')
+                                if (key2 == 'dusk' || key2 == 'cantina_coin')
                                     sale.gain += avg_price
                                 else
                                     sale.gain += avg_price * 0.95;

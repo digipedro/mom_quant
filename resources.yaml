@@ -462,6 +462,45 @@
             output:
                 siliconcrystals_raw: [1, 2, 1.1111]
         #machine_shop
+        cantina_coin1:
+            display_name: Cantina Coin I
+            building: machine_shop
+            level:
+                machining: 5
+            input:
+                power: 20
+                aluminum_plate: 1
+                metal_bits: 15
+                stamina: 2
+                machining_tools: 2
+            output:
+                cantina_coin: [10, 20, 15]
+        cantina_coin2:
+            display_name: Cantina Coin II
+            building: machine_shop
+            level:
+                machining: 40
+            input:
+                power: 40
+                aluminum_plate: 2
+                titanium_plate: 1
+                stamina: 3
+                machining_tools: 3
+            output:
+                cantina_coin: [75, 125, 100]
+        cantina_coin3:
+            display_name: Cantina Coin III
+            building: machine_shop
+            level:
+                machining: 75
+            input:
+                power: 60
+                aluminum_plate: 5
+                titanium_plate: 5
+                stamina: 4
+                machining_tools: 4
+            output:
+                cantina_coin: [300, 400, 350]
         copper_coil_spring1:
             display_name: Copper Coil Spring I
             building: machine_shop
