@@ -446,7 +446,7 @@
             display_name: Smelt Glass
             building: smelter
             level:
-                machining: 20
+                mining: 10
             input:
                 stamina: 4
                 power: 20
