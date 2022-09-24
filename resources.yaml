@@ -5295,6 +5295,8 @@
             display_name: RoverWorks
         tea_shop:
             display_name: Tea Shop
+        thorium_reactor:
+            display_name: Thorium Reactor
         #bazaar:
         #    display_name: Bazaar
         #pirate_radio:
