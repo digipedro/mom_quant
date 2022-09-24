@@ -448,6 +448,33 @@
                 carbon_dioxide: 3
             output:
                 siliconcrystals_raw: [1, 2, 1.1111]
+        smelt_lithium:
+            display_name: Smelt Lithium
+            building: smelter
+            level:
+                mining: 50
+            input:
+                regolith: 10000
+                power: 100
+                stamina: 5
+                mining_tools: 7
+            output:
+                lithium: [1, 3, 1.5]
+                raw_graphite: [1, 3, 0.15]
+                thorium: [1, 3, 0.05]
+        smelt_thorium:
+            display_name: Smelt Thorium
+            building: smelter
+            level:
+                mining: 60
+            input:
+                regolith: 50000
+                power: 160
+                stamina: 5
+                mining_tools: 10
+            output:
+                thorium: [1, 3, 2]
+                uranium: [1, 1, 0.05]
         #machine_shop
         make_aluminum_plate:
             display_name: Make Aluminum Plate
@@ -1345,6 +1372,110 @@
                 stamina: 2
             output:
                 circuit_component: [1, 2, 1.1]
+        make_chlorine:
+            display_name: Make Chlorine
+            building: chem_lab
+            level:
+                chemistry: 50
+            input:
+                water: 50
+                halite: 1500
+                chemistry_tools: 3
+                stamina: 3
+                power: 60
+            output:
+                chlorine: [2, 3, 2.5]
+        make_aluminum_chloride:
+            display_name: Make Aluminum Chloride
+            building: chem_lab
+            level:
+                chemistry: 50
+            input:
+                smelt_aluminum: 15
+                chlorine: 3
+                chemistry_tools: 3
+                stamina: 3
+                power: 40
+            output:
+                aluminum_chloride: 1
+        make_lithium_hydride:
+            display_name: Make Lithium Hydride
+            building: chem_lab
+            level:
+                chemistry: 55
+            input:
+                lithium: 3
+                hydrogen: 200
+                chemistry_tools: 3
+                stamina: 3
+                power: 30
+            output:
+                lithium_hydride: 1
+        make_aluminum_lithium_hydride:
+            display_name: Make Aluminum Lithium Hydride
+            building:
+                chem_lab
+            level:
+                chemistry: 55
+            input:
+                aluminum_chloride: 3
+                lithium_hydride: 3
+                chemistry_tools: 4
+                stamina: 4
+                power: 40
+            output:
+                lithium_aluminum_hydride: 1
+        make_raw_graphite:
+            display_name: Make Raw Graphite
+            building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                lithium_aluminum_hydride: 1
+                carbon_dioxide: 5
+                chemistry_tools: 3
+                stamina: 5
+                power: 60
+            output:
+                raw_graphite: [1, 4, 2.5]
+        make_lithium_fluoride:
+            display_name: Make Lithium Fluoride
+            building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                fluorite: 10
+                lithium: 5
+                chemistry_tools: 3
+                stamina: 1
+                power: 10
+            output:
+                lithium_fluorite: 1
+        make_beryllium_fluoride:
+            display_name: Make Beryllium Fluoride
+            building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                fluorite: 5
+                beryl: 5
+                chemistry_tools: 3
+                stamina: 3
+                power: 60
+            output:
+                beryllium_fluoride: 1
+        make_graphite_rod:
+            display_name: Make Graphite Rod
+            building: chem_lab
+            level:
+                machining: 50
+            input:
+                raw_graphite: 1
+                chemistry_tools: 3
+                stamina: 1
+                power: 10
+            output:
+                graphite_rod: 1
         #grind n' brew
         grind_beans_s:
             display_name: Grind Beans (Small)
@@ -3765,6 +3896,44 @@
                 fabrication_tools: 5
             output:
                 metis_shield_M1: 1
+        create_energy_core_kit:
+            display_name: Create Energy Core Kit
+            building: engineering_bay
+            level:
+                machining: 50
+            input:
+                smelt_steel: 15
+                smelt_copper: 3
+                circuit_component: 1
+                pvc_raw: 3
+                machining_tools: 3
+                stamina: 3
+                power: 10
+            output:
+                reactor_kit: 1
+        make_empty_energy_core:
+            display_name: Make Empty Energy Core
+            building: engineering_bay
+            level:
+                machining: 50
+            input:
+                empty_pc: 5
+                smelt_copper: 3
+                pvc_raw: 2
+                machining_tools: 3
+                stamina: 1
+                power: 10
+            output:
+                empty_ec: 1
+        install_energy_core_kit:
+            display_name: Install Energy Core Kit
+            building: Install Energy Core Kit
+            level:
+                electrical: 50
+            input:
+                reactor_kit: 1
+                electrical_tools: 3
+                stamina: 3
         #Shelter
         sprouts_aeroponic_experimentation:
             display_name: Sprouts Aeroponic Experimentation
@@ -4259,7 +4428,7 @@
             input:
                 baijiu: 4
                 cantina_coin: 4
-            output: 
+            output:
                 dusk: [20, 45, 32.5]
                 keycard_copper: 0.0074
         transport_summer_ice:
@@ -4270,7 +4439,7 @@
                 ice: 250
                 metal_bits: 25
                 cantina_coin: 5
-            output: 
+            output:
                 dusk: [25, 50, 37.5]
                 keycard_copper: 0.0033
         summer_scrap_collection:
@@ -4281,7 +4450,7 @@
                 metal_bits: 20
                 rover_wires: 22
                 cantina_coin: 6
-            output: 
+            output:
                 dusk: [30, 60, 45]
                 keycard_copper: 0.006
         bamboozled_fri:
@@ -4303,6 +4472,46 @@
                 cantina_coin: 1
             output:
                 dusk: [3, 10, 6.5]
+        #Thorium Reactor
+        charge_energy_core_I:
+            display_name: Charge Energy Core I
+            building: thorium_reactor
+            level:
+                electrical: 50
+            input:
+                stamina: 3
+                empty_ec: 1
+                electrical_tools: 3
+                thorium: 0.05
+                uranium: 0.0017
+            output:
+                full_ec: 1
+        charge_energy_core_II:
+            display_name: Charge Energy Core II
+            building: thorium_reactor
+            level:
+                electrical: 100
+            input:
+                stamina: 5
+                empty_ec: 2
+                electrical_tools: 4
+                thorium: 0.075
+                uranium: 0.0033
+            output:
+                full_ec: 2
+        charge_energy_core_III:
+            display_name: Charge Energy Core III
+            building: thorium_reactor
+            level:
+                electrical: 125
+            input:
+                stamina: 7
+                empty_ec: 3
+                electrical_tools: 5
+                thorium: 0.1
+                uranium: 0.005
+            output:
+                full_ec: 3
         #event
     buildings:
         solar_panel:
@@ -4331,6 +4540,8 @@
             display_name: RoverWorks
         tea_shop:
             display_name: Tea Shop
+        thorium_reactor:
+            display_name: Thorium Reactor
         #bazaar:
         #    display_name: Bazaar
         #pirate_radio:
