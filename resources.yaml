@@ -94,6 +94,16 @@
             display_name: Medium Copper Coil Spring
         steel_spring:
             display_name: Steel Machined Spring
+        raw_graphite:
+            display_name: Graphite
+        crafted_ec_kit:
+            display_name: Crafted Energy Core Kit
+        empty_ec:
+            display_name: Empty Energy Core
+        broken_ec:
+            display_name: Broken Energy Core
+        full_ec:
+            display_name: Full Energy Core
     recipes:
         # greenhouse
         plant_sprouts:
@@ -466,6 +476,33 @@
                 carbon_dioxide: 3
             output:
                 siliconcrystals_raw: [1, 2, 1.1111]
+        smelt_lithium:
+            display_name: Smelt Lithium
+            building: smelter
+            level:
+                mining: 50
+            input:
+                regolith: 10000
+                power: 100
+                stamina: 5
+                mining_tools: 7
+            output:
+                lithium: [1, 3, 2]
+                raw_graphite: [0, 3, 0.2]
+                thorium: [0, 1, 0.05]
+        smelt_thorium:
+            display_name: Smelt Thorium
+            building: smelter
+            level:
+                mining: 60
+            input:
+                regolith: 50000
+                power: 160
+                stamina: 5
+                mining_tools: 10
+            output:
+                thorium: [1, 3, 2]
+                uranium: [0, 1, 0.05]
         #machine_shop
         cantina_coin1:
             display_name: Cantina Coin I
@@ -1875,6 +1912,110 @@
                 stamina: 4
             output:
                 chemistry_tools_a: 1
+        make_chlorine:
+            display_name: Make Chlorine
+            building: chem_lab
+            level:
+                chemistry: 50
+            input:
+                water: 50
+                halite: 1500
+                chemistry_tools: 3
+                stamina: 3
+                power: 60
+            output:
+                chlorine: [2, 3, 2.5]
+        make_aluminum_chloride:
+            display_name: Make Aluminum Chloride
+            building: chem_lab
+            level:
+                chemistry: 50
+            input:
+                smelt_aluminum: 15
+                chlorine: 3
+                chemistry_tools: 3
+                stamina: 3
+                power: 40
+            output:
+                aluminum_chloride: 1
+        make_lithium_hydride:
+            display_name: Make Lithium Hydride
+            building: chem_lab
+            level:
+                chemistry: 55
+            input:
+                lithium: 3
+                hydrogen: 200
+                chemistry_tools: 3
+                stamina: 3
+                power: 30
+            output:
+                lithium_hydride: 1
+        make_aluminum_lithium_hydride:
+            display_name: Make Aluminum Lithium Hydride
+            building:
+                chem_lab
+            level:
+                chemistry: 55
+            input:
+                aluminum_chloride: 3
+                lithium_hydride: 3
+                chemistry_tools: 4
+                stamina: 4
+                power: 40
+            output:
+                lithium_aluminum_hydride: 1
+        make_raw_graphite:
+            display_name: Make Raw Graphite
+            building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                lithium_aluminum_hydride: 1
+                carbon_dioxide: 5
+                chemistry_tools: 3
+                stamina: 5
+                power: 60
+            output:
+                raw_graphite: [1, 4, 2.5]
+        make_lithium_fluoride:
+            display_name: Make Lithium Fluoride
+            building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                fluorite: 10
+                lithium: 5
+                chemistry_tools: 3
+                stamina: 1
+                power: 10
+            output:
+                lithium_fluoride: 1
+        make_beryllium_fluoride:
+            display_name: Make Beryllium Fluoride
+            building: chem_lab
+            level:
+                chemistry: 60
+            input:
+                fluorite: 5
+                beryl: 5
+                chemistry_tools: 3
+                stamina: 3
+                power: 60
+            output:
+                beryllium_fluoride: 1
+        make_graphite_rod:
+            display_name: Make Graphite Rod
+            building: chem_lab
+            level:
+                machining: 50
+            input:
+                raw_graphite: 1
+                chemistry_tools: 3
+                stamina: 1
+                power: 10
+            output:
+                graphite_rod: 1
         #grind n' brew
         grind_beans_s:
             display_name: Grind Beans (Small)
@@ -4136,6 +4277,48 @@
                 fabrication_tools: 5
             output:
                 metis_shield_M1: 1
+        create_energy_core_kit:
+            display_name: Create Energy Core Kit
+            building: engineering_bay
+            level:
+                machining: 50
+            input:
+                smelt_steel: 15
+                smelt_copper: 3
+                circuit_component: 1
+                pvc_raw: 3
+                machining_tools: 3
+                stamina: 3
+                power: 10
+            output:
+                crafted_ec_kit: 1
+        make_empty_energy_core:
+            display_name: Make Empty Energy Core
+            building: engineering_bay
+            level:
+                machining: 50
+            input:
+                empty_pc: 5
+                smelt_copper: 3
+                pvc_raw: 2
+                machining_tools: 3
+                stamina: 1
+                power: 10
+            output:
+                empty_ec: 1
+        repair_broken_energy_core:
+            display_name: Repair Broken Energy Core
+            building: engineering_bay
+            level:
+                electrical: 50
+            input:
+                broken_ec: 1
+                electrical_tools: 3
+                stamina: 3
+                power: 40
+                circuit_component: 1
+            output:
+                empty_ec: 1
         #Shelter
         sprouts_aeroponic_experimentation:
             display_name: Sprouts Aeroponic Experimentation
@@ -5044,6 +5227,46 @@
                     - dusk: [0.2, 5, 12]
                     - dusk: [0.3, 3, 7]
                     - dusk: [0.4, 1, 5]
+        #Thorium Reactor
+        charge_energy_core_I:
+            display_name: Charge Energy Core I
+            building: thorium_reactor
+            level:
+                electrical: 50
+            input:
+                stamina: 3
+                empty_ec: 1
+                electrical_tools: 3
+                thorium: 0.05
+                uranium: 0.0017
+            output:
+                full_ec: 1
+        charge_energy_core_II:
+            display_name: Charge Energy Core II
+            building: thorium_reactor
+            level:
+                electrical: 100
+            input:
+                stamina: 5
+                empty_ec: 2
+                electrical_tools: 4
+                thorium: 0.075
+                uranium: 0.0033
+            output:
+                full_ec: 2
+        charge_energy_core_III:
+            display_name: Charge Energy Core III
+            building: thorium_reactor
+            level:
+                electrical: 125
+            input:
+                stamina: 7
+                empty_ec: 3
+                electrical_tools: 5
+                thorium: 0.1
+                uranium: 0.005
+            output:
+                full_ec: 3
         #event
     buildings:
         solar_panel:
@@ -5088,3 +5311,5 @@
             display_name: Cantina
         shelter:
             display_name: Shelter
+        thorium_reactor:
+            display_name: Thorium Reactor
