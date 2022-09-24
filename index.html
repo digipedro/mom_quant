@@ -281,7 +281,7 @@
 
   <script>
       function localnum(num) {
-          if (isNaN(num))
+          if (isNaN(num) || num === null)
               return "---";
           return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
       }
@@ -293,6 +293,7 @@
       const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
       
       const research_re = /research_([a-z]+)_([najem])/;
+      const tools_re = /([a-z]+)_tools_([najem])/;
       
       const default_level_hides = {
                 chemistry: 0,
@@ -301,7 +302,8 @@
                 'life science': 0,
                 machining: 0,
                 mining: 0,
-                robotics: 0
+                robotics: 0,
+                scavenging: 0
             };
       
       
@@ -367,6 +369,7 @@
                 {id: 'machining', name: 'Machining', value: 145},
                 {id: 'mining', name: 'Mining', value: 145},
                 {id: 'robotics', name: 'Robotics', value: 145},
+                {id: 'scavenging', name: 'Scavenging', value: 145}
             ],
             level_hides: {...default_level_hides},                    
             level_hide_count: 0,
@@ -408,6 +411,7 @@
             menuitems: [
               { title: 'ROI Calculator', href: 'index.html'},
               { title: 'Price History', href: 'summary.html'},
+              { title: 'Tools', href: 'tools.html'},
             ]
 	    },
         filters: {
@@ -574,8 +578,14 @@
                     return 1.04;
                 if (method == 'Daily Ration')
                     return 0;
-                if (method == 'Martizen')
-                    return (60 * food + 20 * water - 4 * waste) / 16;
+                if (method == 'Martizen (C)')
+                    return (60 * food + 20 * water - 2 * waste) / 21;
+                if (method == 'Martizen (UC)')
+                    return (60 * food + 20 * water - 2 * waste) / 22;
+                if (method == 'Martizen (R)')
+                    return (60 * food + 20 * water - 2 * waste) / 23;
+                if (method == 'Martizen (E)')
+                    return (60 * food + 20 * water - 2 * waste) / 25;
                 // 'Eat Meal'
                 return (60 * food + 20 * water - 4 * waste) / 24;
             },
@@ -601,6 +611,8 @@
                     let shard_name = { ...this.cheapest_shard };
                     for (let i = 0; i < this.market.length; i++) {
                         if (this.market[i].id.startsWith('shard_') && this.market[i].id.charAt(this.market[i].id.length - 2) == '_') {
+                            if (this.market[i].id.startsWith('shard_concrete') || this.market[i].id.startsWith('shard_shelter'))
+                                continue;
                             let r = this.market[i].id.slice(-1);
                             let price = this.getPrice(this.market[i].id, this.selected_buy_price);
                             if (this.cheapest_shard[r] == null || price < this.cheapest_shard[r]) {
@@ -610,6 +622,7 @@
                         }
                     }
                     console.log('Cheapest Shards:', JSON.stringify(shard_name));
+                    console.log('Catina Coin: Aluminum -', localnum(this.getPrice('aluminum_plate', this.selected_sell_price) / 10), 'each; Titanium -', localnum(this.getPrice('titanium_plate', this.selected_sell_price) / 25), 'each');   
                 }
                 return this.cheapest_shard[rarity];
             },
@@ -623,17 +636,19 @@
                     if (!value)
                         value = this.getPrice(id + '_a', type) / 75;
                     if (!value)
-                        value = this.getPrice(id + '_J', type) / 125;
+                        value = this.getPrice(id + '_j', type) / 125;
                     return value;
                 }
                 if (id == 'dusk')
                     return 1;
+                
                 if (id == 'surveyor_coin')
                     return 45;
                 if (id == 'cantina_coin')
                     return Math.min(this.getPrice('aluminum_plate', type) / 10, this.getPrice('titanium_plate', type) / 25)
                 if (id == 'resource_credit')
                     return 0.5;
+                
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);
                     if (rarity == 'C' || rarity == 'U')
@@ -663,7 +678,17 @@
                             return Math.max(this.market[i].attributes.lastSoldPrice, this.market[i].attributes.averageDaySoldPrice);
                     }
                 }
-                return 0;
+                
+                // items not in market but may be added in future
+                
+                if (id == 'sunflower')
+                    return 0;
+                if (id == 'research_machining_e')
+                    return 0;
+                
+                console.log('ERROR: No price for', id);
+                
+                return NaN;
             },
             resourceName(id) {
                 if (this.odata.resources[id])
@@ -675,7 +700,23 @@
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
-                        name = 'Apprentice' + name;
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+                
+                match = tools_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Tools';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
                     else if (match[2] == 'j')
                         name = 'Journeyman' + name;
                     else if (match[2] == 'e')
@@ -750,7 +791,7 @@
                         }
                     }
                     
-                    let market_fee = (item == 'dusk') ? 1.0 : 0.95
+                    let market_fee = (item == 'dusk' || item == 'cantina_coin') ? 1.0 : 0.95
                     
                     if (probs[0] == 1) {
                         if (min_gain == null)
@@ -804,7 +845,7 @@
             },
             buildTable(first_time = false) {
                 this.liquidity_hide_count = 0;
-                for (const [key, value] of Object.entries(this.odata.recipes)) {                    
+                for (const [key, value] of Object.entries(this.odata.recipes)) {  
                     let cost = 0;
                     let cost_breakdown = [];
                     let power_used = 0;
@@ -853,7 +894,7 @@
                                 sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0];
                                 sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1];
                                 sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                                if (key2 == 'dusk') {
+                                if (key2 == 'dusk' || key2 == 'cantina_coin') {
                                     sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
                                     market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * 0.05;
                                     market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * 0.05;
@@ -869,7 +910,7 @@
                                 sale.min += avg_price;
                                 sale.max += avg_price;
                                 sale.avg += avg_price;
-                                if (key2 == 'dusk')
+                                if (key2 == 'dusk' || key2 == 'cantina_coin')
                                     sale.gain += avg_price
                                 else
                                     sale.gain += avg_price * 0.95;
@@ -926,7 +967,6 @@
                             }
                         }
                     }
-
                     
                     let entry = {
                         id: key,
@@ -981,7 +1021,7 @@
                                         +'<b>Sunflower Snack</b>  - <span class="dusk">' + localnum(this.getStaminaCost('Sunflower Snack')) + '</span> avg<br>'
                                         +'<b>Drink Mushroom Tea</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Mushroom Tea')) + '</span> avg<br>'
                                         +'<b>Eat Mushroom Cake</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Mushroom Cake')) + '</span> avg<br>'
-                                        +'<b>Martizen</b> - <span class="dusk">' + localnum(this.getStaminaCost('Martizen')) + '</span> avg<br>'
+                                        +'<b>Martizen (UC)</b> - <span class="dusk">' + localnum(this.getStaminaCost('Martizen (UC)')) + '</span> avg<br>'
                                         +'<b>Job</b> - <span class="dusk">1.040</span><br>'
                                         +'<b>Eat Ration</b> - <span class="dusk"> 0.000</span><br>'
                 this.power_market = localnum(this.getPowerCost('Market Price') * 20);

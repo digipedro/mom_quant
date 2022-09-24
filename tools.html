@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>Million on Mars Land Rush Tool Prices</title>
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js-yaml.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+  <style>
+      .dusk {
+          color: #c17e1f;
+          font-weight: bold
+      }
+      .v-select-list .v-list-item {
+        min-height: 0 !important;
+      }
+      .v-btn {
+        text-transform:none !important;
+      }
+  </style>
+
+</head>
+<body>
+
+  <div id="app">
+    <v-app>
+      <v-main>
+    
+    <div style="float: left">
+      <v-menu offset-y>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn dark v-bind="attrs" v-on="on">
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item v-for="(item, index) in menuitems" :key="index" @click="menuClick(index)">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </div>
+    
+     <p class="text-center">
+    What are the cheapest tools to consume in <a href="https://www.milliononmars.com/">Million on Mars</a>?.
+    </p>
+    
+    <v-container>
+      <v-row>
+        <v-col class="d-flex" cols="6" sm="3">
+          <v-select :items="buy_price" label="Buy Price" v-on:change="changeSelect" v-model="selected_buy_price"></v-select>
+          <v-tooltip color="#333" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon v-bind="attrs" v-on="on" small>
+                mdi-help-circle-outline
+              </v-icon>
+            </template>
+            <span>
+                  <b>Price of resources to calculate build cost</b><br>
+                  <b>Last Sold</b> - Last sale price on market<br>
+                  <b>24H Avg</b> - Average of last 24hrs of sales<br>
+                  <b>Split</b> - Halfway between Last Sold and 24H Avg<br>
+                  <b>Lower</b> - Either Last Sold or 24H Avg, whichever is lower<br>
+                  <b>Higher</b> - Either Last Sold or 24H Avg, whichever is higher<br>
+            </span>
+          </v-tooltip>
+        </v-col>
+        <v-col class="d-flex" cols="6" sm="3">
+
+        </v-col>
+        <v-col class="d-flex" cols="6" sm="3">
+          <v-select :items="power_source" label="Power Source" v-on:change="changeSelect" v-model="selected_power_source"></v-select>
+          <v-tooltip color="#333" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon dark v-bind="attrs" v-on="on" small>
+                mdi-help-circle-outline
+              </v-icon>
+            </template>
+            <span>
+                  <b>Cost of Power used in calculations</b><br>
+                  <b>Market Price</b> (<span class="dusk">{{ power_market }}</span> per cell) - Cost of buying Full cell and selling Empty cell<br>
+                  <b>Charge Power Cell</b> (<span class="dusk">{{ power_charge1 }}</span> per cell) - Stamina cost of charging a Power cell<br>
+                  <b>Charge Power Cell III</b> (<span class="dusk">{{ power_charge3 }}</span> per cell) - Stamina cost of charging Power cells 3-for-2<br>
+                  <b>1 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order1 }}</span> per cell) - 1.04 Dusk to charge cell<br>
+                  <b>2 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order2 }}</span> per cell) - 2.08 Dusk to charge cell<br>
+                  <b>3 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order3 }}</span> per cell) - 3.12 Dusk to charge cell<br>
+                  Prices included 2% chance of cell breaking
+            </span>
+        </v-col>
+        <v-col class="d-flex" cols="6" sm="3">
+          <v-select :items="stamina_source" label="Stamina Source" v-on:change="changeSelect" v-model="selected_stamina_source"></v-select>
+          <v-tooltip color="#333" bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon v-bind="attrs" v-on="on" small>
+                mdi-help-circle-outline
+              </v-icon>
+            </template>
+            <span v-html="stamina_help_text"></span>
+          </v-tooltip>
+        </v-col>
+      </v-row>
+      <v-row :class="{red:market_time_warning}" class="text-right" dense>
+        <v-col class="text-right" cols="24" sm="12">
+          Market data {{ market_timetext }}
+        </v-col>
+      </v-row>
+      
+      <v-row>
+        <v-col class="text-left" cols="24" sm="12">
+          <p>Dusk cost to <b>build</b> tool packs (building novice on up)</p>
+          <v-simple-table dark>
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">Type</th>
+                  <th class="text-left">Novice</th>
+                  <th class="text-left">Apprentice</th>
+                  <th class="text-left">Journeyman</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in build_data" :key="item.name">
+                  <td>
+                    <img v-bind:src="item.icon" v-bind:title="item.type" height="24" style="margin-right: 6px; vertical-align:middle"/>{{ item.type }}
+                  </td>
+                  <td :style="{color: item.n_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.n }}</span>
+                        </template>
+                        <span v-html="item.n_tip"></span>
+                      </v-tooltip>
+                  </td>
+                  <td :style="{color: item.a_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.a }}</span>
+                        </template>
+                        <span v-html="item.a_tip"></span>
+                      </v-tooltip>
+                  </td>
+                  <td :style="{color: item.j_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.j }}</span>
+                        </template>
+                        <span v-html="item.j_tip"></span>
+                      </v-tooltip>
+                  </td>
+                </tr>
+              </tbody>
+          </template>
+      
+          </v-simple-table>
+        </v-col>
+      </v-row>
+      
+      <v-row>
+        <v-col class="text-left" cols="24" sm="12">
+          <p>Dusk cost to <b>buy</b> tool packs</p>
+          <v-simple-table dark>
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">Type</th>
+                  <th class="text-left">Novice</th>
+                  <th class="text-left">Apprentice</th>
+                  <th class="text-left">Journeyman</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in buy_data" :key="item.name">
+                  <td>
+                    <img v-bind:src="item.icon" v-bind:title="item.type" height="24" style="margin-right: 6px; vertical-align:middle"/>{{ item.type }}
+                  </td>
+                  <td :style="{color: item.n_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.n }}</span>
+                        </template>
+                        <span v-html="item.n_tip"></span>
+                      </v-tooltip>
+                  </td>
+                  <td :style="{color: item.a_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.a }}</span>
+                        </template>
+                        <span v-html="item.a_tip"></span>
+                      </v-tooltip>
+                  </td>
+                  <td :style="{color: item.j_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.j }}</span>
+                        </template>
+                        <span v-html="item.j_tip"></span>
+                      </v-tooltip>
+                  </td>
+                </tr>
+              </tbody>
+          </template>
+      
+          </v-simple-table>
+        </v-col>
+      </v-row>
+      
+    </v-container>
+         
+
+<p></p>
+
+  <p><img src="images/AbacusMonkey.png" width="64" style="float: left; margin-left: 1em; margin-right: 1em"> Created by digipedro. Images are Copyright Million on Mars Inc.<br/>Donations of WAX can be sent to <b>iamdigipedro</b><br/>Donations of BANANO can be sent to
+	<a href="https://creeper.banano.cc/explorer/account/ban_3d6pzryts53tzk1u87yobfcrcwuiq11hhpj7oo8mapnodpkroc7dkqq8z8hc/history">
+	ban_3d6pzryts53tzk1u87yobfcrcwuiq11hhpj7oo8mapnodpkroc7dkqq8z8hc
+	</a>
+
+      </v-main>
+    </v-app>
+  </div>
+
+
+
+  <script>
+      function localnum(num) {
+          if (isNaN(num) || num === null)
+              return "---";
+          return num.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+      }
+      
+      const capitalize = (s) => {
+        return s.charAt(0).toUpperCase() + s.slice(1)
+      }
+      
+      const sumValues = obj => Object.values(obj).reduce((a, b) => a + b);
+      
+      const tools_re = /([a-z]+)_tools_([najem])/;
+      
+	  var vv = new Vue({
+	    el: '#app',
+		mounted:function() {
+            this.loadYAML();
+            this.loadMarket();
+            
+            // load user settings            
+            for (i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                let value = localStorage.getItem(key);
+                if (key == 'selected_buy_price' && this.buy_price.includes(value))
+                    this.selected_buy_price = value;
+                if (key == 'selected_power_source' && this.power_source.includes(value))
+                    this.selected_power_source = value;
+                if (key == 'selected_stamina_source' && this.stamina_source.includes(value))
+                    this.selected_stamina_source = value;
+            }
+            
+            setInterval(function() { this.updateTimer() }.bind(this), 30 * 1000 );
+		},
+	    vuetify: new Vuetify({
+            theme: { dark: true },
+        }),
+	    data: {
+            odata: {},
+            market: {},
+            sources_loaded: 0,
+            sources_to_load: 2,
+            buy_price: ['Last Sold', '24H Avg', 'Split', 'Lower', 'Higher'],
+            selected_buy_price: 'Last Sold',
+            power_source: ['Market Price', 'Charge Power Cell', 'Charge Power Cell III', '1 Dusk per Cell Work Order', '2 Dusk per Cell Work Order', '3 Dusk per Cell Work Order'],
+            selected_power_source: 'Charge Power Cell',
+            stamina_source: ['Eat Snack', 'Eat Meal', 'Eat Feast', 'Eat Mushroom Cake', 'Drink Coffee', 'Slava Ukraini', 'Drink Mushroom Tea', 'Job', 'Daily Ration'],
+            stamina_help_text: '',
+            power_market: 1,
+            power_charge1: 1,
+            power_charge3: 1,
+            work_order1: 1,
+            work_order2: 2,
+            work_order3: 3,
+            selected_stamina_source: 'Eat Meal',
+            market_timestamp: 0,
+            market_timetext: 'Loading...',
+            market_time_warning: false,
+            user_settings: {},
+            build_data: [],
+            buy_data: [],
+            menuitems: [
+              { title: 'ROI Calculator', href: 'index.html'},
+              { title: 'Price History', href: 'summary.html'},
+              { title: 'Tools', href: 'tools.html'},
+            ]
+	    },
+        filters: {
+            localnum: function (num) { return localnum(num) },
+            capitalize: function (text) { return capitalize(text) }
+        },
+	    methods: {
+            menuClick(index) {
+               window.location.href = this.menuitems[index].href;
+            },
+            saveUserSettings() {
+                localStorage.setItem('selected_buy_price', this.selected_buy_price);
+                localStorage.setItem('selected_power_source', this.selected_power_source);
+                localStorage.setItem('selected_stamina_source', this.selected_stamina_source);
+            },
+            changeSelect(id) {
+                this.saveUserSettings();
+                this.buildTable();
+            },
+            updateTimer() {
+                if (this.market_timestamp == 0)
+                    return;
+                let tdiff = ((new Date()).getTime() - this.market_timestamp.getTime()) / 1000;
+                if (tdiff < 60)
+                    this.market_timetext = "updated < 1 min ago";
+                else if (tdiff < 3600)
+                    this.market_timetext = "updated " + Math.round(tdiff / 60) + " mins ago";
+                else if (tdiff < 5400)
+                    this.market_timetext = "updated 1 hour ago";
+                else
+                    this.market_timetext = "updated " + Math.round(tdiff / 3600) + " hours ago"
+                this.market_time_warning = (tdiff > 5400);
+            },
+            getStaminaCost(method) {
+                let food = this.getPrice('food', this.selected_buy_price);
+                let water = this.getPrice('water', this.selected_buy_price);
+                let waste = this.getPrice('waste', this.selected_sell_price);
+                if (method == 'Eat Snack')
+                    return (30 * food + 10 * water - 2 * waste) / 16;
+                if (method == 'Eat Feast')
+                    return (90 * food + 30 * water - 6 * waste) / 32;
+                if (method == 'Eat Mushroom Cake')
+                    return (this.getPrice('mushroom_cake', this.selected_buy_price) - 2.5 * waste - 10) / 18;
+                if (method == 'Drink Coffee')
+                    return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
+                if (method == 'Slava Ukraini')
+                    return (this.getPrice('coffee_brewed', this.selected_buy_price) - 2) / 10;
+                if (method == 'Drink Mushroom Tea')
+                    return (this.getPrice('mushroom_tea', this.selected_buy_price) - 7) / 15;
+                if (method == 'Sunflower Seeds')
+                    return (this.getPrice('sunflower_seeds_roasted', this.selected_buy_price) - 1.5 * waste) / 7.5;
+                if (method == 'Sunflower Snack')
+                    return (this.getPrice('sunflower_seed_snack', this.selected_buy_price) - 1.5 * waste) / 18;
+                if (method == 'Job')
+                    return 1.04;
+                if (method == 'Daily Ration')
+                    return 0;
+                if (method == 'Martizen (C)')
+                    return (60 * food + 20 * water - 2 * waste) / 21;
+                if (method == 'Martizen (UC)')
+                    return (60 * food + 20 * water - 2 * waste) / 22;
+                if (method == 'Martizen (R)')
+                    return (60 * food + 20 * water - 2 * waste) / 23;
+                if (method == 'Martizen (E)')
+                    return (60 * food + 20 * water - 2 * waste) / 25;
+                // 'Eat Meal'
+                return (60 * food + 20 * water - 4 * waste) / 24;
+            },
+            getPowerCost(source) {
+                if (source == 'Market Price')
+                    return ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('empty_pc', this.selected_sell_price) * 0.95 ) / 20) * 0.98
+                          + ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price) * 0.95) / 20) * 0.02;
+                let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.02;
+                if (source == 'Charge Power Cell III')
+                    return (this.getStaminaCost(this.selected_stamina_source) * 2 + broken_tax * 3) / 60
+                if (source == '1 Dusk per Cell Work Order')
+                    return (1.04 + broken_tax ) / 20
+                if (source == '2 Dusk per Cell Work Order')
+                    return (2.08 + broken_tax ) / 20
+                if (source == '3 Dusk per Cell Work Order')
+                    return (3.12 + broken_tax) / 20
+                // 'Charge Power Cell'
+                return (this.getStaminaCost(this.selected_stamina_source) + broken_tax) / 20
+            },
+            getPrice(id, type = this.selected_buy_price) {                                
+                if (id == 'power')
+                    return this.getPowerCost(this.selected_power_source);
+                if (id == 'stamina')
+                    return this.getStaminaCost(this.selected_stamina_source);
+                if (id.endsWith('_tools')) {
+                    let value = this.getPrice(id + '_n', type) / 50;
+                    if (!value)
+                        value = this.getPrice(id + '_a', type) / 75;
+                    if (!value)
+                        value = this.getPrice(id + '_j', type) / 125;
+                    return value;
+                }
+                if (id == 'dusk')
+                    return 1;
+                    
+                for (let i = 0; i < this.market.length; i++) {
+                    if (this.market[i].id == id) {
+                        if (type == 'Last Sold')
+                            return this.market[i].attributes.lastSoldPrice
+                        if (type == '24H Avg')
+                            return this.market[i].attributes.averageDaySoldPrice
+                        if (type == 'Split')
+                            return ((this.market[i].attributes.lastSoldPrice + this.market[i].attributes.averageDaySoldPrice) / 2);
+                        if (type == 'Lower')
+                            return Math.min(this.market[i].attributes.lastSoldPrice, this.market[i].attributes.averageDaySoldPrice);
+                        if (type == 'Higher')
+                            return Math.max(this.market[i].attributes.lastSoldPrice, this.market[i].attributes.averageDaySoldPrice);
+                    }
+                }
+                
+                console.log('ERROR: No price for', id);
+                
+                return NaN;
+            },
+            resourceName(id) {
+                if (this.odata.resources[id])
+                    return this.odata.resources[id].display_name
+                
+                let match = research_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Research';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+                
+                match = tools_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Tools';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+
+                return capitalize(id.replaceAll('_', ' '));
+            },
+            resourceVolume(id) {
+                for (let i = 0; i < this.market.length; i++) {
+                    if (this.market[i].id == id) {                        
+                        return this.market[i].attributes.lastDayVolume
+                    }
+                }
+                return 0;
+            },
+            building_name(id) {
+                return (id === undefined) ? '' : this.odata.buildings[id].display_name
+            },
+            processLoot(key2, value2, items, sale) {
+                let min_gain = null;
+                let max_gain = null;
+                let repeat = 1;
+                for (let i = 0; i < value2.length; i++) {
+                    let item = Object.keys(value2[i])[0];
+                    let probs = [0, 0, 0];
+                    let price = 1;
+                    if (item == 'repeat') {
+                        repeat = value2[i][item];
+                        continue;
+                    } else if (item == 'percent' || item == 'lootlist' || item == 'lootset') {
+                        let percent = 1.0;
+                        if (item == 'percent') {
+                            percent = value2[i][item] / 100;
+                            i = i + 1;
+                        }
+                        let r_items = {};
+                        let r_sale = { min: 0, max: 0, avg: 0, gain: 0 };
+                        key2 = Object.keys(value2[i])[0];
+                        this.processLoot(key2, value2[i][key2], r_items, r_sale);
+
+                        probs = [percent, r_sale.min, r_sale.max];
+                        
+                        for (const [i_id, i_values] of Object.entries(r_items)) {
+                            if (items.hasOwnProperty(i_id)) {
+                                items[i_id].number += i_values.number * percent * repeat;
+                                items[i_id].price += i_values.price * percent * repeat;
+                            } else {
+                                items[i_id] = i_values;
+                                items[i_id].number = items[i_id].number * percent * repeat;
+                                items[i_id].price = items[i_id].price * percent * repeat;
+                            }
+                        }
+                    } else {
+                        probs = value2[i][item];
+                        price = this.getPrice(item, this.selected_sell_price);
+                    
+                        let avg_yield = (probs[1] + probs[2]) / 2;
+                    
+                        if (items.hasOwnProperty(item)) {
+                            items[item].number += avg_yield * probs[0] * repeat;
+                            items[item].price += price * avg_yield * probs[0] * repeat;
+                        } else {
+                            items[item] = {
+                                number: avg_yield * probs[0] * repeat,
+                                name: this.resourceName(item),
+                                price: price * avg_yield * probs[0] * repeat
+                            }
+                        }
+                    }
+                    
+                    let market_fee = (item == 'dusk') ? 1.0 : 0.95
+                    
+                    if (probs[0] == 1) {
+                        if (min_gain == null)
+                            min_gain = 0;
+                        min_gain += price * probs[1] * repeat * market_fee;
+                    } else if (key2 == 'lootset') {
+                        if (min_gain == null) {
+                            min_gain = price * probs[1] * repeat * market_fee;
+                        } else {
+                            let test = price * probs[1] * repeat * market_fee;
+                            min_gain = (test < min_gain) ? test : min_gain;
+                        }
+                    }
+
+                    if (probs[0] == 1) {
+                        if (max_gain == null)
+                            max_gain = 0;
+                        max_gain += price * probs[2] * repeat * market_fee;
+                    } else {
+                        if (max_gain == null) {
+                            max_gain = price * probs[2] * repeat * market_fee;
+                        } else {
+                            let test = price * probs[2] * repeat * market_fee;
+                            if (key2 == 'lootset')
+                                max_gain = (test > max_gain) ? test : max_gain;
+                            else
+                                max_gain += test;
+                        }
+                    }
+                }
+                // divide min and max by 0.95 because we already include market fee here but not in simple method
+                sale.min = min_gain / 0.95;
+                sale.max = max_gain / 0.95;
+            },
+            getCost(id) {
+                let cost = NaN;
+                if (id in this.odata.recipes) {
+                    cost = 0;                        
+                    for (const [key2, value2] of Object.entries(this.odata.recipes[id].input)) {
+                                                
+                        match = tools_re.exec(key2);
+                        if (match != null) {
+                            let recipe_name = 'make_';
+                            if (match[2] == 'n')
+                                recipe_name += 'novice';
+                            else if (match[2] == 'a')
+                                recipe_name += 'apprentice';
+                            else if (match[2] == 'j')
+                                recipe_name += 'journeyman';
+                            else if (match[2] == 'e')
+                                recipe_name += 'expert';
+                            else if (match[2] == 'm')
+                                recipe_name += 'master' ;
+                            recipe_name += '_' + match[1] + '_tools';
+                            cost += this.getCost(recipe_name);
+                        } else {
+                            cost += this.getPrice(key2) * value2;
+                        }
+                    }
+                }
+                return cost;
+            },
+            buildTable() {
+                const tool_types = [
+                    {id: 'chemistry', name: 'Chemistry'},
+                    {id: 'electrical', name: 'Electrical'},
+                    {id: 'fabrication', name: 'Fabrication'},
+                    {id: 'lifescience', name: 'Life Science'},
+                    {id: 'machining', name: 'Machining'},
+                    {id: 'mining', name: 'Mining'},
+                    {id: 'robotics', name: 'Robotics'},
+                    {id: 'scavenging', name: 'Scavenging'}
+                ];
+                const levels = [
+                    {id: 'n', name: 'Novice', count: 50},
+                    {id: 'a', name: 'Apprentice', count: 75},
+                    {id: 'j', name: 'Journeyman', count: 125},
+                    {id: 'e', name: 'Expert', count: 275},
+                    {id: 'm', name: 'Master', count: 675},
+                    {id: 'ar', name: 'Artisan', count: 1800},
+                ];
+                
+                let build_cost = [];
+                let buy_cost = [];
+                
+                for (let t = 0; t < tool_types.length; t++) {
+                    build_cost[t] = [];
+                    buy_cost[t] = [];
+                    for (let l = 0; l < levels.length; l++) {
+                        let recipe_name = 'make_' + levels[l].name.toLowerCase() + '_' + tool_types[t].id + '_tools';
+                        build_cost[t][l] = this.getCost(recipe_name);
+                        
+                        let tool_name = tool_types[t].id + '_tools_' + levels[l].id;
+                        if (tool_types[t].id == 'scavenging' && levels[l].id != 'n')
+                            tool_name = tool_types[t].id + '_tools_' + levels[l].name;
+                        buy_cost[t][l] = this.getPrice(tool_name);
+                        if (l > 0 && !isNaN(buy_cost[t][l-1]) && buy_cost[t][l] < buy_cost[t][l-1])
+                             buy_cost[t][l] = NaN
+                    }
+                }
+                
+                
+                this.build_data = [];
+                this.buy_data = [];
+                
+                for (let t = 0; t < tool_types.length; t++) {
+                    let cheapest_build = build_cost[t][0] / levels[0].count;
+                    let highlight_build = 0;
+                    let cheapest_buy = buy_cost[t][0] / levels[0].count;
+                    let highlight_buy = 0;
+                    for (let l = 1; l < 3; l++) {
+                        if (!isNaN(build_cost[t][l]) && (build_cost[t][l] / levels[l].count) < cheapest_build) {
+                            cheapest_build = build_cost[t][l] / levels[l].count;
+                            highlight_build = l;
+                        }
+                        
+                        if (!isNaN(buy_cost[t][l]) && (buy_cost[t][l] / levels[l].count) < cheapest_buy) {
+                            cheapest_buy = buy_cost[t][l] / levels[l].count;
+                            highlight_buy = l;
+                        }
+                    }
+
+                    this.build_data.push({
+                        type: tool_types[t].name,
+                        icon: 'images/' + tool_types[t].id + '.webp',
+                        n: localnum(build_cost[t][0] / levels[0].count) + ' / tool',
+                        a: localnum(build_cost[t][1] / levels[1].count) + ' / tool',
+                        j: localnum(build_cost[t][2] / levels[2].count) + ' / tool',
+                        n_tip: 'Cost: ' + localnum(build_cost[t][0]),
+                        a_tip: 'Cost: ' + localnum(build_cost[t][1]),
+                        j_tip: 'Cost: ' + localnum(build_cost[t][2]),
+                        n_color: (highlight_build == 0) ? 'lightgreen' : 'white',
+                        a_color: (highlight_build == 1) ? 'lightgreen' : 'white',
+                        j_color: (highlight_build == 2) ? 'lightgreen' : 'white'
+                    });
+                    
+                    this.buy_data.push({
+                        type: tool_types[t].name,
+                        icon: 'images/' + tool_types[t].id + '.webp',
+                        n: localnum(buy_cost[t][0] / levels[0].count) + ' / tool',
+                        a: localnum(buy_cost[t][1] / levels[1].count) + ' / tool',
+                        j: localnum(buy_cost[t][2] / levels[2].count) + ' / tool',
+                        n_tip: 'Price: ' + localnum(buy_cost[t][0]),
+                        a_tip: 'Price: ' + localnum(buy_cost[t][1]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 75),
+                        j_tip: 'Price: ' + localnum(buy_cost[t][2]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 125),
+                        n_color: (highlight_buy == 0) ? 'lightgreen' : 'white',
+                        a_color: (highlight_buy == 1) ? 'lightgreen' : 'white',
+                        j_color: (highlight_buy == 2) ? 'lightgreen' : 'white'
+                    });
+                }
+
+                this.stamina_help_text = '<b>Eat Snack</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
+                                        +'<b>Eat Meal</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
+                                        +'<b>Eat Feast</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
+                                        +'<b>Drink Coffee</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Coffee')) + '</span> avg<br>'
+                                        +'<b>Slava Ukraini</b> - <span class="dusk">' + localnum(this.getStaminaCost('Slava Ukraini')) + '</span> avg<br>'
+                                        +'<b>Roasted Sun Seeds</b>  - <span class="dusk">' + localnum(this.getStaminaCost('Sunflower Seeds')) + '</span> avg<br>'
+                                        +'<b>Sunflower Snack</b>  - <span class="dusk">' + localnum(this.getStaminaCost('Sunflower Snack')) + '</span> avg<br>'
+                                        +'<b>Drink Mushroom Tea</b> - <span class="dusk">' + localnum(this.getStaminaCost('Drink Mushroom Tea')) + '</span> avg<br>'
+                                        +'<b>Eat Mushroom Cake</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Mushroom Cake')) + '</span> avg<br>'
+                                        +'<b>Martizen (UC)</b> - <span class="dusk">' + localnum(this.getStaminaCost('Martizen (UC)')) + '</span> avg<br>'
+                                        +'<b>Job</b> - <span class="dusk">1.040</span><br>'
+                                        +'<b>Eat Ration</b> - <span class="dusk"> 0.000</span><br>'
+                this.power_market = localnum(this.getPowerCost('Market Price') * 20);
+                this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
+                this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);
+                this.work_order1 = localnum(this.getPowerCost('1 Dusk per Cell Work Order') * 20);
+                this.work_order2 = localnum(this.getPowerCost('2 Dusk per Cell Work Order') * 20);
+                this.work_order3 = localnum(this.getPowerCost('3 Dusk per Cell Work Order') * 20);
+            },
+            async loadYAML() {
+                await fetch('resources.yaml', {
+                    mode: 'cors',
+                    method: 'GET',
+                    headers: {
+                        'Access-Control-Allow-Origin':'*',
+                        'Content-Type': 'multipart/form-data'
+                    }})
+                    .then(res => res.blob())
+                    .then(blob => blob.text())
+                    .then(yamlAsString => {
+                        this.odata = jsyaml.load(yamlAsString);
+                        this.sources_loaded++;
+                    })
+                    .catch(err => console.log('yaml error:', err))                    
+                if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
+            },
+            async loadMarket() {
+                 //await fetch("market.json")
+                 await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/wholemarket2")
+                    .then(res => res.json())
+                    .then(out => {
+                        this.market = out.data;
+                        
+                        let last_update = 0;
+                        for (let i = 0; i < this.market.length; i++) {
+                            // get time of latest update
+                            let time = new Date(this.market[i].attributes.updatedAt);
+                            if (time > last_update)
+                                last_update = time;
+                            // set 0 day average price to last price
+                            if (this.market[i].attributes.averageDaySoldPrice == 0)
+                                this.market[i].attributes.averageDaySoldPrice = this.market[i].attributes.lastSoldPrice;
+                        }
+                        this.market_timestamp = last_update;
+                        this.updateTimer()
+                        this.sources_loaded++;
+                     })
+                    .catch(err => {
+                        console.log('market error:', err);
+                        this.market_timetext = 'failed to load.';
+                        this.market_time_warning = true;
+                    })
+                if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
+            },
+
+	      },
+	  });
+	  
+
+  </script>
+</body>
+</html>

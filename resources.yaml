@@ -60,22 +60,6 @@
             display_name: Bazaar Coin (L)
         bazaar_coin_E:
             display_name: Bazaar Coin (E)
-        scavenging_tools_n:
-            display_name: Novice Scavenging Tools
-        fabrication_tools_n:
-            display_name: Novice Fabrication Tools
-        chemistry_tools_n:
-            display_name: Novice Chemistry Tools
-        electrical_tools_n:
-            display_name: Novice Electrical Tools
-        lifescience_tools_n:
-            display_name: Novice Life Science Tools
-        machining_tools_n:
-            display_name: Novice Machining Tools
-        robotics_tools_n:
-            display_name: Novice Robitics Tools
-        lifescience_tools:
-            display_name: Life Science Tools
         wastezilla:
             display_name: WasteZilla
         siliconcrystals_raw:
@@ -90,12 +74,36 @@
             display_name: Faded Art
         candycane:
             display_name: Candy Canes
-        3d_print_shop-gen2_C1:
-            display_name: Common 3D Print Shop (Gen 2)
-        3d_print_shop-gen2_U1:
-            display_name: Uncommon 3D Print Shop (Gen 2)
-        3d_print_shop-gen2_R1:
-            display_name: Rare 3D Print Shop (Gen 2)
+        scavenging_tools_Apprentice:
+            display_name: Apprentice Scavenging Tools
+        scavenging_tools_Artisan:
+            display_name: Artisan Scavenging Tools
+        scavenging_tools_Journeyman:
+            display_name: Journeyman Scavenging Tools
+        scavenging_tools_Expert:
+            display_name: Expert Scavenging Tools
+        scavenging_tools_Master:
+            display_name: Master Scavenging Tools
+        steel_bb:
+            display_name: Steel Ball Bearings
+        medium_steel_bb:
+            display_name: Medium Steel Ball Bearings
+        copper_spring:
+            display_name: Copper Coil Spring
+        medium_copper_spring:
+            display_name: Medium Copper Coil Spring
+        steel_spring:
+            display_name: Steel Machined Spring
+        raw_graphite:
+            display_name: Graphite
+        crafted_ec_kit:
+            display_name: Crafted Energy Core Kit
+        empty_ec:
+            display_name: Empty Energy Core
+        broken_ec:
+            display_name: Broken Energy Core
+        full_ec:
+            display_name: Full Energy Core
     recipes:
         # greenhouse
         plant_sprouts:
@@ -221,8 +229,8 @@
                 sorghum: 25
             output:
                 mushrooms: [6, 15, 10.5]
-        plant_sunflower_seeds:
-            display_name: Plant Sunflower Seeds
+        plant_sunflower:
+            display_name: Plant Sunflower
             building: greenhouse
             input:
                 stamina: 1
@@ -236,6 +244,21 @@
                     - sunflower: [1, 1, 2]
                     - soil: [0.2, 1, 1]
                     - shard_glushkos_greenhouse_A: [0.0033, 1, 1]
+        make_apprentice_lifescience_tools:
+            display_name: Make Apprentice Life Science Tools
+            building: greenhouse
+            level:
+                life science: 30
+                fabrication: 25
+            input:
+                lifescience_tools_n: 1
+                metis: 3
+                water: 15
+                soil: 10
+                power: 20
+                stamina: 5
+            output:
+                lifescience_tools_a: 1
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide
@@ -371,8 +394,9 @@
             building: smelter
             input:
                 regolith: 500
-                power: 40
-                stamina: 2
+                power: 30
+                stamina: 1
+                mining_tools: 1
             output:
                 lootlist:
                     - smelt_iron: [1, 2, 5]
@@ -382,8 +406,9 @@
             building: smelter
             input:
                 regolith: 1500
-                power: 40
-                stamina: 3
+                power: 60
+                stamina: 4
+                mining_tools: 4
             output:
                 lootlist:
                     - smelt_copper: [1, 2, 5]
@@ -394,8 +419,9 @@
             building: smelter
             input:
                 regolith: 1000
-                power: 40
-                stamina: 5
+                power: 50
+                stamina: 3
+                mining_tools: 3
             output:
                 lootlist:
                     - smelt_aluminum: [1, 2, 5]
@@ -405,8 +431,9 @@
             building: smelter
             input:
                 regolith: 2500
-                power: 40
-                stamina: 4
+                power: 80
+                stamina: 5
+                mining_tools: 5
             output:
                 lootlist:
                     - smelt_titanium: [1, 2, 5]
@@ -418,7 +445,8 @@
                 carbon_dioxide: 10
                 smelt_iron: 15
                 power: 40
-                stamina: 3
+                stamina: 2
+                mining_tools: 2
             output:
                 lootlist:
                     - smelt_steel: [1, 2, 5]
@@ -428,12 +456,12 @@
             display_name: Smelt Glass
             building: smelter
             level:
-                machining: 20
+                mining: 10
             input:
                 stamina: 4
                 power: 20
                 regolith: 300
-                fabrication_tools: 1
+                machining_tools: 1
             output:
                 lootlist:
                     - glass: [1, 1, 1]
@@ -459,9 +487,9 @@
                 stamina: 5
                 mining_tools: 7
             output:
-                lithium: [1, 3, 1.5]
-                raw_graphite: [1, 3, 0.15]
-                thorium: [1, 3, 0.05]
+                lithium: [1, 3, 2]
+                raw_graphite: [0, 3, 0.2]
+                thorium: [0, 1, 0.05]
         smelt_thorium:
             display_name: Smelt Thorium
             building: smelter
@@ -474,8 +502,237 @@
                 mining_tools: 10
             output:
                 thorium: [1, 3, 2]
-                uranium: [1, 1, 0.05]
+                uranium: [0, 1, 0.05]
         #machine_shop
+        cantina_coin1:
+            display_name: Cantina Coin I
+            building: machine_shop
+            level:
+                machining: 5
+            input:
+                power: 20
+                aluminum_plate: 1
+                metal_bits: 15
+                stamina: 2
+                machining_tools: 2
+            output:
+                cantina_coin: [10, 20, 15]
+        cantina_coin2:
+            display_name: Cantina Coin II
+            building: machine_shop
+            level:
+                machining: 40
+            input:
+                power: 40
+                aluminum_plate: 2
+                titanium_plate: 1
+                stamina: 3
+                machining_tools: 3
+            output:
+                cantina_coin: [75, 125, 100]
+        cantina_coin3:
+            display_name: Cantina Coin III
+            building: machine_shop
+            level:
+                machining: 75
+            input:
+                power: 60
+                aluminum_plate: 5
+                titanium_plate: 5
+                stamina: 4
+                machining_tools: 4
+            output:
+                cantina_coin: [300, 400, 350]
+        copper_coil_spring1:
+            display_name: Copper Coil Spring I
+            building: machine_shop
+            input:
+                power: 10
+                smelt_copper: 3
+                metal_bits: 25
+                rover_wires: 3
+                stamina: 1
+                machining_tools: 1
+            output:
+                copper_spring: 1
+        copper_coil_spring2:
+            display_name: Copper Coil Spring II
+            building: machine_shop
+            level:
+                machining: 30
+            input:
+                power: 20
+                smelt_copper: 12
+                metal_bits: 100
+                rover_wires: 10
+                stamina: 2
+                machining_tools: 2
+            output:
+                copper_spring: [3, 5, 4]
+        copper_coil_spring3:
+            display_name: Copper Coil Spring III
+            building: machine_shop
+            level:
+                machining: 65
+            input:
+                power: 30
+                smelt_copper: 24
+                metal_bits: 200
+                rover_wires: 20
+                stamina: 3
+                machining_tools: 3
+            output:
+                copper_spring: [8, 16, 12]
+        make_glass_panel:
+            display_name: Make Glass Panel
+            building: machine_shop
+            level:
+                machining: 75
+            input:
+                metis_weave: 3
+                glass: 5
+                aluminum_plate: 2
+                stamina: 1
+            output:
+                glass_panel: 1
+        medium_steel_ball_bearings:
+            display_name: Medium Steel Ball Bearings
+            building: machine_shop
+            level:
+                machining: 15
+            input:
+                power: 40
+                smelt_steel: 20
+                metal_bits: 50
+                sunflower_oil: 3
+                stamina: 2
+                machining_tools: 1
+            output:
+                medium_steel_bb: [1, 3, 2]
+        medium_copper_coil_spring:
+            display_name: Medium Copper Coil Spring
+            building: machine_shop
+            level:
+                machining: 20
+            input:
+                power: 40
+                smelt_copper: 20
+                rover_wires: 50
+                stamina: 3
+                machining_tools: 3
+            output:
+                medium_copper_spring: 1
+        pressure_gauge:
+            display_name: Pressure Gauge
+            building: machine_shop
+            level:
+                machining: 20
+            input:
+                power: 40
+                smelt_aluminum: 10
+                copper_spring: 2
+                electronics_parts: 2
+                machined_parts: 2
+                stamina: 2
+                machining_tools: 2
+            output:
+                pressure_gage: 1
+        repair_damaged_novice_tools:
+            display_name: Repair Damaged Novice Tools
+            building: machine_shop
+            level:
+                machining: 15
+            input:
+                power: 10
+                damaged_tools_n: 1
+                smelt_steel: 2
+                empty_pc: 1
+                rover_wires: 3
+                stamina: 1
+                machining_tools: 1
+            output:
+                damaged_tools_n: [0, 1, 0.7]
+                chemistry_tools_n: [0, 1, 0.0375]
+                electrical_tools_n: [0, 1, 0.0375]
+                fabrication_tools_n: [0, 1, 0.0375]
+                lifescience_tools_n: [0, 1, 0.0375]
+                machining_tools_n: [0, 1, 0.0375]
+                mining_tools_n: [0, 1, 0.0375]
+                robotics_tools_n: [0, 1, 0.0375]
+                scavenging_tools_n: [0, 1, 0.0375]
+        repair_damaged_apprentice_tools:
+            display_name: Repair Damaged Apprentice Tools
+            building: machine_shop
+            level:
+                machining: 35
+            input:
+                power: 20
+                damaged_tools_a: 1
+                smelt_steel: 4
+                empty_pc: 2
+                rover_wires: 5
+                stamina: 2
+                machining_tools: 2
+            output:
+                damaged_tools_a: [0, 1, 0.7]
+                chemistry_tools_a: [0, 1, 0.0375]
+                electrical_tools_a: [0, 1, 0.0375]
+                fabrication_tools_a: [0, 1, 0.0375]
+                lifescience_tools_a: [0, 1, 0.0375]
+                machining_tools_a: [0, 1, 0.0375]
+                mining_tools_a: [0, 1, 0.0375]
+                robotics_tools_a: [0, 1, 0.0375]
+                scavenging_tools_Apprentice: [0, 1, 0.0375]
+        repair_damaged_journeyman_tools:
+            display_name: Repair Damaged Journeyman Tools
+            building: machine_shop
+            level:
+                machining: 55
+            input:
+                power: 30
+                damaged_tools_j: 1
+                smelt_steel: 6
+                empty_pc: 3
+                rover_wires: 7
+                stamina: 3
+                machining_tools: 3
+            output:
+                damaged_tools_j: [0, 1, 0.7]
+                chemistry_tools_j: [0, 1, 0.0375]
+                electrical_tools_j: [0, 1, 0.0375]
+                fabrication_tools_j: [0, 1, 0.0375]
+                lifescience_tools_j: [0, 1, 0.0375]
+                machining_tools_j: [0, 1, 0.0375]
+                mining_tools_j: [0, 1, 0.0375]
+                robotics_tools_j: [0, 1, 0.0375]
+                scavenging_tools_Journeyman: [0, 1, 0.0375]
+        steel_ball_bearings:
+            display_name: Steel Ball Bearings
+            building: machine_shop
+            level:
+                machining: 5
+            input:
+                power: 20
+                smelt_steel: 5
+                metal_bits: 15
+                sunflower_oil: 1
+                stamina: 1
+                machining_tools: 1
+            output:
+                steel_bb: [1, 3, 2]
+        steel_machined_spring:
+            display_name: Steel Machined Spring
+            building: machine_shop
+            level:
+                machining: 95
+            input:
+                power: 20
+                smelt_steel: 50
+                machined_parts: 3
+                machining_tools: 2
+                stamina: 2
+            output:
+                steel_spring: [1, 2, 1.5]
         make_aluminum_plate:
             display_name: Make Aluminum Plate
             building: machine_shop
@@ -529,12 +786,12 @@
             building: machine_shop
             input:
                 broken_rover: 1
-                titanum_plate: 2
+                titanium_plate: 2
                 power: 20
                 stamina: 3
             output:
                 machined_parts: [0, 5, 2]
-                electronic_bits: [0, 8, 3.3]
+                electronics_parts: [0, 8, 3.3]
                 rover_wheels: [0, 8, 3.3]
                 rover_chassis: [0, 1, 0.95]
         salvage_rover_maxed:
@@ -542,12 +799,12 @@
             building: machine_shop
             input:
                 broken_rover: 1
-                titanum_plate: 2
+                titanium_plate: 2
                 power: 20
                 stamina: 3
             output:
                 machined_parts: [0, 5, 2.4]
-                electronic_bits: [0, 8, 3.6]
+                electronics_parts: [0, 8, 3.6]
                 rover_wheels: [0, 8, 3.6]
                 rover_chassis: 1
         create_air_tank:
@@ -659,6 +916,164 @@
                 aluminum_plate: [8, 10, 9]
                 electronics_parts: 8
                 glass: 6
+        make_apprentice_electrical_tools:
+            display_name: Make Apprentice Electrical Tools
+            building: machine_shop
+            level:
+                electrical: 35
+                fabrication: 25
+            input:
+                electrical_tools_n: 1
+                metis: 3
+                empty_pc: 1
+                rover_wires: 3
+                power: 20
+                stamina: 5
+            output:
+                electrical_tools_a: 1
+        make_apprentice_machining_tools:
+            display_name: Make Apprentice Machining Tools
+            building: machine_shop
+            level:
+                machining: 40
+                fabrication: 25
+            input:
+                machining_tools_n: 1
+                metis: 5
+                metal_bits: 5
+                electronic_bits: 3
+                power: 50
+                stamina: 5
+            output:
+                machining_tools_a: 1
+        make_journeyman_chemistry_tools:
+            display_name: Make Journeyman Chemistry Tools
+            building: machine_shop
+            level:
+                machining: 60
+            input:
+                chemistry_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                chemistry_tools_j: 1
+        make_journeyman_electrical_tools:
+            display_name: Make Journeyman Electrical Tools
+            building: machine_shop
+            level:
+                machining: 60
+            input:
+                electrical_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                electrical_tools_j: 1
+        make_journeyman_fabrication_tools:
+            display_name: Make Journeyman Fabrication Tools
+            building: machine_shop
+            level:
+                machining: 45
+            input:
+                fabrication_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                fabrication_tools_j: 1
+        make_journeyman_lifescience_tools:
+            display_name: Make Journeyman Life Science Tools
+            building: machine_shop
+            level:
+                machining: 55
+            input:
+                lifescience_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                lifescience_tools_j: 1
+        make_journeyman_machining_tools:
+            display_name: Make Journeyman Machining Tools
+            building: machine_shop
+            level:
+                machining: 40
+            input:
+                machining_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                machining_tools_j: 1
+        make_journeyman_mining_tools:
+            display_name: Make Journeyman Mining Tools
+            building: machine_shop
+            level:
+                machining: 65
+            input:
+                mining_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                mining_tools_j: 1
+        make_journeyman_robotics_tools:
+            display_name: Make Journeyman Robotics Tools
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                robotics_tools_a: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                robotics_tools_j: 1
+        make_journeyman_scavenging_tools:
+            display_name: Make Journeyman Scavenging Tools
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                scavenging_tools_Apprentice: 1
+                metis: 3
+                smelt_aluminum: 3
+                electronic_bits: 20
+                power: 30
+                stamina: 5
+                machining_tools: 3
+                minting_token: 1
+            output:
+                scavenging_tools_Journeyman: 1
         #3d print shop
         make_electronic_bits:
             display_name: Make Electronic Bits
@@ -673,6 +1088,7 @@
                 stamina: 1
             output:
                 electronic_bits: [10, 20, 12.85]
+                circuit_component: [0, 1, 0.1]
         make_electronics_parts:
             display_name: Make Electronics Parts
             building: 3d_print_shop
@@ -756,6 +1172,7 @@
                 oxygen: 5
                 pla: 5
                 metis: 5
+                dusk: 10
                 power: 20
                 stamina: 5
                 fabrication_tools: 1
@@ -771,6 +1188,7 @@
                 rover_wires: 3
                 pvc_raw: 1
                 metis: 3
+                dusk: 10
                 power: 20
                 stamina: 5
                 fabrication_tools: 1
@@ -779,18 +1197,17 @@
         make_novice_fabrication_tools:
             display_name: Make Novice Fabrication Tools
             building: 3d_print_shop
-            level:
-                fabrication: 10
             input:
                 pvc_pipe: 1
                 bamboo: 10
                 paper: 5
                 metis: 5
+                dusk: 10
                 power: 20
                 stamina: 5
             output:
                 fabrication_tools_n: 1
-        make_novice_life_science_tools:
+        make_novice_lifescience_tools:
             display_name: Make Novice Life Science Tools
             building: 3d_print_shop
             level:
@@ -801,6 +1218,7 @@
                 regolith: 250
                 metis: 3
                 power: 20
+                dusk: 10
                 stamina: 5
                 fabrication_tools: 1
             output:
@@ -815,12 +1233,29 @@
                 metal_bits: 5
                 electronic_bits: 3
                 metis: 5
+                dusk: 10
                 power: 40
                 stamina: 5
                 fabrication_tools: 1
             output:
                 machining_tools_n: 1
-        make_novice_robotice_tools:
+        make_novice_mining_tools:
+            display_name: Make Novice Mining Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 20
+            input:
+                smelt_iron: 2
+                metal_bits: 10
+                bamboo: 20
+                metis: 5
+                dusk: 10
+                power: 40
+                stamina: 5
+                fabrication_tools: 1
+            output:
+                mining_tools_n: 1
+        make_novice_robotics_tools:
             display_name: Make Novice Robotics Tools
             building: 3d_print_shop
             level:
@@ -830,6 +1265,7 @@
                 electronic_bits: 5
                 rover_wires: 5
                 metis: 5
+                dusk: 10
                 power: 40
                 stamina: 5
                 fabrication_tools: 2
@@ -886,6 +1322,53 @@
                 pvc_pipe: 5
             output:
                 dusk: [40, 55, 47.5]
+                baijiu: [0, 5, 1.5]
+        make_engineering_bay:
+            display_name: Make Engineering Bay
+            building: 3d_print_shop
+            level:
+                fabrication: 110
+            input:
+                stamina: 5
+                power: 100
+                engineering_bay_kit: 1
+                electronics_parts: 1
+                structural_parts: 2
+                machined_parts: 2
+                minting_token: 5
+                fabrication_tools: 5
+            output:
+                lootset:
+                    - engineering_bay_C1: [0.465, 1, 1]
+                    - engineering_bay_U1: [0.3, 1, 1]
+                    - engineering_bay_R1: [0.15, 1, 1]
+                    - engineering_bay_E1: [0.06, 1, 1]
+                    - engineering_bay_L1: [0.02, 1, 1]
+                    - engineering_bay_M1: [0.005, 1, 1]
+        common_solar_shard:
+            display_name: Make Common Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 30
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 3
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_C: [3, 5, 4]
+        uncommon_solar_shard:
+            display_name: Make Uncommon Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 35
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 3
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_U: [5, 10, 7.5]
         rare_solar_shard:
             display_name: Make Rare Solar Shard
             building: 3d_print_shop
@@ -898,6 +1381,30 @@
                 fabrication_tools: 2
             output:
                 shard_solar_panel_R: [7, 14, 10.5]
+        epic_solar_shard:
+            display_name: Make Epic Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 45
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 2
+                fabrication_tools: 2
+            output:
+                shard_solar_panel_E: [10, 20, 15]
+        legendary_solar_shard:
+            display_name: Make Legendary Solar Shard
+            building: 3d_print_shop
+            level:
+                fabrication: 50
+            input:
+                stamina: 1
+                power: 40
+                siliconcrystals_raw: 1
+                fabrication_tools: 3
+            output:
+                shard_solar_panel_L: [15, 30, 22.5]
         craft_solar_panel:
             display_name: Craft Solar Panel (Gen 3)
             building: 3d_print_shop
@@ -906,7 +1413,7 @@
             input:
                 power: 200
                 stamina: 5
-                smelt_mgs: 10
+                smelt_mgs: 9
                 aluminum_plate: 3
                 glass: 1
                 minting_token: 3
@@ -934,6 +1441,21 @@
                 fabrication_tools: 4
             output:
                 engineering_bay_kit: 1
+        make_apprentice_fabrication_tools:
+            display_name: Make Apprentice Fabrication Tools
+            building: 3d_print_shop
+            level:
+                fabrication: 30
+            input:
+                fabrication_tools_n: 1
+                metis: 5
+                pvc_pipe: 1
+                bamboo: 5
+                paper: 2
+                power: 20
+                stamina: 5
+            output:
+                fabrication_tools_a: 1
         #water filter
         filter_water:
             display_name: Filter Water
@@ -956,7 +1478,7 @@
                 ice: 100
                 lifescience_tools: 2
             output:
-                water: [35, 60, 57.5]
+                water: [35, 60, 47.5]
                 regolith: [8, 12, 10]
         filter_water3:
             display_name: Filter Water III
@@ -1002,7 +1524,7 @@
                 power: 15
                 chemistry_tools: 1
             output:
-                fermented_sorghum: [12, 20, 16]
+                fermented_sorghum: [12, 16, 14]
         ferment_sorghum3:
             display_name: Ferment Sorghum III
             building: water_filter
@@ -1055,7 +1577,7 @@
                 stamina: 4
                 chemistry_tools: 3
             output:
-                methane: 5
+                methane: [5, 12, 7]
                 water: 10
         split_water:
             display_name: Split Water
@@ -1135,7 +1657,7 @@
                 stamina: 2
                 chemistry_tools: 2
             output:
-                pvc_raw: [2, 7, 3.2222]
+                pvc_raw: [2, 9, 4.2222]
         make_pvc3:
             display_name: Make PVC III
             building: chem_lab
@@ -1173,7 +1695,7 @@
                 power: 20
                 stamina: 2
             output:
-                pla: [5, 10, 7.5]
+                pla: [6, 12, 9]
         make_pla3:
             display_name: Make PLA III
             building: chem_lab
@@ -1185,7 +1707,7 @@
                 power: 30
                 stamina: 3
             output:
-                pla: [10, 20, 15]
+                pla: [12, 24, 18]
         make_perchlorate:
             display_name: Make Perchlorate
             building: chem_lab
@@ -1210,7 +1732,8 @@
                 pvc_pipe: 1
                 stamina: 2
             output:
-                empty_pc: [2, 5, 2.2]
+                empty_pc: [2, 5, 2.7]
+                full_pc: [0, 1, 0.5]
         make_metis_weave:
             display_name: Make Metis Weave
             building: chem_lab
@@ -1235,7 +1758,7 @@
                 power: 20
                 stamina: 1
             output:
-                empty_pc: [1, 5, 1.9]
+                empty_pc: [1, 5, 2.25]
         repair_broken_cell2:
             display_name: Repair Broken Power Cell II
             building: chem_lab
@@ -1247,7 +1770,7 @@
                 stamina: 1
                 electrical_tools: 2
             output:
-                empty_pc: [2, 6, 2.9]
+                empty_pc: [2, 6, 3.55]
         repair_broken_cell3:
             display_name: Repair Broken Power Cell III
             building: chem_lab
@@ -1259,7 +1782,7 @@
                 stamina: 1
                 electrical_tools: 3
             output:
-                empty_pc: [3, 8, 4.4]
+                empty_pc: [3, 8, 4.4444]
         fab_electrical_grade_silicon:
             display_name: Process Electrical Grade Silicon
             building: chem_lab
@@ -1268,7 +1791,8 @@
                 stamina: 1
                 siliconcrystals_raw: 4
             output:
-                smelt_mgs: [1, 2, 1.1111]
+                smelt_mgs: [2, 3, 2.1111]
+                siliconcrystals_raw: [0, 2, 0.75]
         battery_conditioning1:
             display_name: Battery Conditioning I
             building: chem_lab
@@ -1357,7 +1881,8 @@
                 power: 20
                 stamina: 2
             output:
-                empty_pc: [4, 10, 4.4]
+                empty_pc: [2, 6, 4]
+                full_pc: [0, 4, 1.875]
         fabricate_circuit_component:
             display_name: Fabricate Circuit Component
             building: chem_lab
@@ -1372,6 +1897,21 @@
                 stamina: 2
             output:
                 circuit_component: [1, 2, 1.1]
+        make_apprentice_chemistry_tools:
+            display_name: Make Apprentice Chemistry Tools
+            building: chem_lab
+            level:
+                chemistry: 35
+                fabrication: 25
+            input:
+                chemistry_tools_n: 1
+                metis: 5
+                oxygen: 1
+                pla: 3
+                power: 20
+                stamina: 4
+            output:
+                chemistry_tools_a: 1
         make_chlorine:
             display_name: Make Chlorine
             building: chem_lab
@@ -1450,7 +1990,7 @@
                 stamina: 1
                 power: 10
             output:
-                lithium_fluorite: 1
+                lithium_fluoride: 1
         make_beryllium_fluoride:
             display_name: Make Beryllium Fluoride
             building: chem_lab
@@ -1583,11 +2123,11 @@
             input:
                 stamina: 5
                 full_pc: 1
-                power: 20
                 electrical_tools: 2
                 rover_wires: 3
             output:
                 empty_pc: 1
+                full_pc: [0, 1, 0.1]
         #mining rig
         mine_regolith_1:
             display_name: Mine Regolith I
@@ -1657,6 +2197,21 @@
             output:
                 ice: [250, 450, 306.94]
                 sulfur: [0, 10, 0.55]
+        make_apprentice_mining_tools:
+            display_name: Make Apprentice Mining Tools
+            building: mining_rig
+            level:
+                mining: 35
+                fabrication: 25
+            input:
+                mining_tools_n: 1
+                metis: 3
+                smelt_iron: 1
+                metal_bits: 3
+                power: 30
+                stamina: 4
+            output:
+                mining_tools_a: 1
         #roverworks
         assemble_hauling_rover:
             display_name: Assemble Hauling Rover
@@ -1698,6 +2253,20 @@
                 stamina: 5
             output:
                 hauling_token: [1, 2, 1.1]
+        make_apprentice_robotics_tools:
+            display_name: Make Apprentice Robotics Tools
+            building: rover_works
+            level:
+                robotics: 40
+                fabrication: 25
+            input:
+                robotics_tools_n: 1
+                metis: 4
+                metal_bits: 1
+                power: 30
+                stamina: 4
+            output:
+                robotics_tools_a: 1
         survey_area1:
             display_name: Survey Area I
             building: rover_works
@@ -1715,74 +2284,11 @@
             building: rover_works
             input:
                 power: 40
+                stamina: 2
+                robotics_tools: 1
             output:
                 lootset:
-                    - percent: 50
-                    - lootset:
-                        - ice: [0.1379, 25, 150]
-                        - water: [0.1379, 30, 100]
-                        - smelt_iron: [0.1379, 1, 5]
-                        - smelt_copper: [0.1379, 1, 5]
-                        - smelt_steel: [0.1379, 1, 3]
-                        - surveyor_coin: [0.0345, 1, 1]
-                        - percent: 13.79
-                        - lootset:
-                            - shard_grindnbrew_C: [0.0833, 1, 3]
-                            - shard_greenhouse_C: [0.0833, 1, 3]
-                            - shard_solar_panel_C: [0.0833, 1, 3]
-                            - shard_water_filter_C: [0.0833, 1, 3]
-                            - shard_cad_C: [0.0833, 1, 3]
-                            - shard_mining_rig_C: [0.0833, 1, 3]
-                            - shard_smelter_C: [0.0833, 1, 3]
-                            - shard_machine_shop_C: [0.0833, 1, 3]
-                            - shard_sab_reactor_C: [0.0833, 1, 3]
-                            - shard_chem_lab_C: [0.0833, 1, 3]
-                            - shard_3d_print_shop_C: [0.0833, 1, 3]
-                            - shard_rover_works_C: [0.0833, 1, 3]
-                        - percent: 6.9
-                        - lootset:
-                            - shard_grindnbrew_U: [0.0833, 3, 6]
-                            - shard_greenhouse_U: [0.0833, 3, 6]
-                            - shard_solar_panel_U: [0.0833, 3, 6]
-                            - shard_water_filter_U: [0.0833, 3, 6]
-                            - shard_cad_U: [0.0833, 3, 6]
-                            - shard_mining_rig_U: [0.0833, 3, 6]
-                            - shard_smelter_U: [0.0833, 3, 6]
-                            - shard_machine_shop_U: [0.0833, 3, 6]
-                            - shard_sab_reactor_U: [0.0833, 3, 6]
-                            - shard_chem_lab_U: [0.0833, 3, 6]
-                            - shard_3d_print_shop_U: [0.0833, 3, 6]
-                            - shard_rover_works_U: [0.0833, 3, 6]
-                        - percent: 3.45
-                        - lootset:
-                            - shard_grindnbrew_R: [0.0833, 5, 10]
-                            - shard_greenhouse_R: [0.0833, 5, 10]
-                            - shard_solar_panel_R: [0.0833, 5, 10]
-                            - shard_water_filter_R: [0.0833, 5, 10]
-                            - shard_cad_R: [0.0833, 5, 10]
-                            - shard_mining_rig_R: [0.0833, 5, 10]
-                            - shard_smelter_R: [0.0833, 5, 10]
-                            - shard_machine_shop_R: [0.0833, 5, 10]
-                            - shard_sab_reactor_R: [0.0833, 5, 10]
-                            - shard_chem_lab_R: [0.0833, 5, 10]
-                            - shard_3d_print_shop_R: [0.0833, 5, 10]
-                            - shard_rover_works_R: [0.0833, 5, 10]
-                        - percent: 3.45
-                        - lootset:
-                            - shard_grindnbrew_E: [0.0833, 5, 20]
-                            - shard_greenhouse_E: [0.0833, 5, 20]
-                            - shard_solar_panel_E: [0.0833, 5, 20]
-                            - shard_water_filter_E: [0.0833, 5, 20]
-                            - shard_cad_E: [0.0833, 5, 20]
-                            - shard_mining_rig_E: [0.0833, 5, 20]
-                            - shard_smelter_E: [0.0833, 5, 20]
-                            - shard_machine_shop_E: [0.0833, 5, 20]
-                            - shard_sab_reactor_E: [0.0833, 5, 20]
-                            - shard_chem_lab_E: [0.0833, 5, 20]
-                            - shard_3d_print_shop_E: [0.0833, 5, 20]
-                            - shard_rover_works_E: [0.0833, 5, 20]
-                    - repeat: 2
-                    - percent: 50
+                    - repeat: 1.5
                     - lootset:
                         - ice: [0.1379, 25, 150]
                         - water: [0.1379, 30, 100]
@@ -1851,77 +2357,11 @@
             building: rover_works
             input:
                 power: 60
+                stamina: 3
+                robotics_tools: 1
             output:
                 lootset:
-                    - repeat: 1.5
-                    - percent: 50
-                    - lootlist:
-                        - lootset:
-                            - water: [0.2, 30, 100]
-                            - dusk: [0.1, 10, 40]
-                            - smelt_steel: [0.2, 1, 5]
-                            - smelt_iron: [0.2, 1, 5]
-                            - smelt_copper: [0.2, 1, 5]
-                            - surveyor_coin: [0.1, 1, 1]
-                        - lootset:
-                            - percent: 49.38
-                            - lootset:
-                                - shard_grindnbrew_C: [0.0833, 1, 3]
-                                - shard_greenhouse_C: [0.0833, 1, 3]
-                                - shard_solar_panel_C: [0.0833, 1, 3]
-                                - shard_water_filter_C: [0.0833, 1, 3]
-                                - shard_cad_C: [0.0833, 1, 3]
-                                - shard_mining_rig_C: [0.0833, 1, 3]
-                                - shard_smelter_C: [0.0833, 1, 3]
-                                - shard_machine_shop_C: [0.0833, 1, 3]
-                                - shard_sab_reactor_C: [0.0833, 1, 3]
-                                - shard_chem_lab_C: [0.0833, 1, 3]
-                                - shard_3d_print_shop_C: [0.0833, 1, 3]
-                                - shard_rover_works_C: [0.0833, 1, 3]
-                            - percent: 24.69
-                            - lootset:
-                                - shard_grindnbrew_U: [0.0833, 3, 6]
-                                - shard_greenhouse_U: [0.0833, 3, 6]
-                                - shard_solar_panel_U: [0.0833, 3, 6]
-                                - shard_water_filter_U: [0.0833, 3, 6]
-                                - shard_cad_U: [0.0833, 3, 6]
-                                - shard_mining_rig_U: [0.0833, 3, 6]
-                                - shard_smelter_U: [0.0833, 3, 6]
-                                - shard_machine_shop_U: [0.0833, 3, 6]
-                                - shard_sab_reactor_U: [0.0833, 3, 6]
-                                - shard_chem_lab_U: [0.0833, 3, 6]
-                                - shard_3d_print_shop_U: [0.0833, 3, 6]
-                                - shard_rover_works_U: [0.0833, 3, 6]
-                            - percent: 18.52
-                            - lootset:
-                                - shard_grindnbrew_R: [0.0833, 5, 10]
-                                - shard_greenhouse_R: [0.0833, 5, 10]
-                                - shard_solar_panel_R: [0.0833, 5, 10]
-                                - shard_water_filter_R: [0.0833, 5, 10]
-                                - shard_cad_R: [0.0833, 5, 10]
-                                - shard_mining_rig_R: [0.0833, 5, 10]
-                                - shard_smelter_R: [0.0833, 5, 10]
-                                - shard_machine_shop_R: [0.0833, 5, 10]
-                                - shard_sab_reactor_R: [0.0833, 5, 10]
-                                - shard_chem_lab_R: [0.0833, 5, 10]
-                                - shard_3d_print_shop_R: [0.0833, 5, 10]
-                                - shard_rover_works_R: [0.0833, 5, 10]
-                            - percent: 7.41
-                            - lootset:
-                                - shard_grindnbrew_E: [0.0833, 5, 20]
-                                - shard_greenhouse_E: [0.0833, 5, 20]
-                                - shard_solar_panel_E: [0.0833, 5, 20]
-                                - shard_water_filter_E: [0.0833, 5, 20]
-                                - shard_cad_E: [0.0833, 5, 20]
-                                - shard_mining_rig_E: [0.0833, 5, 20]
-                                - shard_smelter_E: [0.0833, 5, 20]
-                                - shard_machine_shop_E: [0.0833, 5, 20]
-                                - shard_sab_reactor_E: [0.0833, 5, 20]
-                                - shard_chem_lab_E: [0.0833, 5, 20]
-                                - shard_3d_print_shop_E: [0.0833, 5, 20]
-                                - shard_rover_works_E: [0.0833, 5, 20]
-                    - repeat: 2.5
-                    - percent: 50
+                    - repeat: 2
                     - lootlist:
                         - lootset:
                             - water: [0.2, 30, 100]
@@ -1992,6 +2432,9 @@
             building: rover_works
             input:
                 power: 80
+                stamina: 2
+                robotics_tools: 2
+                scavenging_tools: 2
             output:
                 lootset:
                     - repeat: 2
@@ -2017,198 +2460,109 @@
             building: rover_works
             input:
                 power: 100
+                stamina: 3
+                robotics_tools: 3
+                scavenging_tools: 3
             output:
-                lootlist:
-                    - repeat: 3
-                    - lootlist:
+                lootset:
+                    - repeat: 2.07
+                    - lootset:
+                        - dusk: [0.2, 10, 75]
+                        - dusk: [0.2, 10, 35]
+                        - dusk: [0.5, 10, 15]
+                        - surveyor_coin: [0.1, 1, 1]
+                    - repeat: 2.07
+                    - lootset:
+                        - percent: 30
                         - lootset:
-                            - dusk: [0.6667, 10, 55]
-                            - surveyor_coin: [0.3333, 1, 1]
+                            - shard_grindnbrew_C: [0.101, 1, 3]
+                            - shard_greenhouse_C: [0.101, 1, 3]
+                            - shard_solar_panel_C: [0.101, 1, 3]
+                            - shard_water_filter_C: [0.101, 1, 3]
+                            - shard_cad_C: [0.101, 1, 3]
+                            - shard_mining_rig_C: [0.0202, 1, 3]
+                            - shard_smelter_C: [0.0909, 1, 3]
+                            - shard_machine_shop_C: [0.0909, 1, 3]
+                            - shard_sab_reactor_C: [0.0909, 1, 3]
+                            - shard_chem_lab_C: [0.0909, 1, 3]
+                            - shard_3d_print_shop_C: [0.0909, 1, 3]
+                            - shard_rover_works_C: [0.0202, 1, 3]
+                        - percent: 25
                         - lootset:
-                            - percent: 30
-                            - lootset:
-                                - shard_grindnbrew_C: [0.101, 1, 3]
-                                - shard_greenhouse_C: [0.101, 1, 3]
-                                - shard_solar_panel_C: [0.101, 1, 3]
-                                - shard_water_filter_C: [0.101, 1, 3]
-                                - shard_cad_C: [0.0833, 1, 3]
-                                - shard_mining_rig_C: [0.0202, 1, 3]
-                                - shard_smelter_C: [0.0909, 1, 3]
-                                - shard_machine_shop_C: [0.0909, 1, 3]
-                                - shard_sab_reactor_C: [0.0909, 1, 3]
-                                - shard_chem_lab_C: [0.0909, 1, 3]
-                                - shard_3d_print_shop_C: [0.0909, 1, 3]
-                                - shard_rover_works_C: [0.0202, 1, 3]
-                            - percent: 25
-                            - lootset:
-                                - shard_grindnbrew_U: [0.1124, 3, 6]
-                                - shard_greenhouse_U: [0.1124, 3, 6]
-                                - shard_solar_panel_U: [0.1124, 3, 6]
-                                - shard_water_filter_U: [0.1124, 3, 6]
-                                - shard_cad_U: [0.1124, 3, 6]
-                                - shard_mining_rig_U: [0.0225, 3, 6]
-                                - shard_smelter_U: [0.1011, 3, 6]
-                                - shard_machine_shop_U: [0.1011, 3, 6]
-                                - shard_sab_reactor_U: [0.1011, 3, 6]
-                                - shard_chem_lab_U: [0.1011, 3, 6]
-                                - shard_3d_print_shop_U: [0.1011, 3, 6]
-                                - shard_rover_works_U: [0.0225, 3, 6]
-                            - percent: 25
-                            - lootset:
-                                - shard_grindnbrew_R: [0.1124, 5, 10]
-                                - shard_greenhouse_R: [0.1124, 5, 10]
-                                - shard_solar_panel_R: [0.1124, 5, 10]
-                                - shard_water_filter_R: [0.1124, 5, 10]
-                                - shard_cad_R: [0.1124, 5, 10]
-                                - shard_mining_rig_R: [0.0225, 5, 10]
-                                - shard_smelter_R: [0.1011, 5, 10]
-                                - shard_machine_shop_R: [0.1011, 5, 10]
-                                - shard_sab_reactor_R: [0.1011, 5, 10]
-                                - shard_chem_lab_R: [0.1011, 5, 10]
-                                - shard_3d_print_shop_R: [0.1011, 5, 10]
-                                - shard_rover_works_R: [0.0225, 5, 10]
-                            - percent: 15
-                            - lootset:
-                                - shard_grindnbrew_E: [0.1124, 5, 15]
-                                - shard_greenhouse_E: [0.1124, 5, 15]
-                                - shard_solar_panel_E: [0.1124, 5, 15]
-                                - shard_water_filter_E: [0.1124, 5, 15]
-                                - shard_cad_E: [0.1124, 5, 15]
-                                - shard_mining_rig_E: [0.0225, 5, 15]
-                                - shard_smelter_E: [0.1011, 5, 15]
-                                - shard_machine_shop_E: [0.1011, 5, 15]
-                                - shard_sab_reactor_E: [0.1011, 5, 15]
-                                - shard_chem_lab_E: [0.1011, 5, 15]
-                                - shard_3d_print_shop_E: [0.1011, 5, 15]
-                                - shard_rover_works_E: [0.0225, 5, 15]
-                            - percent: 7
-                            - lootset:
-                                - shard_grindnbrew_L: [0.1124, 10, 20]
-                                - shard_greenhouse_L: [0.1124, 10, 20]
-                                - shard_solar_panel_L: [0.1124, 10, 20]
-                                - shard_water_filter_L: [0.1124, 10, 20]
-                                - shard_cad_L: [0.1124, 10, 20]
-                                - shard_mining_rig_L: [0.0225, 10, 20]
-                                - shard_smelter_L: [0.1011, 10, 20]
-                                - shard_machine_shop_L: [0.1011, 10, 20]
-                                - shard_sab_reactor_L: [0.1011, 10, 20]
-                                - shard_chem_lab_L: [0.1011, 10, 20]
-                                - shard_3d_print_shop_L: [0.1011, 10, 20]
-                                - shard_rover_works_L: [0.0225, 10, 20]
-                            - percent: 3
-                            - lootset:
-                                - shard_grindnbrew_M: [0.1124, 10, 25]
-                                - shard_greenhouse_M: [0.1124, 10, 25]
-                                - shard_solar_panel_M: [0.1124, 10, 25]
-                                - shard_water_filter_M: [0.1124, 10, 25]
-                                - shard_cad_M: [0.1124, 10, 25]
-                                - shard_mining_rig_M: [0.0225, 10, 25]
-                                - shard_smelter_M: [0.1011, 10, 25]
-                                - shard_machine_shop_M: [0.1011, 10, 25]
-                                - shard_sab_reactor_M: [0.1011, 10, 25]
-                                - shard_chem_lab_M: [0.1011, 10, 25]
-                                - shard_3d_print_shop_M: [0.1011, 10, 25]
-                                - shard_rover_works_M: [0.0225, 10, 25]
+                            - shard_greenhouse_U: [0.1124, 3, 6]
+                            - shard_solar_panel_U: [0.1124, 3, 6]
+                            - shard_water_filter_U: [0.1124, 3, 6]
+                            - shard_cad_U: [0.1124, 3, 6]
+                            - shard_mining_rig_U: [0.0225, 3, 6]
+                            - shard_smelter_U: [0.1011, 3, 6]
+                            - shard_machine_shop_U: [0.1011, 3, 6]
+                            - shard_sab_reactor_U: [0.1011, 3, 6]
+                            - shard_chem_lab_U: [0.1011, 3, 6]
+                            - shard_3d_print_shop_U: [0.1011, 3, 6]
+                            - shard_rover_works_U: [0.0225, 3, 6]
+                        - percent: 25
+                        - lootset:
+                            - shard_greenhouse_R: [0.1124, 5, 10]
+                            - shard_solar_panel_R: [0.1124, 5, 10]
+                            - shard_water_filter_R: [0.1124, 5, 10]
+                            - shard_cad_R: [0.1124, 5, 10]
+                            - shard_mining_rig_R: [0.0225, 5, 10]
+                            - shard_smelter_R: [0.1011, 5, 10]
+                            - shard_machine_shop_R: [0.1011, 5, 10]
+                            - shard_sab_reactor_R: [0.1011, 5, 10]
+                            - shard_chem_lab_R: [0.1011, 5, 10]
+                            - shard_3d_print_shop_R: [0.1011, 5, 10]
+                            - shard_rover_works_R: [0.0225, 5, 10]
+                        - percent: 15
+                        - lootset:
+                            - shard_greenhouse_E: [0.1124, 5, 15]
+                            - shard_solar_panel_E: [0.1124, 5, 15]
+                            - shard_water_filter_E: [0.1124, 5, 15]
+                            - shard_cad_E: [0.1124, 5, 15]
+                            - shard_mining_rig_E: [0.0225, 5, 15]
+                            - shard_smelter_E: [0.1011, 5, 15]
+                            - shard_machine_shop_E: [0.1011, 5, 15]
+                            - shard_sab_reactor_E: [0.1011, 5, 15]
+                            - shard_chem_lab_E: [0.1011, 5, 15]
+                            - shard_3d_print_shop_E: [0.1011, 5, 15]
+                            - shard_rover_works_E: [0.0225, 5, 15]
+                        - percent: 7
+                        - lootset:
+                            - shard_solar_panel_L: [0.1124, 10, 20]
+                            - shard_greenhouse_L: [0.1124, 10, 20]
+                            - shard_water_filter_L: [0.1124, 10, 20]
+                            - shard_cad_L: [0.1124, 10, 20]
+                            - shard_mining_rig_L: [0.0225, 10, 20]
+                            - shard_smelter_L: [0.1011, 10, 20]
+                            - shard_machine_shop_L: [0.1011, 10, 20]
+                            - shard_sab_reactor_L: [0.1011, 10, 20]
+                            - shard_chem_lab_L: [0.1011, 10, 20]
+                            - shard_3d_print_shop_L: [0.1011, 10, 20]
+                            - shard_rover_works_L: [0.0225, 10, 20]
+                        - percent: 3
+                        - lootset:
+                            - shard_greenhouse_M: [0.1124, 10, 25]
+                            - shard_solar_panel_M: [0.1124, 10, 25]
+                            - shard_water_filter_M: [0.1124, 10, 25]
+                            - shard_cad_M: [0.1124, 10, 25]
+                            - shard_mining_rig_M: [0.0225, 10, 25]
+                            - shard_smelter_M: [0.1011, 10, 25]
+                            - shard_machine_shop_M: [0.1011, 10, 25]
+                            - shard_sab_reactor_M: [0.1011, 10, 25]
+                            - shard_chem_lab_M: [0.1011, 10, 25]
+                            - shard_3d_print_shop_M: [0.1011, 10, 25]
+                            - shard_rover_works_M: [0.0225, 10, 25]
         explorer_mission_1-1:
             display_name: Explorer Mission 1.1
             building: rover_works
+            day: [mon, thu]
             input:
                 power: 80
+                stamina: 4
+                robotics_tools: 1
             output:
                 lootset:
-                    - repeat: 2.5
-                    - percent: 50
-                    - lootset:
-                        - smelt_titanium: [0.1319, 1, 5]
-                        - smelt_aluminum: [0.1319, 1, 5]
-                        - smelt_steel: [0.1319, 1, 5]
-                        - surveyor_coin: [0.033, 1, 1]
-                        - percent: 19.78
-                        - lootet:
-                            - shard_grindnbrew_C: [0.0833, 1, 3]
-                            - shard_greenhouse_C: [0.0833, 1, 3]
-                            - shard_solar_panel_C: [0.0833, 1, 3]
-                            - shard_water_filter_C: [0.0833, 1, 3]
-                            - shard_cad_C: [0.0833, 1, 3]
-                            - shard_mining_rig_C: [0.0833, 1, 3]
-                            - shard_smelter_C: [0.0833, 1, 3]
-                            - shard_machine_shop_C: [0.0833, 1, 3]
-                            - shard_sab_reactor_C: [0.0833, 1, 3]
-                            - shard_chem_lab_C: [0.0833, 1, 3]
-                            - shard_3d_print_shop_C: [0.0833, 1, 3]
-                            - shard_rover_works_C: [0.0833, 1, 3]
-                        - percent: 13.19
-                        - lootset:
-                            - shard_grindnbrew_U: [0.0833, 3, 6]
-                            - shard_greenhouse_U: [0.0833, 3, 6]
-                            - shard_solar_panel_U: [0.0833, 3, 6]
-                            - shard_water_filter_U: [0.0833, 3, 6]
-                            - shard_cad_U: [0.0833, 3, 6]
-                            - shard_mining_rig_U: [0.0833, 3, 6]
-                            - shard_smelter_U: [0.0833, 3, 6]
-                            - shard_machine_shop_U: [0.0833, 3, 6]
-                            - shard_sab_reactor_U: [0.0833, 3, 6]
-                            - shard_chem_lab_U: [0.0833, 3, 6]
-                            - shard_3d_print_shop_U: [0.0833, 3, 6]
-                            - shard_rover_works_U: [0.0833, 3, 6]
-                        - percent: 10.99
-                        - lootset:
-                            - shard_grindnbrew_R: [0.0833, 5, 10]
-                            - shard_greenhouse_R: [0.0833, 5, 10]
-                            - shard_solar_panel_R: [0.0833, 5, 10]
-                            - shard_water_filter_R: [0.0833, 5, 10]
-                            - shard_cad_R: [0.0833, 5, 10]
-                            - shard_mining_rig_R: [0.0833, 5, 10]
-                            - shard_smelter_R: [0.0833, 5, 10]
-                            - shard_machine_shop_R: [0.0833, 5, 10]
-                            - shard_sab_reactor_R: [0.0833, 5, 10]
-                            - shard_chem_lab_R: [0.0833, 5, 10]
-                            - shard_3d_print_shop_R: [0.0833, 5, 10]
-                            - shard_rover_works_R: [0.0833, 5, 10]
-                        - percent: 6.59
-                        - lootset:
-                            - shard_grindnbrew_E: [0.0833, 5, 20]
-                            - shard_greenhouse_E: [0.0833, 5, 20]
-                            - shard_solar_panel_E: [0.0833, 5, 20]
-                            - shard_water_filter_E: [0.0833, 5, 20]
-                            - shard_cad_E: [0.0833, 5, 20]
-                            - shard_mining_rig_E: [0.0833, 5, 20]
-                            - shard_smelter_E: [0.0833, 5, 20]
-                            - shard_machine_shop_E: [0.0833, 5, 20]
-                            - shard_sab_reactor_E: [0.0833, 5, 20]
-                            - shard_chem_lab_E: [0.0833, 5, 20]
-                            - shard_3d_print_shop_E: [0.0833, 5, 20]
-                            - shard_rover_works_E: [0.0833, 5, 20]
-                        - percent: 4.4
-                        - lootset:
-                            - shard_grindnbrew_L: [0.0833, 20, 40]
-                            - shard_greenhouse_L: [0.0833, 20, 40]
-                            - shard_solar_panel_L: [0.0833, 20, 40]
-                            - shard_water_filter_L: [0.0833, 20, 40]
-                            - shard_cad_L: [0.0833, 20, 40]
-                            - shard_mining_rig_L: [0.0833, 20, 40]
-                            - shard_smelter_L: [0.0833, 20, 40]
-                            - shard_machine_shop_L: [0.0833, 20, 40]
-                            - shard_sab_reactor_L: [0.0833, 20, 40]
-                            - shard_chem_lab_L: [0.0833, 20, 40]
-                            - shard_3d_print_shop_L: [0.0833, 20, 40]
-                            - shard_rover_works_L: [0.0833, 20, 40]
-                        - percent: 2.2
-                        - lootset:
-                            - shard_grindnbrew_M: [0.0833, 25, 45]
-                            - shard_greenhouse_M: [0.0833, 25, 45]
-                            - shard_solar_panel_M: [0.0833, 25, 45]
-                            - shard_water_filter_M: [0.0833, 25, 45]
-                            - shard_cad_M: [0.0833, 25, 45]
-                            - shard_mining_rig_M: [0.0833, 25, 45]
-                            - shard_smelter_M: [0.0833, 25, 45]
-                            - shard_machine_shop_M: [0.0833, 25, 45]
-                            - shard_sab_reactor_M: [0.0833, 25, 45]
-                            - shard_chem_lab_M: [0.0833, 25, 45]
-                            - shard_3d_print_shop_M: [0.0833, 25, 45]
-                            - shard_rover_works_M: [0.0833, 25, 45]
-                    - repeat: 3.5
-                    - percent: 50
+                    - repeat: 3
                     - lootset:
                         - smelt_titanium: [0.1319, 1, 5]
                         - smelt_aluminum: [0.1319, 1, 5]
@@ -2301,16 +2655,24 @@
         explorer_mission_2-1:
             display_name: Explorer Mission 2.1
             building: rover_works
+            day: [mon, thu]
             input:
                 power: 100
+                stamina: 4
+                robotics_tools: 1
             output:
                 lootlist:
                     - repeat: 2
                     - lootset:
-                        - dusk: [0.137, 10, 40]
-                        - smelt_titanium: [0.274, 1, 5]
-                        - smelt_aluminum: [0.274, 1, 5]
-                        - smelt_steel: [0.274, 1, 5]
+                        - percent: 13.7
+                        - lootset:
+                            - dusk: [0.025, 25, 150]
+                            - dusk: [0.15, 15, 75]
+                            - dusk: [0.325, 10, 50]
+                            - dusk: [0.50, 5, 20]
+                        - smelt_titanium: [0.274, 2, 5]
+                        - smelt_aluminum: [0.274, 2, 5]
+                        - smelt_steel: [0.274, 2, 5]
                         - surveyor_coin: [0.0411, 1, 1]
                     - repeat: 2
                     - lootset:
@@ -2386,9 +2748,9 @@
                 power: 10
                 stamina: 1
             output:
-                ice: [12, 36, 24]
+                ice: [14, 40, 27]
         stem_sets:
-            display_name: STEM sets for Earthlings
+            display_name: STEM Sets for Earthlings
             building: polar_workshop
             level:
                 fabrication: 15
@@ -2443,8 +2805,12 @@
                 stamina: 3
             output:
                 lootset:
-                    - dusk: [0.07, 888, 888]
-                    - dusk: [0.93, 32, 32]
+                    - dusk: [0.0338, 1000, 3000]
+                    - dusk: [0.0483, 250, 500]
+                    - dusk: [0.0483, 200, 250]
+                    - dusk: [0.0966, 130, 200]
+                    - dusk: [0.1932, 100, 170]
+                    - dusk: [0.5797, 0, 100]
         aqua_ares:
             display_name: AQUA ARES
             building: tea_shop
@@ -2458,9 +2824,12 @@
                 stamina: 1
             output:
                 lootset:
-                    - dusk: [0.1, 80, 120]
-                    - dusk: [0.2, 60, 80]
-                    - dusk: [0.7, 40, 60]
+                    - dusk: [0.005, 200, 20000]
+                    - dusk: [0.02, 250, 500]
+                    - dusk: [0.06, 200, 210]
+                    - dusk: [0.15, 150, 180]
+                    - dusk: [0.3, 135, 150]
+                    - dusk: [0.465, 0, 100]
         bamboo_by_skal:
             display_name: Bamboo by Skal
             building: tea_shop
@@ -2473,7 +2842,13 @@
                 power: 50
                 stamina: 4
             output:
-                dusk: [24, 64, 41.4]
+                lootset:
+                    - dusk: [0.005, 50, 500]
+                    - dusk: [0.02, 200, 250]
+                    - dusk: [0.06, 180, 200]
+                    - dusk: [0.15, 50, 125]
+                    - dusk: [0.3, 125, 180]
+                    - dusk: [0.465, 0, 75]
         ceramics_by_yingge:
             display_name: Ceramics By Yingge
             building: tea_shop
@@ -2765,7 +3140,7 @@
             display_name: Chemistry 101
             building: library
             input:
-                stamina: 5
+                stamina: 2
                 power: 10
                 oxygen: 2
                 perchlorate: 2
@@ -3173,10 +3548,10 @@
                 shard_research: 7
                 robotics_tools: 5
             output:
-                research_robotics_a: [3, 8, 4.15]
-                research_robotics_j: [0, 4, 0.1725]
-                research_robotics_e: [0, 1, 0.01]
-                research_robotics_m: [0, 1, 0.0025]
+                research_robotics_a: [4.15, 3, 8]
+                research_robotics_j: [0.1725, 0, 4]
+                research_robotics_e: [0.01, 0, 1]
+                research_robotics_m: [0.0025, 0, 1]
         #engineering bay
         airlock:
             display_name: Create Airlock
@@ -3207,14 +3582,14 @@
                 fabrication_tools: 1
             output:
                 lootset:
-                    - shelter_C1: [0, 1, 0.465]
-                    - shelter_U1: [0, 1, 0.3]
-                    - shelter_R1: [0, 1, 0.15]
-                    - shelter_E1: [0, 1, 0.06]
-                    - shelter_L1: [0, 1, 0.02]
-                    - shelter_M1: [0, 1, 0.005]
+                    - shelter_C1: [0.465, 0, 1]
+                    - shelter_U1: [0.3, 0, 1]
+                    - shelter_R1: [0.15, 0, 1]
+                    - shelter_E1: [0.06, 0, 1]
+                    - shelter_L1: [0.02, 0, 1]
+                    - shelter_M1: [0.005, 0, 1]
         wastezilla:
-            display_name: Create WasteZilla
+            display_name: Engineer WasteZilla
             building: engineering_bay
             level:
                 fabrication: 25
@@ -3229,7 +3604,7 @@
             output:
                 wastezilla: 1
         olympus_air_system:
-            display_name: Olympus Air System
+            display_name: Fabricate Olympus Air System
             building: engineering_bay
             level:
                 fabrication: 35
@@ -3258,24 +3633,29 @@
                 fabrication_tools: 2
             output:
                 habitat_skeleton: 1
-        create_concrete_habitat:
-            display_name: Create Concrete Habitat
+        print_concrete_habitat:
+            display_name: Print Concrete Habitat
             building: engineering_bay
             level:
                 fabrication: 50
             input:
+                stamina: 20
+                power: 200
                 habitat_kit: 1
                 olympus_air_system: 1
-                bamboo_furniture: 4
                 wastezilla: 1
                 battery_backup: 2
                 airlock: 2
                 habitat_skeleton: 1
-                power: 200
-                stamina: 20
                 fabrication_tools: 3
             output:
-                concrete_habitat_C1: 1
+                lootset:
+                    - concrete_habitat_C1: [0.465, 0, 1]
+                    - concrete_habitat_U1: [0.3, 0, 1]
+                    - concrete_habitat_R1: [0.15, 0, 1]
+                    - concrete_habitat_E1: [0.06, 0, 1]
+                    - concrete_habitat_L1: [0.02, 0, 1]
+                    - concrete_habitat_M1: [0.005, 0, 1]
         make_mining_shard_c:
             display_name: Make Mining Rig Shard (C)
             building: engineering_bay
@@ -3408,8 +3788,7 @@
             input:
                 stamina: 2
                 metal_bits: 6
-                electronic_bits: 3
-                pvc_raw: 1
+                electronic_bits: 5
                 fabrication_tools: 1
             output:
                 lootset:
@@ -3425,7 +3804,7 @@
             display_name: Shredding Copper
             building: engineering_bay
             level:
-                machining: 3
+                machining: 5
             input:
                 stamina: 1
                 power: 10
@@ -3485,7 +3864,8 @@
                 stamina: 5
                 metal_bits: 10
                 aluminum_plate: 2
-                minting_token: 1
+                metis_weave: 2
+                minting_token: 2
                 fabrication_tools: 3
             output:
                 3d_print_shop-gen2_U1: 1
@@ -3499,12 +3879,14 @@
                 stamina: 5
                 metal_bits: 10
                 aluminum_plate: 3
+                metis_weave: 3
                 minting_token: 3
                 fabrication_tools: 3
             output:
                 3d_print_shop-gen2_R1: 1
         craft_CAD_kit_gen3:
             display_name: Craft C.A.D. Kit (Gen 3)
+            building: engineering_bay
             level:
                 fabrication: 45
             input:
@@ -3528,15 +3910,13 @@
                 minting_token: 3
                 fabrication_tools: 3
             output:
-                cad-gen3_R1: 1
-            output:
                 lootset:
-                    - cad-gen3_C1: [0, 1, 0.465]
-                    - cad-gen3_U1: [0, 1, 0.3]
-                    - cad-gen3_R1: [0, 1, 0.15]
-                    - cad-gen3_E1: [0, 1, 0.06]
-                    - cad-gen3_L1: [0, 1, 0.02]
-                    - cad-gen3_M1: [0, 1, 0.005]
+                    - cad-gen3_C1: [0.465, 0, 1]
+                    - cad-gen3_U1: [0.3, 0, 1]
+                    - cad-gen3_R1: [0.15, 0, 1]
+                    - cad-gen3_E1: [0.06, 0, 1]
+                    - cad-gen3_L1: [0.02, 0, 1]
+                    - cad-gen3_M1: [0.005, 0, 1]
         craft_chem_lab_gen2_c:
             display_name: Craft Common Chem Lab (Gen 2)
             building: engineering_bay
@@ -3561,6 +3941,7 @@
                 stamina: 5
                 rover_wires: 10
                 smelt_iron: 6
+                glass: 1
                 minting_token: 2
                 fabrication_tools: 3
             output:
@@ -3575,7 +3956,7 @@
                 stamina: 5
                 rover_wires: 15
                 smelt_steel: 3
-                smelt_glass: 2
+                glass: 2
                 minting_token: 3
                 fabrication_tools: 3
             output:
@@ -3588,7 +3969,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 5
+                titanium_plate: 5
                 aluminum_plate: 3
                 machined_parts: 3
                 minting_token: 1
@@ -3604,7 +3985,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 6
+                titanium_plate: 6
                 aluminum_plate: 3
                 machined_parts: 3
                 minting_token: 2
@@ -3621,7 +4002,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 6
+                titanium_plate: 6
                 aluminum_plate: 3
                 machined_parts: 5
                 minting_token: 3
@@ -3639,7 +4020,7 @@
                 power: 200
                 stamina: 4
                 aluminum_plate: 1
-                smelt_glass: 3
+                glass: 1
                 minting_token: 1
                 fabrication_tools: 3
             output:
@@ -3653,7 +4034,7 @@
                 power: 200
                 stamina: 4
                 aluminum_plate: 2
-                smelt_glass: 2
+                glass: 2
                 minting_token: 2
                 fabrication_tools: 3
             output:
@@ -3667,7 +4048,7 @@
                 power: 200
                 stamina: 4
                 aluminum_plate: 3
-                smelt_glass: 3
+                glass: 3
                 metis_weave: 2
                 minting_token: 3
                 fabrication_tools: 3
@@ -3675,6 +4056,7 @@
                 greenhouse-gen3_R1: 1
         craft_mining_rig_kit_gen2:
             display_name: Craft Mining Rig Kit (Gen 2)
+            building: engineering_bay
             level:
                 fabrication: 85
             input:
@@ -3700,12 +4082,12 @@
                 fabrication_tools: 5
             output:
                 lootset:
-                    - mining_rig-gen2_C1: [0, 1, 0.465]
-                    - mining_rig-gen2_U1: [0, 1, 0.3]
-                    - mining_rig-gen2_R1: [0, 1, 0.15]
-                    - mining_rig-gen2_E1: [0, 1, 0.06]
-                    - mining_rig-gen2_L1: [0, 1, 0.02]
-                    - mining_rig-gen2_M1: [0, 1, 0.005]
+                    - mining_rig-gen2_C1: [0.465, 0, 1]
+                    - mining_rig-gen2_U1: [0.3, 0, 1]
+                    - mining_rig-gen2_R1: [0.15, 0, 1]
+                    - mining_rig-gen2_E1: [0.06, 0, 1]
+                    - mining_rig-gen2_L1: [0.02, 0, 1]
+                    - mining_rig-gen2_M1: [0.005, 0, 1]
         craft_smelter-gen2_C1:
             display_name: Craft Common Smelter (Gen 2)
             building: engineering_bay
@@ -3714,7 +4096,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 1
+                titanium_plate: 1
                 rover_wires: 10
                 minting_token: 1
                 fabrication_tools: 3
@@ -3728,7 +4110,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 1
+                titanium_plate: 1
                 rover_wires: 15
                 metis_weave: 1
                 minting_token: 2
@@ -3743,7 +4125,7 @@
             input:
                 power: 200
                 stamina: 5
-                titanum_plate: 1
+                titanium_plate: 1
                 rover_wires: 15
                 metis_weave: 2
                 minting_token: 3
@@ -3758,8 +4140,7 @@
             input:
                 power: 200
                 stamina: 5
-                smelt_iron: 1
-                empty_pc: 1
+                smelt_iron: 2
                 rover_wires: 5
                 aluminum_plate: 2
                 minting_token: 1
@@ -3910,7 +4291,7 @@
                 stamina: 3
                 power: 10
             output:
-                reactor_kit: 1
+                crafted_ec_kit: 1
         make_empty_energy_core:
             display_name: Make Empty Energy Core
             building: engineering_bay
@@ -3925,24 +4306,29 @@
                 power: 10
             output:
                 empty_ec: 1
-        install_energy_core_kit:
-            display_name: Install Energy Core Kit
-            building: Install Energy Core Kit
+        repair_broken_energy_core:
+            display_name: Repair Broken Energy Core
+            building: engineering_bay
             level:
                 electrical: 50
             input:
-                reactor_kit: 1
+                broken_ec: 1
                 electrical_tools: 3
                 stamina: 3
+                power: 40
+                circuit_component: 1
+            output:
+                empty_ec: 1
         #Shelter
         sprouts_aeroponic_experimentation:
             display_name: Sprouts Aeroponic Experimentation
-            building: Shelter
+            building: shelter
             input:
                 stamina: 3
                 power: 10
                 carbon_dioxide: 1
                 water: 5
+                sprout_seed: 5
                 nitrogen: 1
                 waste: 1
                 lifescience_tools: 1
@@ -3953,7 +4339,7 @@
                 nitrogen: [0, 1, 0.4]
         extra_credit:
             display_name: Extra Credit
-            building: Shelter
+            building: shelter
             input:
                 stamina: 1
                 power: 5
@@ -3971,7 +4357,7 @@
                 water: 12
                 bazaar_coin_U: 1
             output:
-                dusk: [70, 120, 88.3333]
+                dusk: [70, 120, 82.5]
         jam_session:
             display_name: Jam Session
             building: concrete_habitat
@@ -3983,37 +4369,43 @@
                 bazaar_coin_R: 1
             output:
                 lootset:
-                    - vibes: [0.0588, 15, 25]
-                    - vibes: [0.1176, 12, 15]
-                    - vibes: [0.8235, 10, 12]
+                    - vibes: [0.03, 15, 25]
+                    - vibes: [0.07, 12, 15]
+                    - vibes: [0.9, 10, 12]
         advanced_project_testing:
             display_name: Advanced Project Testing
             building: concrete_habitat
+            day: [mon, thu]
             input:
                 stamina: 4
                 power: 50
                 bazaar_coin_E: 2
                 bazaar_coin_R: 2
                 bazaar_coin_U: 2
+                bazaar_coin_L: 2
+                vibes: 3
             output:
                 lootset:
-                    - dusk: [0.0588, 750, 1000]
-                    - dusk: [0.1176, 125, 750]
-                    - dusk: [0.8235, 100, 125]
+                    - dusk: [0.03, 0, 2000]
+                    - dusk: [0.07, 0, 750]
+                    - dusk: [0.9, 0, 200]
         social_science_experiments:
             display_name: Social Science Experiments
             building: concrete_habitat
+            day: [tue, sun]
             input:
                 stamina: 5
                 power: 30
                 food: 100
                 water: 50
                 bazaar_coin_C: 2
+                bazaar_coin_R: 2
+                vibes: 3
             output:
                 lootset:
-                    - dusk: [0.0588, 500, 1000]
-                    - dusk: [0.1176, 250, 500]
-                    - dusk: [0.8235, 100, 200]
+                    - dusk: [0.03, 0, 1000]
+                    - dusk: [0.07, 0, 500]
+                    - dusk: [0.9, 0, 250]
         wine_down:
             display_name: Wine Down
             building: concrete_habitat
@@ -4038,31 +4430,32 @@
                 baijiu: 12
             output:
                 lootset:
-                    - dusk: [0.0588, 150, 200]
-                    - dusk: [0.1176, 100, 150]
-                    - dusk: [0.8235, 80, 100]
+                    - dusk: [0.03, 500, 800]
+                    - dusk: [0.07, 300, 500]
+                    - dusk: [0.9, 80, 90]
         mars_bnb:
             display_name: Mars BnB
             building: concrete_habitat
             input:
-                stamina: 6
+                stamina: 8
                 power: 60
-                food: 500
+                food: 700
                 water: 100
                 bazaar_coin_U: 1
+                bazaar_coin_R: 2
+                vibes: 7
             output:
                 lootlist:
                     - lootset:
-                        - dusk: [0.0588, 300, 350]
-                        - dusk: [0.1176, 275, 300]
-                        - dusk: [0.8235, 250, 275]
+                        - dusk: [0.03, 0, 700]
+                        - dusk: [0.97, 0, 500]
                     - lootset:
                         - resource_credit: [0.0588, 4, 5]
                         - resource_credit: [0.1176, 2, 4]
                         - resource_credit: [0.8235, 1, 2]
         #other
         scavenging_powered:
-            display_name: Scavenging
+            display_name: Scavenge (Level 0)
             input:
                 stamina: 1
                 power: 1
@@ -4082,81 +4475,6 @@
             output:
                 dusk: 1
         # cantina
-        # added by millorfernades (@fuseki#1488)
-        # cantina Sunday tasks
-        faded_collection:
-            display_name: Faded Collection
-            building: cantina
-            day: sun
-            input:
-                art_faded: 1
-            output:
-                dusk: [2, 5, 3.5]
-        bamboozled_sun:
-            display_name: Bamboozled (Sunday)
-            building: cantina
-            day: sun
-            input:
-                bamboo: 30
-                water_rich_clay: 5
-                vibes: 1
-                cantina_coin: 3
-            output:
-                dusk: [20, 30, 25]
-        hit_the_ice:
-            display_name: Hit The Ice
-            building: cantina
-            day: [sun, wed]
-            input:
-                ice: 300
-                electronic_bits: 10
-                vibes: 1
-                cantina_coin: 4
-            output:
-                dusk: [20, 45, 32.5]
-                keycard_copper: [0, 1, 0.0074]
-        most_of_my_friends_argon:
-            display_name: Most of My Friends Argon
-            building: cantina
-            day: [sun, wed]
-            input:
-                argon: 4
-                metal_bits: 20
-                vibes: 1
-                cantina_coin: 5
-            output:
-                dusk: [25, 50, 37.5]
-                keycard_copper: [0, 1, 0.0033]
-        hungry_hungry_martians:
-            display_name: Hungry Hungry Martians
-            building: cantina
-            day: [sun, wed]
-            input:
-                food: 100
-                water: 20
-                vibes: 1
-                cantina_coin: 6
-            output:
-                dusk: [30, 60, 45]
-                keycard_copper: [0, 1, 0.006]
-        barite_necessities_sun:
-            display_name: Barite Necessities (Sunday)
-            building: cantina
-            day: sun
-            input:
-                barite: 25
-                cantina_coin: 2
-            output:
-                dusk: [10, 20, 15]
-        seeding_the_way:
-            display_name: Seeding The Way
-            building: cantina
-            day: sun
-            input:
-                sunflower_seeds: 4
-                cantina_coin: 1
-            output:
-                dusk: [3, 10, 6.5]
         repair_broken_EVA_suit:
             display_name: Repair Broken EVA Suit
             building: cantina
@@ -4169,47 +4487,190 @@
                 circuit_component: 1
                 stamina: 2
             output:
-                dusk: [30, 800, 64.267]
-        # cantina Monday tasks
-        stale_sweets:
-            display_name: Stale Sweets
+                lootset:
+                    - dusk: [0.011, 800, 800]
+                    - dusk: [0.0549, 360, 360]
+                    - dusk: [0.0549, 120, 120]
+                    - dusk: [0.0549, 60, 60]
+                    - dusk: [0.0549, 50, 50]
+                    - dusk: [0.7692, 30, 30]
+        make_apprentice_scavenging_tools:
+            display_name: Make Apprentice Scavenging Tools
             building: cantina
-            day: [mon, thu]
+            level:
+                scavenging: 30
+                fabrication: 25
             input:
-                candycane: 25
+                scavenging_tools_n: 1
+                metis: 3
+                electronic_bits: 25
+                smelt_aluminum: 2
+                stamina: 4
             output:
-                dusk: [2, 5, 3.5]
-        cosmic_delivery:
-            display_name: Cosmic Delivery
+                scavenging_tools_Apprentice: 1
+        # added by millorfernades (@fuseki#1488)
+        # cantina Sunday tasks
+        faded_collection:
+            display_name: Faded Collection
+            building: cantina
+            day: sun
+            input:
+                art_faded: 1
+            output:
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
+        bamboozled_sun:
+            display_name: Bamboozled (Sunday)
+            building: cantina
+            day: sun
+            input:
+                bamboo: 30
+                water_rich_clay: 5
+                vibes: 1
+                cantina_coin: 3
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
+        hit_the_ice:
+            display_name: Hit The Ice (Sun)
+            building: cantina
+            day: sun
+            input:
+                ice: 500
+                electronic_bits: 100
+                vibes: 1
+                cantina_coin: 4
+            output:
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
+                keycard_copper: [0, 1, 0.0074]
+        most_of_my_friends_argon_sun:
+            display_name: Most of My Friends Argon (Sun)
+            building: cantina
+            day: sun
+            input:
+                argon: 4
+                metal_bits: 50
+                vibes: 1
+                cantina_coin: 5
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: [0, 1, 0.0033]
+        hungry_hungry_martian_sun:
+            display_name: Hungry Hungry Martians (Sun)
+            building: cantina
+            day: sun
+            input:
+                food: 130
+                water: 20
+                vibes: 1
+                cantina_coin: 6
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
+                keycard_copper: [0, 1, 0.006]
+        barite_necessities_sun:
+            display_name: Barite Necessities (Sunday)
+            building: cantina
+            day: sun
+            input:
+                barite: 50
+                cantina_coin: 2
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
+        seeding_the_way:
+            display_name: Seeding The Way
+            building: cantina
+            day: sun
+            input:
+                sunflower_seeds: 4
+                cantina_coin: 1
+            output:
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
+        # cantina Monday tasks
+        stale_sweets_mon:
+            display_name: Stale Sweets (Monday)
             building: cantina
             day: mon
             input:
-                fractal_shard: 1
-                water_rich_clay: 1
-                cantina_coin: 3
+                candycane: 50
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
+        # fractal_shards no longer relevant
+        #cosmic_delivery:
+        #    display_name: Cosmic Delivery
+        #    building: cantina
+        #    day: mon
+        #    input:
+        #        fractal_shard: 5
+        #        water_rich_clay: 1
+        #        cantina_coin: 3
+        #    output:
+        #        lootset:
+        #            - dusk: [0.0169, 50, 100]
+        #            - dusk: [0.1695, 20, 70]
+        #            - dusk: [0.3051, 10, 40]
+        #            - dusk: [0.5085, 5, 25]
         breathing_room_mon:
             display_name: Breathing Room (Monday)
             building: cantina
             day: mon
             input:
                 oxygen: 50
-                electronic_bits: 5
+                electronic_bits: 100
                 cantina_coin: 4
+                vibes: 1
             output:
-                dusk: [25, 45, 35]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
-        salty_solution:
-            display_name: Salty Solution
+        salty_solution_mon:
+            display_name: Salty Solution (Monday)
             building: cantina
-            day: [mon, thu]
+            day: mon
             input:
-                halite: 100
-                metal_bits: 20
+                halite: 150
+                metal_bits: 50
                 cantina_coin: 5
+                vibes: 1
             output:
-                dusk: [25, 50, 37.5]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         tasty_beverages_mon:
             display_name: Tasty Beverages (Monday)
@@ -4217,21 +4678,31 @@
             day: mon
             input:
                 water: 30
-                ice: 10
+                ice: 20
                 glass: 2
+                vibes: 1
                 cantina_coin: 6
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         sculpting_solutions_mon:
             display_name: Sculpting Solutions (Monday)
             building: cantina
             day: mon
             input:
-                water_rich_clay: 8
-                cantina_coin: 5
+                water_rich_clay: 20
+                cantina_coin: 2
+                vibes: 1
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         smelly_situation:
             display_name: Smelly Situation
             building: cantina
@@ -4240,149 +4711,278 @@
                 sulfur: 25
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Tuesday tasks
         bits_and_pieces_tue:
             display_name: Bits and Pieces (Tuesday)
             building: cantina
             day: tue
             input:
-                metal_bits: 4
-                electronic_bits: 1
+                metal_bits: 10
+                electronic_bits: 5
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         waste_disposal_tue:
             display_name: Waste Disposal (Tuesday)
             building: cantina
             day: tue
             input:
-                waste: 300
-                soil: 8
+                waste: 425
                 cantina_coin: 3
+                vibes: 1
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         breathing_room_tue:
             display_name: Breathing Room (Tuesday)
             building: cantina
             day: tue
             input:
-                oxygen: 50
-                water: 25
+                oxygen: 25
+                water: 70
                 cantina_coin: 4
+                vibes: 1
             output:
-                dusk: [25, 45, 35]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
-        scrubbing_supplies:
-            display_name: Scrubbing Supplies
-            building: cantina
-            day: tue
-            input:
-                ice: 275
-                metal_bits: 25
-                cantina_coin: 5
-            output:
-                dusk: [25, 50, 37.5]
-                keycard_copper: 0.0033
         electric_boogie:
             display_name: Electric Boogie
             building: cantina
             day: tue
             input:
-                electronic_bits: 2
-                rover_wires: 2
+                electronic_bits: 25
+                rover_wires: 5
                 siliconcrystals_raw: 2
                 cantina_coin: 6
+                vibes: 1
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         sculpting_solutions_tue:
             display_name: Sculpting Solutions (Tuesday)
             building: cantina
             day: tue
             input:
-                water_rich_clay: 9
+                water_rich_clay: 18
                 cantina_coin: 2
+                vibes: 1
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
+        metal_and_ice:
+            display_name: Metal & Ice
+            building: cantina
+            day: tue
+            input:
+                ice: 500
+                metal_bits: 35
+                cantina_coin: 5
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: 0.0033
         food_donations:
             display_name: Food Donations
             building: cantina
             day: tue
             input:
                 food: 15
-                cantina_coin: 2
+                cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         # cantina Wednesday tasks
+        hit_the_ice_harder:
+            display_name: Hit The Ice Harder
+            building: cantina
+            day: wed
+            input:
+                ice: 500
+                electronic_bits: 135
+                cantina_coin: 4
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
+                keycard_copper: [0, 1, 0.0074]
         bamboozled_wed:
             display_name: Bamboozled (Wednesday)
             building: cantina
             day: wed
             input:
-                bamboo: 35
-                water_rich_clay: 3
+                bamboo: 30
+                water_rich_clay: 4
+                vibes: 1
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
+        hungry_hungry_martian_wed:
+            display_name: Hungry Hungry Martians (Wed)
+            building: cantina
+            day: wed
+            input:
+                food: 130
+                water: 30
+                vibes: 1
+                cantina_coin: 6
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
+                keycard_copper: [0, 1, 0.006]
         odds_and_ends:
             display_name: Odds and Ends
             building: cantina
             day: wed
             input:
-                metal_bits: 7
+                metal_bits: 10
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         barite_necessities_wed:
             display_name: Barite Necessities (Wednesday)
             building: cantina
             day: wed
             input:
-                barite: 35
+                barite: 50
                 cantina_coin: 2
+                vibes: 1
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         express_o_delivery:
             display_name: Express-o Delivery
             building: cantina
             day: wed
             input:
-                coffee_bean_roasted: 2
+                coffee_bean_roasted: 4
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
+        most_of_my_friends_argon_web:
+            display_name: Most of My Friends Argon (Wed)
+            building: cantina
+            day: wed
+            input:
+                argon: 6
+                metal_bits: 15
+                vibes: 1
+                cantina_coin: 5
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: [0, 1, 0.0033]
         # cantina Thursday tasks
+        stale_sweets_thu:
+            display_name: Stale Sweets (Thursday)
+            building: cantina
+            day: thu
+            input:
+                candycane: 75
+            output:
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         black_market_crystals:
             display_name: Black Market Crystals
             building: cantina
             day: thu
             input:
                 siliconcrystals_raw: 1
-                electronic_bits: 3
+                electronic_bits: 10
+                vibes: 1
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         breathing_room_thu:
             display_name: Breathing Room (Thursday)
             building: cantina
             day: thu
             input:
-                oxygen: 35
-                water_rich_clay: 10
+                oxygen: 50
+                water_rich_clay: 22
+                vibes: 1
                 cantina_coin: 4
             output:
-                dusk: [20, 45, 32.5]
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         tasty_beverages_thu:
             display_name: Tasty Beverages (Thursday)
             building: cantina
             day: thu
             input:
-                water: 125
-                ice: 1
+                water: 25
+                ice: 125
                 glass: 2
+                vibes: 1
                 cantina_coin: 6
             output:
-                dusk: [30, 60, 45]
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         green_bean_profits:
             display_name: Green Bean Profits
@@ -4390,18 +4990,43 @@
             day: thu
             input:
                 coffee_bean_green: 10
+                vibes: 1
                 cantina_coin: 2
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         smelly_situation2:
             display_name: Smelly Situation II
             building: cantina
             day: thu
             input:
-                sulfur: 20
+                sulfur: 50
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
+        salty_solution_thu:
+            display_name: Salty Solution (Thursday)
+            building: cantina
+            day: thu
+            input:
+                halite: 125
+                metal_bits: 30
+                cantina_coin: 5
+                vibes: 1
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
+                keycard_copper: 0.0033
         # cantina Friday tasks
         bits_and_pieces_fri:
             display_name: Bits and Pieces (Friday)
@@ -4410,48 +5035,73 @@
             input:
                 metal_bits: 8
             output:
-                dusk: [2, 5, 3.5]
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
         waste_disposal_fri:
             display_name: Waste Disposal (Friday)
             building: cantina
             day: fri
             input:
                 waste: 300
-                water_rich_clay: 3
+                water_rich_clay: 10
+                vibes: 1
                 cantina_coin: 3
             output:
-                dusk: [20, 30, 25]
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
         baijiu_blitz:
             display_name: Baijiu Blitz
             building: cantina
             day: fri
             input:
-                baijiu: 4
+                baijiu: 5
+                electronic_bits: 50
+                vibes: 1
                 cantina_coin: 4
-            output:
-                dusk: [20, 45, 32.5]
+            output: 
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         transport_summer_ice:
             display_name: Transport Summer Ice
             building: cantina
             day: fri
             input:
-                ice: 250
-                metal_bits: 25
+                ice: 500
+                metal_bits: 40
+                vibes: 1
                 cantina_coin: 5
-            output:
-                dusk: [25, 50, 37.5]
+            output: 
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         summer_scrap_collection:
             display_name: Summer Scrap Collection
             building: cantina
             day: fri
             input:
-                metal_bits: 20
-                rover_wires: 22
+                metal_bits: 100
+                rover_wires: 25
+                vibes: 1
                 cantina_coin: 6
-            output:
-                dusk: [30, 60, 45]
+            output: 
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         bamboozled_fri:
             display_name: Bamboozled (Friday)
@@ -4461,17 +5111,122 @@
                 bamboo: 35
                 water: 10
                 cantina_coin: 2
+                vibes: 1
             output:
-                dusk: [10, 20, 15]
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
         spread_golden_profits:
             display_name: Spread Golden Profits
             building: cantina
             day: fri
             input:
-                sunflower_seeds: 4
+                sunflower_seeds: 5
                 cantina_coin: 1
             output:
-                dusk: [3, 10, 6.5]
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
+        # cantina Saturday tasks
+        smelted_dreams:
+            display_name: Smelted Dreams
+            building: cantina
+            day: sat
+            input:
+                smelter_C1: 1
+            output:
+                lootset:
+                    - dusk: [0.1, 5, 15]
+                    - dusk: [0.2, 3, 10]
+                    - dusk: [0.3, 1, 3]
+                    - dusk: [0.4, 1, 2]
+        cad_return:
+            display_name: CAD Return
+            building: cantina
+            day: sat
+            input:
+                cad-22_C1: 1
+                vibes: 1
+                cantina_coin: 2
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 100]
+                    - dusk: [0.1695, 20, 70]
+                    - dusk: [0.3051, 10, 40]
+                    - dusk: [0.5085, 5, 25]
+        water_filter_storage:
+            display_name: Water Filter Storage
+            building: cantina
+            day: sat
+            input:
+                water_filter-22_C1: 1
+                vibes: 1
+                cantina_coin: 4
+            output:
+                lootset:
+                    - dusk: [0.0169, 25, 150]
+                    - dusk: [0.1695, 25, 75]
+                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.5085, 15, 25]
+        greenhouse_overstock:
+            display_name: Greenhouse Overstock
+            building: cantina
+            day: sat
+            input:
+                greenhouse_C1: 1
+                vibes: 1
+                cantina_coin: 3
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 25, 100]
+                    - dusk: [0.3051, 25, 50]
+                    - dusk: [0.5085, 10, 45]
+        solar_panel_repo:
+            display_name: Solar Panel Repo
+            building: cantina
+            day: sat
+            input:
+                solar_panel-22_C1: 1
+                vibes: 1 
+                cantina_coin: 4
+            output:
+                lootset:
+                    - dusk: [0.0169, 50, 150]
+                    - dusk: [0.1695, 40, 80]
+                    - dusk: [0.3051, 20, 60]
+                    - dusk: [0.5085, 30, 60]
+        chemical_redistribution:
+            display_name: Chemical Redistribution
+            building: cantina
+            day: sat
+            input:
+                chem_lab_C1: 1
+                vibes: 1
+                cantina_coin: 2
+            output:
+                lootset:
+                    - dusk: [0.0169, 25, 50]
+                    - dusk: [0.1695, 20, 35]
+                    - dusk: [0.3051, 10, 25]
+                    - dusk: [0.5085, 5, 10]
+        reactor_recovery:
+            display_name: Reactor Recovery
+            building: cantina
+            day: sat
+            input:
+                sab_reactor_C1: 1
+                cantina_coin: 1
+            output:
+                lootset:
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         #Thorium Reactor
         charge_energy_core_I:
             display_name: Charge Energy Core I
@@ -4556,3 +5311,7 @@
             display_name: Habitat
         cantina:
             display_name: Cantina
+        shelter:
+            display_name: Shelter
+        thorium_reactor:
+            display_name: Thorium Reactor

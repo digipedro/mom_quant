@@ -131,6 +131,7 @@
       }
       
       const research_re = /research_([a-z]+)_([najem])/;
+      const tools_re = /([a-z]+)_tools_([najem])/;
             
 	  var vv = new Vue({
 	    el: '#app',
@@ -172,6 +173,7 @@
             menuitems: [
               { title: 'ROI Calculator', href: 'index.html'},
               { title: 'Price History', href: 'summary.html'},
+              { title: 'Tools', href: 'tools.html'},
             ],
             chart_title: 'Loading...',
             chart_data: {
@@ -228,7 +230,23 @@
                     if (match[2] == 'n')
                         name = 'Novice' + name;
                     else if (match[2] == 'a')
-                        name = 'Apprentice' + name;
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
+                    else if (match[2] == 'j')
+                        name = 'Journeyman' + name;
+                    else if (match[2] == 'e')
+                        name = 'Expert' + name;
+                    else if (match[2] == 'm')
+                        name = 'Master' + name;
+                    return name;
+                }
+            
+                match = tools_re.exec(id);
+                if (match != null) {
+                    let name = ' ' + capitalize(match[1]) + ' Tools';
+                    if (match[2] == 'n')
+                        name = 'Novice' + name;
+                    else if (match[2] == 'a')
+                        name = ((id.slice(-2) == 'ar') ? 'Artisan' : 'Apprentice') + name;
                     else if (match[2] == 'j')
                         name = 'Journeyman' + name;
                     else if (match[2] == 'e')
@@ -369,7 +387,7 @@
                     
                     // Get time of last sale rounded up to neast hour, then start 7 days earlier
                     let end_time = new Date(out[out.length-1].lastSoldAt);
-                    end_time.setMinutes(end_time.getMinutes() + 30);
+                    end_time.setMinutes(end_time.getMinutes() + 59);
                     end_time.setMinutes(0, 0, 0);
                     let start_time = end_time - 604800000;
                     
