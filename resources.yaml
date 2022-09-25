@@ -392,6 +392,8 @@
         smelt_iron:
             display_name: Smelt Iron
             building: smelter
+            level:
+                mining: 20
             input:
                 regolith: 500
                 power: 30
@@ -404,6 +406,8 @@
         smelt_copper:
             display_name: Smelt Copper
             building: smelter
+            level:
+                mining: 40
             input:
                 regolith: 1500
                 power: 60
@@ -417,6 +421,8 @@
         smelt_aluminum:
             display_name: Smelt Aluminum
             building: smelter
+            level:
+                mining: 30
             input:
                 regolith: 1000
                 power: 50
@@ -429,6 +435,8 @@
         smelt_titanium:
             display_name: Smelt Titanium
             building: smelter
+            level:
+                mining: 30
             input:
                 regolith: 2500
                 power: 80
@@ -441,6 +449,8 @@
         smelt_steel:
             display_name: Smelt Steel
             building: smelter
+            level:
+                mining: 25
             input:
                 carbon_dioxide: 10
                 smelt_iron: 15
@@ -458,14 +468,36 @@
             level:
                 mining: 10
             input:
-                stamina: 4
+                stamina: 1
                 power: 20
-                regolith: 300
+                regolith: 500
                 machining_tools: 1
             output:
-                lootlist:
-                    - glass: [1, 1, 1]
-                    - glass: [0.1111, 1, 3]
+                glass: [1, 2, 1.5]
+        smelt_glass2:
+            display_name: Smelt Glass II
+            building: smelter
+            level:
+                mining: 35
+            input:
+                stamina: 3
+                power: 60
+                regolith: 1000
+                machining_tools: 3
+            output:
+                glass: [3, 4, 3.5]
+        smelt_glass3:
+            display_name: Smelt Glass III
+            building: smelter
+            level:
+                mining: 65
+            input:
+                stamina: 5
+                power: 100
+                regolith: 2000
+                machining_tools: 5
+            output:
+                glass: [5, 8, 6.5]
         smelt_silicon_crystals:
             display_name: Smelt Silicon Crystals
             building: smelter
@@ -2130,7 +2162,7 @@
                 full_pc: [0, 1, 0.1]
         #mining rig
         mine_regolith_1:
-            display_name: Mine Regolith I
+            display_name: Regolith Mining I
             building: mining_rig
             input:
                 power: 20
@@ -2141,8 +2173,10 @@
                 halite: [0, 5, 0.3]
                 sulfur: [0, 5, 0.3]
         mine_regolith_2:
-            display_name: Mine Regolith II
+            display_name: Regolith Mining II
             building: mining_rig
+            level:
+                mining: 25
             input:
                 power: 40
                 stamina: 3
@@ -2156,8 +2190,10 @@
                     - halite: [0.1, 1, 5]
                     - sulfur: [0.1, 1, 5]
         mine_regolith_3:
-            display_name: Mine Regolith III
+            display_name: Regolith Mining III
             building: mining_rig
+            level:
+                mining: 50
             input:
                 power: 60
                 stamina: 5
@@ -2167,7 +2203,7 @@
                 barite: [0, 5, 0.3]
                 sulfur: [0, 5, 0.3]
         mine_ice_1:
-            display_name: Mine Ice I
+            display_name: Ice Mining I
             building: mining_rig
             input:
                 power: 20
@@ -2178,8 +2214,10 @@
                 barite: [0, 10, 0.55]
                 sulfur: [0, 10, 0.55]
         mine_ice_2:
-            display_name: Mine Ice II
+            display_name: Ice Mining II
             building: mining_rig
+            level:
+                mining: 30
             input:
                 power: 40
                 stamina: 2
@@ -2190,6 +2228,8 @@
                 sulfur: [0, 10, 0.55]
         mine_ice_3:
             display_name: Mine Ice III
+            level:
+                mining: 40
             building: mining_rig
             input:
                 power: 60
