@@ -409,7 +409,7 @@
             level:
                 mining: 40
             input:
-                regolith: 1500
+                regolith: 5000
                 power: 60
                 stamina: 4
                 mining_tools: 4
@@ -520,8 +520,8 @@
                 mining_tools: 7
             output:
                 lithium: [1, 3, 2]
-                raw_graphite: [0, 3, 0.2]
-                thorium: [0, 1, 0.05]
+                raw_graphite: [0, 1, 0.01]
+                thorium: [0, 1, 0.005]
         smelt_thorium:
             display_name: Smelt Thorium
             building: smelter
@@ -794,8 +794,10 @@
             output:
                 machined_parts: [1, 4, 1.66]
         weld_rover_chassis:
-            display_name: Weld Rover Chassis
+            display_name: Assemble Rover Chassis
             building: machine_shop
+            level:
+                machining: 40
             input:
                 structural_parts: 4
                 machined_parts: 5
@@ -806,6 +808,8 @@
         make_rover_wheels:
             display_name: Make Rover Wheels
             building: machine_shop
+            level:
+                machining: 40
             input:
                 aluminum_plate: 2
                 titanium_plate: 2
@@ -816,6 +820,8 @@
         salvage_rover:
             display_name: Salvage Rover (Low Level Shop)
             building: machine_shop
+            level:
+                machining: 45
             input:
                 broken_rover: 1
                 titanium_plate: 2
@@ -829,6 +835,8 @@
         salvage_rover_maxed:
             display_name: Salvage Rover (High Level Shop)
             building: machine_shop
+            level:
+                machining: 45
             input:
                 broken_rover: 1
                 titanium_plate: 2
