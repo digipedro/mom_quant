@@ -2175,9 +2175,10 @@
             input:
                 power: 20
                 stamina: 2
+                mining_tools: 1
             output:
-                regolith: [100, 200, 128.3]
-                barite: [5, 10, 5.3]
+                regolith: [100, 200, 128.333]
+                barite: [5, 10, 4.3]
                 halite: [0, 5, 0.3]
                 sulfur: [0, 5, 0.3]
         mine_regolith_2:
@@ -2189,13 +2190,14 @@
                 power: 40
                 stamina: 3
                 barite: 3
+                mining_tools: 3
             output:
                 lootlist:
                     - regolith: [1, 200, 300]
                     - regolith: [0.1111, 10, 100]
-                    - barite: [0.75, 5, 10]
-                    - barite: [0.1, 5, 10]
-                    - halite: [0.1, 1, 5]
+                    - barite: [0.75, 3, 5]
+                    - halite: [0.1, 3, 5]
+                    - beryl: [0.1, 1, 5]
                     - sulfur: [0.1, 1, 5]
         mine_regolith_3:
             display_name: Regolith Mining III
@@ -2206,21 +2208,25 @@
                 power: 60
                 stamina: 5
                 barite: 10
+                mining_tools: 5
             output:
-                regolith: [400, 700, 506.94]
+                regolith: [400, 700, 506.94375]
                 barite: [0, 5, 0.3]
-                sulfur: [0, 5, 0.3]
+                sulfur: [0, 5, 0.15]
+                beryl: [0, 4, 0.054]
+                fluorite: [0, 2, 0.003]
         mine_ice_1:
             display_name: Ice Mining I
             building: mining_rig
             input:
                 power: 20
                 stamina: 1
+                mining_tools: 1
             output:
-                ice: [25, 125, 53.3]
-                halite: [0, 10, 0.55]
-                barite: [0, 10, 0.55]
-                sulfur: [0, 10, 0.55]
+                ice: [25, 125, 53.333]
+                halite: [0, 10, 0.75]
+                barite: [0, 5, 0.3]
+                sulfur: [0, 5, 0.3]
         mine_ice_2:
             display_name: Ice Mining II
             building: mining_rig
@@ -2229,11 +2235,12 @@
             input:
                 power: 40
                 stamina: 2
+                mining_tools: 2
             output:
-                ice: [100, 300, 156.05]
-                barite: [0, 10, 0.55]
-                halite: [0, 10, 0.75]
-                sulfur: [0, 10, 0.55]
+                ice: [100, 300, 156.1105]
+                barite: [0, 5, 0.4]
+                sulfur: [0, 5, 0.4]
+                fluorite: [0, 1, 0.0125]
         mine_ice_3:
             display_name: Mine Ice III
             level:
@@ -2242,9 +2249,12 @@
             input:
                 power: 60
                 stamina: 4
+                mining_tools: 4
             output:
-                ice: [250, 450, 306.94]
-                sulfur: [0, 10, 0.55]
+                ice: [250, 450, 306.94375]
+                barite: [0, 10, 0.75]
+                sulfur: [0, 5, 0.4]
+                fluorite: [0, 3, 0.03125]
         make_apprentice_mining_tools:
             display_name: Make Apprentice Mining Tools
             building: mining_rig
