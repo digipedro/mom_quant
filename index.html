@@ -609,20 +609,35 @@
                 if (this.cheapest_shard[rarity] == null) {
                     // build object once
                     let shard_name = { ...this.cheapest_shard };
+                    const tradeable_shards = [
+                        'shard_mining_rig_',
+                        'shard_polar_workshop_',
+                        'shard_solar_panel_',
+                        'shard_rover_works_',
+                        'shard_grindnbrew_',
+                        'shard_3d_print_shop_',
+                        'shard_chem_lab_',
+                        'shard_sab_reactor_',
+                        'shard_machine_shop_',
+                        'shard_smelter_',
+                        'shard_cad_',
+                        'shard_water_filter_',
+                        'shard_greenhouse_'
+                    ];
                     for (let i = 0; i < this.market.length; i++) {
                         if (this.market[i].id.startsWith('shard_') && this.market[i].id.charAt(this.market[i].id.length - 2) == '_') {
-                            if (this.market[i].id.startsWith('shard_concrete') || this.market[i].id.startsWith('shard_shelter'))
-                                continue;
-                            let r = this.market[i].id.slice(-1);
-                            let price = this.getPrice(this.market[i].id, this.selected_buy_price);
-                            if (this.cheapest_shard[r] == null || price < this.cheapest_shard[r]) {
-                                this.cheapest_shard[r] = price;
-                                shard_name[r] = this.market[i].id
+                            if (tradeable_shards.includes(this.market[i].id.slice(0, -1))) {
+                                let r = this.market[i].id.slice(-1);
+                                let price = this.getPrice(this.market[i].id, this.selected_buy_price);
+                                if (this.cheapest_shard[r] == null || price < this.cheapest_shard[r]) {
+                                    this.cheapest_shard[r] = price;
+                                    shard_name[r] = this.market[i].id
+                                }
                             }
                         }
                     }
                     console.log('Cheapest Shards:', JSON.stringify(shard_name));
-                    console.log('Catina Coin: Aluminum -', localnum(this.getPrice('aluminum_plate', this.selected_sell_price) / 10), 'each; Titanium -', localnum(this.getPrice('titanium_plate', this.selected_sell_price) / 25), 'each');   
+                    console.log('Cantina Coin I:', localnum(this.getPrice('cantina_coin')));
                 }
                 return this.cheapest_shard[rarity];
             },
@@ -645,7 +660,11 @@
                 if (id == 'surveyor_coin')
                     return 45;
                 if (id == 'cantina_coin')
-                    return Math.min(this.getPrice('aluminum_plate', type) / 10, this.getPrice('titanium_plate', type) / 25)
+                    return (this.getPrice('power') * 20
+                           + this.getPrice('aluminum_plate', type)
+                           + this.getPrice('metal_bits', type) * 15
+                           + this.getPrice('stamina') * 2
+                           + this.getPrice('machining_tools', type) * 2) / 15;
                 if (id == 'resource_credit')
                     return 0.5;
                 
