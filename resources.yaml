@@ -104,6 +104,14 @@
             display_name: Broken Energy Core
         full_ec:
             display_name: Full Energy Core
+        germ_malt:
+            display_name: Germinated Malt
+        cryo_hop:
+            display_name: Cryogenic Hop Pellet
+        of_kolsch:
+            display_name: Of Kölsch I Still Love You Beer
+        star_hopped:
+            display_name: Starhopped Beer
     recipes:
         # greenhouse
         plant_sprouts:
@@ -5326,6 +5334,183 @@
             output:
                 full_ec: 3
         #event
+        plant_dwarf_hops:
+            display_name: Plant Dwarf Hops
+            building: greenhouse
+            level:
+                life science: 5
+            input:
+                stamina: 3
+                water: 40
+                power: 20
+                hops_seeds: 1
+                soil: 2
+            output:
+                hops: [7, 10, 8.5]
+                hops_seeds: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
+        plant_dwarf_wheat:
+            display_name: Plant Dwarf Wheat
+            building: greenhouse
+            level:
+                life science: 5
+            input:
+                stamina: 3
+                water: 25
+                power: 20
+                dwarf_wheat_seeds: 1
+                soil: 5
+            output:
+                dwarf_wheat: [7, 10, 8.5]
+                dwarf_wheat_seeds: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
+        germinate_wheat:
+            display_name: Germinate Wheat
+            building: water_filter
+            level:
+                life science: 10
+            input:
+                stamina: 1
+                power: 10
+                dried_dwarf_wheat: 10
+                water: 50
+            output:
+                germ_malt: [7, 12, 8.65]
+        mix_wort:
+            display_name: Mix Wort
+            building: water_filter
+            level:
+                life science: 15
+            input:
+                stamina: 1
+                power: 40
+                cryo_hop: 10
+                malt: 10
+                water: 10
+            output:
+                wort: [14, 25, 17.3]
+        freeze_and_pelletize_hops:
+            display_name: Freeze and Pelletize Hops
+            building: cad
+            level:
+                life science: 10
+            input:
+                stamina: 1
+                power: 20
+                hops: 10
+                nitrogen: 2
+                ice: 50
+            output:
+                cryo_hop: [5, 18, 10.2]
+        dry_dwarf_wheat:
+            display_name: Dry Dwarf Wheat
+            building: cad
+            level:
+                life science: 10
+            input:
+                stamina: 1
+                power: 20
+                dwarf_wheat: 10
+            output:
+                dried_dwarf_wheat: [7, 12, 8.65]
+        kiln_malt:
+            display_name: Kiln Malt
+            building: cad
+            level:
+                life science: 10
+            input:
+                stamina: 1
+                power: 40
+                germ_malt: 10
+            output:
+                malt: [7, 12, 8.65]
+        reproduce_yeast:
+            display_name: Reproduce Yeast
+            building: chem_lab
+            level:
+                life science: 50
+            input:
+                stamina: 1
+                power: 10
+                dwarf_wheat: 1
+                water: 3
+                yeast: 60
+            output:
+                yeast: [35, 90, 50.95]
+                dwarf_wheat: [0, 1, 0.8]
+        brew_festbier:
+            display_name: Brew Festbier
+            building: tea_shop
+            level:
+                life science: 15
+            input:
+                stamina: 1
+                yeast: 20
+                wort: 10
+                water: 25
+                ice: 10
+            output:
+                festbier: [6, 7, 6.1]
+                wort: [0, 3, 1.8]
+        brew_marzen:
+            display_name: Brew Märzen
+            building: tea_shop
+            level:
+                life science: 25
+            input:
+                stamina: 1
+                yeast: 15
+                wort: 15
+                water: 10
+                ice: 15
+            output:
+                marzen: [5, 6, 5.1]
+                wort: [0, 3, 1.8]
+        brew_occupymarz:
+            display_name: Brew Occupy Marz
+            building: tea_shop
+            level:
+                life science: 35
+            input:
+                stamina: 1
+                yeast: 10
+                wort: 15
+                water: 20
+                ice: 30
+                vibes: 5
+            output:
+                occupy_marz: [3, 4, 3.1]
+                wort: [0, 3, 1.8]
+        brew_of_kolsch:
+            display_name: Brew Of Kölsch I Still Love You
+            building: tea_shop
+            level:
+                life science: 15
+            input:
+                stamina: 1
+                yeast: 5
+                wort: 10
+                water: 15
+                ice: 5
+                fermented_sorghum: 5
+            output:
+                of_kolsch: [6, 7, 6.1]
+                wort: [0, 3, 1.8]
+        brew_starhopped:
+            display_name: Brew Starhopped
+            building: tea_shop
+            level:
+                life science: 30
+            input:
+                stamina: 1
+                yeast: 15
+                wort: 10
+                water: 15
+                ice: 20
+                vibes: 10
+            output:
+                star_hopped: [4, 5, 4.1]
+                wort: [0, 3, 1.8]
     buildings:
         solar_panel:
             display_name: Solar Panel

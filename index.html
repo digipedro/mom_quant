@@ -682,7 +682,6 @@
                         return this.getCheapestShards(rarity) * 10;
                 }
 
-                    
                 for (let i = 0; i < this.market.length; i++) {
                     if (this.market[i].id == id) {
                         if (type == 'Last Sold')
@@ -701,8 +700,6 @@
                 // items not in market but may be added in future
                 
                 if (id == 'sunflower')
-                    return 0;
-                if (id == 'research_machining_e')
                     return 0;
                 
                 console.log('ERROR: No price for', id);
