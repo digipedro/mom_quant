@@ -586,6 +586,16 @@
                     return (60 * food + 20 * water - 2 * waste) / 23;
                 if (method == 'Martizen (E)')
                     return (60 * food + 20 * water - 2 * waste) / 25;
+                if (method == 'drink kolsch')
+                    return (this.getPrice('of_kolsch', this.selected_buy_price)) / 4.5
+                if (method == 'drink festbier')
+                    return (this.getPrice('festbier', this.selected_buy_price)) / 5.5
+                if (method == 'drink marzen')
+                    return (this.getPrice('marzen', this.selected_buy_price)) / 7.5
+                if (method == 'drink starhopper')
+                     return (this.getPrice('star_hopped', this.selected_buy_price) - this.getPrice('regolith', this.selected_buy_price) * 25.5 - this.getPrice('soil', this.selected_buy_price) * 3.5) / 9
+                if (method == 'drink marz')
+                     return (this.getPrice('occupy_marz', this.selected_buy_price) - this.getPrice('coffee_seed', this.selected_buy_price) * 1.5 - this.getPrice('circuit_component', this.selected_buy_price) * 0.5) / 9
                 // 'Eat Meal'
                 return (60 * food + 20 * water - 4 * waste) / 24;
             },
@@ -1040,12 +1050,11 @@
                                         +'<b>Martizen (UC)</b> - <span class="dusk">' + localnum(this.getStaminaCost('Martizen (UC)')) + '</span> avg<br>'
                                         +'<b>Job</b> - <span class="dusk">1.040</span><br>'
                                         +'<b>Eat Ration</b> - <span class="dusk"> 0.000</span><br>'
-                this.power_market = localnum(this.getPowerCost('Market Price') * 20);
-                this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
-                this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);
-                this.work_order1 = localnum(this.getPowerCost('1 Dusk per Cell Work Order') * 20);
-                this.work_order2 = localnum(this.getPowerCost('2 Dusk per Cell Work Order') * 20);
-                this.work_order3 = localnum(this.getPowerCost('3 Dusk per Cell Work Order') * 20);
+                                        +'<b>Drink Of Kölsch...</b> - <span class="dusk">' + localnum(this.getStaminaCost('drink kolsch')) + '</span><br>'
+                                        +'<b>Drink Festbier</b> - <span class="dusk">' + localnum(this.getStaminaCost('drink festbier')) + '</span><br>'
+                                        +'<b>Drink Märzen</b> - <span class="dusk">' + localnum(this.getStaminaCost('drink marzen')) + '</span><br>'
+                                        +'<b>Drink Starhopper</b> - <span class="dusk">' + localnum(this.getStaminaCost('drink starhopper')) + '</span><br>'
+                                        +'<b>Drink Occupy Marz</b> - <span class="dusk">' + localnum(this.getStaminaCost('drink marz')) + '</span><br>'
             },
             async loadYAML() {
                 await fetch('resources.yaml', {
