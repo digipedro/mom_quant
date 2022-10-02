@@ -1038,6 +1038,14 @@
                                 this.$set(this.resources, i, entry);
                     }
                 }
+                
+                this.power_market = localnum(this.getPowerCost('Market Price') * 20);
+                this.power_charge1 = localnum(this.getPowerCost('Charge Power Cell') * 20);
+                this.power_charge3 = localnum(this.getPowerCost('Charge Power Cell III') * 20);
+                this.work_order1 = localnum(this.getPowerCost('1 Dusk per Cell Work Order') * 20);
+                this.work_order2 = localnum(this.getPowerCost('2 Dusk per Cell Work Order') * 20);
+                this.work_order3 = localnum(this.getPowerCost('3 Dusk per Cell Work Order') * 20);
+                
                 this.stamina_help_text = '<b>Eat Snack</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Snack')) + '</span><br>'
                                         +'<b>Eat Meal</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Meal')) + '</span> avg<br>'
                                         +'<b>Eat Feast</b> - <span class="dusk">' + localnum(this.getStaminaCost('Eat Feast')) + '</span> avg<br>'
