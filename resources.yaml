@@ -5436,7 +5436,7 @@
                 water: 3
                 yeast: 60
             output:
-                yeast: [35, 90, 50.95]
+                yeast: [45, 105, 66.25]
                 dwarf_wheat: [0, 1, 0.8]
         brew_festbier:
             display_name: Brew Festbier
