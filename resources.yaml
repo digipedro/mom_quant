@@ -1719,7 +1719,7 @@
                 stamina: 3
                 chemistry_tools: 3
             output:
-                pvc_raw: [4, 13, 6.6666]
+                pvc_raw: [4, 13, 6.3333]
         make_pla1:
             display_name: Make PLA I
             building: chem_lab
@@ -4541,25 +4541,6 @@
             output:
                 dusk: 1
         # cantina
-        repair_broken_EVA_suit:
-            display_name: Repair Broken EVA Suit
-            building: cantina
-            level:
-                electrical: 35
-            input:
-                rover_wires: 12
-                electronic_bits: 4
-                electrical_tools: 3
-                circuit_component: 1
-                stamina: 2
-            output:
-                lootset:
-                    - dusk: [0.011, 800, 800]
-                    - dusk: [0.0549, 360, 360]
-                    - dusk: [0.0549, 120, 120]
-                    - dusk: [0.0549, 60, 60]
-                    - dusk: [0.0549, 50, 50]
-                    - dusk: [0.7692, 30, 30]
         make_apprentice_scavenging_tools:
             display_name: Make Apprentice Scavenging Tools
             building: cantina
@@ -4577,7 +4558,7 @@
         # added by millorfernades (@fuseki#1488)
         # cantina Sunday tasks
         faded_collection:
-            display_name: Faded Collection
+            display_name: Faded Collection (Sun)
             building: cantina
             day: sun
             input:
@@ -4589,7 +4570,7 @@
                     - dusk: [0.3, 1, 3]
                     - dusk: [0.4, 1, 2]
         bamboozled_sun:
-            display_name: Bamboozled (Sunday)
+            display_name: Bamboozled (Sun)
             building: cantina
             day: sun
             input:
@@ -4652,7 +4633,7 @@
                     - dusk: [0.5085, 30, 60]
                 keycard_copper: [0, 1, 0.006]
         barite_necessities_sun:
-            display_name: Barite Necessities (Sunday)
+            display_name: Barite Necessities (Sun)
             building: cantina
             day: sun
             input:
@@ -4666,7 +4647,7 @@
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
         seeding_the_way:
-            display_name: Seeding The Way
+            display_name: Seeding The Way (Sun)
             building: cantina
             day: sun
             input:
@@ -4680,7 +4661,7 @@
                     - dusk: [0.4, 1, 5]
         # cantina Monday tasks
         stale_sweets_mon:
-            display_name: Stale Sweets (Monday)
+            display_name: Stale Sweets (Mon)
             building: cantina
             day: mon
             input:
@@ -4707,7 +4688,7 @@
         #            - dusk: [0.3051, 10, 40]
         #            - dusk: [0.5085, 5, 25]
         breathing_room_mon:
-            display_name: Breathing Room (Monday)
+            display_name: Breathing Room (Mon)
             building: cantina
             day: mon
             input:
@@ -4723,7 +4704,7 @@
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         salty_solution_mon:
-            display_name: Salty Solution (Monday)
+            display_name: Salty Solution (Mon)
             building: cantina
             day: mon
             input:
@@ -4739,7 +4720,7 @@
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         tasty_beverages_mon:
-            display_name: Tasty Beverages (Monday)
+            display_name: Tasty Beverages (Mon)
             building: cantina
             day: mon
             input:
@@ -4756,7 +4737,7 @@
                     - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         sculpting_solutions_mon:
-            display_name: Sculpting Solutions (Monday)
+            display_name: Sculpting Solutions (Mon)
             building: cantina
             day: mon
             input:
@@ -4770,7 +4751,7 @@
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
         smelly_situation:
-            display_name: Smelly Situation
+            display_name: Smelly Situation (Mon)
             building: cantina
             day: mon
             input:
@@ -4784,7 +4765,7 @@
                     - dusk: [0.4, 1, 5]
         # cantina Tuesday tasks
         bits_and_pieces_tue:
-            display_name: Bits and Pieces (Tuesday)
+            display_name: Bits and Pieces (Tue)
             building: cantina
             day: tue
             input:
@@ -4797,7 +4778,7 @@
                     - dusk: [0.3, 1, 3]
                     - dusk: [0.4, 1, 2]
         waste_disposal_tue:
-            display_name: Waste Disposal (Tuesday)
+            display_name: Waste Disposal (Tue)
             building: cantina
             day: tue
             input:
@@ -4811,7 +4792,7 @@
                     - dusk: [0.3051, 10, 40]
                     - dusk: [0.5085, 5, 25]
         breathing_room_tue:
-            display_name: Breathing Room (Tuesday)
+            display_name: Breathing Room (Tue)
             building: cantina
             day: tue
             input:
@@ -4827,7 +4808,7 @@
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         electric_boogie:
-            display_name: Electric Boogie
+            display_name: Electric Boogie (Tue)
             building: cantina
             day: tue
             input:
@@ -4844,7 +4825,7 @@
                     - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         sculpting_solutions_tue:
-            display_name: Sculpting Solutions (Tuesday)
+            display_name: Sculpting Solutions (Tue)
             building: cantina
             day: tue
             input:
@@ -4858,7 +4839,7 @@
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
         metal_and_ice:
-            display_name: Metal & Ice
+            display_name: Metal & Ice (Tue)
             building: cantina
             day: tue
             input:
@@ -4874,7 +4855,7 @@
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         food_donations:
-            display_name: Food Donations
+            display_name: Food Donations (Tue)
             building: cantina
             day: tue
             input:
@@ -4888,7 +4869,7 @@
                     - dusk: [0.4, 1, 5]
         # cantina Wednesday tasks
         hit_the_ice_harder:
-            display_name: Hit The Ice Harder
+            display_name: Hit The Ice Harder (Wed)
             building: cantina
             day: wed
             input:
@@ -4904,7 +4885,7 @@
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: [0, 1, 0.0074]
         bamboozled_wed:
-            display_name: Bamboozled (Wednesday)
+            display_name: Bamboozled (Wed)
             building: cantina
             day: wed
             input:
@@ -4935,7 +4916,7 @@
                     - dusk: [0.5085, 30, 60]
                 keycard_copper: [0, 1, 0.006]
         odds_and_ends:
-            display_name: Odds and Ends
+            display_name: Odds and Ends (Wed)
             building: cantina
             day: wed
             input:
@@ -4947,7 +4928,7 @@
                     - dusk: [0.3, 1, 3]
                     - dusk: [0.4, 1, 2]
         barite_necessities_wed:
-            display_name: Barite Necessities (Wednesday)
+            display_name: Barite Necessities (Wed)
             building: cantina
             day: wed
             input:
@@ -4961,7 +4942,7 @@
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
         express_o_delivery:
-            display_name: Express-o Delivery
+            display_name: Express-o Delivery (Wed)
             building: cantina
             day: wed
             input:
@@ -4991,7 +4972,7 @@
                 keycard_copper: [0, 1, 0.0033]
         # cantina Thursday tasks
         stale_sweets_thu:
-            display_name: Stale Sweets (Thursday)
+            display_name: Stale Sweets (Thur)
             building: cantina
             day: thu
             input:
@@ -5003,7 +4984,7 @@
                     - dusk: [0.3, 1, 3]
                     - dusk: [0.4, 1, 2]
         black_market_crystals:
-            display_name: Black Market Crystals
+            display_name: Black Market Crystals (Thur)
             building: cantina
             day: thu
             input:
@@ -5018,7 +4999,7 @@
                     - dusk: [0.3051, 10, 40]
                     - dusk: [0.5085, 5, 25]
         breathing_room_thu:
-            display_name: Breathing Room (Thursday)
+            display_name: Breathing Room (Thur)
             building: cantina
             day: thu
             input:
@@ -5034,7 +5015,7 @@
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         tasty_beverages_thu:
-            display_name: Tasty Beverages (Thursday)
+            display_name: Tasty Beverages (Thur)
             building: cantina
             day: thu
             input:
@@ -5051,7 +5032,7 @@
                     - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         green_bean_profits:
-            display_name: Green Bean Profits
+            display_name: Green Bean Profits (Thur)
             building: cantina
             day: thu
             input:
@@ -5065,7 +5046,7 @@
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
         smelly_situation2:
-            display_name: Smelly Situation II
+            display_name: Smelly Situation II (Thur)
             building: cantina
             day: thu
             input:
@@ -5078,7 +5059,7 @@
                     - dusk: [0.3, 3, 7]
                     - dusk: [0.4, 1, 5]
         salty_solution_thu:
-            display_name: Salty Solution (Thursday)
+            display_name: Salty Solution (Thur)
             building: cantina
             day: thu
             input:
@@ -5095,7 +5076,7 @@
                 keycard_copper: 0.0033
         # cantina Friday tasks
         bits_and_pieces_fri:
-            display_name: Bits and Pieces (Friday)
+            display_name: Bits and Pieces (Fri)
             building: cantina
             day: fri
             input:
@@ -5107,7 +5088,7 @@
                     - dusk: [0.3, 1, 3]
                     - dusk: [0.4, 1, 2]
         waste_disposal_fri:
-            display_name: Waste Disposal (Friday)
+            display_name: Waste Disposal (Fri)
             building: cantina
             day: fri
             input:
@@ -5122,7 +5103,7 @@
                     - dusk: [0.3051, 10, 40]
                     - dusk: [0.5085, 5, 25]
         baijiu_blitz:
-            display_name: Baijiu Blitz
+            display_name: Baijiu Blitz (Fri)
             building: cantina
             day: fri
             input:
@@ -5138,7 +5119,7 @@
                     - dusk: [0.5085, 15, 25]
                 keycard_copper: 0.0074
         transport_summer_ice:
-            display_name: Transport Summer Ice
+            display_name: Transport Summer Ice (Fri)
             building: cantina
             day: fri
             input:
@@ -5154,7 +5135,7 @@
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         summer_scrap_collection:
-            display_name: Summer Scrap Collection
+            display_name: Summer Scrap Collection (Fri)
             building: cantina
             day: fri
             input:
@@ -5170,7 +5151,7 @@
                     - dusk: [0.5085, 30, 60]
                 keycard_copper: 0.006
         bamboozled_fri:
-            display_name: Bamboozled (Friday)
+            display_name: Bamboozled (Fri)
             building: cantina
             day: fri
             input:
@@ -5185,7 +5166,7 @@
                     - dusk: [0.3051, 10, 25]
                     - dusk: [0.5085, 5, 10]
         spread_golden_profits:
-            display_name: Spread Golden Profits
+            display_name: Spread Golden Profits (Fri)
             building: cantina
             day: fri
             input:
