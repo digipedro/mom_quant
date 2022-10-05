@@ -1818,7 +1818,7 @@
                 stamina: 1
                 electrical_tools: 2
             output:
-                empty_pc: [2, 6, 3.55]
+                empty_pc: [2, 8, 3.55]
         repair_broken_cell3:
             display_name: Repair Broken Power Cell III
             building: chem_lab
@@ -1830,7 +1830,7 @@
                 stamina: 1
                 electrical_tools: 3
             output:
-                empty_pc: [3, 8, 4.4444]
+                empty_pc: [3, 11, 4.8888]
         fab_electrical_grade_silicon:
             display_name: Process Electrical Grade Silicon
             building: chem_lab
