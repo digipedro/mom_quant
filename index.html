@@ -648,6 +648,7 @@
                     }
                     console.log('Cheapest Shards:', JSON.stringify(shard_name));
                     console.log('Cantina Coin I:', localnum(this.getPrice('cantina_coin')));
+                    console.log('Catina Coin: Aluminum -', localnum(this.getPrice('aluminum_plate', this.selected_sell_price) / 10), 'each; Titanium -', localnum(this.getPrice('titanium_plate', this.selected_sell_price) / 25), 'each');   
                 }
                 return this.cheapest_shard[rarity];
             },

@@ -139,7 +139,7 @@
             output:
                 food: [20, 50, 35]
                 lettuce_seed: [0, 1, 0.1]
-                soil: [0, 1, 0.1]
+                soil: [0, 1, 0.2]
         plant_carrots:
             display_name: Plant Carrots
             building: greenhouse
@@ -452,7 +452,7 @@
                 mining_tools: 5
             output:
                 lootlist:
-                    - smelt_titanium: [1, 2, 5]
+                    - smelt_titanium: [1.0, 2, 5]
                     - smelt_titanium: [0.1111, 1, 10]
         smelt_steel:
             display_name: Smelt Steel
@@ -467,9 +467,9 @@
                 mining_tools: 2
             output:
                 lootlist:
-                    - smelt_steel: [1, 2, 5]
+                    - smelt_steel: [1.0, 2, 5]
                     - smelt_steel: [0.1111, 1, 10]
-                    - barite: [0.1111, 1, 5]
+                    - barite: [0.1111, 1, 3]
         smelt_glass:
             display_name: Smelt Glass
             building: smelter
@@ -714,15 +714,15 @@
                 stamina: 2
                 machining_tools: 2
             output:
-                damaged_tools_a: [0, 1, 0.7]
-                chemistry_tools_a: [0, 1, 0.0375]
-                electrical_tools_a: [0, 1, 0.0375]
-                fabrication_tools_a: [0, 1, 0.0375]
-                lifescience_tools_a: [0, 1, 0.0375]
-                machining_tools_a: [0, 1, 0.0375]
-                mining_tools_a: [0, 1, 0.0375]
-                robotics_tools_a: [0, 1, 0.0375]
-                scavenging_tools_Apprentice: [0, 1, 0.0375]
+                damaged_tools_a: [0, 1, 0.75]
+                chemistry_tools_a: [0, 1, 0.03125]
+                electrical_tools_a: [0, 1, 0.03125]
+                fabrication_tools_a: [0, 1, 0.03125]
+                lifescience_tools_a: [0, 1, 0.03125]
+                machining_tools_a: [0, 1, 0.03125]
+                mining_tools_a: [0, 1, 0.03125]
+                robotics_tools_a: [0, 1, 0.03125]
+                scavenging_tools_Apprentice: [0, 1, 0.03125]
         repair_damaged_journeyman_tools:
             display_name: Repair Damaged Journeyman Tools
             building: machine_shop
@@ -737,15 +737,15 @@
                 stamina: 3
                 machining_tools: 3
             output:
-                damaged_tools_j: [0, 1, 0.7]
-                chemistry_tools_j: [0, 1, 0.0375]
-                electrical_tools_j: [0, 1, 0.0375]
-                fabrication_tools_j: [0, 1, 0.0375]
-                lifescience_tools_j: [0, 1, 0.0375]
-                machining_tools_j: [0, 1, 0.0375]
-                mining_tools_j: [0, 1, 0.0375]
-                robotics_tools_j: [0, 1, 0.0375]
-                scavenging_tools_Journeyman: [0, 1, 0.0375]
+                damaged_tools_j: [0, 1, 0.85]
+                chemistry_tools_j: [0, 1, 0.01875]
+                electrical_tools_j: [0, 1, 0.01875]
+                fabrication_tools_j: [0, 1, 0.01875]
+                lifescience_tools_j: [0, 1, 0.01875]
+                machining_tools_j: [0, 1, 0.01875]
+                mining_tools_j: [0, 1, 0.01875]
+                robotics_tools_j: [0, 1, 0.01875]
+                scavenging_tools_Journeyman: [0, 1, 0.01875]
         steel_ball_bearings:
             display_name: Steel Ball Bearings
             building: machine_shop
@@ -812,7 +812,7 @@
                 power: 120
                 stamina: 8
             output:
-                rover_chassis: [1, 2, 1.1]
+                rover_chassis: [1, 2, 1.1111]
         make_rover_wheels:
             display_name: Make Rover Wheels
             building: machine_shop
@@ -824,7 +824,7 @@
                 power: 40
                 stamina: 4
             output:
-                rover_wheels: [1, 2, 1.1]
+                rover_wheels: [1, 2, 1.1111]
         salvage_rover:
             display_name: Salvage Rover (Low Level Shop)
             building: machine_shop
@@ -1635,7 +1635,7 @@
                 power: 10
                 stamina: 1
             output:
-                hydrogen: 3
+                hydrogen: 4
                 oxygen: 2
         split_water2:
             display_name: Split Water II
@@ -2075,7 +2075,7 @@
                 coffee_bean_roasted: 8
                 power: 10
             output:
-                coffee_ground: [3, 5, 4]
+                coffee_ground: [3, 6, 4.5]
         grind_beans_m:
             display_name: Grind Beans (Medium)
             building: grindnbrew
@@ -2566,7 +2566,7 @@
                             - shard_chem_lab_U: [0.1011, 3, 6]
                             - shard_3d_print_shop_U: [0.1011, 3, 6]
                             - shard_rover_works_U: [0.0225, 3, 6]
-                        - percent: 25
+                        - percent: 20
                         - lootset:
                             - shard_greenhouse_R: [0.1124, 5, 10]
                             - shard_solar_panel_R: [0.1124, 5, 10]
@@ -3049,7 +3049,7 @@
                 mining_tools: 4
             output:
                 research_mining_n: [0, 5, 0.225]
-                research_mining_a: [2, 5, 2.53125]
+                research_mining_a: [2, 5, 2.54695]
                 research_mining_j: [0, 3, 0.03125]
                 research_mining_e: [0, 1, 0.0063]
         areology_555:
@@ -3069,8 +3069,8 @@
                 mining_tools: 5
             output:
                 research_mining_a: [3, 8, 4.15]
-                research_mining_j: [0, 4, 0.1725]
-                research_mining_e: [0, 1, 0.01]
+                research_mining_j: [0, 4, 0.10375]
+                research_mining_e: [0, 1, 0.02]
                 research_mining_m: [0, 1, 0.0025]
         basic_seed_study:
             display_name: Basic Seed Study
@@ -3199,8 +3199,8 @@
                 lifescience_tools: 5
             output:
                 research_lifescience_a: [3, 8, 4.15]
-                research_lifescience_j: [0, 4, 0.1725]
-                research_lifescience_e: [0, 1, 0.01]
+                research_lifescience_j: [0, 4, 0.10375]
+                research_lifescience_e: [0, 1, 0.02]
                 research_lifescience_m: [0, 1, 0.0025]
         chemistry_101:
             display_name: Chemistry 101
@@ -3279,8 +3279,8 @@
                 chemistry_tools: 5
             output:
                 research_chemistry_a: [3, 8, 4.15]
-                research_chemistry_j: [0, 4, 0.1725]
-                research_chemistry_e: [0, 1, 0.01]
+                research_chemistry_j: [0, 4, 0.10375]
+                research_chemistry_e: [0, 1, 0.02]
                 research_chemistry_m: [0, 1, 0.0025]
         electronics_101:
             display_name: Electronics 101
@@ -3359,8 +3359,8 @@
                 electrical_tools: 5
             output:
                 research_electrical_a: [3, 8, 4.15]
-                research_electrical_j: [0, 4, 0.1725]
-                research_electrical_e: [0, 1, 0.01]
+                research_electrical_j: [0, 4, 0.10375]
+                research_electrical_e: [0, 1, 0.02]
                 research_electrical_m: [0, 1, 0.0025]
         study_circuit_theory:
             display_name: Study Circuit Theory
@@ -3451,8 +3451,8 @@
                 fabrication_tools: 5
             output:
                 research_fabrication_a: [3, 8, 4.15]
-                research_fabrication_j: [0, 4, 0.1725]
-                research_fabrication_e: [0, 1, 0.01]
+                research_fabrication_j: [0, 4, 0.10375]
+                research_fabrication_e: [0, 1, 0.02]
                 research_fabrication_m: [0, 1, 0.0025]
         intro_to_machining:
             display_name: Intro to Machining
@@ -3530,8 +3530,8 @@
                 machining_tools: 5
             output:
                 research_machining_a: [3, 8, 4.15]
-                research_machining_j: [0, 4, 0.1725]
-                research_machining_e: [0, 1, 0.01]
+                research_machining_j: [0, 4, 0.10375]
+                research_machining_e: [0, 1, 0.02]
                 research_machining_m: [0, 1, 0.0025]
         robotics_101:
             display_name: Robotics 101
@@ -3848,8 +3848,8 @@
                 fabrication_tools: 3
             output:
                 shard_library_S: 1
-        crafting_wires:
-            display_name: Crafting Wires
+        crafting_wires_low:
+            display_name: Crafting Wires (Low Level)
             building: engineering_bay
             input:
                 stamina: 2
@@ -3860,14 +3860,32 @@
                 lootset:
                     - percent: 65
                     - lootlist:
-                        - rover_wires: [1, 3, 4]
-                        - metal_bits: [1, 0, 2]
-                        - electronic_bits: [1, 0, 2]
+                        - rover_wires: [1.0, 3, 4]
+                        - metal_bits: [1.0, 0, 2]
+                        - electronic_bits: [1.0, 0, 2]
                     - percent: 35
                     - lootlist:
-                        - rover_wires: [1, 6, 8]
-        shredding_copper:
-            display_name: Shredding Copper
+                        - rover_wires: [1.0, 6, 8]
+        crafting_wires_high:
+            display_name: Crafting Wires (High Level)
+            building: engineering_bay
+            input:
+                stamina: 2
+                metal_bits: 5
+                electronic_bits: 5
+                fabrication_tools: 1
+            output:
+                lootset:
+                    - percent: 55
+                    - lootlist:
+                        - rover_wires: [1.0, 3, 4]
+                        - metal_bits: [1.0, 0, 2]
+                        - electronic_bits: [1.0, 0, 2]
+                    - percent: 45
+                    - lootlist:
+                        - rover_wires: [1.0, 6, 8]
+        shredding_copper_low:
+            display_name: Shredding Copper (Low Level)
             building: engineering_bay
             level:
                 machining: 5
@@ -3881,14 +3899,35 @@
                 lootset:
                     - percent: 60
                     - lootlist:
-                        - regolith: [1, 50, 100]
-                        - electronic_bits: [1, 6, 8]
+                        - regolith: [1.0, 50, 100]
+                        - electronic_bits: [1.0, 6, 8]
                     - percent: 40
                     - lootlist:
-                        - electronic_bits: [1, 10, 18]
-                        - machining_tools: [1, 1, 1]
-        shredding_iron:
-            display_name: Shredding Iron
+                        - electronic_bits: [1.0, 10, 18]
+                        - machining_tools: [1.0, 1, 1]
+        shredding_copper_high:
+            display_name: Shredding Copper (High Level)
+            building: engineering_bay
+            level:
+                machining: 5
+            input:
+                stamina: 1
+                power: 10
+                smelt_copper: 1
+                metal_bits: 4
+                machining_tools: 1
+            output:
+                lootset:
+                    - percent: 50
+                    - lootlist:
+                        - regolith: [1.0, 50, 100]
+                        - electronic_bits: [1.0, 6, 8]
+                    - percent: 50
+                    - lootlist:
+                        - electronic_bits: [1.0, 10, 18]
+                        - machining_tools: [1.0, 1, 1]
+        shredding_iron_low:
+            display_name: Shredding Iron (Low Level)
             building: engineering_bay
             level:
                 machining: 1
@@ -3901,11 +3940,30 @@
                 lootset:
                     - percent: 55
                     - lootlist:
-                        - regolith: [1, 50, 100]
-                        - metal_bits: [1, 12, 14]
+                        - regolith: [1.0, 50, 100]
+                        - metal_bits: [1.0, 12, 14]
                     - percent: 45
                     - lootlist:
-                        - metal_bits: [1, 20, 30]
+                        - metal_bits: [1.0, 20, 30]
+        shredding_iron_high:
+            display_name: Shredding Iron (High Level)
+            building: engineering_bay
+            level:
+                machining: 1
+            input:
+                stamina: 1
+                power: 10
+                smelt_iron: 3
+                water: 1
+            output:
+                lootset:
+                    - percent: 45
+                    - lootlist:
+                        - regolith: [1.0, 50, 100]
+                        - metal_bits: [1.0, 12, 14]
+                    - percent: 55
+                    - lootlist:
+                        - metal_bits: [1.0, 20, 30]
         craft_3D_print_shop_gen2_c:
             display_name: Craft Common 3D Print Shop (Gen 2)
             building: engineering_bay
@@ -4483,9 +4541,9 @@
                 bazaar_coin_C: 1
             output:
                 lootset:
-                    - dusk: [0.0588, 200, 300]
-                    - dusk: [0.1176, 100, 200]
-                    - dusk: [0.8235, 0, 100]
+                    - dusk: [0.03, 200, 300]
+                    - dusk: [0.07, 100, 200]
+                    - dusk: [0.9, 0, 100]
         reality_tv_rights:
             display_name: Reality TV Rights
             building: concrete_habitat
@@ -4629,8 +4687,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
                 keycard_copper: [0, 1, 0.006]
         barite_necessities_sun:
             display_name: Barite Necessities (Sun)
@@ -4733,8 +4791,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
                 keycard_copper: 0.006
         sculpting_solutions_mon:
             display_name: Sculpting Solutions (Mon)
@@ -4821,8 +4879,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
                 keycard_copper: 0.006
         sculpting_solutions_tue:
             display_name: Sculpting Solutions (Tue)
@@ -4851,7 +4909,7 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 25, 100]
-                    - dusk: [0.3051, 20, 50]
+                    - dusk: [0.3051, 25, 50]
                     - dusk: [0.5085, 10, 45]
                 keycard_copper: 0.0033
         food_donations:
@@ -4912,8 +4970,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
                 keycard_copper: [0, 1, 0.006]
         odds_and_ends:
             display_name: Odds and Ends (Wed)
@@ -5028,8 +5086,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
                 keycard_copper: 0.006
         green_bean_profits:
             display_name: Green Bean Profits (Thur)
@@ -5147,8 +5205,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
                 keycard_copper: 0.006
         bamboozled_fri:
             display_name: Bamboozled (Fri)
@@ -5187,10 +5245,10 @@
                 smelter_C1: 1
             output:
                 lootset:
-                    - dusk: [0.1, 5, 15]
-                    - dusk: [0.2, 3, 10]
-                    - dusk: [0.3, 1, 3]
-                    - dusk: [0.4, 1, 2]
+                    - dusk: [0.1, 7, 15]
+                    - dusk: [0.2, 5, 12]
+                    - dusk: [0.3, 3, 7]
+                    - dusk: [0.4, 1, 5]
         cad_return:
             display_name: CAD Return
             building: cantina
@@ -5245,8 +5303,8 @@
                 lootset:
                     - dusk: [0.0169, 50, 150]
                     - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 20, 60]
-                    - dusk: [0.5085, 30, 60]
+                    - dusk: [0.3051, 30, 60]
+                    - dusk: [0.5085, 20, 60]
         chemical_redistribution:
             display_name: Chemical Redistribution
             building: cantina
@@ -5431,7 +5489,7 @@
                 water: 25
                 ice: 10
             output:
-                festbier: [6, 7, 6.1]
+                festbier: [6, 7, 6.05]
                 wort: [0, 3, 1.8]
         brew_marzen:
             display_name: Brew Märzen
@@ -5445,7 +5503,7 @@
                 water: 10
                 ice: 15
             output:
-                marzen: [5, 6, 5.1]
+                marzen: [5, 6, 5.05]
                 wort: [0, 3, 1.8]
         brew_occupymarz:
             display_name: Brew Occupy Marz
@@ -5460,7 +5518,7 @@
                 ice: 30
                 vibes: 5
             output:
-                occupy_marz: [3, 4, 3.1]
+                occupy_marz: [3, 4, 3.05]
                 wort: [0, 3, 1.8]
         brew_of_kolsch:
             display_name: Brew Of Kölsch I Still Love You
@@ -5475,7 +5533,7 @@
                 ice: 5
                 fermented_sorghum: 5
             output:
-                of_kolsch: [6, 7, 6.1]
+                of_kolsch: [6, 7, 6.05]
                 wort: [0, 3, 1.8]
         brew_starhopped:
             display_name: Brew Starhopped
@@ -5490,7 +5548,7 @@
                 ice: 20
                 vibes: 10
             output:
-                star_hopped: [4, 5, 4.1]
+                star_hopped: [4, 5, 4.05]
                 wort: [0, 3, 1.8]
     buildings:
         solar_panel:
