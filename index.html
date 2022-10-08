@@ -975,7 +975,7 @@
                     // liquidity filter
                     if (this.liquidity_slider > 0) {
                         for (i = 0; i < sale_breakdown.length; i++) {
-                             if (sale_breakdown[i].resource.startsWith("Dusk"))
+                             if (sale_breakdown[i].resource.startsWith("Dusk") || sale_breakdown[i].resource.startsWith("Resource credit"))
                                 continue;
                             if ((sale_breakdown[i].value_num * 2) >= sale.gain && sale_breakdown[i].volume < this.liquidity_slider_values[this.liquidity_slider]) {
                                 show = false;
