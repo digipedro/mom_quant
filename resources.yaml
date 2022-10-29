@@ -5339,7 +5339,7 @@
                 empty_ec: 1
                 electrical_tools: 3
                 thorium: 0.05
-                uranium: 0.0017
+                uranium: 0.00125
             output:
                 full_ec: 1
         charge_energy_core_II:
@@ -5352,7 +5352,7 @@
                 empty_ec: 2
                 electrical_tools: 4
                 thorium: 0.075
-                uranium: 0.0033
+                uranium: 0.0025
             output:
                 full_ec: 2
         charge_energy_core_III:
@@ -5365,7 +5365,7 @@
                 empty_ec: 3
                 electrical_tools: 5
                 thorium: 0.1
-                uranium: 0.005
+                uranium: 0.00375
             output:
                 full_ec: 3
         #event
