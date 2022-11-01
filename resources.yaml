@@ -362,6 +362,7 @@
         co2_transport:
             display_name: CO2 Transport
             building: cad
+            pool: Dimorphos
             input:
                 carbon_dioxide: 50
                 power: 20
@@ -1364,6 +1365,7 @@
         pvc_transport:
             display_name: PVC Transport
             building: 3d_print_shop
+            pool: Dimorphos
             input:
                 stamina: 2
                 power: 20
@@ -2348,6 +2350,7 @@
         hauler_missions_1:
             display_name: Hauler Missions 1
             building: rover_works
+            pool: Juno
             input:
                 power: 40
                 stamina: 2
@@ -2421,6 +2424,7 @@
         hauler_missions_2:
             display_name: Hauler Missions 2
             building: rover_works
+            pool: Juno
             input:
                 power: 60
                 stamina: 3
@@ -2524,6 +2528,7 @@
         adv_explorer_scavenging:
             display_name: Adv. Explorer Scavenging
             building: rover_works
+            pool: Juno
             input:
                 power: 100
                 stamina: 3
@@ -2722,6 +2727,7 @@
             display_name: Explorer Mission 2.1
             building: rover_works
             day: [mon, thu]
+            pool: Juno
             input:
                 power: 100
                 stamina: 4
@@ -2818,6 +2824,7 @@
         stem_sets:
             display_name: STEM Sets for Earthlings
             building: polar_workshop
+            pool: Hebe
             level:
                 fabrication: 15
             input:
@@ -2863,6 +2870,7 @@
         baijiu_by_the_case:
             display_name: Baijiu By the Case
             building: tea_shop
+            pool: Vesta
             level:
                 fabrication: 10
             input:
@@ -2880,6 +2888,7 @@
         aqua_ares:
             display_name: AQUA ARES
             building: tea_shop
+            pool: Vesta
             level:
                 fabrication: 5
             input:
@@ -2899,6 +2908,7 @@
         bamboo_by_skal:
             display_name: Bamboo by Skal
             building: tea_shop
+            pool: Vesta
             level:
                 fabrication: 5
             input:
@@ -2918,6 +2928,7 @@
         ceramics_by_yingge:
             display_name: Ceramics By Yingge
             building: tea_shop
+            pool: Vesta
             level:
                 fabrication: 5
             input:
@@ -4466,6 +4477,7 @@
             building: shelter
             input:
                 stamina: 1
+                oxygen: 1
                 power: 5
                 coffee_brewed: 1
             output:
@@ -4474,6 +4486,7 @@
         where_lunch:
             display_name: Where Lunch?
             building: concrete_habitat
+            pool: Astraea
             input:
                 stamina: 4
                 power: 10
@@ -4500,6 +4513,7 @@
         advanced_project_testing:
             display_name: Advanced Project Testing
             building: concrete_habitat
+            pool: Astraea
             day: [mon, thu]
             input:
                 stamina: 4
@@ -4519,6 +4533,7 @@
         social_science_experiments:
             display_name: Social Science Experiments
             building: concrete_habitat
+            pool: Astraea
             day: [tue, sun]
             input:
                 stamina: 5
@@ -4531,6 +4546,7 @@
         wine_down:
             display_name: Wine Down
             building: concrete_habitat
+            pool: Astraea
             input:
                 stamina: 2
                 power: 10
@@ -4547,6 +4563,7 @@
         reality_tv_rights:
             display_name: Reality TV Rights
             building: concrete_habitat
+            pool: Astraea
             input:
                 stamina: 6
                 power: 20
@@ -4559,6 +4576,7 @@
         mars_bnb:
             display_name: Mars BnB
             building: concrete_habitat
+            pool: Astraea
             input:
                 stamina: 8
                 power: 60
@@ -4614,6 +4632,7 @@
         faded_collection:
             display_name: Faded Collection (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 art_faded: 1
@@ -4626,6 +4645,7 @@
         bamboozled_sun:
             display_name: Bamboozled (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 bamboo: 30
@@ -4641,6 +4661,7 @@
         hit_the_ice:
             display_name: Hit The Ice (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 ice: 500
@@ -4657,6 +4678,7 @@
         most_of_my_friends_argon_sun:
             display_name: Most of My Friends Argon (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 argon: 4
@@ -4673,6 +4695,7 @@
         hungry_hungry_martian_sun:
             display_name: Hungry Hungry Martians (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 food: 130
@@ -4689,6 +4712,7 @@
         barite_necessities_sun:
             display_name: Barite Necessities (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 barite: 50
@@ -4703,6 +4727,7 @@
         seeding_the_way:
             display_name: Seeding The Way (Sun)
             building: cantina
+            pool: Pallas
             day: sun
             input:
                 sunflower_seeds: 4
@@ -4717,6 +4742,7 @@
         stale_sweets_mon:
             display_name: Stale Sweets (Mon)
             building: cantina
+            pool: Pallas
             day: mon
             input:
                 candycane: 50
@@ -4744,6 +4770,7 @@
         breathing_room_mon:
             display_name: Breathing Room (Mon)
             building: cantina
+            pool: Pallas
             day: mon
             input:
                 oxygen: 50
@@ -4760,6 +4787,7 @@
         salty_solution_mon:
             display_name: Salty Solution (Mon)
             building: cantina
+            pool: Pallas
             day: mon
             input:
                 halite: 150
@@ -4776,6 +4804,7 @@
         tasty_beverages_mon:
             display_name: Tasty Beverages (Mon)
             building: cantina
+            pool: Pallas
             day: mon
             input:
                 water: 30
@@ -4793,6 +4822,7 @@
         sculpting_solutions_mon:
             display_name: Sculpting Solutions (Mon)
             building: cantina
+            pool: Pallas
             day: mon
             input:
                 water_rich_clay: 20
@@ -4807,6 +4837,7 @@
         smelly_situation:
             display_name: Smelly Situation (Mon)
             building: cantina
+            pool: Pallas
             day: mon
             input:
                 sulfur: 25
@@ -4821,6 +4852,7 @@
         bits_and_pieces_tue:
             display_name: Bits and Pieces (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 metal_bits: 10
@@ -4834,6 +4866,7 @@
         waste_disposal_tue:
             display_name: Waste Disposal (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 waste: 425
@@ -4848,6 +4881,7 @@
         breathing_room_tue:
             display_name: Breathing Room (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 oxygen: 25
@@ -4864,6 +4898,7 @@
         electric_boogie:
             display_name: Electric Boogie (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 electronic_bits: 25
@@ -4881,6 +4916,7 @@
         sculpting_solutions_tue:
             display_name: Sculpting Solutions (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 water_rich_clay: 18
@@ -4895,6 +4931,7 @@
         metal_and_ice:
             display_name: Metal & Ice (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 ice: 500
@@ -4911,6 +4948,7 @@
         food_donations:
             display_name: Food Donations (Tue)
             building: cantina
+            pool: Pallas
             day: tue
             input:
                 food: 15
@@ -4925,6 +4963,7 @@
         hit_the_ice_harder:
             display_name: Hit The Ice Harder (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 ice: 500
@@ -4941,6 +4980,7 @@
         bamboozled_wed:
             display_name: Bamboozled (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 bamboo: 30
@@ -4956,6 +4996,7 @@
         hungry_hungry_martian_wed:
             display_name: Hungry Hungry Martians (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 food: 130
@@ -4972,6 +5013,7 @@
         odds_and_ends:
             display_name: Odds and Ends (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 metal_bits: 10
@@ -4984,6 +5026,7 @@
         barite_necessities_wed:
             display_name: Barite Necessities (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 barite: 50
@@ -4998,6 +5041,7 @@
         express_o_delivery:
             display_name: Express-o Delivery (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 coffee_bean_roasted: 4
@@ -5011,6 +5055,7 @@
         most_of_my_friends_argon_web:
             display_name: Most of My Friends Argon (Wed)
             building: cantina
+            pool: Pallas
             day: wed
             input:
                 argon: 6
@@ -5028,6 +5073,7 @@
         stale_sweets_thu:
             display_name: Stale Sweets (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 candycane: 75
@@ -5040,6 +5086,7 @@
         black_market_crystals:
             display_name: Black Market Crystals (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 siliconcrystals_raw: 1
@@ -5055,6 +5102,7 @@
         breathing_room_thu:
             display_name: Breathing Room (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 oxygen: 50
@@ -5071,6 +5119,7 @@
         tasty_beverages_thu:
             display_name: Tasty Beverages (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 water: 25
@@ -5088,6 +5137,7 @@
         green_bean_profits:
             display_name: Green Bean Profits (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 coffee_bean_green: 10
@@ -5102,6 +5152,7 @@
         smelly_situation2:
             display_name: Smelly Situation II (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 sulfur: 50
@@ -5115,6 +5166,7 @@
         salty_solution_thu:
             display_name: Salty Solution (Thur)
             building: cantina
+            pool: Pallas
             day: thu
             input:
                 halite: 125
@@ -5132,6 +5184,7 @@
         bits_and_pieces_fri:
             display_name: Bits and Pieces (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 metal_bits: 8
@@ -5144,6 +5197,7 @@
         waste_disposal_fri:
             display_name: Waste Disposal (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 waste: 300
@@ -5159,6 +5213,7 @@
         baijiu_blitz:
             display_name: Baijiu Blitz (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 baijiu: 5
@@ -5175,6 +5230,7 @@
         transport_summer_ice:
             display_name: Transport Summer Ice (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 ice: 500
@@ -5191,6 +5247,7 @@
         summer_scrap_collection:
             display_name: Summer Scrap Collection (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 metal_bits: 100
@@ -5207,6 +5264,7 @@
         bamboozled_fri:
             display_name: Bamboozled (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 bamboo: 35
@@ -5222,6 +5280,7 @@
         spread_golden_profits:
             display_name: Spread Golden Profits (Fri)
             building: cantina
+            pool: Pallas
             day: fri
             input:
                 sunflower_seeds: 5
@@ -5236,6 +5295,7 @@
         smelted_dreams:
             display_name: Smelted Dreams
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 smelter_C1: 1
@@ -5248,6 +5308,7 @@
         cad_return:
             display_name: CAD Return
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 cad-22_C1: 1
@@ -5262,6 +5323,7 @@
         water_filter_storage:
             display_name: Water Filter Storage
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 water_filter-22_C1: 1
@@ -5276,6 +5338,7 @@
         greenhouse_overstock:
             display_name: Greenhouse Overstock
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 greenhouse_C1: 1
@@ -5290,6 +5353,7 @@
         solar_panel_repo:
             display_name: Solar Panel Repo
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 solar_panel-22_C1: 1
@@ -5304,6 +5368,7 @@
         chemical_redistribution:
             display_name: Chemical Redistribution
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 chem_lab_C1: 1
@@ -5318,6 +5383,7 @@
         reactor_recovery:
             display_name: Reactor Recovery
             building: cantina
+            pool: Pallas
             day: sat
             input:
                 sab_reactor_C1: 1
