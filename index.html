@@ -966,7 +966,7 @@
                                 } else
                                     sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
                                 item.resource = this.resourceName(key2) + ' x ' + value2[2] + dusk_mult_txt;
-                                item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2];
+                                item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
                                 item.value_txt = localnum(item.value_num);
                                 if (value2[2] > 1 && key2 != 'dusk')
                                     item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
