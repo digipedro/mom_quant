@@ -51,7 +51,6 @@
     
      <p class="text-center">
     This tool calculates the Dusk gain of various <a href="https://milliononmars.io/register?recruiter=uyzr.wam">Million on Mars</a> tasks.
-    <span style="color: #c17e1f">It does not account for <a href="https://milliononmars.io/treasury" style="color: #c17e1f">Dynamic Treasury</a> multipliers (yet).</span>
     <br>
     It is independently developed and may not incorporate the latest game updates, do your own calculations before making major decisions!
 </p>
@@ -318,6 +317,7 @@
 		mounted:function() {
             this.loadYAML();
             this.loadMarket();
+            this.loadPools();
             
             // load user settings            
             for (i = 0; i < localStorage.length; i++) {
@@ -355,8 +355,9 @@
 	    data: {
             odata: {},
             market: {},
+            pools: {},
             sources_loaded: 0,
-            sources_to_load: 2,
+            sources_to_load: 3,
             buy_price: ['Last Sold', '24H Avg', 'Split', 'Lower', 'Higher'],
             selected_buy_price: 'Last Sold',
             sell_price: ['Last Sold', '24H Avg', 'Split', 'Lower', 'Higher'],
@@ -546,19 +547,28 @@
                 }
                 this.level_hide_count = sumValues(this.level_hides);
             },
+            calcAge(tdiff) {
+                if (tdiff < 60)
+                    return "updated < 1 min ago";
+                else if (tdiff < 3600)
+                    return "updated " + Math.round(tdiff / 60) + " mins ago";
+                else if (tdiff < 5400)
+                    return "updated 1 hour ago";
+                else
+                    return "updated " + Math.round(tdiff / 3600) + " hours ago"
+            },
             updateTimer() {
                 if (this.market_timestamp == 0)
                     return;
                 let tdiff = ((new Date()).getTime() - this.market_timestamp.getTime()) / 1000;
-                if (tdiff < 60)
-                    this.market_timetext = "updated < 1 min ago";
-                else if (tdiff < 3600)
-                    this.market_timetext = "updated " + Math.round(tdiff / 60) + " mins ago";
-                else if (tdiff < 5400)
-                    this.market_timetext = "updated 1 hour ago";
-                else
-                    this.market_timetext = "updated " + Math.round(tdiff / 3600) + " hours ago"
+                this.market_timetext = this.calcAge(tdiff);
                 this.market_time_warning = (tdiff > 5400);
+            },
+            getPoolMult(poolname) {
+                if (poolname in this.pools)
+                    return parseFloat(this.pools[poolname])
+                console.log('Error: Unknown pool', poolname);
+                return 1.0;
             },
             getStaminaCost(method) {
                 let food = this.getPrice('food', this.selected_buy_price);
@@ -569,13 +579,13 @@
                 if (method == 'Eat Feast')
                     return (90 * food + 30 * water - 6 * waste) / 32;
                 if (method == 'Eat Mushroom Cake')
-                    return (this.getPrice('mushroom_cake', this.selected_buy_price) - 2.5 * waste - 10) / 18;
+                    return (this.getPrice('mushroom_cake', this.selected_buy_price) - 2.5 * waste - 10 * this.getPoolMult('Metis')) / 18;
                 if (method == 'Drink Coffee')
                     return this.getPrice('coffee_brewed', this.selected_buy_price) / 8;
                 if (method == 'Slava Ukraini')
-                    return (this.getPrice('coffee_brewed', this.selected_buy_price) - 2) / 10;
+                    return (this.getPrice('coffee_brewed', this.selected_buy_price) - 2  * this.getPoolMult('Dimorphos')) / 10;
                 if (method == 'Drink Mushroom Tea')
-                    return (this.getPrice('mushroom_tea', this.selected_buy_price) - 7) / 15;
+                    return (this.getPrice('mushroom_tea', this.selected_buy_price) - 7 * this.getPoolMult('Metis')) / 15;
                 if (method == 'Sunflower Seeds')
                     return (this.getPrice('sunflower_seeds_roasted', this.selected_buy_price) - 1.5 * waste) / 7.5;
                 if (method == 'Sunflower Snack')
@@ -653,7 +663,11 @@
                         }
                     }
                     console.log('Cheapest Shards:', JSON.stringify(shard_name));
-                    console.log('Cantina Coin I:', localnum(this.getPrice('cantina_coin')));
+                    console.log('Cantina Coin I:', localnum((this.getPrice('power') * 20
+                           + this.getPrice('aluminum_plate', this.selected_sell_price)
+                           + this.getPrice('metal_bits', this.selected_sell_price) * 15
+                           + this.getPrice('stamina') * 2
+                           + this.getPrice('machining_tools', this.selected_sell_price) * 2) / 15));
                     console.log('Catina Coin: Aluminum -', localnum(this.getPrice('aluminum_plate', this.selected_sell_price) / 10), 'each; Titanium -', localnum(this.getPrice('titanium_plate', this.selected_sell_price) / 25), 'each');   
                 }
                 return this.cheapest_shard[rarity];
@@ -677,11 +691,13 @@
                 if (id == 'surveyor_coin')
                     return 45;
                 if (id == 'cantina_coin')
-                    return (this.getPrice('power') * 20
+                    return Math.min((this.getPrice('power') * 20
                            + this.getPrice('aluminum_plate', type)
                            + this.getPrice('metal_bits', type) * 15
                            + this.getPrice('stamina') * 2
-                           + this.getPrice('machining_tools', type) * 2) / 15;
+                           + this.getPrice('machining_tools', type) * 2) / 15,
+                           this.getPrice('aluminum_plate', type) / 10,
+                           this.getPrice('titanium_plate', type) / 25);
                 if (id == 'resource_credit')
                     return 0.16;
                 
@@ -772,7 +788,7 @@
             building_name(id) {
                 return (id === undefined) ? '' : this.odata.buildings[id].display_name
             },
-            processLoot(key2, value2, items, sale) {
+            processLoot(key2, value2, items, sale, poolmult) {
                 let min_gain = null;
                 let max_gain = null;
                 let repeat = 1;
@@ -792,7 +808,7 @@
                         let r_items = {};
                         let r_sale = { min: 0, max: 0, avg: 0, gain: 0 };
                         key2 = Object.keys(value2[i])[0];
-                        this.processLoot(key2, value2[i][key2], r_items, r_sale);
+                        this.processLoot(key2, value2[i][key2], r_items, r_sale, poolmult);
 
                         probs = [percent, r_sale.min, r_sale.max];
                         
@@ -809,7 +825,9 @@
                     } else {
                         probs = value2[i][item];
                         price = this.getPrice(item, this.selected_sell_price);
-                    
+                        if (item == 'dusk')
+                            price = price * poolmult;
+                        
                         let avg_yield = (probs[1] + probs[2]) / 2;
                     
                         if (items.hasOwnProperty(item)) {
@@ -900,40 +918,54 @@
                         if (key2 == 'lootset' || key2 == 'lootlist') {
                             let items = {};
                             
-                            this.processLoot(key2, value2, items, sale);
+                            let poolmult = 1.0;
+                            if ('pool' in this.odata.recipes[key])
+                                poolmult = this.getPoolMult(this.odata.recipes[key].pool)
+                            this.processLoot(key2, value2, items, sale, poolmult);
                             
                             sale.gain = 0;
                             sale.avg = 0;
 
                             for (const [aitem, values] of Object.entries(items)) {
+                                let dusk_mult = '';
+                                if (aitem == 'dusk') {
+                                    if ('pool' in this.odata.recipes[key]) {
+                                        dusk_mult = ' x ' + this.getPoolMult(this.odata.recipes[key].pool);
+                                    }
+                                    sale.gain += values.price
+                                } else {
+                                    sale.gain += values.price * 0.95;
+                                }
                                 let titem = {
-                                    resource: values.name + ' x ' + localnum(values.number),
+                                    resource: values.name + ' x ' + localnum(values.number) + dusk_mult,
                                     value_num: values.price,
                                     value_txt: localnum(values.price),
                                     volume: this.resourceVolume(aitem)
                                 }
                                 sale.avg += values.price;
-                                if (aitem == 'dusk') {
-                                    sale.gain += values.price
-                                } else {
-                                    sale.gain += values.price * 0.95;
+                                if (aitem != 'dusk')
                                     titem.unitcost = localnum(this.getPrice(aitem, this.selected_sell_price));
-                                }
                                 sale_breakdown.push(titem);
                             }
                         } else {
                             let item = {}
+                            let dusk_mult_txt = '';
+                            let poolmult = 1.0;
                             if (Array.isArray(value2)) {
-                                sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0];
-                                sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1];
-                                sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2];
+                                if (key2 == 'dusk' && 'pool' in this.odata.recipes[key]) {
+                                    poolmult = this.getPoolMult(this.odata.recipes[key].pool)
+                                    dusk_mult_txt = ' x ' + poolmult
+                                }
+                                sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult;
+                                sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult;
+                                sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
                                 if (key2 == 'dusk' || key2 == 'cantina_coin') {
-                                    sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2];
-                                    market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * 0.05;
-                                    market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * 0.05;
+                                    sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
+                                    market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult * 0.05;
+                                    market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult * 0.05;
                                 } else
                                     sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
-                                item.resource = this.resourceName(key2) + ' x ' + value2[2];
+                                item.resource = this.resourceName(key2) + ' x ' + value2[2] + dusk_mult_txt;
                                 item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2];
                                 item.value_txt = localnum(item.value_num);
                                 if (value2[2] > 1 && key2 != 'dusk')
@@ -1124,6 +1156,23 @@
                         this.market_time_warning = true;
                     })
                 if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
+            },
+            async loadPools() {
+                await fetch("https://us-west-2.aws.data.mongodb-api.com/app/mommarketreader-uqbem/endpoint/pools")
+                   .then(res => res.json())
+                   .then(out => {
+                       this.pools = out.pools;                       
+                       let tdiff = ((new Date()).getTime() - new Date(out.time).getTime()) / 1000;
+                       console.log('Pool data', this.calcAge(tdiff));
+                       this.sources_loaded++;
+                       console.log(this.pools)
+                    })
+                   .catch(err => {
+                       console.log('pool error:', err);
+                       this.market_timetext = 'failed to load.';
+                       this.market_time_warning = true;
+                   })
+               if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
             },
             getColor (roi) {
                 if (roi == 0) return 'black'
