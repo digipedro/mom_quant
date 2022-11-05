@@ -96,6 +96,8 @@
             display_name: Steel Machined Spring
         raw_graphite:
             display_name: Graphite
+        crafted_sowing_kit:
+            display_name: Crafted Seed Sowing Kit
         crafted_ec_kit:
             display_name: Crafted Energy Core Kit
         empty_ec:
@@ -1123,6 +1125,19 @@
                 minting_token: 1
             output:
                 scavenging_tools_Journeyman: 1
+        create_seed_sowing_kit:
+            display_name: Create Seed Sowing Kit
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                stamina: 5
+                power: 20
+                glass_panel: 2
+                aluminum_plate: 5
+                machining_tools: 3
+            output:
+                crafted_sowing_kit: 1
         #3d print shop
         make_electronic_bits:
             display_name: Make Electronic Bits

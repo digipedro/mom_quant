@@ -1165,7 +1165,6 @@
                        let tdiff = ((new Date()).getTime() - new Date(out.time).getTime()) / 1000;
                        console.log('Pool data', this.calcAge(tdiff));
                        this.sources_loaded++;
-                       console.log(this.pools)
                     })
                    .catch(err => {
                        console.log('pool error:', err);
