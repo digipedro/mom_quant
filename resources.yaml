@@ -269,6 +269,176 @@
                 stamina: 5
             output:
                 lifescience_tools_a: 1
+        sow_carrot_C1:
+            display_name: Sow Carrot Seeds (C,UC)
+            building: greenhouse
+            level:
+                life science: 55
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 3
+                power: 15
+                water: 10
+                lifescience_tools: 1
+                carrot_seed: 60
+                soil: 4
+            output:
+                lootlist:
+                    - carrot_seed: [1, 55, 60]
+                    - carrot_seed: [0.4, 0, 8]
+        sow_carrot_E1:
+            display_name: Sow Carrot Seeds (R,E,L,M)
+            building: greenhouse
+            level:
+                life science: 55
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 4
+                power: 15
+                water: 10
+                lifescience_tools: 1
+                carrot_seed: 60
+                soil: 4
+            output:
+                lootlist:
+                    - carrot_seed: [1, 55, 60]
+                    - carrot_seed: [0.4, 0, 8]
+        sow_coffee_C1:
+            display_name: Sow Coffee Seeds
+            building: greenhouse
+            level:
+                life science: 65
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 3
+                power: 8
+                water: 10
+                lifescience_tools: 1
+                coffee_seed: 80
+                soil: 1
+            output:
+                lootlist:
+                    - coffee_seed: [1, 75, 80]
+                    - coffee_seed: [0.4, 0, 8]
+        sow_lettuce_C1:
+            display_name: Sow Lettuce Seeds
+            building: greenhouse
+            level:
+                life science: 50
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 2
+                power: 10
+                water: 8
+                lifescience_tools: 1
+                lettuce_seed: 80
+                soil: 2
+            output:
+                lootlist:
+                    - lettuce_seed: [1, 76, 80]
+                    - lettuce_seed: [0.4, 0, 6]
+        sow_sorghum_C1:
+            display_name: Sow Sorghum Seeds
+            building: greenhouse
+            level:
+                life science: 55
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 3
+                power: 10
+                water: 15
+                lifescience_tools: 1
+                sorghum_seed: 150
+                soil: 3
+            output:
+                lootlist:
+                    - sorghum_seed: [1, 140, 150]
+                    - sorghum_seed: [0.4, 0, 20]
+        sow_soy_C1:
+            display_name: Sow Soy Seeds (Common)
+            building: greenhouse
+            level:
+                life science: 70
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 5
+                power: 10
+                water: 5
+                lifescience_tools: 1
+                soy_seed: 20
+                soil: 7
+            output:
+                lootlist:
+                    - soy_seed: [1, 18, 20]
+                    - soy_seed: [0.4, 0, 3]
+        sow_soy_E1:
+            display_name: Sow Soy Seeds (Uncommon+)
+            building: greenhouse
+            level:
+                life science: 70
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 5
+                power: 30
+                water: 30
+                lifescience_tools: 1
+                soy_seed: 20
+                soil: 7
+            output:
+                lootlist:
+                    - soy_seed: [1, 18, 20]
+                    - soy_seed: [0.4, 0, 3]
+        sow_sprouts_C1:
+            display_name: Sow Sprout Seeds
+            building: greenhouse
+            level:
+                life science: 50
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 2
+                power: 10
+                water: 5
+                lifescience_tools: 1
+                sprout_seed: 500
+                soil: 1
+            output:
+                lootlist:
+                    - sprout_seed: [1, 475, 500]
+                    - sprout_seed: [0.4, 0, 30]
+        sow_sunflowers_C1:
+            display_name: Sow Sunflower Seeds
+            building: greenhouse
+            level:
+                life science: 60
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 3
+                power: 20
+                water: 10
+                lifescience_tools: 1
+                sunflower_seeds: 80
+                soil: 3
+            output:
+                lootlist:
+                    - sunflower_seeds: [1, 75, 80]
+                    - sunflower_seeds: [0.4, 0, 8]
+        sow_sweet_potato_C1:
+            display_name: Sow Sweet Potato Seeds
+            building: greenhouse
+            level:
+                life science: 60
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 4
+                power: 20
+                water: 25
+                lifescience_tools: 1
+                sweet_potato_seed: 50
+                soil: 5
+            output:
+                lootlist:
+                    - sweet_potato_seed: [1, 46, 50]
+                    - sweet_potato_seed: [0.4, 0, 8]
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide

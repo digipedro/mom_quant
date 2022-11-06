@@ -227,6 +227,7 @@
                 <v-list-item-title><b>{{props.item.name}}</b> : <span class="dusk">{{ props.item.cost | localnum}}</span></v-list-item-title>
                 <small v-if="props.item.level_required" style="color: #99f">{{ props.item.level_required }}</small>
                 <small v-if="props.item.day_text" style="color: #99f">{{ props.item.day_text }}</small>
+                <small v-if="props.item.upgrade_text" style="color: #9d9">{{ props.item.upgrade_text }}</small>
                 <v-divider></v-divider>
                 <template v-for="(line, index) in props.item.cost_breakdown">
                     <v-list-item-content>
@@ -1066,6 +1067,10 @@
                         } else {
                             entry.day_text = this.expandDay(value.day);
                         }
+                    }
+                    
+                    if (value.upgrade) {
+                        entry.upgrade_text = value.upgrade;
                     }
                 
                     if (first_time) {
