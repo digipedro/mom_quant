@@ -5671,8 +5671,6 @@
         feed_worms_C1:
             display_name: Feed Worms
             building: composter
-            level:
-                life science: 0
             input:
                 stamina: 1
                 power: 10
@@ -5771,8 +5769,6 @@
         make_soil_I_C1:
             display_name: Accelerate Soil Production I
             building: composter
-            level:
-                life science: 0
             input:
                 stamina: 1
                 power: 10
