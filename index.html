@@ -688,6 +688,9 @@
                 }
                 if (id == 'dusk')
                     return 1;
+                if (id == 'biowaste')
+                    return (this.getStaminaCost(this.selected_stamina_source) + this.getPowerCost(this.selected_power_source) * 10
+                        + this.getPrice('water', type) * 3 + this.getPrice('waste', type) * 10 + this.getPrice('regolith', type) * 50);
                 
                 if (id == 'surveyor_coin')
                     return 45;
