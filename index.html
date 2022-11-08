@@ -312,6 +312,15 @@
                 scavenging: 0
             };
       
+      // items not to assess market fees on
+      const off_market_items = [
+          'biowaste',
+          'worm_storage',
+          'soil_storage',
+          'dusk',
+          'cantina_coin'
+      ]
+      
       
 	  var vv = new Vue({
 	    el: '#app',
@@ -673,6 +682,18 @@
                 }
                 return this.cheapest_shard[rarity];
             },
+            getTaskCost(id) {
+                if (!this.odata.recipes[id]) {
+                    console.log('ERROR: No recipe', id);
+                    return null;
+                }
+                
+                let cost = 0;
+                for (const [k, v] of Object.entries(this.odata.recipes[id].input))
+                    cost += this.getPrice(k, this.selected_buy_price) * v;
+                
+                return cost;
+            },
             getPrice(id, type = 'Split') {                                
                 if (id == 'power')
                     return this.getPowerCost(this.selected_power_source);
@@ -688,9 +709,6 @@
                 }
                 if (id == 'dusk')
                     return 1;
-                if (id == 'biowaste')
-                    return (this.getStaminaCost(this.selected_stamina_source) + this.getPowerCost(this.selected_power_source) * 10
-                        + this.getPrice('water', type) * 3 + this.getPrice('waste', type) * 10 + this.getPrice('regolith', type) * 50);
                 
                 if (id == 'surveyor_coin')
                     return 45;
@@ -719,6 +737,17 @@
                         return this.getCheapestShards(rarity) * 10;
                 }
 
+                // composter stuff
+                if (id == 'biowaste')
+                    return (this.getStaminaCost(this.selected_stamina_source) + this.getPowerCost(this.selected_power_source) * 10
+                        + this.getPrice('water', type) * 3 + this.getPrice('waste', type) * 10 + this.getPrice('regolith', type) * 50);
+                if (id == 'soil_storage')
+                    return (this.getTaskCost('make_soil_II_C1') / 17.5);
+                if (id == 'worm_storage')
+                    return (this.getTaskCost('feed_worms_C1'));
+
+
+                // regular market lookup
                 for (let i = 0; i < this.market.length; i++) {
                     if (this.market[i].id == id) {
                         if (type == 'Last Sold')
@@ -733,6 +762,7 @@
                             return Math.max(this.market[i].attributes.lastSoldPrice, this.market[i].attributes.averageDaySoldPrice);
                     }
                 }
+                
                                 
                 console.log('ERROR: No price for', id);
                 
@@ -841,7 +871,7 @@
                         }
                     }
                     
-                    let market_fee = (item == 'dusk' || item == 'cantina_coin') ? 1.0 : 0.95
+                    let market_fee = (off_market_items.includes(item)) ? 1.0 : 0.95
                     
                     if (probs[0] == 1) {
                         if (min_gain == null)
@@ -895,7 +925,7 @@
             },
             buildTable(first_time = false) {
                 this.liquidity_hide_count = 0;
-                for (const [key, value] of Object.entries(this.odata.recipes)) {  
+                for (const [key, value] of Object.entries(this.odata.recipes)) {
                     let cost = 0;
                     let cost_breakdown = [];
                     let power_used = 0;
@@ -924,6 +954,8 @@
                             
                             sale.gain = 0;
                             sale.avg = 0;
+                            
+
 
                             for (const [aitem, values] of Object.entries(items)) {
                                 let dusk_mult = '';
@@ -933,7 +965,10 @@
                                     }
                                     sale.gain += values.price
                                 } else {
-                                    sale.gain += values.price * 0.95;
+                                    if (off_market_items.includes(aitem))
+                                        sale.gain += values.price
+                                    else
+                                        sale.gain += values.price * 0.95;
                                 }
                                 let titem = {
                                     resource: values.name + ' x ' + localnum(values.number) + dusk_mult,
@@ -958,7 +993,7 @@
                                 sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult;
                                 sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult;
                                 sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
-                                if (key2 == 'dusk' || key2 == 'cantina_coin') {
+                                if (off_market_items.includes(key2)) {
                                     sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
                                     market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult * 0.05;
                                     market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult * 0.05;
@@ -974,7 +1009,7 @@
                                 sale.min += avg_price;
                                 sale.max += avg_price;
                                 sale.avg += avg_price;
-                                if (key2 == 'dusk' || key2 == 'cantina_coin')
+                                if (off_market_items.includes(key2))
                                     sale.gain += avg_price
                                 else
                                     sale.gain += avg_price * 0.95;
@@ -1012,7 +1047,11 @@
                     // liquidity filter
                     if (this.liquidity_slider > 0) {
                         for (i = 0; i < sale_breakdown.length; i++) {
-                             if (sale_breakdown[i].resource.startsWith("Dusk") || sale_breakdown[i].resource.startsWith("Resource credit"))
+                             if (sale_breakdown[i].resource.startsWith("Dusk") ||
+                                 sale_breakdown[i].resource.startsWith("Resource credit") ||
+                                 sale_breakdown[i].resource.startsWith("Soil storage") ||
+                                 sale_breakdown[i].resource.startsWith("Work storage") ||
+                                 sale_breakdown[i].resource.startsWith("Biowaste"))
                                 continue;
                             if ((sale_breakdown[i].value_num * 2) >= sale.gain && sale_breakdown[i].volume < this.liquidity_slider_values[this.liquidity_slider]) {
                                 show = false;
@@ -1177,7 +1216,7 @@
                if (this.sources_loaded == this.sources_to_load) this.buildTable(true);
             },
             getColor (roi) {
-                if (roi == 0) return 'black'
+                if (roi == 0) return '#1e1e1e'
                 if (roi > 5) return 'green'
                 if (roi < -5) return 'red'
                 return 'darkgrey'
