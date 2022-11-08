@@ -251,7 +251,7 @@
             output:
                 lootlist:
                     - sunflower_seeds: [0.1, 1, 3]
-                    - sunflower: [1, 1, 2]
+                    - sunflowers: [1, 1, 2]
                     - soil: [0.2, 1, 1]
                     - shard_glushkos_greenhouse_A: [0.0033, 1, 1]
         make_apprentice_lifescience_tools:

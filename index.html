@@ -733,12 +733,7 @@
                             return Math.max(this.market[i].attributes.lastSoldPrice, this.market[i].attributes.averageDaySoldPrice);
                     }
                 }
-                
-                // items not in market but may be added in future
-                
-                if (id == 'sunflower')
-                    return 0;
-                
+                                
                 console.log('ERROR: No price for', id);
                 
                 return NaN;
