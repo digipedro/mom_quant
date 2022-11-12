@@ -4630,23 +4630,6 @@
             output:
                 empty_ec: 1
         #Shelter
-        sprouts_aeroponic_experimentation:
-            display_name: Sprouts Aeroponic Experimentation
-            building: shelter
-            input:
-                stamina: 3
-                power: 10
-                carbon_dioxide: 1
-                water: 5
-                sprout_seed: 5
-                nitrogen: 1
-                waste: 1
-                lifescience_tools: 1
-            output:
-                food: [30, 40, 35]
-                oxygen: [15, 35, 10]
-                sprout_seed: [1, 5, 0.3]
-                nitrogen: [0, 1, 0.4]
         extra_credit:
             display_name: Extra Credit
             building: shelter
