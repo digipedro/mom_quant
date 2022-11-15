@@ -282,10 +282,12 @@
                 lifescience_tools: 1
                 bamboo_seed: 100
                 soil: 1
+                fertilizer: 1
             output:
                 lootlist:
-                    - bamboo_seed: [1, 90, 100]
-                    - bamboo_seed: [0.4, 0, 15]
+                    - bamboo_seed: [1, 80, 120]
+                    - bamboo_seed: [0.8, 0, 5]
+                    - bamboo_seed: [0.4, 0, 25]
         sow_carrot_C1:
             display_name: Sow Carrot Seeds (C,UC)
             building: greenhouse
@@ -299,12 +301,14 @@
                 lifescience_tools: 1
                 carrot_seed: 60
                 soil: 4
+                fertilizer: 2
             output:
                 lootlist:
-                    - carrot_seed: [1, 55, 60]
-                    - carrot_seed: [0.4, 0, 8]
+                    - carrot_seed: [1, 50, 65]
+                    - carrot_seed: [0.8, 0, 10]
+                    - carrot_seed: [0.4, 0, 25]
         sow_carrot_E1:
-            display_name: Sow Carrot Seeds (R,E,L,M)
+            display_name: Sow Carrot Seeds (Rare+)
             building: greenhouse
             level:
                 life science: 55
@@ -316,10 +320,12 @@
                 lifescience_tools: 1
                 carrot_seed: 60
                 soil: 4
+                fertilizer: 2
             output:
                 lootlist:
-                    - carrot_seed: [1, 55, 60]
-                    - carrot_seed: [0.4, 0, 8]
+                    - carrot_seed: [1, 50, 65]
+                    - carrot_seed: [0.8, 0, 10]
+                    - carrot_seed: [0.4, 0, 25]
         sow_coffee_C1:
             display_name: Sow Coffee Seeds
             building: greenhouse
@@ -333,10 +339,12 @@
                 lifescience_tools: 1
                 coffee_seed: 80
                 soil: 1
+                fertilizer: 3
             output:
                 lootlist:
-                    - coffee_seed: [1, 75, 80]
-                    - coffee_seed: [0.4, 0, 8]
+                    - coffee_seed: [1, 75, 85]
+                    - coffee_seed: [0.8, 0, 15]
+                    - coffee_seed: [0.4, 0, 25]
         sow_lettuce_C1:
             display_name: Sow Lettuce Seeds
             building: greenhouse
@@ -350,10 +358,12 @@
                 lifescience_tools: 1
                 lettuce_seed: 80
                 soil: 2
+                fertilizer: 1
             output:
                 lootlist:
-                    - lettuce_seed: [1, 76, 80]
-                    - lettuce_seed: [0.4, 0, 6]
+                    - lettuce_seed: [1, 75, 85]
+                    - lettuce_seed: [0.8, 0, 15]
+                    - lettuce_seed: [0.4, 0, 20]
         sow_sorghum_C1:
             display_name: Sow Sorghum Seeds
             building: greenhouse
@@ -367,10 +377,12 @@
                 lifescience_tools: 1
                 sorghum_seed: 150
                 soil: 3
+                fertilizer: 2
             output:
                 lootlist:
-                    - sorghum_seed: [1, 140, 150]
-                    - sorghum_seed: [0.4, 0, 20]
+                    - sorghum_seed: [1, 140, 165]
+                    - sorghum_seed: [0.8, 0, 15]
+                    - sorghum_seed: [0.4, 0, 25]
         sow_soy_C1:
             display_name: Sow Soy Seeds (Common)
             building: greenhouse
@@ -382,12 +394,14 @@
                 power: 10
                 water: 5
                 lifescience_tools: 1
-                soy_seed: 20
+                soy_seed: 30
                 soil: 7
+                fertilizer: 4
             output:
                 lootlist:
-                    - soy_seed: [1, 18, 20]
-                    - soy_seed: [0.4, 0, 3]
+                    - soy_seed: [1, 15, 45]
+                    - soy_seed: [0.8, 0, 5]
+                    - soy_seed: [0.4, 0, 10]
         sow_soy_E1:
             display_name: Sow Soy Seeds (Uncommon+)
             building: greenhouse
@@ -399,12 +413,14 @@
                 power: 30
                 water: 30
                 lifescience_tools: 1
-                soy_seed: 20
+                soy_seed: 30
                 soil: 7
+                fertilizer: 4
             output:
                 lootlist:
-                    - soy_seed: [1, 18, 20]
-                    - soy_seed: [0.4, 0, 3]
+                    - soy_seed: [1, 15, 45]
+                    - soy_seed: [0.8, 0, 5]
+                    - soy_seed: [0.4, 0, 10]
         sow_sprouts_C1:
             display_name: Sow Sprout Seeds
             building: greenhouse
@@ -418,10 +434,12 @@
                 lifescience_tools: 1
                 sprout_seed: 500
                 soil: 1
+                fertilizer: 1
             output:
                 lootlist:
-                    - sprout_seed: [1, 475, 500]
-                    - sprout_seed: [0.4, 0, 30]
+                    - sprout_seed: [1, 480, 540]
+                    - sprout_seed: [0.8, 0, 25]
+                    - sprout_seed: [0.4, 0, 50]
         sow_sunflowers_C1:
             display_name: Sow Sunflower Seeds
             building: greenhouse
@@ -435,10 +453,12 @@
                 lifescience_tools: 1
                 sunflower_seeds: 80
                 soil: 3
+                fertilizer: 2
             output:
                 lootlist:
                     - sunflower_seeds: [1, 75, 80]
-                    - sunflower_seeds: [0.4, 0, 8]
+                    - sunflower_seeds: [0.8, 0, 10]
+                    - sunflower_seeds: [0.4, 0, 35]
         sow_sweet_potato_C1:
             display_name: Sow Sweet Potato Seeds
             building: greenhouse
@@ -452,10 +472,12 @@
                 lifescience_tools: 1
                 sweet_potato_seed: 50
                 soil: 5
+                fertilizer: 2
             output:
                 lootlist:
-                    - sweet_potato_seed: [1, 46, 50]
-                    - sweet_potato_seed: [0.4, 0, 8]
+                    - sweet_potato_seed: [1, 40, 60]
+                    - sweet_potato_seed: [0.8, 0, 5]
+                    - sweet_potato_seed: [0.4, 0, 15]
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide
