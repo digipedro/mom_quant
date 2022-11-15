@@ -3707,7 +3707,7 @@
                 research_machining_a: [0, 2, 0.0375]
                 research_machining_j: [0, 1, 0.0083]
         machining_401:
-            display_name: "Machining 401: Assembling"
+            display_name: "Machining 401: Metal Casting"
             building: library
             level:
                 machining: 75
@@ -3715,7 +3715,8 @@
             input:
                 stamina: 8
                 power: 40
-                smelt_steel: 7
+                smelt_titanium: 1
+                smelt_copper: 2
                 shard_research: 5
                 machining_tools: 4
             output:
