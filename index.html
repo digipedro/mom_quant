@@ -929,7 +929,7 @@
                     let cost = 0;
                     let cost_breakdown = [];
                     let power_used = 0;
-                    let stamins_used = 0;
+                    let stamina_used = 0;
                     for (const [key2, value2] of Object.entries(this.odata.recipes[key].input)) {
                         let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
                         cost += unit_cost;
@@ -1031,7 +1031,7 @@
                         divisor = (power_used / 20);
                     else if (this.selected_gain_mode == "Gain per Stamina")
                         divisor = stamina_used;
-                        
+                                        
                     if (divisor == 0)
                         gain = '---'
                     else {
