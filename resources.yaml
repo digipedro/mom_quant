@@ -4205,39 +4205,6 @@
                 fabrication_tools: 3
             output:
                 3d_print_shop-gen2_R1: 1
-        craft_CAD_kit_gen3:
-            display_name: Craft C.A.D. Kit (Gen 3)
-            building: engineering_bay
-            level:
-                fabrication: 45
-            input:
-                power: 40
-                stamina: 5
-                concrete: 2
-                smelt_steel: 1
-                electronic_bits: 15
-                fabrication_tools: 2
-            output:
-                cad_kit: 1
-        craft_CAD_gen3:
-            display_name: Craft C.A.D. (Gen 3)
-            building: engineering_bay
-            level:
-                fabrication: 55
-            input:
-                power: 200
-                stamina: 5
-                cad_kit: 1
-                minting_token: 3
-                fabrication_tools: 3
-            output:
-                lootset:
-                    - cad-gen3_C1: [0.465, 0, 1]
-                    - cad-gen3_U1: [0.3, 0, 1]
-                    - cad-gen3_R1: [0.15, 0, 1]
-                    - cad-gen3_E1: [0.06, 0, 1]
-                    - cad-gen3_L1: [0.02, 0, 1]
-                    - cad-gen3_M1: [0.005, 0, 1]
         craft_chem_lab_gen2_c:
             display_name: Craft Common Chem Lab (Gen 2)
             building: engineering_bay
