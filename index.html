@@ -318,7 +318,8 @@
           'worm_storage',
           'soil_storage',
           'dusk',
-          'cantina_coin'
+          'cantina_coin',
+          'moisture'
       ]
       
       
@@ -742,10 +743,11 @@
                     return (this.getStaminaCost(this.selected_stamina_source) + this.getPowerCost(this.selected_power_source) * 10
                         + this.getPrice('water', type) * 3 + this.getPrice('waste', type) * 10 + this.getPrice('regolith', type) * 50);
                 if (id == 'soil_storage')
-                    return (this.getTaskCost('make_soil_II_C1') / 17.5);
+                    return (this.getTaskCost('make_soil_I_C1') / 7.5);
                 if (id == 'worm_storage')
-                    return (this.getTaskCost('feed_worms_C1'));
-
+                    return (this.getTaskCost('feed_worms_C1') - this.getPrice('moisture', type) * 1.5);
+                if (id == 'moisture')
+                    return 0 - ((this.getTaskCost('composter_sunflowers_C1') - this.getPrice('biowaste', type) * 1.35) / 2.5);
 
                 // regular market lookup
                 for (let i = 0; i < this.market.length; i++) {
@@ -1025,6 +1027,8 @@
                     }
                     let gain = (sale.gain - cost);
                     let roi = (gain / cost * 100);
+                    if (roi > -0.001 && roi < 0.001)
+                        roi = 0.0;
                     
                     let divisor = 1;
                     if (this.selected_gain_mode == "Gain per Power Cell")
