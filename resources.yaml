@@ -2418,8 +2418,8 @@
                     - regolith: [1, 400, 600]
                     - regolith: [0.1111, 25, 100]
                     - barite: [0.1, 1, 5]
-                    - halite: [0.1, 1, 10]
-                    - water_rich_clay: [0.1, 1, 2]
+                    - sulfur: [0.1, 5, 7]
+                    - beryl: [0.018, 2, 4]
         regolith_mining_II_C1:
             display_name: Regolith Mining II
             building: mining_rig
@@ -2435,9 +2435,7 @@
                     - regolith: [1, 200, 300]
                     - regolith: [0.1111, 10, 100]
                     - barite: [0.75, 5, 10]
-                    - barite: [0.1, 5, 10]
-                    - halite: [0.1, 1, 7]
-                    - water_rich_clay: [0.1, 1, 2]
+                    - sulfur: [0.1, 3, 5]
         regolith_mining_I_C1:
             display_name: Regolith Mining I
             building: mining_rig
@@ -2449,9 +2447,7 @@
                 lootlist:
                     - regolith: [1, 100, 150]
                     - regolith: [0.1111, 10, 50]
-                    - barite: [0.2857, 5, 5]
-                    - halite: [0.1, 1, 5]
-                    - sulfur: [0.1, 1, 5]
+                    - barite: [0.1, 1, 5]
         ice_mining_III_C1:
             display_name: Ice Mining III
             building: mining_rig
@@ -2465,8 +2461,9 @@
                 lootlist:
                     - ice: [1, 250, 350]
                     - ice: [0.1111, 25, 100]
-                    - sulfur: [0.1, 1, 10]
-                    - water_rich_clay: [0.1, 1, 3]
+                    - halite: [0.1, 5, 10]
+                    - water_rich_clay: [0.1, 2, 3]
+                    - fluorite: [0.025, 2, 3]
         ice_mining_II_C1:
             display_name: Ice Mining II
             building: mining_rig
@@ -2481,9 +2478,7 @@
                     - ice: [1, 100, 200]
                     - ice: [0.1111, 10, 100]
                     - halite: [0.1, 5, 10]
-                    - barite: [0.1, 1, 10]
-                    - sulfur: [0.1, 1, 10]
-                    - water_rich_clay: [0.1, 1, 2]
+                    - water_rich_clay: [0.05, 1, 3]
         ice_mining_I_C1:
             display_name: Ice Mining I
             building: mining_rig
@@ -2495,7 +2490,6 @@
                     - ice: [1, 25, 75]
                     - ice: [0.1111, 10, 50]
                     - halite: [0.1, 3, 10]
-                    - barite: [0.1, 1, 10]
         make_apprentice_mining_tools:
             display_name: Make Apprentice Mining Tools
             building: mining_rig
