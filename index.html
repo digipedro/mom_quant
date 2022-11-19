@@ -259,7 +259,7 @@
       </template>
       
       <template v-slot:item.gain="{ item }">
-          <div v-html="item.gain"></div> 
+          <div v-html="item.gain_text"></div> 
       </template>
       
       <template v-slot:item.roi="{ item }">
@@ -422,7 +422,7 @@
               { text: 'Name', align: 'start', value: 'name' },
               { text: 'Build Cost', value: 'cost' },
               { text: 'Sale Value', value: 'sale' },
-              { text: 'Gain (After Fees)', value: 'gain' },
+              { text: 'Gain (After Fees)', value: 'gain_text' },
               { text: 'ROI (After Fees)', value: 'roi' },
             ],
             resources: [],
@@ -460,7 +460,7 @@
                 for (const [key, value] of Object.entries(this.bldg_items)) {
                     this.bldg_items[key].disabled = !mode
                 }
-                this.buildTable()
+                this.buildTable(false, true)
             },
             menuClick(index) {
                window.location.href = this.menuitems[index].href;
@@ -468,7 +468,7 @@
             closeLevelDialog() {
                 this.level_dialog = false;
                 this.saveUserSettings()
-                this.buildTable()
+                this.buildTable(false, true)
             },
             filter(id) {
                 for (const [key, value] of Object.entries(this.bldg_items)) {
@@ -476,7 +476,7 @@
                         this.bldg_items[key].disabled = !this.bldg_items[key].disabled
                 }
                 this.saveUserSettings()
-                this.buildTable()
+                this.buildTable(false, true)
             },
             checkForFilter(id) {
                 for (const [key, value] of Object.entries(this.bldg_items)) {
@@ -538,7 +538,7 @@
             closeLiquidityDialog() {
                 this.liquidity_dialog = false;
                 this.saveUserSettings()
-                this.buildTable()
+                this.buildTable(false, true)
             },
             countHiddenByLevel() {
                 this.level_hides = {...default_level_hides}
@@ -925,125 +925,178 @@
                     return 'Sunday'
                 return ''
             },
-            buildTable(first_time = false) {
+            buildTable(first_time = false, filter_only = false) {
                 this.liquidity_hide_count = 0;
                 for (const [key, value] of Object.entries(this.odata.recipes)) {
-                    let cost = 0;
-                    let cost_breakdown = [];
-                    let power_used = 0;
-                    let stamina_used = 0;
-                    for (const [key2, value2] of Object.entries(this.odata.recipes[key].input)) {
-                        let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
-                        cost += unit_cost;
-                        cost_breakdown.push( {resource: this.resourceName(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
-                        if (key2 == "power")
-                            power_used = value2;
-                        if (key2 == "stamina")
-                            stamina_used = value2;
-                    }
-                    
+                    let entry = {}
                     let sale_breakdown = [];
                     let sale = { min: 0, max: 0, avg: 0, gain: 0}
-                    let market_fee_offset = [0, 0];
-                    for (const [key2, value2] of Object.entries(this.odata.recipes[key].output)) {
-                        if (key2 == 'lootset' || key2 == 'lootlist') {
-                            let items = {};
+                    
+                    if (!filter_only) {
+                        let cost = 0;
+                        let cost_breakdown = [];
+                        let power_used = 0;
+                        let stamina_used = 0;
+                        for (const [key2, value2] of Object.entries(this.odata.recipes[key].input)) {
+                            let unit_cost = this.getPrice(key2, this.selected_buy_price) * value2;
+                            cost += unit_cost;
+                            cost_breakdown.push( {resource: this.resourceName(key2) + ' x ' + value2, cost: localnum(unit_cost), unitcost: ( value2 > 1) ? localnum(this.getPrice(key2, this.selected_buy_price)) : null} );
+                            if (key2 == "power")
+                                power_used = value2;
+                            if (key2 == "stamina")
+                                stamina_used = value2;
+                        }
+                    
+                        let market_fee_offset = [0, 0];
+                        for (const [key2, value2] of Object.entries(this.odata.recipes[key].output)) {
+                            if (key2 == 'lootset' || key2 == 'lootlist') {
+                                let items = {};
                             
-                            let poolmult = 1.0;
-                            if ('pool' in this.odata.recipes[key])
-                                poolmult = this.getPoolMult(this.odata.recipes[key].pool)
-                            this.processLoot(key2, value2, items, sale, poolmult);
-                            
-                            sale.gain = 0;
-                            sale.avg = 0;
-                            
-
-
-                            for (const [aitem, values] of Object.entries(items)) {
-                                let dusk_mult = '';
-                                if (aitem == 'dusk') {
-                                    if ('pool' in this.odata.recipes[key]) {
-                                        dusk_mult = ' x ' + this.getPoolMult(this.odata.recipes[key].pool);
-                                    }
-                                    sale.gain += values.price
-                                } else {
-                                    if (off_market_items.includes(aitem))
-                                        sale.gain += values.price
-                                    else
-                                        sale.gain += values.price * 0.95;
-                                }
-                                let titem = {
-                                    resource: values.name + ' x ' + localnum(values.number) + dusk_mult,
-                                    value_num: values.price,
-                                    value_txt: localnum(values.price),
-                                    volume: this.resourceVolume(aitem)
-                                }
-                                sale.avg += values.price;
-                                if (aitem != 'dusk')
-                                    titem.unitcost = localnum(this.getPrice(aitem, this.selected_sell_price));
-                                sale_breakdown.push(titem);
-                            }
-                        } else {
-                            let item = {}
-                            let dusk_mult_txt = '';
-                            let poolmult = 1.0;
-                            if (Array.isArray(value2)) {
-                                if (key2 == 'dusk' && 'pool' in this.odata.recipes[key]) {
+                                let poolmult = 1.0;
+                                if ('pool' in this.odata.recipes[key])
                                     poolmult = this.getPoolMult(this.odata.recipes[key].pool)
-                                    dusk_mult_txt = ' x ' + poolmult
+                                this.processLoot(key2, value2, items, sale, poolmult);
+                            
+                                sale.gain = 0;
+                                sale.avg = 0;
+                            
+
+
+                                for (const [aitem, values] of Object.entries(items)) {
+                                    let dusk_mult = '';
+                                    if (aitem == 'dusk') {
+                                        if ('pool' in this.odata.recipes[key]) {
+                                            dusk_mult = ' x ' + this.getPoolMult(this.odata.recipes[key].pool);
+                                        }
+                                        sale.gain += values.price
+                                    } else {
+                                        if (off_market_items.includes(aitem))
+                                            sale.gain += values.price
+                                        else
+                                            sale.gain += values.price * 0.95;
+                                    }
+                                    let titem = {
+                                        resource: values.name + ' x ' + localnum(values.number) + dusk_mult,
+                                        value_num: values.price,
+                                        value_txt: localnum(values.price),
+                                        volume: this.resourceVolume(aitem)
+                                    }
+                                    sale.avg += values.price;
+                                    if (aitem != 'dusk')
+                                        titem.unitcost = localnum(this.getPrice(aitem, this.selected_sell_price));
+                                    sale_breakdown.push(titem);
                                 }
-                                sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult;
-                                sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult;
-                                sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
-                                if (off_market_items.includes(key2)) {
-                                    sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
-                                    market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult * 0.05;
-                                    market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult * 0.05;
-                                } else
-                                    sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
-                                item.resource = this.resourceName(key2) + ' x ' + value2[2] + dusk_mult_txt;
-                                item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
-                                item.value_txt = localnum(item.value_num);
-                                if (value2[2] > 1 && key2 != 'dusk')
-                                    item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
                             } else {
-                                let avg_price = this.getPrice(key2, this.selected_sell_price) * value2;
-                                sale.min += avg_price;
-                                sale.max += avg_price;
-                                sale.avg += avg_price;
-                                if (off_market_items.includes(key2))
-                                    sale.gain += avg_price
-                                else
-                                    sale.gain += avg_price * 0.95;
-                                item.resource = this.resourceName(key2) + ' x ' + value2;
-                                item.value_num = avg_price;
-                                item.value_txt = localnum(avg_price);
-                                if (value2 > 1 && key2 != 'dusk')
-                                    item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
+                                let item = {}
+                                let dusk_mult_txt = '';
+                                let poolmult = 1.0;
+                                if (Array.isArray(value2)) {
+                                    if (key2 == 'dusk' && 'pool' in this.odata.recipes[key]) {
+                                        poolmult = this.getPoolMult(this.odata.recipes[key].pool)
+                                        dusk_mult_txt = ' x ' + poolmult
+                                    }
+                                    sale.min += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult;
+                                    sale.max += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult;
+                                    sale.avg += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
+                                    if (off_market_items.includes(key2)) {
+                                        sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
+                                        market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult * 0.05;
+                                        market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult * 0.05;
+                                    } else
+                                        sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
+                                    item.resource = this.resourceName(key2) + ' x ' + value2[2] + dusk_mult_txt;
+                                    item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
+                                    item.value_txt = localnum(item.value_num);
+                                    if (value2[2] > 1 && key2 != 'dusk')
+                                        item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
+                                } else {
+                                    let avg_price = this.getPrice(key2, this.selected_sell_price) * value2;
+                                    sale.min += avg_price;
+                                    sale.max += avg_price;
+                                    sale.avg += avg_price;
+                                    if (off_market_items.includes(key2))
+                                        sale.gain += avg_price
+                                    else
+                                        sale.gain += avg_price * 0.95;
+                                    item.resource = this.resourceName(key2) + ' x ' + value2;
+                                    item.value_num = avg_price;
+                                    item.value_txt = localnum(avg_price);
+                                    if (value2 > 1 && key2 != 'dusk')
+                                        item.unitcost = localnum(this.getPrice(key2, this.selected_sell_price));
+                                }
+                                item.volume = this.resourceVolume(key2);
+                                sale_breakdown.push(item);
                             }
-                            item.volume = this.resourceVolume(key2);
-                            sale_breakdown.push(item);
+                        }
+                        let gain = (sale.gain - cost);
+                        let roi = (gain / cost * 100);
+                        if (roi > -0.001 && roi < 0.001)
+                            roi = 0.0;
+                    
+                        let divisor = 1;
+                        if (this.selected_gain_mode == "Gain per Power Cell")
+                            divisor = (power_used / 20);
+                        else if (this.selected_gain_mode == "Gain per Stamina")
+                            divisor = stamina_used;
+                        
+                        let gain_text = '---';       
+                        if (divisor != 0) {
+                            gain_text = localnum(gain / divisor);
+                            if (sale.min != sale.max) {
+                                gain_text += ' (' + localnum((sale.min * 0.95 - cost + market_fee_offset[0]) / divisor)
+                                      + ' ~ ' + localnum((sale.max * 0.95 - cost + market_fee_offset[1]) / divisor) + ')'
+                            }
+                        }
+                    
+                        entry = {
+                            id: key,
+                            name: value.display_name,
+                            cost: cost,
+                            sale: sale.avg,
+                            gain: gain,
+                            gain_text: gain_text,
+                            roi: roi,
+                            cost_breakdown: cost_breakdown,
+                            sale_breakdown: sale_breakdown,
+                            output_speculative: this.odata.recipes[key].output_speculative,
+                            icon: 'images/' + value.building + '.webp',
+                            icon_title: this.building_name(value.building),
+                        }
+                    
+                        if (value.level) {
+                            let level_text = '';
+                            for (const [level_name, level_num] of Object.entries(value.level)) {
+                                level_text += capitalize(level_name) + ' Level ' + level_num + ', '
+                            }
+                            entry.level_required = level_text.slice(0, -2);
+                        }
+                    
+                        if (value.day) {
+                            if (Array.isArray(value.day)) {
+                                let day_text = '';
+                                for (let i = 0; i < value.day.length; i++) {
+                                    day_text += this.expandDay(value.day[i]) + ', '
+                                }
+                                entry.day_text = day_text.slice(0, -2);
+                            } else {
+                                entry.day_text = this.expandDay(value.day);
+                            }
+                        }
+                    
+                        if (value.upgrade) {
+                            entry.upgrade_text = value.upgrade;
                         }
                     }
-                    let gain = (sale.gain - cost);
-                    let roi = (gain / cost * 100);
-                    if (roi > -0.001 && roi < 0.001)
-                        roi = 0.0;
                     
-                    let divisor = 1;
-                    if (this.selected_gain_mode == "Gain per Power Cell")
-                        divisor = (power_used / 20);
-                    else if (this.selected_gain_mode == "Gain per Stamina")
-                        divisor = stamina_used;
-                                        
-                    if (divisor == 0)
-                        gain = '---'
-                    else {
-                        gain = localnum(gain / divisor);
-                        if (sale.min != sale.max) {
-                            gain += ' (' + localnum((sale.min * 0.95 - cost + market_fee_offset[0]) / divisor)
-                                  + ' ~ ' + localnum((sale.max * 0.95 - cost + market_fee_offset[1]) / divisor) + ')'
-                        }
+                    let resource_index = 0;
+                    if (!first_time) {
+                        for (let i = 0; i < this.resources.length; i++)
+                             if (this.resources[i].id == key) {
+                                 resource_index = i;
+                                 break;
+                             }
+                        sale_breakdown = this.resources[resource_index].sale_breakdown;
+                        sale.gain = this.resources[resource_index].gain;
                     }
                     
                     // building filter
@@ -1063,6 +1116,7 @@
                             }
                         }
                     }
+                    
                     if (show)
                         show = !('building' in value && this.checkForFilter(value.building));
                     // level filter
@@ -1075,52 +1129,17 @@
                         }
                     }
                     
-                    let entry = {
-                        id: key,
-                        name: value.display_name,
-                        cost: cost,
-                        sale: sale.avg,
-                        gain: gain,
-                        roi: roi,
-                        cost_breakdown: cost_breakdown,
-                        sale_breakdown: sale_breakdown,
-                        output_speculative: this.odata.recipes[key].output_speculative,
-                        icon: 'images/' + value.building + '.webp',
-                        icon_title: this.building_name(value.building),
-                        show: show
-                    }
-                    
-                    if (value.level) {
-                        let level_text = '';
-                        for (const [level_name, level_num] of Object.entries(value.level)) {
-                            level_text += capitalize(level_name) + ' Level ' + level_num + ', '
-                        }
-                        entry.level_required = level_text.slice(0, -2);
-                    }
-                    
-                    if (value.day) {
-                        if (Array.isArray(value.day)) {
-                            let day_text = '';
-                            for (let i = 0; i < value.day.length; i++) {
-                                day_text += this.expandDay(value.day[i]) + ', '
-                            }
-                            entry.day_text = day_text.slice(0, -2);
-                        } else {
-                            entry.day_text = this.expandDay(value.day);
-                        }
-                    }
-                    
-                    if (value.upgrade) {
-                        entry.upgrade_text = value.upgrade;
-                    }
-                
+                    if (!filter_only)
+                        entry.show = show;
+                                        
                     if (first_time) {
                         this.resources.push(entry);
                         this.countHiddenByLevel();
                     } else {
-                        for (let i = 0; i < this.resources.length; i++)
-                            if (this.resources[i].id == key)
-                                this.$set(this.resources, i, entry);
+                        if (filter_only)
+                            this.resources[resource_index].show = show
+                        else 
+                            this.$set(this.resources, resource_index, entry);
                     }
                 }
                 
