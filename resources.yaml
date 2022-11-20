@@ -663,19 +663,7 @@
                     - smelt_steel: [1.0, 2, 5]
                     - smelt_steel: [0.1111, 1, 10]
                     - barite: [0.1111, 1, 3]
-        smelt_glass:
-            display_name: Smelt Glass
-            building: smelter
-            level:
-                mining: 10
-            input:
-                stamina: 1
-                power: 20
-                regolith: 500
-                machining_tools: 1
-            output:
-                glass: [1, 2, 1.5]
-        smelt_glass2:
+        mining_smelt_glass_2_C1:
             display_name: Smelt Glass II
             building: smelter
             level:
@@ -684,10 +672,11 @@
                 stamina: 3
                 power: 60
                 regolith: 1000
-                machining_tools: 3
+                mining_tools: 3
             output:
-                glass: [3, 4, 3.5]
-        smelt_glass3:
+                lootlist:
+                    - glass: [1, 3, 4]
+        mining_smelt_glass_3_C1:
             display_name: Smelt Glass III
             building: smelter
             level:
@@ -696,9 +685,23 @@
                 stamina: 5
                 power: 100
                 regolith: 2000
-                machining_tools: 5
+                mining_tools: 5
             output:
-                glass: [5, 8, 6.5]
+                lootlist:
+                    - glass: [1, 5, 8]
+        mining_smelt_glass_C1:
+            display_name: Smelt Glass
+            building: smelter
+            level:
+                mining: 10
+            input:
+                stamina: 1
+                power: 20
+                regolith: 500
+                mining_tools: 1
+            output:
+                lootlist:
+                    - glass: [1, 1, 2]
         smelt_silicon_crystals:
             display_name: Smelt Silicon Crystals
             building: smelter
