@@ -1331,6 +1331,23 @@
                 machining_tools: 3
             output:
                 crafted_sowing_kit: 1
+        make_habitat_kit_C1:
+            display_name: Make Habitat Kit
+            building: machine_shop
+            level:
+                fabrication: 50
+            input:
+                power: 20
+                stamina: 5
+                metis_weave: 50
+                smelt_steel: 30
+                electronics_parts: 15
+                machined_parts: 14
+                minting_token: 5
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - habitat_kit: [1, 1, 1]
         #3d print shop
         make_electronic_bits:
             display_name: Make Electronic Bits
