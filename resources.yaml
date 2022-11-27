@@ -4827,12 +4827,13 @@
                 vibes: 1
                 cantina_coin: 4
             output:
-                lootset:
-                    - dusk: [0.0169, 25, 150]
-                    - dusk: [0.1695, 25, 75]
-                    - dusk: [0.3051, 20, 50]
-                    - dusk: [0.5085, 15, 25]
-                keycard_copper: [0, 1, 0.0074]
+                lootlist:
+                    - lootset:
+                            - dusk: [0.5085, 15, 25]
+                            - dusk: [0.3051, 20, 50]
+                            - dusk: [0.1695, 25, 75]
+                            - dusk: [0.0169, 25, 150]
+                    - keycard_copper: [0.0074, 1, 1]
         most_of_my_friends_argon_sun:
             display_name: Most of My Friends Argon (Sun)
             building: cantina
@@ -4844,12 +4845,13 @@
                 vibes: 1
                 cantina_coin: 5
             output:
-                lootset:
-                    - dusk: [0.0169, 50, 150]
-                    - dusk: [0.1695, 25, 100]
-                    - dusk: [0.3051, 25, 50]
-                    - dusk: [0.5085, 10, 45]
-                keycard_copper: [0, 1, 0.0033]
+                lootlist:
+                    - lootset:
+                            - dusk: [0.5085, 10, 45]
+                            - dusk: [0.3051, 25, 50]
+                            - dusk: [0.1695, 25, 100]
+                            - dusk: [0.0169, 50, 150]
+                    - keycard_copper: [0.0033, 1, 1]
         hungry_hungry_martian_sun:
             display_name: Hungry Hungry Martians (Sun)
             building: cantina
@@ -4861,12 +4863,13 @@
                 vibes: 1
                 cantina_coin: 6
             output:
-                lootset:
-                    - dusk: [0.0169, 50, 150]
-                    - dusk: [0.1695, 40, 80]
-                    - dusk: [0.3051, 30, 60]
-                    - dusk: [0.5085, 20, 60]
-                keycard_copper: [0, 1, 0.006]
+                lootlist:
+                    - lootset:
+                            - dusk: [0.5085, 20, 60]
+                            - dusk: [0.3051, 30, 60]
+                            - dusk: [0.1695, 40, 80]
+                            - dusk: [0.0169, 50, 150]
+                    - keycard_copper: [0.006, 1, 1]
         barite_necessities_sun:
             display_name: Barite Necessities (Sun)
             building: cantina

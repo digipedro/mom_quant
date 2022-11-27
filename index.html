@@ -821,6 +821,12 @@
                 return (id === undefined) ? '' : this.odata.buildings[id].display_name
             },
             processLoot(key2, value2, items, sale, poolmult) {
+                // key2 = output object to parse recursively
+                // value2 = array ov values for an output item: 0 = percentage chance, 1 = min number won, 2 = max number won
+                // items = object to be returned with output won from tasks.
+                //     items[item_name] = {number = number of item won, name = display name, price = average total value of items}
+                // sale = object to be returned with { min, max, avg, gain } values
+                // poolmult = multiplier from dynamic pool
                 let min_gain = null;
                 let max_gain = null;
                 let repeat = 1;
