@@ -394,7 +394,16 @@
                 }
                 if (id == 'dusk')
                     return 1;
-                    
+                
+                if (id == 'cantina_coin')
+                    return Math.min((this.getPrice('power') * 20
+                           + this.getPrice('aluminum_plate', type)
+                           + this.getPrice('metal_bits', type) * 15
+                           + this.getPrice('stamina') * 2
+                           + this.getPrice('machining_tools', type) * 2) / 15,
+                           this.getPrice('aluminum_plate', type) / 10,
+                           this.getPrice('titanium_plate', type) / 25);
+                
                 for (let i = 0; i < this.market.length; i++) {
                     if (this.market[i].id == id) {
                         if (type == 'Last Sold')
@@ -553,12 +562,12 @@
             getCost(id) {
                 let cost = NaN;
                 if (id in this.odata.recipes) {
-                    cost = 0;                        
+                    cost = 0;
                     for (const [key2, value2] of Object.entries(this.odata.recipes[id].input)) {
                                                 
                         match = tools_re.exec(key2);
                         if (match != null) {
-                            let recipe_name = 'make_';
+                            let recipe_name = 'make_' +  match[1] + '_tools_';
                             if (match[2] == 'n')
                                 recipe_name += 'novice';
                             else if (match[2] == 'a')
@@ -569,7 +578,7 @@
                                 recipe_name += 'expert';
                             else if (match[2] == 'm')
                                 recipe_name += 'master' ;
-                            recipe_name += '_' + match[1] + '_tools';
+                            recipe_name += '_C1';
                             cost += this.getCost(recipe_name);
                         } else {
                             cost += this.getPrice(key2) * value2;
@@ -605,7 +614,7 @@
                     build_cost[t] = [];
                     buy_cost[t] = [];
                     for (let l = 0; l < levels.length; l++) {
-                        let recipe_name = 'make_' + levels[l].name.toLowerCase() + '_' + tool_types[t].id + '_tools';
+                        let recipe_name = 'make_' + tool_types[t].id + '_tools_' + levels[l].name.toLowerCase() + '_C1';
                         build_cost[t][l] = this.getCost(recipe_name);
                         
                         let tool_name = tool_types[t].id + '_tools_' + levels[l].id;
