@@ -394,6 +394,8 @@
                 }
                 if (id == 'dusk')
                     return 1;
+                if (id == 'glitter')
+                    return this.getPrice('wrapped_glitter_20') / 20;
                 
                 if (id == 'cantina_coin')
                     return Math.min((this.getPrice('power') * 20

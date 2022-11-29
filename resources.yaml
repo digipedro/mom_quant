@@ -714,7 +714,7 @@
                 carbon_dioxide: 3
             output:
                 siliconcrystals_raw: [1, 2, 1.1111]
-        smelt_lithium:
+        mining_smelt_lithium_C1:
             display_name: Smelt Lithium
             building: smelter
             level:
@@ -725,10 +725,13 @@
                 stamina: 5
                 mining_tools: 7
             output:
-                lithium: [1, 3, 2]
-                raw_graphite: [0, 1, 0.01]
-                thorium: [0, 1, 0.005]
-        smelt_thorium:
+                lootlist:
+                    - lithium: [1, 1, 3]
+                    - lootset:
+                            - raw_graphite: [0.01, 1, 1]
+                            - chromium: [0.005, 1, 1]
+                            - thorium: [0.01, 1, 1]
+        mining_smelt_thorium_C1:
             display_name: Smelt Thorium
             building: smelter
             level:
@@ -739,8 +742,10 @@
                 stamina: 5
                 mining_tools: 10
             output:
-                thorium: [1, 3, 2]
-                uranium: [0, 1, 0.05]
+                lootlist:
+                    - thorium: [1, 1, 3]
+                    - uranium: [0.05, 1, 1]
+                    - chromium: [0.2, 1, 1]
         #machine_shop
         make_lifescience_tools_artisan_C1:
             display_name: Make Artisan Life Science Tools

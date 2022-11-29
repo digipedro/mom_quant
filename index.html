@@ -318,6 +318,7 @@
           'worm_storage',
           'soil_storage',
           'dusk',
+          'glitter',
           'cantina_coin',
           'moisture'
       ]
@@ -710,6 +711,8 @@
                 }
                 if (id == 'dusk')
                     return 1;
+                if (id == 'glitter')
+                    return this.getPrice('wrapped_glitter_20') / 20;
                 
                 if (id == 'surveyor_coin')
                     return 45;
