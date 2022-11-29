@@ -729,16 +729,18 @@
                 
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);
-                    if (rarity == 'C' || rarity == 'U')
-                        return this.getCheapestShards(rarity) * 4;
-                    if (rarity == 'R')
-                        return this.getCheapestShards(rarity) * 5;
-                    if (rarity == 'E')
+                    if (rarity == 'C')
                         return this.getCheapestShards(rarity) * 6;
+                    if (rarity == 'U')
+                        return this.getCheapestShards(rarity) * 13;
+                    if (rarity == 'R')
+                        return this.getCheapestShards(rarity) * 11;
+                    if (rarity == 'E')
+                        return this.getCheapestShards(rarity) * 13;
                     if (rarity == 'L')
-                        return this.getCheapestShards(rarity) * 8;
+                        return this.getCheapestShards(rarity) * 38;
                     if (rarity == 'M')
-                        return this.getCheapestShards(rarity) * 10;
+                        return this.getCheapestShards(rarity) * 45;
                 }
 
                 // composter stuff
