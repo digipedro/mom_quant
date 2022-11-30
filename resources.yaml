@@ -1355,6 +1355,86 @@
             output:
                 lootlist:
                     - fabrication_tools_m: [1, 1, 1]
+        lockbox_aluminum_keyjammer_C1:
+            display_name: Make Aluminum Keyjammer
+            building: machine_shop
+            level:
+                machining: 45
+            input:
+                power: 80
+                circuit_component: 1
+                metal_bits: 40
+                electronic_bits: 400
+                dusk: 20
+                stamina: 4
+                machining_tools: 4
+            output:
+                lootlist:
+                    - keyjammer_aluminum: [1, 1, 1]
+        lockbox_copper_keyjammer_C1:
+            display_name: Make Copper Keyjammer
+            building: machine_shop
+            level:
+                machining: 15
+            input:
+                power: 20
+                circuit_component: 1
+                metal_bits: 5
+                electronic_bits: 50
+                dusk: 5
+                stamina: 1
+                machining_tools: 1
+            output:
+                lootlist:
+                    - keyjammer_copper: [1, 1, 1]
+        lockbox_iron_keyjammer_C1:
+            display_name: Make Iron Keyjammer
+            building: machine_shop
+            level:
+                machining: 25
+            input:
+                power: 40
+                circuit_component: 1
+                metal_bits: 20
+                electronic_bits: 200
+                dusk: 10
+                stamina: 2
+                machining_tools: 2
+            output:
+                lootlist:
+                    - keyjammer_iron: [1, 1, 1]
+        lockbox_steel_keyjammer_C1:
+            display_name: Make Steel Keyjammer
+            building: machine_shop
+            level:
+                machining: 35
+            input:
+                power: 60
+                circuit_component: 1
+                metal_bits: 30
+                electronic_bits: 300
+                dusk: 15
+                stamina: 3
+                machining_tools: 3
+            output:
+                lootlist:
+                    - keyjammer_steel: [1, 1, 1]
+        lockbox_titanium_keyjammer_C1:
+            display_name: Make Titanium Keyjammer
+            building: machine_shop
+            level:
+                machining: 55
+            input:
+                power: 100
+                circuit_component: 1
+                metal_bits: 50
+                electronic_bits: 500
+                dusk: 25
+                stamina: 5
+                machining_tools: 5
+            output:
+                lootlist:
+                    - keyjammer_titanium: [1, 1, 1]
         cantina_coin1:
             display_name: Cantina Coin I
             building: machine_shop
@@ -6089,7 +6169,39 @@
             output:
                 full_ec: 3
         #composter
-        composter_sunflowers_C1:
+        composter_sunflowers_2_C1:
+            display_name: Display Sunflowers II
+            building: composter
+            level:
+                life science: 25
+            input:
+                stamina: 1
+                power: 10
+                water: 5
+                sunflowers: 10
+            output:
+                lootlist:
+                    - moisture: [1, -5, -5]
+                    - lootset:
+                            - biowaste: [0.9, 2, 3]
+                            - worm_storage: [0.1, 0, 1]
+        composter_sunflowers_3_C1:
+            display_name: Display Sunflowers III
+            building: composter
+            level:
+                life science: 50
+            input:
+                stamina: 1
+                power: 10
+                water: 15
+                sunflowers: 25
+            output:
+                lootlist:
+                    - moisture: [1, -7, -7]
+                    - lootset:
+                            - biowaste: [0.9, 5, 7]
+                            - worm_storage: [0.1, 0, 1]
+        composter_sunflowers_new_C1:
             display_name: Display Sunflowers
             building: composter
             level:
@@ -6097,15 +6209,14 @@
             input:
                 stamina: 1
                 power: 10
-                soil_storage: 1
                 water: 2
                 sunflowers: 3
             output:
                 lootlist:
+                    - moisture: [1, -2, -2]
                     - lootset:
-                            - biowaste: [0.9, 0, 3]
-                            - worm_storage: [0.1, 0, 2]
-                    - moisture: [1, -5, 0]
+                            - biowaste: [0.9, 0, 1]
+                            - worm_storage: [0.1, 0, 1]
         feed_worms_C1:
             display_name: Feed Worms
             building: composter
