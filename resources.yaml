@@ -262,7 +262,7 @@
                 fabrication: 25
             input:
                 lifescience_tools_n: 1
-                metis: 3
+                metis: 2
                 water: 20
                 soil: 20
                 regolith: 100
@@ -761,8 +761,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - lifescience_tools_e: [1, 1, 1]
@@ -773,9 +772,9 @@
                 machining: 75
             input:
                 lifescience_tools_j: 1
-                metis_weave: 5
-                soil: 100
-                water: 100
+                metis_weave: 1
+                soil: 50
+                water: 75
                 power: 100
                 stamina: 5
                 machining_tools: 3
@@ -790,9 +789,9 @@
                 machining: 55
             input:
                 lifescience_tools_a: 1
-                metis: 3
-                soil: 75
-                water: 100
+                metis: 2
+                soil: 80
+                water: 80
                 regolith: 200
                 stamina: 5
                 power: 80
@@ -807,14 +806,13 @@
                 machining: 100
             input:
                 lifescience_tools_e: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
-                soil: 125
+                soil: 75
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -833,8 +831,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - machining_tools_ar: [1, 1, 1]
@@ -845,9 +842,9 @@
                 machining: 85
             input:
                 machining_tools_j: 1
-                metis_weave: 5
-                smelt_steel: 25
-                metal_bits: 200
+                metis_weave: 1
+                smelt_steel: 10
+                metal_bits: 100
                 power: 100
                 stamina: 5
                 machining_tools: 3
@@ -862,10 +859,10 @@
                 machining: 50
             input:
                 machining_tools_a: 1
-                metis: 3
-                smelt_steel: 20
-                metal_bits: 200
-                electronic_bits: 100
+                metis: 2
+                smelt_steel: 15
+                metal_bits: 100
+                electronic_bits: 50
                 power: 80
                 stamina: 5
                 machining_tools: 3
@@ -879,14 +876,13 @@
                 machining: 115
             input:
                 machining_tools_e: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
                 machined_parts: 1
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -905,8 +901,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - mining_tools_ar: [1, 1, 1]
@@ -917,9 +912,9 @@
                 machining: 85
             input:
                 mining_tools_j: 1
-                metis_weave: 5
-                metal_bits: 300
-                smelt_iron: 25
+                metis_weave: 1
+                metal_bits: 100
+                smelt_iron: 10
                 power: 100
                 stamina: 5
                 machining_tools: 3
@@ -934,9 +929,9 @@
                 machining: 65
             input:
                 mining_tools_a: 1
-                metis: 3
-                metal_bits: 200
-                smelt_iron: 24
+                metis: 2
+                metal_bits: 100
+                smelt_iron: 15
                 regolith: 250
                 power: 80
                 stamina: 5
@@ -951,14 +946,13 @@
                 machining: 115
             input:
                 mining_tools_e: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
-                regolith: 500
+                regolith: 1500
                 power: 100
                 stamina: 5
                 machining_tools: 3
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -977,8 +971,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - robotics_tools_ar: [1, 1, 1]
@@ -989,9 +982,9 @@
                 machining: 90
             input:
                 robotics_tools_j: 1
-                metis_weave: 5
-                electronic_bits: 500
-                rover_wires: 35
+                metis_weave: 1
+                electronic_bits: 100
+                rover_wires: 20
                 power: 100
                 stamina: 5
                 machining_tools: 3
@@ -1006,11 +999,11 @@
                 machining: 50
             input:
                 robotics_tools_a: 1
-                metis: 3
-                metal_bits: 200
-                electronic_bits: 200
-                rover_wires: 25
-                power: 30
+                metis: 2
+                metal_bits: 100
+                electronic_bits: 100
+                rover_wires: 20
+                power: 80
                 stamina: 5
                 machining_tools: 3
             output:
@@ -1023,14 +1016,13 @@
                 machining: 130
             input:
                 robotics_tools_e: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
-                rover_wires: 75
+                rover_wires: 50
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -1049,8 +1041,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - scavenging_tools_Artisan: [1, 1, 1]
@@ -1061,13 +1052,14 @@
                 machining: 75
             input:
                 scavenging_tools_Journeyman: 1
-                metis_weave: 5
-                smelt_aluminum: 5
-                electronic_bits: 150
+                metis_weave: 1
+                smelt_aluminum: 2
+                electronic_bits: 60
                 power: 100
                 stamina: 5
                 machining_tools: 3
                 glitter: 5
+                knowledge_scavenging_tools_Expert: 1
             output:
                 lootlist:
                     - scavenging_tools_Expert: [1, 1, 1]
@@ -1095,9 +1087,9 @@
                 machining: 50
             input:
                 scavenging_tools_Apprentice: 1
-                metis: 3
+                metis: 2
                 smelt_aluminum: 4
-                electronic_bits: 200
+                electronic_bits: 80
                 power: 80
                 stamina: 5
                 machining_tools: 3
@@ -1111,14 +1103,13 @@
                 machining: 100
             input:
                 scavenging_tools_Expert: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
                 electronics_parts: 1
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -1137,8 +1128,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - chemistry_tools_ar: [1, 1, 1]
@@ -1149,9 +1139,9 @@
                 machining: 80
             input:
                 chemistry_tools_j: 1
-                metis_weave: 5
-                argon: 15
-                pla: 10
+                metis_weave: 1
+                argon: 6
+                pla: 4
                 power: 100
                 stamina: 5
                 machining_tools: 3
@@ -1166,10 +1156,10 @@
                 machining: 60
             input:
                 chemistry_tools_a: 1
-                metis: 3
-                argon: 10
+                metis: 2
+                argon: 5
                 oxygen: 35
-                pla: 7
+                pla: 5
                 power: 80
                 stamina: 5
                 machining_tools: 3
@@ -1183,14 +1173,13 @@
                 machining: 110
             input:
                 chemistry_tools_e: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
-                argon: 20
+                argon: 15
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -1226,8 +1215,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - electrical_tools_ar: [1, 1, 1]
@@ -1238,9 +1226,9 @@
                 machining: 80
             input:
                 electrical_tools_j: 1
-                metis_weave: 5
-                rover_wires: 50
-                empty_pc: 7
+                metis_weave: 1
+                rover_wires: 20
+                empty_pc: 4
                 power: 100
                 stamina: 5
                 machining_tools: 3
@@ -1255,10 +1243,10 @@
                 machining: 60
             input:
                 electrical_tools_a: 1
-                metis: 3
-                rover_wires: 25
-                electronic_bits: 200
-                empty_pc: 7
+                metis: 2
+                rover_wires: 20
+                electronic_bits: 100
+                empty_pc: 5
                 power: 80
                 stamina: 5
                 machining_tools: 3
@@ -1272,14 +1260,13 @@
                 machining: 105
             input:
                 electrical_tools_e: 1
-                metis_weave: 10
+                metis_weave: 3
                 titanium_plate: 3
-                electronics_parts: 1
+                electronics_parts: 2
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -1298,8 +1285,7 @@
                 stamina: 10
                 machining_tools: 5
                 glitter: 10
-                master_signet_machining: 1
-                minting_token: 3
+                minting_token: 1
             output:
                 lootlist:
                     - fabrication_tools_ar: [1, 1, 1]
@@ -1310,8 +1296,8 @@
                 machining: 75
             input:
                 fabrication_tools_j: 1
-                metis_weave: 5
-                smelt_aluminum: 4
+                metis_weave: 1
+                smelt_aluminum: 2
                 pvc_raw: 2
                 power: 100
                 stamina: 5
@@ -1327,9 +1313,9 @@
                 machining: 45
             input:
                 fabrication_tools_a: 1
-                metis: 3
+                metis: 2
                 smelt_aluminum: 3
-                pvc_pipe: 5
+                pvc_pipe: 3
                 power: 80
                 stamina: 5
                 machining_tools: 3
@@ -1343,14 +1329,13 @@
                 machining: 100
             input:
                 fabrication_tools_e: 1
-                metis_weave: 10
-                titanium_plate: 5
+                metis_weave: 3
+                titanium_plate: 3
                 pvc_pipe: 5
                 power: 100
                 stamina: 5
                 machining_tools: 4
                 glitter: 10
-                master_signet_machining: 1
                 minting_token: 1
             output:
                 lootlist:
@@ -1863,7 +1848,7 @@
                 fabrication: 25
             input:
                 machining_tools_n: 1
-                metis: 3
+                metis: 2
                 metal_bits: 20
                 electronic_bits: 50
                 smelt_steel: 4
@@ -1981,10 +1966,10 @@
             level:
                 fabrication: 5
             input:
-                smelt_aluminum: 3
+                smelt_aluminum: 20
                 bamboo: 20
                 pvc_raw: 3
-                metis: 3
+                metis: 2
                 power: 40
                 stamina: 5
                 fabrication_tools: 1
@@ -1997,14 +1982,13 @@
             level:
                 fabrication: 20
             input:
-                argon: 7
+                argon: 6
                 oxygen: 40
-                pla: 3
-                metis: 3
+                pla: 4
+                metis: 2
                 dusk: 10
                 power: 40
                 stamina: 5
-                fabrication_tools: 1
             output:
                 lootlist:
                     - chemistry_tools_n: [1, 1, 1]
@@ -2032,7 +2016,7 @@
                 pvc_pipe: 6
                 bamboo: 25
                 paper: 5
-                metis: 3
+                metis: 2
                 dusk: 10
                 power: 40
                 stamina: 5
@@ -2045,14 +2029,13 @@
             level:
                 fabrication: 15
             input:
-                soil: 75
+                soil: 60
                 water: 60
                 regolith: 400
-                metis: 3
+                metis: 2
                 power: 40
                 dusk: 10
                 stamina: 5
-                fabrication_tools: 1
             output:
                 lootlist:
                     - lifescience_tools_n: [1, 1, 1]
@@ -2062,14 +2045,13 @@
             level:
                 fabrication: 20
             input:
-                smelt_steel: 20
+                smelt_steel: 10
                 metal_bits: 100
                 electronic_bits: 100
-                metis: 3
+                metis: 2
                 dusk: 10
                 power: 40
                 stamina: 5
-                fabrication_tools: 1
             output:
                 lootlist:
                     - machining_tools_n: [1, 1, 1]
@@ -2079,14 +2061,13 @@
             level:
                 fabrication: 20
             input:
-                metal_bits: 200
-                smelt_iron: 7
-                regolith: 500
-                metis: 3
+                metal_bits: 150
+                smelt_iron: 10
+                regolith: 200
+                metis: 2
                 dusk: 10
                 power: 40
                 stamina: 5
-                fabrication_tools: 1
             output:
                 lootlist:
                     - mining_tools_n: [1, 1, 1]
@@ -2096,14 +2077,13 @@
             level:
                 fabrication: 25
             input:
-                electronic_bits: 300
-                metal_bits: 125
-                rover_wires: 20
-                metis: 3
+                electronic_bits: 150
+                metal_bits: 75
+                rover_wires: 15
+                metis: 2
                 dusk: 10
                 power: 40
                 stamina: 5
-                fabrication_tools: 2
             output:
                 lootlist:
                     - robotics_tools_n: [1, 1, 1]
@@ -2285,7 +2265,7 @@
                 fabrication: 30
             input:
                 fabrication_tools_n: 1
-                metis: 3
+                metis: 2
                 pvc_pipe: 1
                 bamboo: 15
                 paper: 2
@@ -3085,9 +3065,9 @@
                 fabrication: 25
             input:
                 mining_tools_n: 1
-                metis: 3
+                metis: 2
                 smelt_iron: 6
-                metal_bits: 100
+                metal_bits: 50
                 power: 60
                 stamina: 5
             output:
@@ -3142,7 +3122,7 @@
                 fabrication: 25
             input:
                 robotics_tools_n: 1
-                metis: 3
+                metis: 2
                 metal_bits: 20
                 power: 60
                 electronic_bits: 50
@@ -5351,9 +5331,9 @@
             input:
                 scavenging_tools_n: 1
                 metis: 3
-                electronic_bits: 25
-                smelt_aluminum: 2
-                stamina: 4
+                electronic_bits: 50
+                smelt_aluminum: 1
+                stamina: 5
                 cantina_coin: 2
             output:
                 lootlist:

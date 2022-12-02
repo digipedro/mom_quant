@@ -109,7 +109,7 @@
                   <b>1 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order1 }}</span> per cell) - 1.04 Dusk to charge cell<br>
                   <b>2 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order2 }}</span> per cell) - 2.08 Dusk to charge cell<br>
                   <b>3 Dusk per Cell Work Order</b> (<span class="dusk">{{ work_order3 }}</span> per cell) - 3.12 Dusk to charge cell<br>
-                  Prices included 2% chance of cell breaking
+                  Prices included 5% chance of cell breaking
             </span>
         </v-col>
         <v-col class="d-flex" cols="6" sm="3">
@@ -631,7 +631,7 @@
                 if (source == 'Market Price')
                     return ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('empty_pc', this.selected_sell_price) * 0.95 ) / 20) * 0.98
                           + ((this.getPrice('full_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price) * 0.95) / 20) * 0.02;
-                let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.02;
+                let broken_tax = (this.getPrice('empty_pc', this.selected_buy_price) - this.getPrice('broken_pc', this.selected_sell_price)) * 0.05;
                 if (source == 'Charge Power Cell III')
                     return (this.getStaminaCost(this.selected_stamina_source) * 2 + broken_tax * 3) / 60
                 if (source == '1 Dusk per Cell Work Order')
