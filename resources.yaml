@@ -1034,7 +1034,7 @@
                 machining: 150
             input:
                 scavenging_tools_Master: 1
-                metis_weave: 10
+                metis_weave: 5
                 titanium_plate: 5
                 electronics_parts: 3
                 power: 100
@@ -1060,23 +1060,6 @@
                 machining_tools: 3
                 glitter: 5
                 knowledge_scavenging_tools_Expert: 1
-            output:
-                lootlist:
-                    - scavenging_tools_Expert: [1, 1, 1]
-        make_scavenging_tools_expert_C10:
-            display_name: Make Expert Scavenging Tools
-            building: machine_shop
-            level:
-                machining: 75
-            input:
-                scavenging_tools_Journeyman: 1
-                metis_weave: 5
-                smelt_aluminum: 5
-                electronic_bits: 150
-                power: 100
-                stamina: 5
-                machining_tools: 3
-                glitter: 5
             output:
                 lootlist:
                     - scavenging_tools_Expert: [1, 1, 1]
@@ -1966,13 +1949,12 @@
             level:
                 fabrication: 5
             input:
-                smelt_aluminum: 20
+                smelt_iron: 20
                 bamboo: 20
                 pvc_raw: 3
                 metis: 2
                 power: 40
                 stamina: 5
-                fabrication_tools: 1
             output:
                 lootlist:
                     - scavenging_tools_n: [1, 1, 1]
@@ -5330,7 +5312,7 @@
                 fabrication: 25
             input:
                 scavenging_tools_n: 1
-                metis: 3
+                metis: 2
                 electronic_bits: 50
                 smelt_aluminum: 1
                 stamina: 5
