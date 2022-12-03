@@ -114,6 +114,8 @@
             display_name: Of Kölsch I Still Love You Beer
         star_hopped:
             display_name: Starhopped Beer
+        resource_token:
+            display_name: Resource Credit
     recipes:
         # greenhouse
         plant_sprouts:
@@ -1059,7 +1061,6 @@
                 stamina: 5
                 machining_tools: 3
                 glitter: 5
-                knowledge_scavenging_tools_Expert: 1
             output:
                 lootlist:
                     - scavenging_tools_Expert: [1, 1, 1]
@@ -5172,10 +5173,9 @@
             pool: Astraea
             input:
                 stamina: 4
-                power: 10
-                food: 100
-                water: 12
-                bazaar_coin_U: 1
+                power: 20
+                food: 125
+                water: 100
             output:
                 lootlist:
                     - lootset:
@@ -5187,27 +5187,24 @@
             building: concrete_habitat
             input:
                 stamina: 4
-                power: 10
-                water: 42
-                baijiu: 6
-                bazaar_coin_R: 1
+                power: 40
+                water: 40
+                baijiu: 9
             output:
                 lootset:
                     - vibes: [0.7, 10, 12]
                     - vibes: [0.2, 12, 15]
                     - vibes: [0.1, 15, 25]
-        advanced_project_testing:
-            display_name: Advanced Project Testing
+        advanced_project_testing_2_C1:
+            display_name: Advanced Product Testing
             building: concrete_habitat
             pool: Astraea
             day: [mon, thu]
             input:
                 stamina: 4
-                power: 50
-                bazaar_coin_E: 1
-                bazaar_coin_R: 1
-                bazaar_coin_U: 1
-                vibes: 8
+                power: 60
+                circuit_component: 1
+                vibes: 7
             output:
                 lootlist:
                     - lootset:
@@ -5227,22 +5224,21 @@
             day: [tue, sun]
             input:
                 stamina: 5
-                power: 30
-                food: 100
+                power: 80
+                water_rich_clay: 18
                 water: 50
-                bazaar_coin_C: 2
             output:
-                dusk: [15, 120, 67.5]
+                lootlist:
+                    - dusk: [1, 15, 120]
         wine_down_2_C10:
             display_name: Wine Down
             building: concrete_habitat
             pool: Astraea
             input:
                 stamina: 2
-                power: 10
-                baijiu: 8
-                ice: 36
-                bazaar_coin_R: 1
+                power: 60
+                baijiu: 12
+                ice: 150
             output:
                 lootlist:
                     - lootset:
@@ -5257,13 +5253,16 @@
             pool: Astraea
             input:
                 stamina: 6
-                power: 20
-                food: 200
-                paper: 4
+                power: 60
+                food: 25
+                paper: 5
             output:
-                dusk: [0, 125, 15.75]
-                coffee_brewed: [0, 5, 0.28]
-                shard_research: [1, 4, 2.5]
+                lootlist:
+                    - lootset:
+                            - dusk: [0.9, 5, 25]
+                            - coffee_brewed: [0.07, 3, 5]
+                            - dusk: [0.03, 50, 100]
+                    - shard_research: [1, 1, 4]
         mars_bnb:
             display_name: Mars BnB
             building: concrete_habitat
@@ -5272,16 +5271,15 @@
                 stamina: 8
                 power: 60
                 food: 150
-                water: 75
-                bazaar_coin_E: 1
+                water: 150
             output:
                 lootset:
-                    - resource_credit: [0.1, 300, 500]
-                    - dusk: [0.025, 0, 500]
-                    - dusk: [0.075, 0, 400]
-                    - resource_credit: [0.15, 150, 300]
+                    - resource_token: [0.4, 60, 180]
                     - dusk: [0.25, 0, 250]
-                    - resource_credit: [0.4, 60, 180]
+                    - resource_token: [0.15, 150, 300]
+                    - resource_token: [0.1, 300, 500]
+                    - dusk: [0.075, 0, 400]
+                    - dusk: [0.025, 0, 500]
         #other
         scavenging_powered:
             display_name: Scavenge (Level 0)

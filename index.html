@@ -320,7 +320,8 @@
           'dusk',
           'glitter',
           'cantina_coin',
-          'moisture'
+          'moisture',
+          'resource_token'
       ]
       
       
@@ -724,7 +725,7 @@
                            + this.getPrice('machining_tools', type) * 2) / 15,
                            this.getPrice('aluminum_plate', type) / 10,
                            this.getPrice('titanium_plate', type) / 25);
-                if (id == 'resource_credit')
+                if (id == 'resource_token')
                     return 0.16;
                 
                 if (id.startsWith('bazaar_coin_')) {
