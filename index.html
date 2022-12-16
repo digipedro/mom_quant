@@ -314,7 +314,7 @@
       
       // items not to assess market fees on
       const off_market_items = [
-          'biowaste',
+          'biowaste_storage',
           'worm_storage',
           'soil_storage',
           'dusk',
@@ -745,7 +745,7 @@
                 }
 
                 // composter stuff
-                if (id == 'biowaste')
+                if (id == 'biowaste_storage')
                     return (this.getStaminaCost(this.selected_stamina_source) + this.getPowerCost(this.selected_power_source) * 10
                         + this.getPrice('water', type) * 3 + this.getPrice('waste', type) * 10 + this.getPrice('regolith', type) * 50);
                 if (id == 'soil_storage')  //get_soil_1
@@ -754,7 +754,7 @@
                 if (id == 'worm_storage')
                     return (this.getTaskCost('feed_worms_C1') - this.getPrice('moisture', type) * 1.5);
                 if (id == 'moisture')
-                    return 0 - ((this.getTaskCost('composter_sunflowers_2_C1') - this.getPrice('biowaste', type) * 2.5) / 5);
+                    return 0 - ((this.getTaskCost('composter_sunflowers_2_C1') - this.getPrice('biowaste_storage', type) * 2.5) / 5);
 
                 // regular market lookup
                 for (let i = 0; i < this.market.length; i++) {
@@ -1118,8 +1118,9 @@
                              if (sale_breakdown[i].resource.startsWith("Dusk") ||
                                  sale_breakdown[i].resource.startsWith("Resource credit") ||
                                  sale_breakdown[i].resource.startsWith("Soil storage") ||
-                                 sale_breakdown[i].resource.startsWith("Work storage") ||
-                                 sale_breakdown[i].resource.startsWith("Biowaste"))
+                                 sale_breakdown[i].resource.startsWith("Worm storage") ||
+                                 sale_breakdown[i].resource.startsWith("Moisture") ||
+                                 sale_breakdown[i].resource.startsWith("Biowaste storage"))
                                 continue;
                             if ((sale_breakdown[i].value_num * 2) >= sale.gain && sale_breakdown[i].volume < this.liquidity_slider_values[this.liquidity_slider]) {
                                 show = false;
