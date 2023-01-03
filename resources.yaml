@@ -4331,10 +4331,10 @@
                 shard_research: 7
                 robotics_tools: 5
             output:
-                research_robotics_a: [4.15, 3, 8]
-                research_robotics_j: [0.1725, 0, 4]
-                research_robotics_e: [0.01, 0, 1]
-                research_robotics_m: [0.0025, 0, 1]
+                research_robotics_a: [3, 8, 4.15]
+                research_robotics_j: [0, 4, 0.1725]
+                research_robotics_e: [0, 1, 0.01]
+                research_robotics_m: [0, 1, 0.0025]
         #engineering bay
         airlock:
             display_name: Create Airlock
