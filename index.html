@@ -716,7 +716,7 @@
                     return this.getPrice('wrapped_glitter_20') / 20;
                 
                 if (id == 'surveyor_coin')
-                    return 45;
+                    return 7;
                 if (id == 'cantina_coin')
                     return Math.min((this.getPrice('power') * 20
                            + this.getPrice('aluminum_plate', type)
@@ -726,7 +726,7 @@
                            this.getPrice('aluminum_plate', type) / 10,
                            this.getPrice('titanium_plate', type) / 25);
                 if (id == 'resource_token')
-                    return 0.16;
+                    return 0.06;
                 
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);
