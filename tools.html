@@ -124,6 +124,7 @@
                   <th class="text-left">Novice</th>
                   <th class="text-left">Apprentice</th>
                   <th class="text-left">Journeyman</th>
+                  <th class="text-left">Expert</th>
                 </tr>
               </thead>
               <tbody>
@@ -155,6 +156,14 @@
                         <span v-html="item.j_tip"></span>
                       </v-tooltip>
                   </td>
+                  <td :style="{color: item.e_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.e }}</span>
+                        </template>
+                        <span v-html="item.e_tip"></span>
+                      </v-tooltip>
+                  </td>
                 </tr>
               </tbody>
           </template>
@@ -174,6 +183,7 @@
                   <th class="text-left">Novice</th>
                   <th class="text-left">Apprentice</th>
                   <th class="text-left">Journeyman</th>
+                  <th class="text-left">Expert</th>
                 </tr>
               </thead>
               <tbody>
@@ -203,6 +213,14 @@
                             <span v-bind="attrs" v-on="on" >{{ item.j }}</span>
                         </template>
                         <span v-html="item.j_tip"></span>
+                      </v-tooltip>
+                  </td>
+                  <td :style="{color: item.e_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.e }}</span>
+                        </template>
+                        <span v-html="item.e_tip"></span>
                       </v-tooltip>
                   </td>
                 </tr>
@@ -598,6 +616,7 @@
                     {id: 'machining', name: 'Machining'},
                     {id: 'mining', name: 'Mining'},
                     {id: 'robotics', name: 'Robotics'},
+                    {id: 'aerospace', name: 'Aerospace'},
                     {id: 'scavenging', name: 'Scavenging'}
                 ];
                 const levels = [
@@ -611,10 +630,12 @@
                 
                 let build_cost = [];
                 let buy_cost = [];
+                let buy_volume = [];
                 
                 for (let t = 0; t < tool_types.length; t++) {
                     build_cost[t] = [];
                     buy_cost[t] = [];
+                    buy_volume[t] = [];
                     for (let l = 0; l < levels.length; l++) {
                         let recipe_name = 'make_' + tool_types[t].id + '_tools_' + levels[l].name.toLowerCase() + '_C1';
                         build_cost[t][l] = this.getCost(recipe_name);
@@ -622,6 +643,7 @@
                         let tool_name = tool_types[t].id + '_tools_' + levels[l].id;
                         if (tool_types[t].id == 'scavenging' && levels[l].id != 'n')
                             tool_name = tool_types[t].id + '_tools_' + levels[l].name;
+                        buy_volume[t][l] = this.resourceVolume(tool_name)
                         buy_cost[t][l] = this.getPrice(tool_name);
                         if (l > 0 && !isNaN(buy_cost[t][l-1]) && buy_cost[t][l] < buy_cost[t][l-1])
                              buy_cost[t][l] = NaN
@@ -635,19 +657,26 @@
                 for (let t = 0; t < tool_types.length; t++) {
                     let cheapest_build = build_cost[t][0] / levels[0].count;
                     let highlight_build = 0;
+                    let runner_up_build = 0;
                     let cheapest_buy = buy_cost[t][0] / levels[0].count;
                     let highlight_buy = 0;
-                    for (let l = 1; l < 3; l++) {
+                    let buy_colors = [];
+                    for (let l = 1; l < 4; l++) {
                         if (!isNaN(build_cost[t][l]) && (build_cost[t][l] / levels[l].count) < cheapest_build) {
                             cheapest_build = build_cost[t][l] / levels[l].count;
+                            runner_up_build = highlight_build;
                             highlight_build = l;
                         }
                         
-                        if (!isNaN(buy_cost[t][l]) && (buy_cost[t][l] / levels[l].count) < cheapest_buy) {
+                        buy_colors[l] = 'white';
+                        if (buy_volume[t][l] < 1)
+                            buy_colors[l] = 'slategray';
+                        else if (!isNaN(buy_cost[t][l]) && (buy_cost[t][l] / levels[l].count) < cheapest_buy) {
                             cheapest_buy = buy_cost[t][l] / levels[l].count;
                             highlight_buy = l;
                         }
                     }
+                    
 
                     this.build_data.push({
                         type: tool_types[t].name,
@@ -655,12 +684,15 @@
                         n: localnum(build_cost[t][0] / levels[0].count) + ' / tool',
                         a: localnum(build_cost[t][1] / levels[1].count) + ' / tool',
                         j: localnum(build_cost[t][2] / levels[2].count) + ' / tool',
+                        e: localnum(build_cost[t][3] / levels[3].count) + ' / tool',
                         n_tip: 'Cost: ' + localnum(build_cost[t][0]),
                         a_tip: 'Cost: ' + localnum(build_cost[t][1]),
                         j_tip: 'Cost: ' + localnum(build_cost[t][2]),
-                        n_color: (highlight_build == 0) ? 'lightgreen' : 'white',
-                        a_color: (highlight_build == 1) ? 'lightgreen' : 'white',
-                        j_color: (highlight_build == 2) ? 'lightgreen' : 'white'
+                        e_tip: 'Cost: ' + localnum(build_cost[t][3]),
+                        n_color: (highlight_build == 0) ? 'lightgreen' : (runner_up_build == 0) ? 'yellow' : 'white',
+                        a_color: (highlight_build == 1) ? 'lightgreen' : (runner_up_build == 1) ? 'yellow' : 'white',
+                        j_color: (highlight_build == 2) ? 'lightgreen' : (runner_up_build == 2) ? 'yellow' : 'white',
+                        e_color: (highlight_build == 3) ? 'lightgreen' : (runner_up_build == 3) ? 'yellow' : 'white',
                     });
                     
                     this.buy_data.push({
@@ -669,12 +701,15 @@
                         n: localnum(buy_cost[t][0] / levels[0].count) + ' / tool',
                         a: localnum(buy_cost[t][1] / levels[1].count) + ' / tool',
                         j: localnum(buy_cost[t][2] / levels[2].count) + ' / tool',
+                        e: localnum(buy_cost[t][3] / levels[3].count) + ' / tool',
                         n_tip: 'Price: ' + localnum(buy_cost[t][0]),
                         a_tip: 'Price: ' + localnum(buy_cost[t][1]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 75),
                         j_tip: 'Price: ' + localnum(buy_cost[t][2]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 125),
-                        n_color: (highlight_buy == 0) ? 'lightgreen' : 'white',
-                        a_color: (highlight_buy == 1) ? 'lightgreen' : 'white',
-                        j_color: (highlight_buy == 2) ? 'lightgreen' : 'white'
+                        e_tip: 'Price: ' + localnum(buy_cost[t][3]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 275),
+                        n_color: (highlight_buy == 0) ? 'lightgreen' : buy_colors[0],
+                        a_color: (highlight_buy == 1) ? 'lightgreen' : buy_colors[1],
+                        j_color: (highlight_buy == 2) ? 'lightgreen' : buy_colors[2],
+                        e_color: (highlight_buy == 3) ? 'lightgreen' : buy_colors[3]
                     });
                 }
 
