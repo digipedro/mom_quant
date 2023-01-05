@@ -115,7 +115,7 @@
       
       <v-row>
         <v-col class="text-left" cols="24" sm="12">
-          <p>Dusk cost to <b>build</b> tool packs (building novice on up)</p>
+          <p>Dusk cost per tool to <b>build</b> tool packs (building novice on up)</p>
           <v-simple-table dark>
             <template v-slot:default>
               <thead>
@@ -125,6 +125,7 @@
                   <th class="text-left">Apprentice</th>
                   <th class="text-left">Journeyman</th>
                   <th class="text-left">Expert</th>
+                  <th class="text-left">Master</th>
                 </tr>
               </thead>
               <tbody>
@@ -164,6 +165,14 @@
                         <span v-html="item.e_tip"></span>
                       </v-tooltip>
                   </td>
+                  <td :style="{color: item.m_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.m }}</span>
+                        </template>
+                        <span v-html="item.m_tip"></span>
+                      </v-tooltip>
+                  </td>
                 </tr>
               </tbody>
           </template>
@@ -174,7 +183,7 @@
       
       <v-row>
         <v-col class="text-left" cols="24" sm="12">
-          <p>Dusk cost to <b>buy</b> tool packs</p>
+          <p>Dusk cost per tool to <b>buy</b> tool packs (dark if no sale in past 24 hrs)</p>
           <v-simple-table dark>
             <template v-slot:default>
               <thead>
@@ -184,6 +193,7 @@
                   <th class="text-left">Apprentice</th>
                   <th class="text-left">Journeyman</th>
                   <th class="text-left">Expert</th>
+                  <th class="text-left">Master</th>
                 </tr>
               </thead>
               <tbody>
@@ -221,6 +231,14 @@
                             <span v-bind="attrs" v-on="on" >{{ item.e }}</span>
                         </template>
                         <span v-html="item.e_tip"></span>
+                      </v-tooltip>
+                  </td>
+                  <td :style="{color: item.m_color}">
+                      <v-tooltip right>
+                        <template v-slot:activator="{ on, attrs }">
+                            <span v-bind="attrs" v-on="on" >{{ item.m }}</span>
+                        </template>
+                        <span v-html="item.m_tip"></span>
                       </v-tooltip>
                   </td>
                 </tr>
@@ -481,13 +499,17 @@
 
                 return capitalize(id.replaceAll('_', ' '));
             },
-            resourceVolume(id) {
+            liquidity_check(id) {
+                const dayAgo = new Date().getTime() - 86400000;
                 for (let i = 0; i < this.market.length; i++) {
-                    if (this.market[i].id == id) {                        
-                        return this.market[i].attributes.lastDayVolume
+                    if (this.market[i].id == id) {
+                        if (new Date(this.market[i].attributes.lastSoldAt) > dayAgo)
+                            return true
+                        else
+                            return false
                     }
                 }
-                return 0;
+                return false;
             },
             building_name(id) {
                 return (id === undefined) ? '' : this.odata.buildings[id].display_name
@@ -630,12 +652,12 @@
                 
                 let build_cost = [];
                 let buy_cost = [];
-                let buy_volume = [];
+                let buy_liquidity = [];
                 
                 for (let t = 0; t < tool_types.length; t++) {
                     build_cost[t] = [];
                     buy_cost[t] = [];
-                    buy_volume[t] = [];
+                    buy_liquidity[t] = [];
                     for (let l = 0; l < levels.length; l++) {
                         let recipe_name = 'make_' + tool_types[t].id + '_tools_' + levels[l].name.toLowerCase() + '_C1';
                         build_cost[t][l] = this.getCost(recipe_name);
@@ -643,7 +665,7 @@
                         let tool_name = tool_types[t].id + '_tools_' + levels[l].id;
                         if (tool_types[t].id == 'scavenging' && levels[l].id != 'n')
                             tool_name = tool_types[t].id + '_tools_' + levels[l].name;
-                        buy_volume[t][l] = this.resourceVolume(tool_name)
+                        buy_liquidity[t][l] = this.liquidity_check(tool_name)
                         buy_cost[t][l] = this.getPrice(tool_name);
                         if (l > 0 && !isNaN(buy_cost[t][l-1]) && buy_cost[t][l] < buy_cost[t][l-1])
                              buy_cost[t][l] = NaN
@@ -661,15 +683,15 @@
                     let cheapest_buy = buy_cost[t][0] / levels[0].count;
                     let highlight_buy = 0;
                     let buy_colors = [];
-                    for (let l = 1; l < 4; l++) {
+                    for (let l = 1; l < 5; l++) {
                         if (!isNaN(build_cost[t][l]) && (build_cost[t][l] / levels[l].count) < cheapest_build) {
                             cheapest_build = build_cost[t][l] / levels[l].count;
-                            runner_up_build = highlight_build;
+                            if (l < 3) runner_up_build = l;
                             highlight_build = l;
                         }
                         
                         buy_colors[l] = 'white';
-                        if (buy_volume[t][l] < 1)
+                        if (!buy_liquidity[t][l])
                             buy_colors[l] = 'slategray';
                         else if (!isNaN(buy_cost[t][l]) && (buy_cost[t][l] / levels[l].count) < cheapest_buy) {
                             cheapest_buy = buy_cost[t][l] / levels[l].count;
@@ -681,35 +703,41 @@
                     this.build_data.push({
                         type: tool_types[t].name,
                         icon: 'images/' + tool_types[t].id + '.webp',
-                        n: localnum(build_cost[t][0] / levels[0].count) + ' / tool',
-                        a: localnum(build_cost[t][1] / levels[1].count) + ' / tool',
-                        j: localnum(build_cost[t][2] / levels[2].count) + ' / tool',
-                        e: localnum(build_cost[t][3] / levels[3].count) + ' / tool',
+                        n: localnum(build_cost[t][0] / levels[0].count),
+                        a: localnum(build_cost[t][1] / levels[1].count),
+                        j: localnum(build_cost[t][2] / levels[2].count),
+                        e: localnum(build_cost[t][3] / levels[3].count),
+                        m: localnum(build_cost[t][4] / levels[4].count),
                         n_tip: 'Cost: ' + localnum(build_cost[t][0]),
                         a_tip: 'Cost: ' + localnum(build_cost[t][1]),
                         j_tip: 'Cost: ' + localnum(build_cost[t][2]),
                         e_tip: 'Cost: ' + localnum(build_cost[t][3]),
+                        m_tip: 'Cost: ' + localnum(build_cost[t][4]),
                         n_color: (highlight_build == 0) ? 'lightgreen' : (runner_up_build == 0) ? 'yellow' : 'white',
                         a_color: (highlight_build == 1) ? 'lightgreen' : (runner_up_build == 1) ? 'yellow' : 'white',
                         j_color: (highlight_build == 2) ? 'lightgreen' : (runner_up_build == 2) ? 'yellow' : 'white',
                         e_color: (highlight_build == 3) ? 'lightgreen' : (runner_up_build == 3) ? 'yellow' : 'white',
+                        m_color: (highlight_build == 4) ? 'lightgreen' : (runner_up_build == 4) ? 'yellow' : 'white',
                     });
                     
                     this.buy_data.push({
                         type: tool_types[t].name,
                         icon: 'images/' + tool_types[t].id + '.webp',
-                        n: localnum(buy_cost[t][0] / levels[0].count) + ' / tool',
-                        a: localnum(buy_cost[t][1] / levels[1].count) + ' / tool',
-                        j: localnum(buy_cost[t][2] / levels[2].count) + ' / tool',
-                        e: localnum(buy_cost[t][3] / levels[3].count) + ' / tool',
+                        n: localnum(buy_cost[t][0] / levels[0].count),
+                        a: localnum(buy_cost[t][1] / levels[1].count),
+                        j: localnum(buy_cost[t][2] / levels[2].count),
+                        e: localnum(buy_cost[t][3] / levels[3].count),
+                        m: localnum(buy_cost[t][4] / levels[4].count),
                         n_tip: 'Price: ' + localnum(buy_cost[t][0]),
                         a_tip: 'Price: ' + localnum(buy_cost[t][1]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 75),
                         j_tip: 'Price: ' + localnum(buy_cost[t][2]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 125),
                         e_tip: 'Price: ' + localnum(buy_cost[t][3]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * 275),
+                        m_tip: 'Price: ' + localnum(buy_cost[t][4]) + '<br>Price to match Novice: ' + localnum(buy_cost[t][0] / 50 * levels[4].count),
                         n_color: (highlight_buy == 0) ? 'lightgreen' : buy_colors[0],
                         a_color: (highlight_buy == 1) ? 'lightgreen' : buy_colors[1],
                         j_color: (highlight_buy == 2) ? 'lightgreen' : buy_colors[2],
-                        e_color: (highlight_buy == 3) ? 'lightgreen' : buy_colors[3]
+                        e_color: (highlight_buy == 3) ? 'lightgreen' : buy_colors[3],
+                        m_color: (highlight_buy == 4) ? 'lightgreen' : buy_colors[4]
                     });
                 }
 
