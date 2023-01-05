@@ -926,6 +926,107 @@
             output:
                 lootlist:
                     - mining_tools_m: [1, 1, 1]
+        make_aerospace_tools_apprentice_C1:
+            display_name: Make Apprentice Aerospace Tools
+            building: machine_shop
+            level:
+                machining: 70
+            input:
+                aerospace_tools_n: 1
+                metis: 2
+                smelt_copper: 10
+                electronic_bits: 25
+                rover_wires: 10
+                power: 60
+                stamina: 5
+            output:
+                lootlist:
+                    - aerospace_tools_a: [1, 1, 1]
+        make_aerospace_tools_artisan_C1:
+            display_name: Make Artisan Aerospace Tools
+            building: machine_shop
+            level:
+                machining: 170
+            input:
+                aerospace_tools_m: 1
+                metis_weave: 5
+                titanium_plate: 5
+                chromium: 10
+                glitter: 10
+                power: 140
+                stamina: 10
+                machining_tools: 10
+                minting_token: 1
+            output:
+                lootlist:
+                    - aerospace_tools_ar: [1, 1, 1]
+        make_aerospace_tools_expert_C1:
+            display_name: Make Expert Aerospace Tools
+            building: machine_shop
+            level:
+                machining: 110
+            input:
+                aerospace_tools_j: 1
+                metis_weave: 1
+                smelt_copper: 20
+                rover_wires: 20
+                glitter: 5
+                power: 100
+                stamina: 5
+                machining_tools: 5
+            output:
+                lootlist:
+                    - aerospace_tools_e: [1, 1, 1]
+        make_aerospace_tools_journeyman_C1:
+            display_name: Make Journeyman Aerospace Tools
+            building: machine_shop
+            level:
+                machining: 90
+            input:
+                aerospace_tools_a: 1
+                metis: 2
+                smelt_copper: 20
+                electronic_bits: 100
+                rover_wires: 20
+                power: 80
+                stamina: 5
+                machining_tools: 3
+            output:
+                lootlist:
+                    - aerospace_tools_j: [1, 1, 1]
+        make_aerospace_tools_master_C1:
+            display_name: Make Master Aerospace Tools
+            building: machine_shop
+            level:
+                machining: 130
+            input:
+                aerospace_tools_e: 1
+                metis_weave: 3
+                titanium_plate: 3
+                chromium: 5
+                glitter: 10
+                power: 120
+                stamina: 10
+                machining_tools: 10
+            output:
+                lootlist:
+                    - aerospace_tools_m: [1, 1, 1]
+        make_aerospace_tools_novice_C1:
+            display_name: Make Novice Aerospace Tools
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                chromium: 25
+                metal_bits: 50
+                rover_wires: 30
+                metis: 2
+                dusk: 10
+                power: 60
+                stamina: 5
+            output:
+                lootlist:
+                    - aerospace_tools_n: [1, 1, 1]
         make_robotics_tools_artisan_C1:
             display_name: Make Artisan Robotics Tools
             building: machine_shop
