@@ -816,9 +816,13 @@
                 return capitalize(id.replaceAll('_', ' '));
             },
             resourceVolume(id) {
+                const dayAgo = new Date().getTime() - 86400000;
                 for (let i = 0; i < this.market.length; i++) {
-                    if (this.market[i].id == id) {                        
-                        return this.market[i].attributes.lastDayVolume
+                    if (this.market[i].id == id) {
+                        if (new Date(this.market[i].attributes.lastSoldAt) > dayAgo)
+                            return this.market[i].attributes.lastDayVolume;
+                        else
+                            return 0;
                     }
                 }
                 return 0;
@@ -828,7 +832,7 @@
             },
             processLoot(key2, value2, items, sale, poolmult) {
                 // key2 = output object to parse recursively
-                // value2 = array ov values for an output item: 0 = percentage chance, 1 = min number won, 2 = max number won
+                // value2 = array of values for an output item: 0 = percentage chance, 1 = min number won, 2 = max number won
                 // items = object to be returned with output won from tasks.
                 //     items[item_name] = {number = number of item won, name = display name, price = average total value of items}
                 // sale = object to be returned with { min, max, avg, gain } values
@@ -1013,8 +1017,21 @@
                                         sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
                                         market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * value2[0] * poolmult * 0.05;
                                         market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * value2[1] * poolmult * 0.05;
-                                    } else
-                                        sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
+                                    } else {
+                                        // check for input items matching output
+                                        let input_match = false;
+                                        for (const [input_id, input_num] of Object.entries(this.odata.recipes[key].input)) {
+                                            if (input_id == key2) {
+                                                sale.gain += this.getPrice(key2, this.selected_sell_price) * input_num
+                                                           + this.getPrice(key2, this.selected_sell_price) * (value2[2]-input_num) * 0.95;
+                                                market_fee_offset[0] += this.getPrice(key2, this.selected_sell_price) * (value2[0]-input_num) * poolmult * 0.05;
+                                                market_fee_offset[1] += this.getPrice(key2, this.selected_sell_price) * (value2[1]-input_num) * poolmult * 0.05;
+                                                input_match = true;
+                                            }
+                                        }
+                                        if (!input_match)
+                                            sale.gain += this.getPrice(key2, this.selected_sell_price) * value2[2] * 0.95;
+                                    }
                                     item.resource = this.resourceName(key2) + ' x ' + value2[2] + dusk_mult_txt;
                                     item.value_num = this.getPrice(key2, this.selected_sell_price) * value2[2] * poolmult;
                                     item.value_txt = localnum(item.value_num);

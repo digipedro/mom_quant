@@ -287,10 +287,7 @@
                 soil: 1
                 fertilizer: 1
             output:
-                lootlist:
-                    - bamboo_seed: [1, 80, 120]
-                    - bamboo_seed: [0.8, 0, 5]
-                    - bamboo_seed: [0.4, 0, 25]
+                bamboo_seed: [80, 150, 111]
         sow_carrot_C1:
             display_name: Sow Carrot Seeds
             building: greenhouse
@@ -306,10 +303,7 @@
                 soil: 4
                 fertilizer: 2
             output:
-                lootlist:
-                    - carrot_seed: [1, 50, 65]
-                    - carrot_seed: [0.8, 0, 10]
-                    - carrot_seed: [0.4, 0, 25]
+                carrot_seed: [50, 100, 66.5]
         sow_coffee_C1:
             display_name: Sow Coffee Seeds
             building: greenhouse
@@ -325,10 +319,7 @@
                 soil: 1
                 fertilizer: 3
             output:
-                lootlist:
-                    - coffee_seed: [1, 75, 85]
-                    - coffee_seed: [0.8, 0, 15]
-                    - coffee_seed: [0.4, 0, 25]
+                coffee_seed: [75, 125, 91]
         sow_lettuce_C1:
             display_name: Sow Lettuce Seeds
             building: greenhouse
@@ -344,10 +335,7 @@
                 soil: 2
                 fertilizer: 1
             output:
-                lootlist:
-                    - lettuce_seed: [1, 75, 85]
-                    - lettuce_seed: [0.8, 0, 15]
-                    - lettuce_seed: [0.4, 0, 20]
+                lettuce_seed: [75, 120, 90]
         sow_sorghum_C1:
             display_name: Sow Sorghum Seeds
             building: greenhouse
@@ -363,10 +351,7 @@
                 soil: 3
                 fertilizer: 2
             output:
-                lootlist:
-                    - sorghum_seed: [1, 140, 165]
-                    - sorghum_seed: [0.8, 0, 15]
-                    - sorghum_seed: [0.4, 0, 25]
+                sorghum_seed: [140, 205, 163.5]
         sow_soy_C1:
             display_name: Sow Soy Seeds (Common)
             building: greenhouse
@@ -382,10 +367,7 @@
                 soil: 7
                 fertilizer: 4
             output:
-                lootlist:
-                    - soy_seed: [1, 15, 45]
-                    - soy_seed: [0.8, 0, 5]
-                    - soy_seed: [0.4, 0, 10]
+                soy_seed: [15, 60, 34]
         sow_soy_E1:
             display_name: Sow Soy Seeds (Uncommon+)
             building: greenhouse
@@ -401,10 +383,7 @@
                 soil: 7
                 fertilizer: 4
             output:
-                lootlist:
-                    - soy_seed: [1, 15, 45]
-                    - soy_seed: [0.8, 0, 5]
-                    - soy_seed: [0.4, 0, 10]
+                soy_seed: [15, 60, 34]
         sow_sprouts_C1:
             display_name: Sow Sprout Seeds
             building: greenhouse
@@ -420,10 +399,7 @@
                 soil: 1
                 fertilizer: 1
             output:
-                lootlist:
-                    - sprout_seed: [1, 480, 540]
-                    - sprout_seed: [0.8, 0, 25]
-                    - sprout_seed: [0.4, 0, 50]
+                sprout_seed: [480, 615, 530]
         sow_sunflowers_C1:
             display_name: Sow Sunflower Seeds
             building: greenhouse
@@ -439,10 +415,7 @@
                 soil: 3
                 fertilizer: 2
             output:
-                lootlist:
-                    - sunflower_seeds: [1, 75, 80]
-                    - sunflower_seeds: [0.8, 0, 10]
-                    - sunflower_seeds: [0.4, 0, 35]
+                sunflower_seeds: [75, 125, 88.5]
         sow_sweet_potato_C1:
             display_name: Sow Sweet Potato Seeds
             building: greenhouse
@@ -458,10 +431,7 @@
                 soil: 5
                 fertilizer: 2
             output:
-                lootlist:
-                    - sweet_potato_seed: [1, 40, 60]
-                    - sweet_potato_seed: [0.8, 0, 5]
-                    - sweet_potato_seed: [0.4, 0, 15]
+                sweet_potato_seed: [40, 80, 55]
         #cad
         capture_co2:
             display_name: Capture Carbon Dioxide
