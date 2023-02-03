@@ -1909,6 +1909,445 @@
             output:
                 lootlist:
                     - habitat_kit: [1, 1, 1]
+        craft_smelter3_c_C1:
+            display_name: Craft Common Smelter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 15
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 1
+                concrete: 3
+                minting_token: 1
+                machining_tools: 5
+            output:
+                lootlist:
+                    - smelter-gen3_C1: [1, 1, 1]
+        craft_smelter3_e_C1:
+            display_name: Craft Epic Smelter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 95
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 10
+                concrete: 15
+                minting_token: 4
+                medium_copper_spring: 1
+                machining_tools: 5
+                master_signet_machining: 1
+            output:
+                lootlist:
+                    - smelter-gen3_E1: [1, 1, 1]
+        craft_smelter3_l_C1:
+            display_name: Craft Legendary Smelter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 100
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 15
+                concrete: 30
+                minting_token: 5
+                medium_copper_spring: 1
+                machining_tools: 5
+                master_signet_machining: 2
+            output:
+                lootlist:
+                    - smelter-gen3_L1: [1, 1, 1]
+        craft_smelter3_m_C1:
+            display_name: Craft Mythic Smelter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 135
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 20
+                concrete: 40
+                minting_token: 6
+                medium_copper_spring: 1
+                machining_tools: 5
+                master_signet_machining: 3
+            output:
+                lootlist:
+                    - smelter-gen3_M1: [1, 1, 1]
+        craft_smelter3_pack_small_C1:
+            display_name: Craft Gold Smelter Pack (Gen 3)
+            building: machine_shop
+            level:
+                machining: 135
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 20
+                concrete: 40
+                medium_copper_spring: 1
+                smelt_iron: 100
+                minting_token: 3
+                machining_tools: 5
+                master_signet_machining: 1
+            output:
+                lootlist:
+                    - smelter-gen3_pack_small: [1, 1, 1]
+        craft_smelter3_r_C1:
+            display_name: Craft Rare Smelter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 70
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 5
+                concrete: 10
+                minting_token: 3
+                medium_copper_spring: 1
+                machining_tools: 5
+            output:
+                lootlist:
+                    - smelter-gen3_R1: [1, 1, 1]
+        craft_smelter3_uc_C1:
+            display_name: Craft Uncommon Smelter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 45
+            input:
+                power: 60
+                stamina: 5
+                titanium_plate: 2
+                concrete: 5
+                minting_token: 2
+                metis_weave: 1
+                machining_tools: 5
+            output:
+                lootlist:
+                    - smelter-gen3_U1: [1, 1, 1]
+        craft_machine_shop3_c_C1:
+            display_name: Craft Common Machine Shop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 30
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 1
+                smelt_steel: 20
+                electronics_parts: 2
+                glitter: 3
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - machine_shop-gen3_C1: [1, 1, 1]
+        craft_machine_shop3_e_C1:
+            display_name: Craft Epic Machine Shop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 85
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 8
+                smelt_steel: 130
+                electronics_parts: 7
+                machined_parts: 5
+                pressure_gauge: 1
+                glitter: 10
+                fabrication_tools: 5
+                minting_token: 1
+            output:
+                lootlist:
+                    - machine_shop-gen3_E1: [1, 1, 1]
+        craft_machine_shop3_l_C1:
+            display_name: Craft Legendary Machine Shop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 90
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 10
+                smelt_steel: 200
+                electronics_parts: 10
+                machined_parts: 7
+                pressure_gauge: 2
+                glitter: 15
+                fabrication_tools: 5
+                minting_token: 1
+                master_signet_fabrication: 1
+            output:
+                lootlist:
+                    - machine_shop-gen3_L1: [1, 1, 1]
+        craft_machine_shop3_m_C1:
+            display_name: Craft Mythic Machine Shop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 130
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 15
+                smelt_steel: 400
+                electronics_parts: 20
+                machined_parts: 10
+                pressure_gauge: 3
+                glitter: 20
+                fabrication_tools: 5
+                minting_token: 2
+                master_signet_fabrication: 2
+            output:
+                lootlist:
+                    - machine_shop-gen3_M1: [1, 1, 1]
+        craft_machine_shop3_r_C1:
+            display_name: Craft Rare Machine Shop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 75
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 5
+                smelt_steel: 100
+                electronics_parts: 5
+                machined_parts: 3
+                glitter: 7
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - machine_shop-gen3_R1: [1, 1, 1]
+        craft_machine_shop3_uc_C1:
+            display_name: Craft Uncommon Machine Shop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 55
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 3
+                smelt_steel: 60
+                electronics_parts: 3
+                glitter: 5
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - machine_shop-gen3_U1: [1, 1, 1]
+        craft_solar3_e_C1:
+            display_name: Craft Epic Solar Panel (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 50
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 12
+                aluminum_plate: 6
+                siliconcrystals_raw: 15
+                electronics_parts: 3
+                titanium_plate: 5
+                minting_token: 4
+                fabrication_tools: 5
+                master_signet_fabrication: 1
+            output:
+                lootlist:
+                    - solar_panel-gen3_E1: [1, 1, 1]
+        craft_solar_panel_C1:
+            display_name: Craft Silver Solar Panel Pack (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 60
+            input:
+                power: 60
+                stamina: 5
+                smelt_mgs: 10
+                aluminum_plate: 3
+                glass: 1
+                minting_token: 5
+                fabrication_tools: 5
+            output:
+                lootset:
+                    - solar_panel-gen3_C1: [0.465, 1, 1]
+                    - solar_panel-gen3_U1: [0.3, 1, 1]
+                    - solar_panel-gen3_R1: [0.15, 1, 1]
+                    - solar_panel-gen3_E1: [0.06, 1, 1]
+                    - solar_panel-gen3_L1: [0.02, 1, 1]
+                    - solar_panel-gen3_M1: [0.005, 1, 1]
+        craft_solarpanel-gen3_pack_gold_C1:
+            display_name: Craft Gold Solar Panel Pack (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 125
+            input:
+                stamina: 5
+                power: 60
+                metis_weave: 15
+                aluminum_plate: 15
+                siliconcrystals_raw: 10
+                electronics_parts: 4
+                titanium_plate: 15
+                minting_token: 3
+                fabrication_tools: 5
+                master_signet_fabrication: 2
+            output:
+                lootlist:
+                    - solarpanel-gen3_pack_small: [1, 1, 1]
+        craft_vulcan_C1:
+            display_name: Craft Vulcan Metalworks
+            building: engineering_bay
+            level:
+                fabrication: 55
+            input:
+                recipe_vulcan_metalworks: 1
+                stamina: 5
+                machine_shop-gen3_C1: 3
+                smelter-gen3_C1: 3
+                glitter: 500
+            output:
+                lootset:
+                    - vulcan-metalworks_C1: [0.465, 1, 1]
+                    - vulcan-metalworks_U1: [0.3, 1, 1]
+                    - vulcan-metalworks_R1: [0.15, 1, 1]
+                    - vulcan-metalworks_E1: [0.06, 1, 1]
+                    - vulcan-metalworks_L1: [0.02, 1, 1]
+                    - vulcan-metalworks_M1: [0.005, 1, 1]
+        craft_waterfilter3_c_C1:
+            display_name: Craft Common Water Filter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 10
+            input:
+                power: 60
+                stamina: 5
+                smelt_steel: 20
+                glass: 3
+                circuit_component: 1
+                minting_token: 1
+                machining_tools: 5
+            output:
+                lootlist:
+                    - water_filter-gen3_C1: [1, 1, 1]
+        craft_waterfilter3_e_C1:
+            display_name: Craft Epic Water Filter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 75
+            input:
+                power: 60
+                stamina: 5
+                aluminum_plate: 15
+                glass_panel: 1
+                circuit_component: 5
+                minting_token: 4
+                machining_tools: 5
+                master_signet_machining: 1
+            output:
+                lootlist:
+                    - water_filter-gen3_E1: [1, 1, 1]
+        craft_waterfilter3_l_C1:
+            display_name: Craft Legendary Water Filter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 100
+            input:
+                power: 60
+                stamina: 5
+                aluminum_plate: 15
+                glass_panel: 2
+                circuit_component: 4
+                minting_token: 5
+                electronics_parts: 3
+                machining_tools: 5
+                master_signet_machining: 2
+            output:
+                lootlist:
+                    - water_filter-gen3_L1: [1, 1, 1]
+        craft_waterfilter3_m_C1:
+            display_name: Craft Mythic Water Filter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 125
+            input:
+                power: 60
+                stamina: 5
+                aluminum_plate: 25
+                glass_panel: 4
+                circuit_component: 5
+                minting_token: 5
+                electronics_parts: 4
+                machining_tools: 5
+                master_signet_machining: 3
+            output:
+                lootlist:
+                    - water_filter-gen3_M1: [1, 1, 1]
+        craft_waterfilter3_pack_large_C1:
+            display_name: Obsidian Water Filter Pack (Gen 3)
+            building: machine_shop
+            level:
+                machining: 135
+            input:
+                power: 60
+                stamina: 5
+                aluminum_plate: 30
+                glass_panel: 5
+                circuit_component: 8
+                minting_token: 5
+                electronics_parts: 5
+                machining_tools: 5
+                master_signet_machining: 3
+            output:
+                lootlist:
+                    - waterfilter-gen3_pack_large: [1, 1, 1]
+        craft_waterfilter3_pack_small_C1:
+            display_name: Gold Water Filter Pack (Gen 3)
+            building: machine_shop
+            level:
+                machining: 120
+            input:
+                power: 60
+                stamina: 5
+                aluminum_plate: 20
+                glass_panel: 3
+                circuit_component: 5
+                minting_token: 3
+                electronics_parts: 2
+                machining_tools: 5
+                master_signet_machining: 2
+            output:
+                lootlist:
+                    - waterfilter-gen3_pack_small: [1, 1, 1]
+        craft_waterfilter3_r_C1:
+            display_name: Craft Rare Water Filter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 50
+            input:
+                power: 60
+                stamina: 5
+                smelt_steel: 40
+                glass: 6
+                circuit_component: 3
+                minting_token: 3
+                machining_tools: 5
+            output:
+                lootlist:
+                    - water_filter-gen3_R1: [1, 1, 1]
+        craft_waterfilter3_uc_C1:
+            display_name: Craft Uncommon Water Filter (Gen 3)
+            building: machine_shop
+            level:
+                machining: 25
+            input:
+                power: 60
+                stamina: 5
+                smelt_steel: 30
+                glass: 3
+                circuit_component: 2
+                minting_token: 2
+                machining_tools: 5
+            output:
+                lootlist:
+                    - water_filter-gen3_U1: [1, 1, 1]
         #3d print shop
         make_electronic_bits:
             display_name: Make Electronic Bits
@@ -5324,20 +5763,6 @@
                     - dusk: [0.075, 0, 400]
                     - dusk: [0.025, 0, 500]
         #other
-        scavenging_powered:
-            display_name: Scavenge (Level 0)
-            input:
-                stamina: 1
-                power: 1
-            output_speculative: true
-            output:
-                ice: 3.66
-                regolith: 3.07
-                metal_bits: 0.27
-                carrot_seed: 0.1
-                sprout_seed: 0.033
-                water_rich_clay: 0.033
-                halite: 0.3
         do_job:
             display_name: Do Job
             input:
@@ -6338,6 +6763,64 @@
                 lootlist:
                     - fertilizer: [1, 3, 5]
                     - moisture: [1, 1, 4]
+        #daily_job
+        daily_job_1:
+            display_name: Deliver Regolith (Mon)
+            building: daily_job
+            pool: Flora
+            input:
+                regolith: 30
+            output:
+                dusk: [3, 5, 4]
+        daily_job_2:
+            display_name: Deliver Ice (Tue)
+            building: daily_job
+            pool: Flora
+            input:
+                ice: 30
+            output:
+                dusk: [2, 3, 2.5]
+        daily_job_3:
+            display_name: Deliver Metal Bits (Wed)
+            building: daily_job
+            pool: Flora
+            input:
+                metal_bits: 5
+            output:
+                dusk: [2, 3, 2.5]
+        daily_job_4:
+            display_name: Deliver Regolith and Ice (Thu)
+            building: daily_job
+            pool: Flora
+            input:
+                regolith: 15
+                ice: 15
+            output:
+                dusk: [2, 3, 2.5]
+        daily_job_5:
+            display_name: Deliver Electronic Bits (Fri)
+            building: daily_job
+            pool: Flora
+            input:
+                electronic_bits: 5
+            output:
+                dusk: [3, 5, 4]
+        daily_job_6: 
+            display_name: Deliver Water Rich Clays (Sat)
+            building: daily_job
+            pool: Flora
+            input:
+                water_rich_clay: 1
+            output:
+                dusk: [3, 5, 4]
+        daily_job_7:
+            display_name: Deliver Rover Wire (Sun)
+            building: daily_job
+            pool: Flora
+            input:
+                rover_wires: 2
+            output:
+                dusk: [3, 5, 4]
         #event
         plant_dwarf_hops:
             display_name: Plant Dwarf Hops
@@ -6563,3 +7046,5 @@
             display_name: Thorium Reactor
         composter:
             display_name: Composter
+        daily_job:
+            display_name: Daily Job
