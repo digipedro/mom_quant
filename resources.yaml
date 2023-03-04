@@ -1370,8 +1370,8 @@
             input:
                 power: 80
                 circuit_component: 1
-                metal_bits: 40
-                electronic_bits: 400
+                metal_bits: 20
+                electronic_bits: 80
                 dusk: 20
                 stamina: 4
                 machining_tools: 4
@@ -1402,8 +1402,8 @@
             input:
                 power: 40
                 circuit_component: 1
-                metal_bits: 20
-                electronic_bits: 200
+                metal_bits: 10
+                electronic_bits: 60
                 dusk: 10
                 stamina: 2
                 machining_tools: 2
@@ -1418,8 +1418,8 @@
             input:
                 power: 60
                 circuit_component: 1
-                metal_bits: 30
-                electronic_bits: 300
+                metal_bits: 15
+                electronic_bits: 70
                 dusk: 15
                 stamina: 3
                 machining_tools: 3
@@ -1434,8 +1434,8 @@
             input:
                 power: 100
                 circuit_component: 1
-                metal_bits: 50
-                electronic_bits: 500
+                metal_bits: 25
+                electronic_bits: 90
                 dusk: 25
                 stamina: 5
                 machining_tools: 5
