@@ -116,6 +116,10 @@
             display_name: Starhopped Beer
         resource_token:
             display_name: Resource Credit
+        slag_storage:
+            display_name: Slag
+        alu_lit_alloy:
+            display_name: Al-Li Alloy
     recipes:
         # greenhouse
         plant_sprouts:
@@ -6821,6 +6825,245 @@
                 rover_wires: 2
             output:
                 dusk: [3, 5, 4]
+        #vulcan metalworks
+        make_stainless_plate_C1:
+            display_name: Machine Stainless Steel Plate
+            building: vulcan-metalworks
+            level:
+                machining: 30
+            input:
+                power: 100
+                stamina: 3
+                stainless_steel: 20
+                metal_bits: 25
+            output:
+                lootlist:
+                    - stainless_steel_plate: [1, 7, 11]
+                    - slag_storage: [1, 15, 15]
+        make_al_li_plate_C1:
+            display_name: Machine Al-Li Plates
+            building: vulcan-metalworks
+            level:
+                machining: 50
+            input:
+                power: 100
+                stamina: 4
+                alu_lit_alloy: 20
+                electronic_bits: 25
+            output:
+                lootlist:
+                    - alu_lit_alloy_plate: [1, 2, 18]
+                    - slag_storage: [1, 25, 25]
+        make_static_test_stand_C1:
+            display_name: Construct Static Test Stand
+            building: vulcan-metalworks
+            level:
+                aerospace: 50
+            input:
+                power: 100
+                stamina: 8
+                stainless_steel: 120
+                structural_parts: 25
+                circuit_component: 25
+                electronics_parts: 10
+                metal_bits: 100
+                steel_spring: 15
+            output:
+                lootlist:
+                    - static_test_stand: [1, 1, 1]
+                    - slag_storage: [1, 400, 700]
+        make_lox_tank_C1:
+            display_name: Construct Liquid Oxygen Tank
+            building: vulcan-metalworks
+            level:
+                aerospace: 40
+            input:
+                power: 50
+                stamina: 8
+                stainless_steel: 60
+                structural_parts: 5
+                circuit_component: 3
+                pressure_gauge: 1
+            output:
+                lootlist:
+                    - lox_tank: [1, 1, 1]
+                    - slag_storage: [1, 200, 400]
+        make_methane_tank_C1:
+            display_name: Construct Liquid Methane Tank
+            building: vulcan-metalworks
+            level:
+                aerospace: 40
+            input:
+                power: 50
+                stamina: 8
+                stainless_steel: 60
+                structural_parts: 5
+                circuit_component: 3
+                pressure_gauge: 1
+            output:
+                lootlist:
+                    - methane_tank: [1, 1, 1]
+                    - slag_storage: [1, 150, 300]
+        make_cryo_canister_C1:
+            display_name: Manufacture Cryogenic Canister
+            building: vulcan-metalworks
+            level:
+                aerospace: 25
+            input:
+                power: 20
+                stamina: 2
+                stainless_steel: 3
+                pressure_gauge: 1
+                pvc_raw: 1
+                electronic_bits: 10
+                nitrogen: 10
+            output:
+                lootlist:
+                    - empty_cryo_canister: [1, 1, 1]
+                    - slag_storage: [1, 25, 100]
+        reprocess_slag_C1:
+            display_name: Reprocess Slag
+            building: vulcan-metalworks
+            level:
+                chemistry: 10
+            input:
+                slag_storage: 100
+                power: 20
+                stamina: 1
+            output:
+                lootset:
+                    - smelt_iron: [0.3333, 1, 5]
+                    - smelt_steel: [0.3333, 1, 1]
+                    - smelt_aluminum: [0.3333, 1, 1]
+        reprocess_slag_III_C1:
+            display_name: Reprocess Slag III
+            building: vulcan-metalworks
+            level:
+                chemistry: 50
+            input:
+                slag_storage: 200
+                power: 60
+                stamina: 3
+            output:
+                lootset:
+                    - smelt_iron: [0.2, 1, 8]
+                    - smelt_steel: [0.2, 1, 3]
+                    - smelt_aluminum: [0.2, 1, 1]
+                    - smelt_titanium: [0.2, 1, 1]
+                    - chromium: [0.2, 1, 3]
+        reprocess_slag_II_C1:
+            display_name: Reprocess Slag II
+            building: vulcan-metalworks
+            level:
+                chemistry: 30
+            input:
+                slag_storage: 150
+                power: 40
+                stamina: 2
+            output:
+                lootset:
+                    - smelt_iron: [0.25, 1, 7]
+                    - smelt_steel: [0.25, 1, 1]
+                    - smelt_aluminum: [0.25, 1, 1]
+                    - chromium: [0.25, 1, 3]
+        sell_slag_C1:
+            display_name: Sell Slag
+            building: vulcan-metalworks
+            pool: Icarus
+            level:
+                chemistry: 70
+            input:
+                slag_storage: 300
+                power: 80
+                stamina: 3
+            output:
+                lootlist:
+                    - dusk: [1, 1, 15]
+        smelt_stainless_steel_C1:
+            display_name: Smelt Stainless Steel
+            building: vulcan-metalworks
+            level:
+                mining: 40
+            input:
+                power: 100
+                stamina: 3
+                smelt_steel: 25
+                chromium: 3
+            output:
+                lootlist:
+                    - stainless_steel: [1, 8, 12]
+                    - slag_storage: [1, 25, 25]
+        smelt_alu_lit_alloy_C1:
+            display_name: Smelt Al-LI Alloy
+            building: vulcan-metalworks
+            level:
+                mining: 60
+            input:
+                power: 150
+                stamina: 3
+                smelt_aluminum: 25
+                lithium: 1
+                metal_bits: 25
+            output:
+                lootlist:
+                    - alu_lit_alloy: [1, 8, 12]
+                    - slag_storage: [1, 50, 50]
+        make_hopper_frame_C1:
+            display_name: Manufacture Hopper Frame
+            building: vulcan-metalworks
+            level:
+                aerospace: 75
+            input:
+                power: 600
+                stamina: 10
+                alu_lit_alloy_plate: 120
+                stainless_steel_plate: 200
+                circuit_component: 50
+                electronic_bits: 120
+                metal_bits: 110
+                titanium_plate: 45
+            output:
+                lootlist:
+                    - hopper_frame: [1, 1, 1]
+                    - slag_storage: [1, 1000, 1500]
+        make_hopper_leg_C1:
+            display_name: Manufacture Hopper Landing Leg
+            building: vulcan-metalworks
+            level:
+                aerospace: 65
+            input:
+                power: 300
+                stamina: 8
+                alu_lit_alloy_plate: 20
+                stainless_steel_plate: 60
+                circuit_component: 5
+                electronic_bits: 100
+                metal_bits: 220
+                titanium_plate: 5
+            output:
+                lootlist:
+                    - hopper_leg: [1, 1, 1]
+                    - hopper_leg: [0.01, 1, 1]
+                    - lootset:
+                            - slag_storage: [0.5, 700, 800]
+        make_hopper_nose_cone_C1:
+            display_name: Manufacture Hopper Nose Cone
+            building: vulcan-metalworks
+            level:
+                aerospace: 60
+            input:
+                power: 400
+                stamina: 6
+                alu_lit_alloy_plate: 90
+                stainless_steel_plate: 10
+                circuit_component: 35
+                electronics_parts: 50
+                pvc_raw: 100
+                pla: 100
+            output:
+                lootlist:
+                    - hopper_nose_cone: [1, 1, 1]
+                    - slag_storage: [1, 1000, 1200]
         #event
         plant_dwarf_hops:
             display_name: Plant Dwarf Hops
@@ -7048,3 +7291,5 @@
             display_name: Composter
         daily_job:
             display_name: Daily Job
+        vulcan-metalworks:
+            display_name: Vulcan Metalworks

@@ -309,7 +309,8 @@
                 machining: 0,
                 mining: 0,
                 robotics: 0,
-                scavenging: 0
+                scavenging: 0,
+                aerospace: 0,
             };
       
       // items not to assess market fees on
@@ -321,7 +322,8 @@
           'glitter',
           'cantina_coin',
           'moisture',
-          'resource_token'
+          'resource_token',
+          'slag_storage'
       ]
       
       
@@ -389,7 +391,8 @@
                 {id: 'machining', name: 'Machining', value: 145},
                 {id: 'mining', name: 'Mining', value: 145},
                 {id: 'robotics', name: 'Robotics', value: 145},
-                {id: 'scavenging', name: 'Scavenging', value: 145}
+                {id: 'scavenging', name: 'Scavenging', value: 145},
+                {id: 'aerospace', name: 'Aerospace', value: 145}
             ],
             level_hides: {...default_level_hides},                    
             level_hide_count: 0,
@@ -755,7 +758,12 @@
                     return (this.getTaskCost('feed_worms_C1') - this.getPrice('moisture', type) * 1.5);
                 if (id == 'moisture')
                     return 0 - ((this.getTaskCost('composter_sunflowers_2_C1') - this.getPrice('biowaste_storage', type) * 2.5) / 5);
-
+                
+                // sell_slag_C1
+                if (id == 'slag_storage')
+                    return ( (this.getPowerCost(this.selected_power_source) * 80 + (this.getStaminaCost(this.selected_stamina_source)) * 3 ) / 300
+                            / (8 * this.getPoolMult('Icarus')));
+                
                 // regular market lookup
                 for (let i = 0; i < this.market.length; i++) {
                     if (this.market[i].id == id) {
