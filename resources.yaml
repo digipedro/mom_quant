@@ -7324,6 +7324,50 @@
                 lootlist:
                     - clovers: [1, 1, 2]
                     - four_leaf_clover: [0.03, 1, 1]
+        make_ethanol_C1:
+            display_name: Make Ethanol
+            building: chem_lab
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                dried_dwarf_wheat: 3
+                yeast: 5
+                water: 15
+                power: 20
+            output:
+                lootlist:
+                    - ethanol: [1, 2, 3]
+        make_baking_soda_C1:
+            display_name: Make Baking Soda
+            building: chem_lab
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                halite: 3
+                water: 5
+                ammonia: 3
+                vinegar: 4
+                power: 5
+            output:
+                lootlist:
+                    - baking_soda: [1, 1, 4]
+        capture_ammonia_C1:
+            display_name: Capture Ammonia
+            building: sab_reactor
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                nitrogen: 5
+                hydrogen: 15
+                smelt_iron: 15
+                chemistry_tools: 2
+                power: 100
+            output:
+                lootlist:
+                    - ammonia: [1, 2, 5]
     buildings:
         solar_panel:
             display_name: Solar Panel
