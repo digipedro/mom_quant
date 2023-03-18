@@ -7064,7 +7064,7 @@
                 lootlist:
                     - hopper_nose_cone: [1, 1, 1]
                     - slag_storage: [1, 1000, 1200]
-        #event
+        #brewing
         plant_dwarf_hops:
             display_name: Plant Dwarf Hops
             building: greenhouse
@@ -7242,6 +7242,88 @@
             output:
                 star_hopped: [4, 5, 4.05]
                 wort: [0, 3, 1.8]
+        #lucky event
+        extract_green_food_dye_C1:
+            display_name: Extract Green Food Dye
+            building: chem_lab
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                clovers: 3
+                distilled_water: 5
+                ethanol: 10
+                power: 10
+            output:
+                lootlist:
+                    - green_dye: [1, 3, 5]
+        brew_green_irish_coffee_C1:
+            display_name: Brew Green Irish Coffee
+            building: grindnbrew
+            input:
+                stamina: 1
+                coffee_ground: 3
+                distilled_water: 5
+                power: 10
+                distilled_whiskey: 3
+                green_dye: 1
+            output:
+                lootlist:
+                    - irish_coffee: [1, 1, 2]
+        distill_water_C1:
+            display_name: Distill Water
+            building: chem_lab
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                glass: 1
+                water: 25
+                power: 40
+            output:
+                lootlist:
+                    - distilled_water: [1, 2, 6]
+        distill_whiskey_C1:
+            display_name: Distill Whiskey
+            building: chem_lab
+            input:
+                stamina: 1
+                dried_dwarf_wheat: 3
+                yeast: 15
+                power: 25
+                distilled_water: 20
+                smelt_copper: 5
+            output:
+                lootlist:
+                    - distilled_whiskey: [1, 1, 2]
+        make_acetate_C1:
+            display_name: Make Acetate
+            building: chem_lab
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                power: 100
+                distilled_water: 10
+            output:
+                lootlist:
+                    - acetate: [1, 3, 5]
+        plant_clovers_C1:
+            display_name: Plant Clovers
+            building: greenhouse
+            level:
+                life science: 5
+            input:
+                stamina: 1
+                clover_seeds: 1
+                water: 4
+                soil: 2
+                power: 5
+                lifescience_tools: 1
+            output:
+                lootlist:
+                    - clovers: [1, 1, 2]
+                    - four_leaf_clover: [0.03, 1, 1]
     buildings:
         solar_panel:
             display_name: Solar Panel
