@@ -152,7 +152,7 @@
                   <v-container>
                     <v-row v-for="slider in level_sliders" :key="slider.id">
                       <v-col cols="12">
-                        <v-slider :label="slider.name" v-model="slider.value" class="align-center" min="1" max="145" hide-details>
+                        <v-slider :label="slider.name" v-model="slider.value" class="align-center" min="1" max="160" hide-details>
                             <template v-slot:append>
                               <v-text-field v-model="slider.value" class="mt-0 pt-0" hide-details single-line type="number" style="width: 60px"></v-text-field>
                             </template>
@@ -311,6 +311,7 @@
                 robotics: 0,
                 scavenging: 0,
                 aerospace: 0,
+                cooking: 0,
             };
       
       // items not to assess market fees on
@@ -384,15 +385,16 @@
             selected_stamina_source: 'Eat Meal',
             level_dialog: false,
             level_sliders: [
-                {id: 'chemistry', name: 'Chemistry', value: 145},
-                {id: 'electrical', name: 'Electrical', value: 145},
-                {id: 'fabrication', name: 'Fabrication', value: 145},
-                {id: 'life science', name: 'Life Science', value: 145},
-                {id: 'machining', name: 'Machining', value: 145},
-                {id: 'mining', name: 'Mining', value: 145},
-                {id: 'robotics', name: 'Robotics', value: 145},
-                {id: 'scavenging', name: 'Scavenging', value: 145},
-                {id: 'aerospace', name: 'Aerospace', value: 145}
+                {id: 'chemistry', name: 'Chemistry', value: 150},
+                {id: 'electrical', name: 'Electrical', value: 150},
+                {id: 'fabrication', name: 'Fabrication', value: 150},
+                {id: 'life science', name: 'Life Science', value: 150},
+                {id: 'machining', name: 'Machining', value: 155},
+                {id: 'mining', name: 'Mining', value: 150},
+                {id: 'robotics', name: 'Robotics', value: 150},
+                {id: 'scavenging', name: 'Scavenging', value: 150},
+                {id: 'aerospace', name: 'Aerospace', value: 150},
+                {id: 'cooking', name: 'Cooking', value: 150}
             ],
             level_hides: {...default_level_hides},                    
             level_hide_count: 0,

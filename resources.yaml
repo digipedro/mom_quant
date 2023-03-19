@@ -7371,6 +7371,8 @@
         make_irish_soda_bread_C1:
             display_name: Make Irish Soda Bread
             building: commissary
+            level:
+                cooking: 5
             input:
                 stamina: 1
                 dried_dwarf_wheat: 10
