@@ -7298,9 +7298,9 @@
                     - distilled_whiskey: [1, 1, 2]
         make_acetate_C1:
             display_name: Make Acetate
-            building: chem_lab
+            building: sab_reactor
             level:
-                chemistry: 5
+                chemistry: 25
             input:
                 stamina: 1
                 power: 100
@@ -7368,6 +7368,43 @@
             output:
                 lootlist:
                     - ammonia: [1, 2, 5]
+        make_irish_soda_bread_C1:
+            display_name: Make Irish Soda Bread
+            building: commissary
+            input:
+                stamina: 1
+                dried_dwarf_wheat: 10
+                distilled_water: 10
+                power: 10
+                baking_soda: 4
+                green_dye: 1
+            output:
+                lootlist:
+                    - irish_soda_bread: [1, 1, 2]
+        make_lucky_smoothie_C1:
+            display_name: Make Lucky Smoothie
+            building: commissary
+            input:
+                stamina: 1
+                clovers: 6
+                water: 5
+                sprout_seed: 25
+                power: 5
+            output:
+                lootlist:
+                    - green_smoothie: [1, 1, 1]
+        make_vinegar_C1:
+            display_name: Make Vinegar
+            building: commissary
+            input:
+                stamina: 1
+                acetate: 3
+                distilled_water: 5
+                power: 10
+            output:
+                lootlist:
+                    - vinegar: [1, 3, 5]
+            
     buildings:
         solar_panel:
             display_name: Solar Panel
@@ -7419,3 +7456,5 @@
             display_name: Daily Job
         vulcan-metalworks:
             display_name: Vulcan Metalworks
+        commissary:
+            display_name: Commissary Kitchen
