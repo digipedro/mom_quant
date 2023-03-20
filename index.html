@@ -1247,6 +1247,8 @@
                             if (time > last_update)
                                 last_update = time;
                             // set 0 day average price to last price
+                            if (this.market[i].attributes.lastSoldPrice == 0)
+                                this.market[i].attributes.lastSoldPrice = NaN;
                             if (this.market[i].attributes.averageDaySoldPrice == 0)
                                 this.market[i].attributes.averageDaySoldPrice = this.market[i].attributes.lastSoldPrice;
                         }
