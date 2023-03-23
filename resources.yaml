@@ -5676,6 +5676,75 @@
                 circuit_component: 1
             output:
                 empty_ec: 1
+        craft_polar3_e_C1:
+            display_name: Craft Epic Polar Workshop (Gen 3)
+            building: 3d_print_shop
+            level:
+                fabrication: 95
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 15
+                smelt_steel: 100
+                concrete: 50
+                machined_parts: 5
+                minting_token: 5
+                fabrication_tools: 5
+                master_signet_fabrication: 1
+            output:
+                lootlist:
+                    - polar_workshop-gen3_E1: [1, 1, 1]
+        craft_polar_workshop-gen3_C_C1:
+            display_name: Craft Common Polar Workshop Pack (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 50
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 10
+                smelt_steel: 25
+                concrete: 20
+                machined_parts: 2
+                minting_token: 2
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - polar_workshop-gen3_C1: [1, 1, 1]
+        craft_polar_workshop-gen3_R_C1:
+            display_name: Craft Rare Polar Workshop Pack (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 90
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 12
+                smelt_steel: 75
+                concrete: 40
+                machined_parts: 4
+                minting_token: 4
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - polar_workshop-gen3_R1: [1, 1, 1]
+        craft_polar_workshop-gen3_UC_C1:
+            display_name: Craft Uncommon Polar Workshop Pack (Gen 3)
+            building: engineering_bay
+            level:
+                fabrication: 75
+            input:
+                power: 60
+                stamina: 5
+                metis_weave: 10
+                smelt_steel: 50
+                concrete: 30
+                machined_parts: 3
+                minting_token: 3
+                fabrication_tools: 5
+            output:
+                lootlist:
+                    - polar_workshop-gen3_U1: [1, 1, 1]
         #Shelter
         extra_credit:
             display_name: Extra Credit
