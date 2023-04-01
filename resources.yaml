@@ -3656,10 +3656,10 @@
                     - lootset:
                         - water: [0.1319, 30, 100]
                         - ice: [0.1319, 25, 150]
+                        - halite: [0.1319, 1, 5]
+                        - barite: [0.1319, 1, 3]
                         - chromium: [0.1099, 1, 1]
                         - metis: [0.0659, 1, 2]
-                        - smelt_iron: [0.1319, 1, 5]
-                        - smelt_copper: [0.1319, 1, 3]
                         - surveyor_coin: [0.033, 1, 1]
                         - percent: 13.79
                         - lootset:
@@ -3732,8 +3732,8 @@
                         - lootset:
                             - water: [0.2, 30, 100]
                             - dusk: [0.1, 10, 40]
-                            - smelt_iron: [0.2, 1, 5]
-                            - smelt_copper: [0.2, 1, 5]
+                            - halite: [0.2, 1, 5]
+                            - barite: [0.2, 1, 5]
                             - metis: [0.0667, 1, 2]
                             - chromium: [0.1333, 1, 1]
                             - surveyor_coin: [0.1, 1, 1]
@@ -3805,15 +3805,15 @@
             output:
                 lootset:
                     - repeat: 2
-                    - smelt_iron: [0.1143, 1, 3]
-                    - smelt_copper: [0.1143, 1, 3]
-                    - smelt_titanium: [0.0286, 1, 3]
-                    - smelt_aluminum: [0.0286, 1, 3]
+                    - smelt_iron: [0.1111, 1, 3]
+                    - smelt_copper: [0.1111, 1, 3]
+                    - smelt_titanium: [0.0278, 1, 3]
+                    - smelt_aluminum: [0.0278, 1, 3]
                     - chromium: [0.0833, 1, 1]
                     - metis: [0.0556, 1, 2]
-                    - vibes: [0.2286, 1, 3]
+                    - vibes: [0.2222, 1, 3]
                     - surveyor_coin: [0.0278, 1, 1]
-                    - percent: 34.2857
+                    - percent: 33.33
                     - lootset:
                         - sprout_seed: [0.1429, 5, 5]
                         - bamboo_seed: [0.1429, 5, 5]
@@ -3932,8 +3932,8 @@
                 lootset:
                     - repeat: 3
                     - lootset:
-                        - smelt_titanium: [0.1319, 1, 5]
-                        - smelt_aluminum: [0.1319, 1, 5]
+                        - water_rich_clay: [0.1319, 1, 5]
+                        - chromium: [0.1319, 1, 5]
                         - chromium: [0.0879, 1, 1]
                         - metis: [0.044, 1, 2]
                         - surveyor_coin: [0.033, 1, 1]
