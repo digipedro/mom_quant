@@ -7545,16 +7545,6 @@
             output:
                 lootlist:
                     - event_apr23_purple_egg: [1, 1, 1]
-        event_apr23_make_purple_egg_L2:
-            display_name: Dye Purple Easter Egg
-            building: commissary
-            input:
-                stamina: 3
-                event_apr23_egg: 1
-                purple_dye: 1
-            output:
-                lootlist:
-                    - event_apr23_purple_egg: [1, 1, 1]
         event_apr23_make_red_egg_C1:
             display_name: Dye Red Easter Egg
             building: commissary
