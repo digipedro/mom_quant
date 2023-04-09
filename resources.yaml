@@ -7514,30 +7514,119 @@
             output:
                 lootlist:
                     - vinegar: [1, 3, 5]
-        library_10_event_cooking:
-            display_name: Practice Baking Bread
-            building: library
+        #egg_event
+        event_apr23_make_blue_egg_C1:
+            display_name: Dye Blue Easter Egg
+            building: commissary
             input:
-                stamina: 2
-                power: 10
-                distilled_water: 10
-                dried_dwarf_wheat: 10
-                yeast: 3
+                stamina: 1
+                event_apr23_egg: 1
+                blue_dye: 1
             output:
                 lootlist:
-                    - research_cooking_n: [0.05, 1, 1]
-        library_10_event_whiskey:
-            display_name: Practice Distilling Whiskey
-            building: library
+                    - event_apr23_blue_egg: [1, 1, 1]
+        event_apr23_make_orange_egg_C1:
+            display_name: Dye Orange Easter Egg
+            building: commissary
             input:
-                stamina: 2
-                dried_dwarf_wheat: 3
-                yeast: 15
-                power: 10
-                distilled_water: 10
+                stamina: 1
+                event_apr23_egg: 1
+                orange_dye: 1
             output:
                 lootlist:
-                    - research_cooking_n: [0.05, 1, 1]
+                    - event_apr23_orange_egg: [1, 1, 1]
+        event_apr23_make_purple_egg_C1:
+            display_name: Dye Purple Easter Egg
+            building: commissary
+            input:
+                stamina: 1
+                event_apr23_egg: 1
+                purple_dye: 1
+            output:
+                lootlist:
+                    - event_apr23_purple_egg: [1, 1, 1]
+        event_apr23_make_purple_egg_L2:
+            display_name: Dye Purple Easter Egg
+            building: commissary
+            input:
+                stamina: 3
+                event_apr23_egg: 1
+                purple_dye: 1
+            output:
+                lootlist:
+                    - event_apr23_purple_egg: [1, 1, 1]
+        event_apr23_make_red_egg_C1:
+            display_name: Dye Red Easter Egg
+            building: commissary
+            input:
+                stamina: 1
+                event_apr23_egg: 1
+                red_dye: 1
+            output:
+                lootlist:
+                    - event_apr23_red_egg: [1, 1, 1]
+        event_apr23_make_yellow_egg_C1:
+            display_name: Dye Yellow Easter Egg
+            building: commissary
+            input:
+                stamina: 1
+                event_apr23_egg: 1
+                yellow_dye: 1
+            output:
+                lootlist:
+                    - event_apr23_yellow_egg: [1, 1, 1]
+        extract_blue_dye_C1:
+            display_name: Extract Blue Dye
+            building: commissary
+            input:
+                stamina: 1
+                smelt_copper: 2
+                beryl: 1
+                distilled_water: 1
+            output:
+                lootlist:
+                    - blue_dye: [1, 1, 1]
+        extract_orange_dye_C1:
+            display_name: Extract Orange Dye
+            building: commissary
+            input:
+                stamina: 1
+                regolith: 100
+                distilled_water: 1
+            output:
+                lootlist:
+                    - orange_dye: [1, 1, 1]
+        extract_purple_dye_C1:
+            display_name: Extract Purple Dye
+            building: commissary
+            input:
+                stamina: 1
+                metis: 1
+                distilled_water: 1
+                beet: 2
+            output:
+                lootlist:
+                    - purple_dye: [1, 1, 1]
+        extract_red_dye_C1:
+            display_name: Extract Red Dye
+            building: commissary
+            input:
+                stamina: 1
+                beet: 1
+                distilled_water: 1
+            output:
+                lootlist:
+                    - red_dye: [1, 1, 1]
+        extract_yellow_dye_C1:
+            display_name: Extract Yellow Dye
+            building: commissary
+            input:
+                stamina: 1
+                sulfur: 100
+                distilled_water: 1
+            output:
+                lootlist:
+                    - yellow_dye: [1, 1, 1]
     buildings:
         solar_panel:
             display_name: Solar Panel
