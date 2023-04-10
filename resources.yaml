@@ -7617,6 +7617,39 @@
             output:
                 lootlist:
                     - yellow_dye: [1, 1, 1]
+        sow_beet_C1:
+            display_name: Sow Beet Seeds
+            building: greenhouse
+            level:
+                life science: 50
+            upgrade: Seed Sowing Kit
+            input:
+                stamina: 4
+                power: 15
+                water: 10
+                lifescience_tools: 1
+                beet_seed: 60
+                soil: 4
+                fertilizer: 1
+            output:
+                lootlist:
+                    - beet_seed: [1, 50, 65]
+                    - beet_seed: [0.8, 0, 10]
+                    - beet_seed: [0.4, 0, 25]
+        grow_beet_C1:
+            display_name: Plant Beet
+            building: greenhouse
+            level:
+                life science: 15
+            input:
+                stamina: 3
+                power: 12
+                water: 3
+                beet_seed: 1
+                soil: 3
+            output:
+                lootlist:
+                    - beet: [1, 1, 1]
     buildings:
         solar_panel:
             display_name: Solar Panel
