@@ -437,50 +437,136 @@
             output:
                 sweet_potato_seed: [40, 80, 55]
         #cad
-        capture_co2:
-            display_name: Capture Carbon Dioxide
+        capture_ammonia_C1:
+            display_name: Capture Ammonia
+            building: sab_reactor
+            level:
+                chemistry: 5
+            input:
+                stamina: 1
+                nitrogen: 5
+                hydrogen: 15
+                smelt_iron: 15
+                chemistry_tools: 2
+                power: 100
+            output:
+                lootlist:
+                    - ammonia: [1, 2, 5]
+        capture_ar_III_C1:
+            display_name: Capture Argon III
+            building: cad
+            level:
+                chemistry: 75
+            input:
+                stamina: 2
+                power: 660
+                chemistry_tools: 10
+            output:
+                lootlist:
+                    - argon: [1, 10, 16]
+                    - carbon_dioxide: [1, 1, 2]
+        capture_ar_II_C1:
+            display_name: Capture Argon II
+            building: cad
+            level:
+                chemistry: 50
+            input:
+                stamina: 2
+                power: 260
+                chemistry_tools: 5
+            output:
+                lootlist:
+                    - argon: [1, 4, 8]
+                    - carbon_dioxide: [1, 0, 2]
+        capture_ar_I_C1:
+            display_name: Capture Argon I
+            building: cad
+            level:
+                chemistry: 25
+            input:
+                stamina: 2
+                power: 40
+                chemistry_tools: 1
+            output:
+                lootlist:
+                    - argon: [1, 1, 2]
+                    - carbon_dioxide: [1, 0, 1]
+        capture_co2_2_C1:
+            display_name: Capture Carbon Dioxide I
             building: cad
             input:
                 stamina: 1
-                power: 60
+                power: 30
             output:
                 lootlist:
-                    - carbon_dioxide: [1.0, 2, 5]
-                    - carbon_dioxide: [0.1111, 1, 10]
-                    - nitrogen: [0.1, 1, 2]
-                    - argon: [0.05, 1, 2]
-        capture_co2_2:
+                    - carbon_dioxide: [1, 2, 4]
+                    - nitrogen: [0.1, 1, 1]
+        capture_co2_II_2_C1:
             display_name: Capture Carbon Dioxide II
             building: cad
             level:
                 chemistry: 25
             input:
                 stamina: 3
-                power: 80
-                chemistry_tools: 2
+                power: 120
+                chemistry_tools: 1
             output:
                 lootlist:
-                    - carbon_dioxide: [1.0, 3, 10]
-                    - carbon_dioxide: [0.1111, 4, 9]
-                    - nitrogen: [0.1, 2, 5]
-                    - argon: [0.1, 2, 5]
-                    - nitrogen: [1.0, 1, 1]
-        capture_co2_3:
+                    - carbon_dioxide: [1, 10, 18]
+                    - argon: [0.1, 1, 1]
+        capture_co2_III_2_C1:
             display_name: Capture Carbon Dioxide III
             building: cad
             level:
                 chemistry: 50
             input:
+                stamina: 5
+                power: 440
+                chemistry_tools: 2
+            output:
+                lootlist:
+                    - carbon_dioxide: [1, 30, 46]
+                    - argon: [0.25, 1, 1]
+                    - nitrogen: [0.25, 1, 1]
+        capture_n2_III_C1:
+            display_name: Capture Nitrogen III
+            building: cad
+            level:
+                chemistry: 75
+            input:
+                stamina: 6
+                power: 620
+                chemistry_tools: 5
+            output:
+                lootlist:
+                    - nitrogen: [1, 10, 16]
+                    - carbon_dioxide: [1, 0, 3]
+        capture_n2_II_C1:
+            display_name: Capture Nitrogen II
+            building: cad
+            level:
+                chemistry: 50
+            input:
                 stamina: 4
-                power: 100
+                power: 260
                 chemistry_tools: 3
             output:
                 lootlist:
-                    - carbon_dioxide: [1.0, 6, 12]
-                    - carbon_dioxide: [0.1111, 5, 10]
-                    - nitrogen: [0.05, 3, 6]
-                    - argon: [0.05, 3, 8]
-                    - nitrogen: [1.0, 2, 2]
+                    - nitrogen: [1, 4, 8]
+                    - carbon_dioxide: [1, 0, 2]
+        capture_n2_I_C1:
+            display_name: Capture Nitrogen I
+            building: cad
+            level:
+                chemistry: 25
+            input:
+                stamina: 2
+                power: 40
+                chemistry_tools: 1
+            output:
+                lootlist:
+                    - nitrogen: [1, 1, 2]
+                    - carbon_dioxide: [1, 0, 1]
         roast_coffee_beans:
             display_name: Roast Coffee Beans
             building: cad
@@ -492,6 +578,21 @@
                 power: 10
             output:
                 coffee_bean_roasted: [16, 20, 18]
+        cryo_hops_C1:
+            display_name: Freeze and Pelletize Hops
+            building: cad
+            level:
+                life science: 10
+            input:
+                stamina: 1
+                power: 20
+                hops: 10
+                nitrogen: 2
+                ice: 50
+            output:
+                lootlist:
+                    - cryo_hop: [1, 5, 15]
+                    - cryo_hop: [0.1, 1, 3]
         co2_transport:
             display_name: CO2 Transport
             building: cad
@@ -3794,6 +3895,27 @@
                                 - shard_chem_lab_E: [0.0833, 5, 20]
                                 - shard_3d_print_shop_E: [0.0833, 5, 20]
                                 - shard_rover_works_E: [0.0833, 5, 20]
+        hauler_missions_2_no_shard:
+            display_name: Hauler Missions 2 (0 shard value)
+            building: rover_works
+            pool: Juno
+            input:
+                power: 60
+                stamina: 3
+                robotics_tools: 1
+            output:
+                lootset:
+                    - repeat: 2
+                    - lootlist:
+                        - lootset:
+                            - water: [0.2, 30, 100]
+                            - dusk: [0.1, 10, 40]
+                            - halite: [0.2, 1, 5]
+                            - barite: [0.2, 1, 5]
+                            - metis: [0.0667, 1, 2]
+                            - chromium: [0.1333, 1, 1]
+                            - surveyor_coin: [0.1, 1, 1]
+                            - dusk: [0.4938, 0, 0]
         explorer_scavenging:
             display_name: Explorer Scavenging (0% Risk)
             building: rover_works
@@ -4103,6 +4225,31 @@
                             - shard_chem_lab_M: [0.0833, 25, 50]
                             - shard_3d_print_shop_M: [0.0833, 25, 50]
                             - shard_rover_works_M: [0.0833, 25, 50]
+        explorer_mission_2-1_no_ahrd:
+            display_name: Explorer Mission 2.1 (0 shard value)
+            building: rover_works
+            day: [mon, thu]
+            pool: Juno
+            input:
+                power: 100
+                stamina: 4
+                robotics_tools: 1
+            output:
+                lootlist:
+                    - repeat: 2
+                    - lootset:
+                        - percent: 14.7059
+                        - lootset:
+                            - dusk: [0.025, 25, 150]
+                            - dusk: [0.15, 15, 75]
+                            - dusk: [0.325, 10, 50]
+                            - dusk: [0.50, 5, 20]
+                        - chromium: [0.2941, 2, 5]
+                        - water_rich_clay: [0.2941, 2, 5]
+                        - chromium: [0.0735, 1, 1]
+                        - metis: [0.1471, 1, 2]
+                        - surveyor_coin: [0.0441, 1, 1]
+                        - dusk: [0.56, 0, 0]
         #polar workshop
         rodriguez_well:
             display_name: Rodriguez Well
@@ -7224,19 +7371,6 @@
                 water: 10
             output:
                 wort: [14, 25, 17.3]
-        freeze_and_pelletize_hops:
-            display_name: Freeze and Pelletize Hops
-            building: cad
-            level:
-                life science: 10
-            input:
-                stamina: 1
-                power: 20
-                hops: 10
-                nitrogen: 2
-                ice: 50
-            output:
-                cryo_hop: [5, 18, 10.2]
         dry_dwarf_wheat:
             display_name: Dry Dwarf Wheat
             building: cad
@@ -7461,21 +7595,6 @@
             output:
                 lootlist:
                     - baking_soda: [1, 1, 4]
-        capture_ammonia_C1:
-            display_name: Capture Ammonia
-            building: sab_reactor
-            level:
-                chemistry: 5
-            input:
-                stamina: 1
-                nitrogen: 5
-                hydrogen: 15
-                smelt_iron: 15
-                chemistry_tools: 2
-                power: 100
-            output:
-                lootlist:
-                    - ammonia: [1, 2, 5]
         make_irish_soda_bread_C1:
             display_name: Make Irish Soda Bread
             building: commissary
