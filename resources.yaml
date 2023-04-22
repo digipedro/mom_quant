@@ -1626,18 +1626,21 @@
                 machining_tools: 3
             output:
                 copper_spring: [8, 16, 12]
-        make_glass_panel:
+        glass_panel_C1:
             display_name: Make Glass Panel
             building: machine_shop
             level:
                 machining: 75
             input:
-                metis_weave: 3
-                glass: 5
-                aluminum_plate: 2
                 stamina: 1
+                power: 40
+                glass: 4
+                metis_weave: 4
+                aluminum_plate: 4
+                argon: 10
             output:
-                glass_panel: 1
+                lootlist:
+                    - glass_panel: [1, 2, 2]
         medium_steel_ball_bearings:
             display_name: Medium Steel Ball Bearings
             building: machine_shop
