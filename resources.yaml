@@ -632,6 +632,24 @@
              output:
                  sunflower_seeds_roasted: [1, 2, 1.1]
         #smelter
+        filter_metal_junk_C1:
+            display_name: Filter Metal Junk
+            building: smelter
+            level:
+                mining: 60
+            input:
+                metal_scrap: 3
+                stamina: 1
+                power: 20
+                mining_tools: 1
+            output:
+                lootlist:
+                    - unrefined_metal_chunk: [1, 1, 1]
+                    - regolith: [1, 1, 20]
+                    - lootset:
+                            - metal_bits: [0.9, 1, 2]
+                            - smelt_iron: [0.05, 1, 2]
+                            - smelt_copper: [0.05, 1, 2]
         smelt_iron:
             display_name: Smelt Iron
             building: smelter
@@ -790,6 +808,25 @@
                     - thorium: [1, 1, 3]
                     - uranium: [0.05, 1, 1]
                     - chromium: [0.6, 5, 9]
+        scrap_scavenging_parts_C1:
+            display_name: Melt Scavenging Junk
+            building: smelter
+            level:
+                mining: 40
+            input:
+                mining_equipment: 1
+                lost_keycard: 1
+                plasma_cutter: 1
+                rover_transponder: 1
+                harddrive_battery: 1
+                stamina: 1
+                power: 20
+                mining_tools: 1
+            output:
+                lootlist:
+                    - metal_scrap: [1, 1, 2]
+                    - regolith: [1, 1, 20]
+                    - metal_bits: [1, 1, 1]
         #machine_shop
         make_lifescience_tools_artisan_C1:
             display_name: Make Artisan Life Science Tools
@@ -3040,6 +3077,24 @@
                 hydrogen: 24
                 oxygen: 12
         #chem lab
+        distill_metal_chunk_chem_C1:
+            display_name: Use Metal Solvent on Metal Chunk
+            building: chem_lab
+            level:
+                chemistry: 70
+            input:
+                unrefined_metal_chunk: 1
+                metal_solvent: 1
+                stamina: 1
+                power: 40
+                chemistry_tools: 1
+            output:
+                lootlist:
+                    - lootset:
+                            - smelt_iron: [0.4545, 1, 1]
+                            - smelt_copper: [0.4545, 1, 1]
+                            - smelt_titanium: [0.0455, 1, 1]
+                            - smelt_aluminum: [0.0455, 1, 1]
         make_concrete:
             display_name: Make Concrete
             building: chem_lab
@@ -7022,63 +7077,54 @@
                     - fertilizer: [1, 3, 5]
                     - moisture: [1, 1, 4]
         #daily_job
-        daily_job_1:
-            display_name: Deliver Regolith (Mon)
+        daily_mission_lifescience_13:
+            display_name: Collecting Sorghum Seeds, Soil, and Water
             building: daily_job
-            pool: Flora
             input:
-                regolith: 30
+                stamina: 5
+                sorghum_seed: 5
+                soil: 15
+                water: 20
             output:
-                dusk: [3, 5, 4]
-        daily_job_2:
-            display_name: Deliver Ice (Tue)
+                dusk: [25, 25, 25]
+        daily_mission_electrical_8:
+            display_name: Collecting Rover Wires, Electronic Bits, and Metal Bits
             building: daily_job
-            pool: Flora
             input:
-                ice: 30
+                stamina: 5
+                rover_wires: 20
+                electronic_bits: 15
+                metal_bits: 15
             output:
-                dusk: [2, 3, 2.5]
-        daily_job_3:
-            display_name: Deliver Metal Bits (Wed)
+                dusk: [25, 25, 25]
+        daily_mission_scav_5:
+            display_name: Collecting Metal Bits and Rover Wires
             building: daily_job
-            pool: Flora
             input:
-                metal_bits: 5
+                metal_bits: 45
+                rover_wires: 10
+                electronic_bits: 15
             output:
-                dusk: [2, 3, 2.5]
-        daily_job_4:
-            display_name: Deliver Regolith and Ice (Thu)
+                dusk: [25, 25, 25]
+        daily_mission_scav_8:
+            display_name: Collecting Rover Wires, Metal Bits, Electronic Bits
             building: daily_job
-            pool: Flora
             input:
-                regolith: 15
-                ice: 15
+                rover_wires: 20
+                electronic_bits: 15
+                metal_bits: 15
             output:
-                dusk: [2, 3, 2.5]
-        daily_job_5:
-            display_name: Deliver Electronic Bits (Fri)
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_12:
+            display_name: Collecting Lettuce Seeds, Soil, and Water
             building: daily_job
-            pool: Flora
             input:
-                electronic_bits: 5
+                stamina: 5
+                lettuce_seed: 5
+                soil: 15
+                water: 20
             output:
-                dusk: [3, 5, 4]
-        daily_job_6: 
-            display_name: Deliver Water Rich Clays (Sat)
-            building: daily_job
-            pool: Flora
-            input:
-                water_rich_clay: 1
-            output:
-                dusk: [3, 5, 4]
-        daily_job_7:
-            display_name: Deliver Rover Wire (Sun)
-            building: daily_job
-            pool: Flora
-            input:
-                rover_wires: 2
-            output:
-                dusk: [3, 5, 4]
+                dusk: [25, 25, 25]
         #vulcan metalworks
         make_stainless_plate_C1:
             display_name: Machine Stainless Steel Plate
