@@ -7091,11 +7091,12 @@
             display_name: Collecting Rover Wires, Electronic Bits, and Metal Bits
             building: daily_job
             input:
-                stamina: 5
+                dusk: 5.2
                 rover_wires: 20
                 electronic_bits: 15
                 metal_bits: 15
             output:
+                stamina: [5, 5, 5]
                 dusk: [25, 25, 25]
         daily_mission_scav_5:
             display_name: Collecting Metal Bits and Rover Wires
