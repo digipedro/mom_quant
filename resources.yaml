@@ -7104,7 +7104,6 @@
             input:
                 metal_bits: 45
                 rover_wires: 10
-                electronic_bits: 15
             output:
                 dusk: [25, 25, 25]
         daily_mission_scav_8:
