@@ -7125,6 +7125,39 @@
                 water: 20
             output:
                 dusk: [25, 25, 25]
+        daily_mission_lifescience_2:
+            display_name: Collecting Water for Duskworks Landing
+            building: daily_job
+            input:
+                stamina: 15
+                water: 90
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_scav_6:
+            display_name: Collecting Regolith and Ice for Storage Silos
+            building: daily_job
+            input:
+                regolith: 285
+                ice: 240
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_chemistry_4:
+            display_name: Collecting Carbon Dioxide and Nitrogen
+            building: daily_job
+            input:
+                stamina: 10
+                carbon_dioxide: 20
+                nitrogen: 5
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_chemistry_2:
+            display_name: Collecting Oxygen for Life Support Systems
+            building: daily_job
+            input:
+                stamina: 15
+                oxygen: 110
+            output:
+                dusk: [25, 25, 25]
         #vulcan metalworks
         make_stainless_plate_C1:
             display_name: Machine Stainless Steel Plate
