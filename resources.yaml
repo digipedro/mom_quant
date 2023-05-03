@@ -7158,6 +7158,36 @@
                 oxygen: 110
             output:
                 dusk: [25, 25, 25]
+        daily_mission_chemistry_8:
+            display_name: Collecting Oxygen, Carbon Dioxide, and Nitrogen
+            building: daily_job
+            input:
+                dusk: 5.2
+                oxygen: 55
+                carbon_dioxide: 5
+                nitrogen: 5
+            output:
+                stamina: [5, 5, 5]
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_4:
+            display_name: Collecting Mushroom Spores and Sorghum Seeds
+            building: daily_job
+            input:
+                stamina: 10
+                mushroom_spores: 25
+                sorghum_seed: 2
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_electrical_6:
+            display_name: Collecting Electronic Bits and Metal Bits
+            building: daily_job
+            input:
+                dusk: 10.4
+                electronic_bits: 30
+                metal_bits: 30
+            output:
+                stamina: [10, 10, 10]
+                dusk: [25, 25, 25]
         #vulcan metalworks
         make_stainless_plate_C1:
             display_name: Machine Stainless Steel Plate
