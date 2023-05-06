@@ -7210,10 +7210,9 @@
             display_name: Collecting Empty Power Cells for Battery Recycling
             building: daily_job
             input:
-                dusk: 15.6
+                stamina: 15
                 empty_pc: 5
             output:
-                stamina: [15, 15, 15]
                 dusk: [25, 25, 25]
         daily_mission_scav_3:
             display_name: Collecting Regolith for Covering Lava Tubes
