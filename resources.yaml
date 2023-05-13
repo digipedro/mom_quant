@@ -7095,43 +7095,71 @@
                     - fertilizer: [1, 3, 5]
                     - moisture: [1, 1, 4]
         #daily_job
-        daily_mission_lifescience_13:
-            display_name: Collecting Sorghum Seeds, Soil, and Water
+        daily_mission_lifescience_1:
+            display_name: Collecting Soil for Waterloo Greenhouse
+            building: daily_job
+            input:
+                dusk: 15.6
+                soil: 65
+            output:
+                stamina: [15, 15, 15]
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_2:
+            display_name: Collecting Water for Duskworks Landing
+            building: daily_job
+            input:
+                stamina: 15
+                water: 90
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_3:
+            display_name: Collecting Sprout Seeds
+            building: daily_job
+            input:
+                dusk: 15.6
+                sprout_seed: 40
+            output:
+                stamina: [15, 15, 15]
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_4:
+            display_name: Collecting Mushroom Spores and Sorghum Seeds
+            building: daily_job
+            input:
+                stamina: 10
+                mushroom_spores: 25
+                sorghum_seed: 2
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_5:
+            display_name: Collecting Bamboo Seeds and Water
+            building: daily_job
+            input:
+                dusk: 10.4
+                bamboo_seed: 10
+                water: 20
+            output:
+                stamina: [10, 10, 10]
+                dusk: [25, 25, 25]
+        daily_mission_lifescience_8:
+            display_name: Collecting Sprout Seeds, Soil and Water
             building: daily_job
             input:
                 stamina: 5
-                sorghum_seed: 5
+                sprout_seed: 20
                 soil: 15
                 water: 20
             output:
                 dusk: [25, 25, 25]
-        daily_mission_electrical_8:
-            display_name: Collecting Rover Wires, Electronic Bits, and Metal Bits
+        daily_mission_lifescience_11:
+            display_name: Collecting Bamboo Seeds, Soil, and Water
             building: daily_job
             input:
                 dusk: 5.2
-                rover_wires: 20
-                electronic_bits: 15
-                metal_bits: 15
+                bamboo_seed: 5
+                soil: 15
+                water: 20
             output:
                 stamina: [5, 5, 5]
-                dusk: [25, 25, 25]
-        daily_mission_scav_5:
-            display_name: Collecting Metal Bits and Rover Wires
-            building: daily_job
-            input:
-                metal_bits: 45
-                rover_wires: 10
-            output:
-                dusk: [25, 25, 25]
-        daily_mission_scav_8:
-            display_name: Collecting Rover Wires, Metal Bits, Electronic Bits
-            building: daily_job
-            input:
-                rover_wires: 20
-                electronic_bits: 15
-                metal_bits: 15
-            output:
                 dusk: [25, 25, 25]
         daily_mission_lifescience_12:
             display_name: Collecting Lettuce Seeds, Soil, and Water
@@ -7143,12 +7171,29 @@
                 water: 20
             output:
                 dusk: [25, 25, 25]
-        daily_mission_lifescience_2:
-            display_name: Collecting Water for Duskworks Landing
+        daily_mission_lifescience_13:
+            display_name: Collecting Sorghum Seeds, Soil, and Water
             building: daily_job
             input:
-                stamina: 15
-                water: 90
+                stamina: 5
+                sorghum_seed: 5
+                soil: 15
+                water: 20
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_scav_3:
+            display_name: Collecting Regolith for Covering Lava Tubes
+            building: daily_job
+            input:
+                regolith: 570
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_scav_5:
+            display_name: Collecting Metal Bits and Rover Wires
+            building: daily_job
+            input:
+                metal_bits: 45
+                rover_wires: 10
             output:
                 dusk: [25, 25, 25]
         daily_mission_scav_6:
@@ -7159,52 +7204,14 @@
                 ice: 240
             output:
                 dusk: [25, 25, 25]
-        daily_mission_chemistry_4:
-            display_name: Collecting Carbon Dioxide and Nitrogen
+        daily_mission_scav_8:
+            display_name: Collecting Rover Wires, Metal Bits, Electronic Bits
             building: daily_job
             input:
-                stamina: 10
-                carbon_dioxide: 20
-                nitrogen: 5
+                rover_wires: 20
+                electronic_bits: 15
+                metal_bits: 15
             output:
-                dusk: [25, 25, 25]
-        daily_mission_chemistry_2:
-            display_name: Collecting Oxygen for Life Support Systems
-            building: daily_job
-            input:
-                stamina: 15
-                oxygen: 110
-            output:
-                dusk: [25, 25, 25]
-        daily_mission_chemistry_8:
-            display_name: Collecting Oxygen, Carbon Dioxide, and Nitrogen
-            building: daily_job
-            input:
-                dusk: 5.2
-                oxygen: 55
-                carbon_dioxide: 5
-                nitrogen: 5
-            output:
-                stamina: [5, 5, 5]
-                dusk: [25, 25, 25]
-        daily_mission_lifescience_4:
-            display_name: Collecting Mushroom Spores and Sorghum Seeds
-            building: daily_job
-            input:
-                stamina: 10
-                mushroom_spores: 25
-                sorghum_seed: 2
-            output:
-                dusk: [25, 25, 25]
-        daily_mission_electrical_6:
-            display_name: Collecting Electronic Bits and Metal Bits
-            building: daily_job
-            input:
-                dusk: 10.4
-                electronic_bits: 30
-                metal_bits: 30
-            output:
-                stamina: [10, 10, 10]
                 dusk: [25, 25, 25]
         daily_mission_electrical_1:
             display_name: Collecting Empty Power Cells for Battery Recycling
@@ -7212,13 +7219,6 @@
             input:
                 stamina: 15
                 empty_pc: 5
-            output:
-                dusk: [25, 25, 25]
-        daily_mission_scav_3:
-            display_name: Collecting Regolith for Covering Lava Tubes
-            building: daily_job
-            input:
-                regolith: 570
             output:
                 dusk: [25, 25, 25]
         daily_mission_electrical_5:
@@ -7231,12 +7231,41 @@
             output:
                 stamina: [10, 10, 10]
                 dusk: [25, 25, 25]
+        daily_mission_electrical_6:
+            display_name: Collecting Electronic Bits and Metal Bits
+            building: daily_job
+            input:
+                dusk: 10.4
+                electronic_bits: 30
+                metal_bits: 30
+            output:
+                stamina: [10, 10, 10]
+                dusk: [25, 25, 25]
+        daily_mission_electrical_8:
+            display_name: Collecting Rover Wires, Electronic Bits, and Metal Bits
+            building: daily_job
+            input:
+                dusk: 5.2
+                rover_wires: 20
+                electronic_bits: 15
+                metal_bits: 15
+            output:
+                stamina: [5, 5, 5]
+                dusk: [25, 25, 25]
         daily_mission_chemistry_1:
             display_name: Collecting Carbon Dioxide for Refilling Dry Ice Canisters
             building: daily_job
             input:
                 stamina: 15
                 carbon_dioxide: 30
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_chemistry_2:
+            display_name: Collecting Oxygen for Life Support Systems
+            building: daily_job
+            input:
+                stamina: 15
+                oxygen: 110
             output:
                 dusk: [25, 25, 25]
         daily_mission_chemistry_3:
@@ -7246,6 +7275,35 @@
                 stamina: 15
                 nitrogen: 30
             output:
+                dusk: [25, 25, 25]
+        daily_mission_chemistry_4:
+            display_name: Collecting Carbon Dioxide and Nitrogen
+            building: daily_job
+            input:
+                stamina: 10
+                carbon_dioxide: 20
+                nitrogen: 5
+            output:
+                dusk: [25, 25, 25]
+        daily_mission_chemistry_5:
+            display_name: Collecting Nitrogen and Argon
+            building: daily_job
+            input:
+                dusk: 10.4
+                nitrogen: 20
+                argon: 5
+            output:
+                stamina: [10, 10, 10]
+                dusk: [25, 25, 25]
+        daily_mission_chemistry_6:
+            display_name: Collecting Oxygen and Nitrogen
+            building: daily_job
+            input:
+                dusk: 10.4
+                oxygen: 55
+                nitrogen: 15
+            output:
+                stamina: [10, 10, 10]
                 dusk: [25, 25, 25]
         daily_mission_chemistry_7:
             display_name: Collecting Carbon Dioxide and Argon
@@ -7257,14 +7315,16 @@
             output:
                 stamina: [10, 10, 10]
                 dusk: [25, 25, 25]
-        daily_mission_lifescience_1:
-            display_name: Collecting Soil for Waterloo Greenhouse
+        daily_mission_chemistry_8:
+            display_name: Collecting Oxygen, Carbon Dioxide, and Nitrogen
             building: daily_job
             input:
-                dusk: 15.6
-                soil: 65
+                dusk: 5.2
+                oxygen: 55
+                carbon_dioxide: 5
+                nitrogen: 5
             output:
-                stamina: [15, 15, 15]
+                stamina: [5, 5, 5]
                 dusk: [25, 25, 25]
         #vulcan metalworks
         make_stainless_plate_C1:
