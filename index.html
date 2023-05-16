@@ -324,6 +324,7 @@
           'cantina_coin',
           'moisture',
           'resource_token',
+          'mission_token',
           'slag_storage',
           'stamina'
       ]
@@ -733,6 +734,8 @@
                            this.getPrice('titanium_plate', type) / 25);
                 if (id == 'resource_token')
                     return 0.06;
+                if (id == 'mission_token')
+                    return 0;
                 
                 if (id.startsWith('bazaar_coin_')) {
                     let rarity = id.slice(-1);
@@ -1077,6 +1080,8 @@
                             divisor = (power_used / 20);
                         else if (this.selected_gain_mode == "Gain per Stamina")
                             divisor = stamina_used;
+                        else if (this.odata.recipes[key].building == "daily_grinder")
+                            divisor = this.odata.recipes[key].input.mission_token;
                         
                         let gain_text = '---';       
                         if (divisor != 0) {

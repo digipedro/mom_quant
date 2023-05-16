@@ -6095,7 +6095,7 @@
                     - dusk: [0.025, 0, 500]
         #other
         do_job:
-            display_name: Do Job
+            display_name: Do Job (Novice)
             input:
                 stamina: 1
             output:
@@ -7326,6 +7326,197 @@
             output:
                 stamina: [5, 5, 5]
                 dusk: [25, 25, 25]
+        #daily_grinder
+        grinder_bamboo_bonanza:
+            display_name: Bamboo Bonanza
+            building: daily_grinder
+            input:
+                mission_token: 3
+                bamboo: 20
+            output:
+                lootlist:
+                    - dusk: [1, 20, 20]
+        grinder_barite_boost:
+            display_name: Barite Boost
+            building: daily_grinder
+            input:
+                mission_token: 2
+                barite: 30
+            output:
+                lootlist:
+                    - dusk: [1, 17, 17]
+        grinder_breathe_easy:
+            display_name: Breathe Easy
+            building: daily_grinder
+            input:
+                mission_token: 5
+                oxygen: 100
+            output:
+                lootlist:
+                    - dusk: [1, 40, 40]
+        grinder_carrot_seed_connection:
+            display_name: Carrot Seed Connection
+            building: daily_grinder
+            input:
+                mission_token: 3
+                carrot_seed: 10
+            output:
+                lootlist:
+                    - dusk: [1, 62, 62]
+        grinder_clay_with_this:
+            display_name: Clay With This
+            building: daily_grinder
+            input:
+                mission_token: 4
+                water_rich_clay: 20
+            output:
+                lootlist:
+                    - dusk: [1, 50, 50]
+        grinder_coffee_craze:
+            display_name: Coffee Craze
+            building: daily_grinder
+            input:
+                mission_token: 2
+                coffee_brewed: 5
+            output:
+                lootlist:
+                    - dusk: [1, 27, 27]
+        grinder_electric_personality:
+            display_name: Electric Personality
+            building: daily_grinder
+            input:
+                mission_token: 2
+                full_pc: 10
+            output:
+                lootlist:
+                    - dusk: [1, 60, 60]
+        grinder_electronic_bits_blitz:
+            display_name: Electronic Bits Blitz
+            building: daily_grinder
+            input:
+                mission_token: 8
+                electronic_bits: 20
+            output:
+                lootlist:
+                    - dusk: [1, 45, 45]
+        grinder_flush_this_please:
+            display_name: Flush This Please
+            building: daily_grinder
+            input:
+                mission_token: 3
+                waste: 30
+            output:
+                lootlist:
+                    - dusk: [1, 15, 15]
+        grinder_food_bank:
+            display_name: Food Bank
+            building: daily_grinder
+            input:
+                mission_token: 4
+                food: 75
+            output:
+                lootlist:
+                    - dusk: [1, 29, 29]
+        grinder_halite_haul:
+            display_name: Halite Haul
+            building: daily_grinder
+            input:
+                mission_token: 2
+                halite: 100
+            output:
+                lootlist:
+                    - dusk: [1, 20, 20]
+        grinder_ice_ice_baby:
+            display_name: Ice, Ice Baby
+            building: daily_grinder
+            input:
+                mission_token: 3
+                ice: 200
+            output:
+                lootlist:
+                    - dusk: [1, 22, 22]
+        grinder_meals:
+            display_name: Meals on Rover Wheels
+            building: daily_grinder
+            input:
+                mission_token: 5
+                food: 60
+                water: 20
+            output:
+                lootlist:
+                    - dusk: [1, 35, 35]
+        grinder_metal_bits_madness:
+            display_name: Metal Bits Madness
+            building: daily_grinder
+            input:
+                mission_token: 1
+                metal_bits: 30
+            output:
+                lootlist:
+                    - dusk: [1, 15, 15]
+        grinder_metis_mania:
+            display_name: Metis Mania
+            building: daily_grinder
+            input:
+                mission_token: 5
+                metis: 1
+            output:
+                lootlist:
+                    - dusk: [1, 30, 30]
+        grinder_power_cells:
+            display_name: Keeping the Lights On
+            building: daily_grinder
+            input:
+                mission_token: 1
+                full_pc: 1
+            output:
+                lootlist:
+                    - dusk: [1, 10, 10]
+        grinder_power_outage:
+            display_name: Power Outage
+            building: daily_grinder
+            input:
+                mission_token: 2
+                empty_pc: 5
+            output:
+                lootlist:
+                    - dusk: [1, 30, 30]
+        grinder_radio_ready:
+            display_name: Radio Ready
+            building: daily_grinder
+            input:
+                mission_token: 12
+                vibes: 12
+            output:
+                lootlist:
+                    - dusk: [1, 100, 100]
+        grinder_regolith_rush:
+            display_name: Regolith Rush
+            building: daily_grinder
+            input:
+                mission_token: 2
+                regolith: 500
+            output:
+                lootlist:
+                    - dusk: [1, 25, 25]
+        grinder_water_works:
+            display_name: Water Works
+            building: daily_grinder
+            input:
+                mission_token: 12
+                water: 50
+            output:
+                lootlist:
+                    - dusk: [1, 66, 66]
+        grinder_you_haul:
+            display_name: You Haul
+            building: daily_grinder
+            input:
+                mission_token: 6
+                regolith: 100
+            output:
+                lootlist:
+                    - dusk: [1, 30, 30]
         #vulcan metalworks
         make_stainless_plate_C1:
             display_name: Machine Stainless Steel Plate
@@ -8182,8 +8373,10 @@
         composter:
             display_name: Composter
         daily_job:
-            display_name: Daily Job
+            display_name: Daily Mission
         vulcan-metalworks:
             display_name: Vulcan Metalworks
         commissary:
             display_name: Commissary Kitchen
+        daily_grinder:
+            display_name: Daily Actions
